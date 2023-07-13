@@ -1,8 +1,17 @@
 "use client"
 import React, { useState } from "react";
+import { toast } from "react-hot-toast";
 
 export default function Formulario() {
     const [isRegister, setIsRegister] = useState(false)
+
+    const loginButon=(e)=>{
+        e.preventDefault()
+        toast.success('Usuario Registrado con Éxito',{
+            style:{backgroundColor:"#00699C",color:"white",fontSize:"20px",padding:"8px",height:"100px",textAnchor:"1px"},
+            duration:3500
+        })
+    }
   return (
     <>
       {" "}
@@ -45,7 +54,9 @@ export default function Formulario() {
             className="w-full bg-transparent text-primary-100 placeholder:text-primary-100/80 border-b text-sm pt-3 pb-0.5 focus:outline-none"
           />
         </label>
-        <button className="w-full py-4 bg-gradient-totr bg-primary-100 via-primary-100 to-primary-200  text-white font-thin hover:bg-primary-200 duration-300">
+        <button 
+        onClick={loginButon}
+        className="w-full py-4 bg-gradient-totr bg-primary-100 via-primary-100 to-primary-200  text-white font-thin hover:bg-primary-200 duration-300">
         {isRegister?"Iniciar":"Registrarse"}
         </button>
       </form>

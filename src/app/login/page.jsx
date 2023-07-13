@@ -4,10 +4,12 @@ import Image from "next/image";
 import bglogin from "../../../public/bglogin.png";
 import logo from "../../../public/logo.png";
 import Formulario from "./Formulario";
+import { Toaster } from "react-hot-toast";
 
 export default function page() {
   return (
     <Section1>
+        <Toaster/>
       <div className="md:w-9/12 md:h-[90vh] bg-primary-500 border flex md:flex-row items-stretch justify-between">
         <div className="w-[45%] flex flex-col items-center justify-between py-10">
           <div className="flex flex-col items-center gap-2 h-1/3">
