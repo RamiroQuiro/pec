@@ -7,7 +7,7 @@ export default function Formulario() {
 
     const loginButon=(e)=>{
         e.preventDefault()
-        toast.success('Usuario Registrado con Éxito',{
+        toast.success(!isRegister?'Usuario Registrado con Éxito':"Bienvenido",{
             style:{backgroundColor:"#00699C",color:"white",fontSize:"20px",padding:"8px",height:"100px",textAnchor:"1px"},
             duration:3500
         })
