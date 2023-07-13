@@ -10,8 +10,8 @@ export default function page() {
   return (
     <Section1>
         <Toaster/>
-      <div className="md:w-9/12 md:h-[90vh] bg-primary-500 border flex md:flex-row items-stretch justify-between">
-        <div className="w-[45%] flex flex-col items-center justify-between py-10">
+      <div className="md:w-9/12 md:h-[90vh] bg-primary-500 border flex flex-col w-full md:flex-row items-stretch justify-between">
+        <div className="md:w-[45%] flex flex-col items-center justify-between py-10">
           <div className="flex flex-col items-center gap-2 h-1/3">
             <div className="relative w-full h-[175px] ">
               <Image
@@ -28,7 +28,7 @@ export default function page() {
            <Formulario/>
           </div>
         </div>
-        <div className="w-[55%]">
+        <div className="md:w-[55%] w-full h-full">
           <div className="relative w-full h-full ">
             <Image
               src={bglogin}
