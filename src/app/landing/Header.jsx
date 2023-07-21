@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header className="w-screen h-[80vh] relative">
       <NavBar />
-      <div className="w-2/4 py-5 gap-5 bg-white flex flex-col items-center justify-between z-10 absolute -bottom-20 left-1/4 border-t border-primary-200/50">
+      <div className="w-2/4 py-5 gap-5 bg-white flex flex-col items-center justify-between z-10 absolute -bottom-28 left-1/4 border-t border-primary-200/50">
         <h2 className="text-xl  text-primary-200">
           PEC (Plan Estrategico Comercial)
         </h2>

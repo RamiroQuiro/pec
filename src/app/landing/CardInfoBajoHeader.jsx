@@ -20,7 +20,7 @@ export default function CardInfoBajoHeader() {
             obcaecati tempora, quos illum mollitia veritatis debitis, impedit
             totam itaque sed! 
           </p>
-          <button className=" border-primary-200 border text-primary-200  capitalize px-3 py-2 text-lg mt-16">
+          <button className=" border-primary-200 border text-primary-200  capitalize px-3 py-2 text-lg mt-16 hover:bg-primary-200 hover:border-white hover:text-white duration-300">
             Mas Información{" "}
           </button>
         </div>
