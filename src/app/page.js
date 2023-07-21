@@ -3,6 +3,9 @@ import Header from './landing/Header'
 import CardInfoBajoHeader from './landing/CardInfoBajoHeader'
 import Nosotros from './landing/Nosotros'
 import MisionVision from './landing/MisionVision'
+import TestimoniosArticulos from './landing/TestimoniosArticulos'
+import Contacto from './landing/Contacto'
+import Footer from './landing/Footer'
 
 export default function Home() {
   return (
@@ -12,6 +15,9 @@ export default function Home() {
    <CardInfoBajoHeader/>
    <Nosotros/>
    <MisionVision/>
+   <TestimoniosArticulos/>E
+   <Contacto/>
+   <Footer/>
     </main>
   )
 }
