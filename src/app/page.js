@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Header from './landing/Header'
 import CardInfoBajoHeader from './landing/CardInfoBajoHeader'
+import Nosotros from './landing/Nosotros'
+import MisionVision from './landing/MisionVision'
 
 export default function Home() {
   return (
@@ -8,6 +10,8 @@ export default function Home() {
    {/* Hero Section */}
    <Header/>
    <CardInfoBajoHeader/>
+   <Nosotros/>
+   <MisionVision/>
     </main>
   )
 }
