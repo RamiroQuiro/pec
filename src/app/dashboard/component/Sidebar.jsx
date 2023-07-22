@@ -5,7 +5,7 @@ import SidebarMenu from "./SidebarMenu";
 import { SVGLogOut } from "@/app/componentes/SVGComponent";
 export default function Sidebar() {
   return (
-    <aside className="absolute top-0 left-0 bg-primary-tonoBlanco w-1/6 boder-r h-full pb-5">
+    <aside className="absolute top-0 left-0 bg-primary-tonoBlanco w-1/6 boder-r shadow-md h-full pb-5">
       <div className="flex flex-col w-full h-full items-start justify-between">
         <div className="h-20 flex w-full items-center justify-between px-5">
           <h2 className="text-lg font-medium text-gray-700 uppercase">
