@@ -15,7 +15,7 @@ export default function Home() {
    <CardInfoBajoHeader/>
    <Nosotros/>
    <MisionVision/>
-   <TestimoniosArticulos/>E
+   <TestimoniosArticulos/>
    <Contacto/>
    <Footer/>
     </main>
