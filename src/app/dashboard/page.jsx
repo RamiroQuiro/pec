@@ -1,6 +1,5 @@
 import React from "react";
 import SectionDash from "./component/SectionDash";
-import { SVGPlay } from "../componentes/SVGComponent";
 import ContenedorVideo from "./component/ContenedorVideo";
 
 export default function page() {

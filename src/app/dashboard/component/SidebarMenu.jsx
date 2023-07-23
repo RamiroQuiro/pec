@@ -1,12 +1,20 @@
+
+"use client"
 import { SvgHome, SVGPantalla } from "@/app/componentes/SVGComponent";
 import Link from "next/link";
-import React from "react";
+
+import { usePathname } from "next/navigation";
 
 const LinksSidebarDachboard = ({ name, path, icon }) => {
+
+
+const params=usePathname()
+
+
   return (
     <Link
       href={path}
-      className="flex items-center justify-normal gap-3 text-primary-textGris hover:text-primary-100 font-semibold group cursor-pointer"
+      className={` ${params==path? "text-primary-100":" text-primary-textGris"} flex items-center justify-normal gap-3 hover:text-primary-100 font-semibold group cursor-pointer `}
     >
       <div className="w-5 h-5">{icon}</div>
       <div className="text-sm">{name}</div>
@@ -19,7 +27,7 @@ export default function SidebarMenu() {
           name: "Bienvenidos",
           path: "/dashboard",
           icon: (
-            <SvgHome className="w-5 h-5  group-hover:fill-primary-100 fill-primary-textGris" />
+            <SvgHome className={`$ w-5 h-5  group-hover:fill-primary-100 fill-primary-textGris`} />
           ),
           id: 1,
         },
