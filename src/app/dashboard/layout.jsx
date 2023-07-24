@@ -1,3 +1,4 @@
+import Footer from "../componentes/Footer"
 import NavBarDash from "./component/NavBarDash"
 import Sidebar from "./component/Sidebar"
 
@@ -10,11 +11,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body className="overflow-x-hidden">
+      <body className="overflow-x-hidden ">
         <NavBarDash/>
         {children}
         
         <Sidebar/>
+        <Footer/>
         </body>
     </html>
   )

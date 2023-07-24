@@ -1,9 +1,12 @@
-function Step({ number, isCurrent ,span}) {
+function Step({ number, isCurrent ,span,isComplete}) {
   return (
     <div className="flex items-stretch justify gap-2 relative">
       <div className="flex flex-col w-32 gap-5 h-32">
         <div
           className={`${
+            isComplete?
+            " bg-primary-100 duration-300 text-white"
+            :
             isCurrent
               ? " bg-primary-800 duration-300 text-white"
               : " bg-primary-textGris/5"
@@ -48,11 +51,12 @@ const step=[
     },
 ]
 
-export function Stepper({ currentStep }) {
+export function Stepper({ currentStep ,isComplete}) {
   return (
     <div className="w- flex items-center justify-between mx-auto h">
       {step.map((stepNumber) => (
         <Step
+        isComplete={isComplete}
           key={stepNumber.id}
           number={stepNumber.id}
           span={stepNumber.span}

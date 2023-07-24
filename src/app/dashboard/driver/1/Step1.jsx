@@ -4,8 +4,8 @@ import ButtonLeerMas from "./ButtonLeerMas";
 export default function Step1() {
 
   return (
-    <div className="flex items-center justify-between p-6 relative w-full h-full">
-      <div className=" flex flex-col items-baseline justify-between h-full w-8/12">
+    <div className="flex items-center justify-between p-6  relative w-full  h-full">
+      <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-8/12">
         <h2 className="uppercase text-primary-200 text-xl">Objetivo</h2>
         <p className="text-primary-textGris text-sm tracking-wide leading-relaxed">
           En este Driver estableceremos la relación e importancia que existe con

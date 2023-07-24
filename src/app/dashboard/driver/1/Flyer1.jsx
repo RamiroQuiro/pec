@@ -1,66 +1,45 @@
-import Image from "next/image";
-import diapo1 from "../../../../../public/Diapositiva2.jpg";
-import diapo2 from "../../../../../public/Diapositiva3.jpg";
-import { SvgNextVideo } from "@/app/componentes/SVGComponent";
+
+import { SVGDiskette, SvgNextVideo } from "@/app/componentes/SVGComponent";
 import { contextUser } from "@/context/contextUser";
+import RenderFlyer from "./RenderFlyer";
 
 export default function Flyer1() {
-const flyerActivo=contextUser(state=>state.flyerActivo)
-const activarFlyer=contextUser(state=>state.activarFlyer)
-const flyer=[
-    {
-id:1,
-title:"Flyer 1",
-open:false,
-img:diapo1
-},
-    {
-id:2,
-title:"Flyer 2",
-open:false,
-img:diapo2
-},
-]
+  const flyerActivo = contextUser((state) => state.flyerActivo);
+  const activarFlyer = contextUser((state) => state.activarFlyer);
+  const activeStep = contextUser((state) => state.activeStep);
+ 
+  const setCurrentStep=contextUser((state)=>state.setCurrentStep)  
 
-const handleNextFlyer=()=>{
-    activarFlyer(flyerActivo+1)
-}
-const handlePreviusFlyer=()=>{
-    
-    activarFlyer(flyerActivo-1)
-}
-console.log(flyerActivo)
+  const handleNextFlyer = () => {
+    activarFlyer(flyerActivo + 1);
+  };
+  const handlePreviusFlyer = () => {
+    activarFlyer(flyerActivo - 1);
+};
+const handleNextStep=()=>{
+      activarFlyer(0);
+    setCurrentStep(2)
+    activeStep({driver1:{step1:true}})
+  }
   return (
     <div className="w-full h-full flex relative">
-      {
-flyerActivo==1?
-      <div
-      className="w-full -translate-x-">
-        <Image
-          alt={flyer[0]?.title}
-          src={flyer[0]?.img}
-          fill
-          quality={100}
-          className="object-contain"
+   <RenderFlyer/>
+
+      <div className="w-full absolute bottom-20 left-3 z-30 flex items-center justify-between px-10 gap-3">
+        <SvgNextVideo
+          onClick={handlePreviusFlyer}
+          className="w-14 h-14 fill-primary-tonoBlanco rotate-180 cursor-pointer stroke-primary-textGris/50 "
         />
-      </div>
-:
-flyerActivo==2&&
-<div
-className="w-full -translate-x-">
-  <Image
-    alt={flyer[1]?.title}
-    src={flyer[1]?.img}
-    fill
-    quality={100}
-    className="object-contain"
-  />
-</div>
-      }
-  
-      <div className="w-full absolute bottom-20 left-3 z-30 flex items-center gap-3">
-        <SvgNextVideo onClick={handlePreviusFlyer} className="w-14 h-14 fill-primary-tonoBlanco rotate-180 cursor-pointer"/>
-        <SvgNextVideo onClick={handleNextFlyer} className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer"/>
+       {flyerActivo==2?
+       <SVGDiskette
+       onClick={handleNextStep}
+          className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer stroke-primary-textGris/50"
+       />
+       
+       : <SvgNextVideo
+          onClick={handleNextFlyer}
+          className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer stroke-primary-textGris/50"
+        />}
       </div>
     </div>
   );
