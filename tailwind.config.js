@@ -36,6 +36,8 @@ module.exports = {
           "tonoBlanco": "#FFFFFF",
           500: "#F1F1F1",
           600: "#04A9BE",
+          700: "#F06144",
+          800:"#4461F0"
         },
       },
       borderRadius: {
