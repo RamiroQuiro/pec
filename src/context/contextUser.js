@@ -25,7 +25,7 @@ activeStep:(obj)=>{
     let name=Object.keys(obj)
     let values=Object.values(obj)
         set(state=>({...state,
-            user:{...state.user,[name]:values[0]}
+            user:{...state.user,[name]:{...values[0]}}
             }))
     },
 }))

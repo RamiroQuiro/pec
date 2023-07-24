@@ -3,11 +3,14 @@ import { useState } from "react";
 import { Stepper } from "./Step";
 import RenderPantalla from "./RenderPantalla";
 import { contextUser } from "@/context/contextUser";
+import { usePathname } from "next/navigation";
 export default function ContenedorPasos() {
 const {currentStep,user}=contextUser((state)=>({
   currentStep:state.currentStep,
   user:state.user
 }))  
+const path=usePathname()
+const numberPath=path.split("/")[3]
 const setCurrentStep=contextUser((state)=>state.setCurrentStep)  
     const handleNext = () => {
       setCurrentStep((step) => step + 1);
@@ -17,10 +20,9 @@ const setCurrentStep=contextUser((state)=>state.setCurrentStep)
       setCurrentStep((step) => step - 1);
     };
   
-
     return (
       <div className="w-10/12 h-full flex-grow items-center justify-between py-10 flex flex-col">
-        <Stepper currentStep={currentStep} />
+        <Stepper currentStep={currentStep}  isComplete={user[`driver${numberPath}`]} />
         <div className="rounded-lg border-2 h-full flex-grow w-full">
           {/* Aquí puedes mostrar el contenido del paso actual */}
          <RenderPantalla currentStep={currentStep}  />

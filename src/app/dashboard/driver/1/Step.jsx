@@ -10,22 +10,28 @@ function Step({ number, isCurrent ,span,isComplete}) {
             isCurrent
               ? " bg-primary-800 duration-300 text-white"
               : " bg-primary-textGris/5"
-          }  flex w-8 flex-initial items-center justify-center h-8 rounded-full text-primary-textGris text-xs font-bold mx-auto`}
+          }  flex w-8 flex-initial items-center justify-center h-8 rounded-full  text-xs font-bold mx-auto`}
         >
           {number}
         </div>{" "}
         <span
-        className={`${
+        className={`${ isComplete?
+          " text-primary-100 duration-300 "
+          :
             isCurrent
               ? " text-primary-800 duration-300 "
               : " text-primary-textGris"
-          }  flex flex-initial items-center text-center  -bottom-10 justify-center  text-primary-textGris text-xs font-light mx-auto`}
+          }  flex flex-initial items-center text-center  -bottom-10 justify-center   text-xs font-light mx-auto`}
         >{span}</span>
       </div>
       {number < 4 && (
         <div
         style={{ width:100}}
-        className=" h-0.5  bg-primary-textGris/10 my-2 mx-auto"
+        className={`${ isComplete?
+          " bg-primary-100 duration-300/50 "
+          :
+        "bg-primary-textGris/10"
+        } h-0.5  my-2 mx-auto`}
         />
       )}
     </div>
@@ -54,15 +60,16 @@ const step=[
 export function Stepper({ currentStep ,isComplete}) {
   return (
     <div className="w- flex items-center justify-between mx-auto h">
-      {step.map((stepNumber) => (
-        <Step
-        isComplete={isComplete}
+      {step.map((stepNumber) => {
+        
+        return <Step
+        isComplete={isComplete[`step${stepNumber.id}`]}
           key={stepNumber.id}
           number={stepNumber.id}
           span={stepNumber.span}
           isCurrent={stepNumber.id === currentStep}
         />
-      ))}
+      })}
     </div>
   );
 }

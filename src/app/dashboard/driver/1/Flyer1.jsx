@@ -19,7 +19,7 @@ export default function Flyer1() {
 const handleNextStep=()=>{
       activarFlyer(0);
     setCurrentStep(2)
-    activeStep({driver1:{step1:true}})
+    activeStep({"driver1":{step1:true}})
   }
   return (
     <div className="w-full h-full flex relative">
