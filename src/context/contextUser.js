@@ -1,5 +1,10 @@
 import { create } from "zustand";
 
 export const contextUser=create((set,get)=>({
-    driver: "1",
+    flyerActivo:0,
+    activarFlyer:(id)=>{
+        set(state=>({...state,
+            flyerActivo:id
+            }))
+    }
 }))
