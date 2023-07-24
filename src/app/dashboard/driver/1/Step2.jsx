@@ -9,14 +9,26 @@ export default function Step2() {
           LO QUE TIENES QUE SABER SOBRE CULTURA ORGANIZACIONAL
         </h2>
         <p className="text-primary-textGris text-sm tracking-wide leading-relaxed">
-          a) ¿Que es la Cultura Organizacional de una Empresa?: Es el el estilo
-          de vida de la organización, en la cual, a través de creencias,
-          costumbres y normas, un grupo de colaboradores actual y se rigen por
-          las mismas. b) ¿Que incluye la Cultura Organizacional de una Empresa?:
+          <span className="text-primary-100 font-bold">
+            a) ¿Que es la Cultura Organizacional de una Empresa?:{" "}
+          </span>
+          <br />
+          Es el el estilo de vida de la organización, en la cual, a través de
+          creencias, costumbres y normas, un grupo de colaboradores actual y se
+          rigen por las mismas. <br />
+          <span className="text-primary-100 font-bold">
+            {" "}
+            b) ¿Que incluye la Cultura Organizacional de una Empresa?:
+          </span>
+          <br />
           La Misión, Vision, Valores y Código de Ética entre otras
           complementarias.
         </p>
-        <ButtonLeerMas />
+        <div className="flex items-center justify-normal gap-5">
+
+        <ButtonLeerMas label={"changeStep"} stepN={1}>Anterior</ButtonLeerMas>
+        <ButtonLeerMas stepN={4}>Leer mas...</ButtonLeerMas>
+        </div>
       </div>
       <div className="w-4/12 h-full relative">
         <Image

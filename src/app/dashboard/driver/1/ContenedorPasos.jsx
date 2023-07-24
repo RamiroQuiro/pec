@@ -21,7 +21,7 @@ const setCurrentStep=contextUser((state)=>state.setCurrentStep)
     };
   
     return (
-      <div className="w-10/12 h-full flex-grow items-center justify-between py-10 flex flex-col">
+      <div className="w-11/12 h-full flex-grow items-center justify-between py-10 flex flex-col">
         <Stepper currentStep={currentStep}  isComplete={user[`driver${numberPath}`]} />
         <div className="rounded-lg border-2 h-full flex-grow w-full">
           {/* Aquí puedes mostrar el contenido del paso actual */}

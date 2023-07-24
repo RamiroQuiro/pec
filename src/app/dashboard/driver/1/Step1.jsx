@@ -23,7 +23,7 @@ export default function Step1() {
           cultura...afecta o beneficia directamente al área comercial, de ahí su
           importancia...
         </p>
-        <ButtonLeerMas/>
+        <ButtonLeerMas stepN={1}>leer mas...</ButtonLeerMas>
       </div>
       <div className="w-4/12 h-full relative">
         <Image

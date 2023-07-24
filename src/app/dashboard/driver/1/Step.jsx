@@ -9,8 +9,8 @@ function Step({ number, isCurrent ,span,isComplete}) {
             :
             isCurrent
               ? " bg-primary-800 duration-300 text-white"
-              : " bg-primary-textGris/5"
-          }  flex w-8 flex-initial items-center justify-center h-8 rounded-full  text-xs font-bold mx-auto`}
+              : " bg-primary-textGris/10  text-primary-textGris"
+          }  flex w-8 flex-initial items-center justify-center h-8 rounded-full   text-xs font-bold mx-auto`}
         >
           {number}
         </div>{" "}
