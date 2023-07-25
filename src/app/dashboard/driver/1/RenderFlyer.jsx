@@ -11,13 +11,13 @@ import { useEffect, useState } from 'react';
 const Flyer=({flyers,flyerActivo})=>{
 
   return (
-    <div className="h-[100%] w-auto">
+    <div className="h-[100%] w-auto animate-[aparecer_.5s]">
       <Image
         alt={flyers[flyerActivo - 1]?.title}
         src={flyers[flyerActivo - 1]?.img}
         fill
         quality={100}
-        className="object- object-center h-[100%]"
+        className="object- object-center h-[100%] animate-[aparecer_.5s]"
       />
     </div>
   );
@@ -32,7 +32,7 @@ export default function RenderFlyer() {
   useEffect(() => {
     const diapos=[]
     const importDiapos=async()=>{
-        for (let i = 2; i < 24; i++) {
+        for (let i = 2; i < 26; i++) {
           const diapositiva= await import(`../../../../../public/Diapositiva${i}.jpg`);
           diapos.push(diapositiva.default)          
         }

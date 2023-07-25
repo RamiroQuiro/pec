@@ -4,7 +4,7 @@ import { MultiSelect } from "react-multi-select-component";
 const SelectExample = ({labelSpan,options,selected,setSelected}) => {
 
   return (
-    <div className="mt-10 relative px-5">
+    <div className=" relative px-5">
         <p className="text-primary-textGris text-xs mb-0.5 w-full text-right ">{labelSpan}</p>
       <MultiSelect
       className="h-2 text-xs text-primary-textGris z-20 w-full"

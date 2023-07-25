@@ -37,7 +37,7 @@ export default function Step31() {
         </h2>
         <div className="flex items-center justify-between gap-2 w-11/12 mx-auto  ">
           <div className="w-1/4 flex-auto">
-            <p className="text-primary-100 font-medium">
+            <p className="text-primary-100 font-medium mb-10">
               ¿Para que esta hecho tu Área Comercial?
             </p>
           <SelectExample 
@@ -48,7 +48,7 @@ export default function Step31() {
           />
           </div>
           <div className="w-1/4 flex-auto">
-            <p className="text-primary-100 font-medium">
+            <p className="text-primary-100 font-medium mb-10">
               ¿A quien esta dirigida tu Misión Comercial?
             </p>
             <SelectExample 
@@ -59,7 +59,7 @@ export default function Step31() {
           />
           </div>
           <div className="w-1/4 flex-auto">
-            <p className="text-primary-100 font-medium">
+            <p className="text-primary-100 font-medium mb-10">
               ¿Que es importante para tu Área Comercial?
             </p>
             <SelectExample 
