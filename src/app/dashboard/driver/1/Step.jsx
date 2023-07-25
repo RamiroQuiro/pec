@@ -67,7 +67,7 @@ export function Stepper({ currentStep ,isComplete}) {
           key={stepNumber.id}
           number={stepNumber.id}
           span={stepNumber.span}
-          isCurrent={stepNumber.id === currentStep}
+          isCurrent={stepNumber.id === currentStep }
         />
       })}
     </div>

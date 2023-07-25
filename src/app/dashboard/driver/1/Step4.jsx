@@ -1,7 +1,6 @@
 import React from 'react'
 import ButtonLeerMas from './ButtonLeerMas'
 import Image from 'next/image'
-import step4 from "../../../../../public/step3.png";
 export default function Step4() {
   return (
     <div className="flex items-center justify-between p-6  relative w-full  h-full">
@@ -29,7 +28,6 @@ export default function Step4() {
       <div className="w-4/12  mx-auto h-full relative">
         <Image
           alt="step4"
-          src={step4}
           fill
           className=" object-center object-contain absolute -right-3 top-4 w-full ml-14 h-auto mx-auto "
         />

@@ -6,11 +6,20 @@ export default function Flyer1() {
   const flyerActivo = contextUser((state) => state.flyerActivo);
   const activarFlyer = contextUser((state) => state.activarFlyer);
   const activeStep = contextUser((state) => state.activeStep);
+  const cargarSubPantallas = contextUser((state) => state.cargarSubPantallas);
 
   const setCurrentStep = contextUser((state) => state.setCurrentStep);
 
   const handleNextFlyer = () => {
-    activarFlyer(flyerActivo + 1);
+    if (flyerActivo == 19) {
+        activarFlyer(0)
+      setCurrentStep(3);
+      cargarSubPantallas(2)
+      activeStep({ driver1: { step1: true, step2: true,  } });
+    }else{
+
+        activarFlyer(flyerActivo + 1);
+    }
   };
   const handlePreviusFlyer = () => {
     if (flyerActivo == 3) {
@@ -30,11 +39,7 @@ export default function Flyer1() {
       setCurrentStep(3);
       activeStep({ driver1: { step1: true, step2: true } });
     }
-    if (flyerActivo == 20) {
-        activarFlyer(0)
-      setCurrentStep(3);
-      activeStep({ driver1: { step1: true, step2: true,  } });
-    }
+   
   };
   return (
     <div className="w-full h-full flex relative">

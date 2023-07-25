@@ -10,10 +10,16 @@ export const contextUser=create((set,get)=>({
         }
     },
     currentStep:1,
+    subPantallas:0,
     flyerActivo:0,
     activarFlyer:(id)=>{
         set(state=>({...state,
             flyerActivo:id
+            }))
+    },
+    cargarSubPantallas:(id)=>{
+        set(state=>({...state,
+            subPantallas:id
             }))
     },
 setCurrentStep:(number)=>{

@@ -28,21 +28,19 @@ const Flyer=({flyers,flyerActivo})=>{
 
 export default function RenderFlyer() {
   const [diapositivas, setDiapositivas] = useState([])
+  const flyerActivo = contextUser((state) => state.flyerActivo, shallow);
   useEffect(() => {
     const diapos=[]
     const importDiapos=async()=>{
         for (let i = 2; i < 24; i++) {
           const diapositiva= await import(`../../../../../public/Diapositiva${i}.jpg`);
-          console.log(diapositiva)
           diapos.push(diapositiva.default)          
         }
         setDiapositivas(diapos);
-        console.log(diapos)
     }
     importDiapos();
   }, [])
-  console.log(diapositivas)
-
+  
   const flyers = [];
   for (let index = 1; index <= 24; index++) {
     flyers.push({
@@ -52,6 +50,7 @@ export default function RenderFlyer() {
       img: diapositivas[index - 1],
     });
   }
-  const flyerActivo = contextUser((state) => state.flyerActivo, shallow);
+  
+  console.log(flyerActivo)
   return <Flyer flyers={flyers} flyerActivo={flyerActivo} />;
 }
