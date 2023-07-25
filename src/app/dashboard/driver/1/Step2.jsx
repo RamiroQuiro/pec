@@ -27,7 +27,7 @@ export default function Step2() {
         <div className="flex items-center justify-normal gap-5">
 
         <ButtonLeerMas label={"changeStep"} stepN={1}>Anterior</ButtonLeerMas>
-        <ButtonLeerMas stepN={4}>Leer mas...</ButtonLeerMas>
+        <ButtonLeerMas stepN={3}>Leer mas...</ButtonLeerMas>
         </div>
       </div>
       <div className="w-4/12 h-full relative">
