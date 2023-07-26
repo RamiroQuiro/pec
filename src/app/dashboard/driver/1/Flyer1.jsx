@@ -16,7 +16,7 @@ export default function Flyer1() {
       setCurrentStep(3);
       cargarSubPantallas(2);
       activeStep({ driver1: { step1: true, step2: true } });
-    }
+    }else
     if (flyerActivo==24) {
       activarFlyer(0);
       setCurrentStep(4);

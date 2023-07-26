@@ -1,6 +1,7 @@
 import React from "react";
 import SectionDash from "./component/SectionDash";
 import ContenedorVideo from "./component/ContenedorVideo";
+import { Toaster } from "react-hot-toast";
 
 export default function page() {
   return (
@@ -19,6 +20,7 @@ export default function page() {
           </button>
         </div>
       </div>
+      <Toaster/>
     </SectionDash>
   );
 }

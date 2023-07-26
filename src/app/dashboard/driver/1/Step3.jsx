@@ -16,9 +16,9 @@ const subPantallas=contextUser(state=>state.subPantallas)
         <>
           <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-8/12 text-center">
             <h2 className="uppercase text-primary-200 text-xl">
-              LISTO!, BIENVENIDO AL PASO 3 "ARMEMOS TU PROPIA CULTURA
+              {`LISTO!, BIENVENIDO AL PASO 3 "ARMEMOS TU PROPIA CULTURA
               ORGANIZACIONAL" PERO CON UNA GRAN DIFERENCIA: ENFOCADA AL ÁREA
-              COMERCIAL
+              COMERCIAL`}
               <span className="text-primary-100 font-semibold">
                 {" "}
                 ¿ESTAS LISTO?, VAMOS!!!!

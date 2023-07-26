@@ -51,6 +51,5 @@ export default function RenderFlyer() {
     });
   }
   
-  console.log(flyerActivo)
   return <Flyer flyers={flyers} flyerActivo={flyerActivo} />;
 }
