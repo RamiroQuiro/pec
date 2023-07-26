@@ -8,13 +8,12 @@ const UserSchema=new Schema({
         required:[true,"Email es requerido"],
         unique: true
     },
-    passwordHash: {
+    password: {
         type: String,
         select: false ,//para que no se devuelva en el objeto de la coleccion.
         require:[true,'El Password es requerido'],
     },
-    role:{type:Number},
-    fullmame:{
+    fullName:{
         type:String,
         require:[true,'El nombre completo es requerido'],
         minLength:[5,"Minimo 5 caracteres"],
