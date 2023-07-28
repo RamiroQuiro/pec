@@ -3,7 +3,7 @@ import axios from "axios";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { toast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 
 export default function Formulario() {
   const router = useRouter();
@@ -27,11 +27,14 @@ export default function Formulario() {
         password: form?.password,
         redirect: false,
       });
-
+      if (res?.error) {
+        toast.error(res?.error)
+        return setError(res.error);
+      }
       if (res?.ok) {
         router.push("/dashboard");
         toast.success(
-         isRegister ? "Usuario Registrado con Éxito" : "Bienvenido",
+          isRegister ? "Usuario Registrado con Éxito" : "Bienvenido",
           {
             style: {
               backgroundColor: "#00699C",
@@ -125,6 +128,7 @@ export default function Formulario() {
         >
           {isRegister ? "Iniciar Sesion" : "Registrate"}
         </button>
+        <Toaster/>
       </div>
     </>
   );

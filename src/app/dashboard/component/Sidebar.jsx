@@ -2,7 +2,7 @@ import Image from "next/image";
 import logo from "../../../../public/logo.png";
 import SVGLogin from "@/app/landing/component/SVGComponent";
 import SidebarMenu from "./SidebarMenu";
-import { SVGLogOut } from "@/app/componentes/SVGComponent";
+import ButtonSignOut from "./ButtonSignOut";
 export default function Sidebar() {
   return (
     <aside className="absolute top-0 left-0 bg-primary-tonoBlanco w-1/6 boder-r shadow-md h-full pb-5">
@@ -25,10 +25,7 @@ export default function Sidebar() {
           </div>
         </div>
         <SidebarMenu />
-        <div className="flex items-center justify-normal gap-3 text-primary-textGris hover:text-primary-100 group font-semibold group cursor-pointer w-10/12 mx-auto">
-          <SVGLogOut className="w-6 h-6  group-hover:fill-primary-100 fill-primary-textGris" />{" "}
-          <p className="text-sm font-medium ">Salir</p>
-        </div>
+        <ButtonSignOut/>        
       </div>
     </aside>
   );
