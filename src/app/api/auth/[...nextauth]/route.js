@@ -10,7 +10,7 @@ const handler = NextAuth({
       name: "credentials",
       credentials: {
         email: {
-          label: "Email",
+          label: "email",
           type: "email",
           placeholder: "email",
         },
@@ -21,12 +21,10 @@ const handler = NextAuth({
       },
       async authorize(credentials, req) {
         await connectDB();
-        console.log(credentials);
         const userFound = await User.findOne({ email: credentials?.email }).select("+password");
         if (!userFound) throw new Error("Credenciales Invalidas");
         const passwordMatch= bcrypt.compare(credentials.password=== userFound.password)
         if (!passwordMatch) throw new Error("Credenciales Invalidas");
-            console.log(userFound)
             return userFound
       },
     }),
@@ -40,7 +38,11 @@ const handler = NextAuth({
       session.user = token.user;
       return session;
     },
+    
   },
+  pages:{
+    signIn:'/login'
+  }
 });
 
 export { handler as GET, handler as POST };

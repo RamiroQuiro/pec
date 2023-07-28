@@ -9,7 +9,7 @@ import { Toaster } from "react-hot-toast";
 export default function page() {
   return (
     <Section1>
-        <Toaster/>
+       
       <div className="md:w-9/12 md:h-[90vh] bg-primary-500 border flex flex-col-reverse w-full md:flex-row items-stretch justify-between">
         <div className="md:w-[45%] flex flex-col items-center justify-between py-10">
           <div className="flex flex-col items-center gap-2 h-1/3">
