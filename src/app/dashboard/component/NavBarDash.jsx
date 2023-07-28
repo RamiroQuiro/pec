@@ -1,10 +1,12 @@
 "use client";
 import { SvgHome, SVGPantalla } from "@/app/componentes/SVGComponent";
-import { contextUser } from "@/context/contextUser";
 import { usePathname } from "next/navigation";
-import React from "react";
-
+import { useSession } from "next-auth/react";
 export default function NavBarDash() {
+
+  const {data,status,update}=useSession()
+
+  console.log(data)
   const path = usePathname();
   const driver = path.split("/")[3];
   // const driver = contextUser((state) => state.driver);

@@ -1,4 +1,5 @@
 import Footer from "../componentes/Footer"
+import Provider from "./Provider"
 import NavBarDash from "./component/NavBarDash"
 import Sidebar from "./component/Sidebar"
 
@@ -12,11 +13,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body className="overflow-x-hidden min-h-screen relative">
+        <Provider>
         <NavBarDash/>
         {children}
         
         <Sidebar/>
         <Footer/>
+        </Provider>
         </body>
     </html>
   )
