@@ -3,6 +3,7 @@ import logo from "../../../../public/logo.png";
 import SVGLogin from "@/app/landing/component/SVGComponent";
 import SidebarMenu from "./SidebarMenu";
 import ButtonSignOut from "./ButtonSignOut";
+import UserNameSidebar from "./UserNameSidebar";
 export default function Sidebar() {
   return (
     <aside className="absolute top-0 left-0 bg-primary-tonoBlanco w-1/6 boder-r shadow-md h-full pb-5">
@@ -17,12 +18,7 @@ export default function Sidebar() {
           <div className="w-10 h-10">
             <SVGLogin />
           </div>
-          <div className="flex flex-col ml-3 items-start justify-center">
-            <p className="font-medium text-sm text-gray-700 ">Ramiro Quiroga</p>
-            <p className="text-xs text-primary-textGris ">
-              ramiryexe@hotmail.com
-            </p>
-          </div>
+          <UserNameSidebar/>
         </div>
         <SidebarMenu />
         <ButtonSignOut/>        
