@@ -10,7 +10,7 @@ const UserSchema=new Schema({
     },
     password: {
         type: String,
-        select: false ,//para que no se devuelva en el objeto de la coleccion.
+        select: false ,//para que no -e devuelva en el objeto de la coleccion.
         require:[true,'El Password es requerido'],
     },
     fullName:{

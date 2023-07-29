@@ -28,6 +28,7 @@ export default function Formulario() {
         redirect: false,
       });
       if (res?.error) {
+        console.log(res)
         toast.error(res?.error)
         return setError(res.error);
       }
@@ -49,8 +50,8 @@ export default function Formulario() {
         );
       }
     } catch (e) {
-      setError(e.response.data.message);
-      toast.error(error);
+      console.log(e)
+      toast.error(e);
     }
   };
 
@@ -69,7 +70,7 @@ export default function Formulario() {
       >
         {isRegister && (
           <label
-            htmlFor="nameUser"
+            htmlFor="fullName"
             className="w-full leading-tight animate-aparecer"
           >
             <p>Usuario</p>
@@ -98,7 +99,7 @@ export default function Formulario() {
             className="w-full bg-transparent text-primary-100 placeholder:text-primary-100/80 border-b text-sm pt-3 pb-0.5 focus:outline-none"
           />
         </label>
-        <label htmlFor="email" className="w-full  leading-tight">
+        <label htmlFor="password" className="w-full  leading-tight">
           <p>Contraseña</p>
           <input
             onChange={handleChange}
