@@ -24,7 +24,7 @@ const handler = NextAuth({
         await connectDB();
         const userFound = await User.findOne({ email: credentials?.email }).select("+password");
         if (!userFound) throw new Error("Credenciales Invalidas");
-        const passwordMatch=await bcrypt.compare(credentials.password== userFound.password)
+        const passwordMatch=await bcrypt.compare(credentials.password,userFound.password)
         if (!passwordMatch) throw new Error("Credenciales Invalidas");
             return userFound
       },

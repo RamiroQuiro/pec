@@ -16,7 +16,6 @@ const UserSchema=new Schema({
     fullName:{
         type:String,
         require:[true,'El nombre completo es requerido'],
-        minLength:[5,"Minimo 5 caracteres"],
         maxLength:[25,'Maximo 25 Caracteres']
     }
 
