@@ -7,6 +7,7 @@ import { Toaster, toast } from "react-hot-toast";
 
 export default function Formulario() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false)
   const [isRegister, setIsRegister] = useState(false);
   const [error, setError] = useState(null);
   const [form, setForm] = useState({});
@@ -15,6 +16,7 @@ export default function Formulario() {
     let res = "";
     try {
       if (isRegister) {
+        setIsLoading(true)
         const signupResponse = await axios.post("/api/auth/signup", form);
         res = await signIn("credentials", {
           email: signupResponse.data.email,
@@ -49,10 +51,12 @@ export default function Formulario() {
           }
         );
       }
+      
     } catch (e) {
       setError(e.response.data.message);
       toast.error(e.response.data.message);
     }
+    setIsLoading(false)
   };
 
   const loginButton = () => {};
@@ -63,6 +67,7 @@ export default function Formulario() {
 
   return (
     <>
+    {isLoading&& <div>Cargando...</div>}
       {" "}
       <form
         action=""
