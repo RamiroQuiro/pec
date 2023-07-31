@@ -8,32 +8,25 @@ import { contextUser } from "@/context/contextUser";
 import { useSession } from "next-auth/react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import PDFEntregable from "./PDFEntregable";
-import PreviewPDF from "@/app/componentes/PreviewPDF";
 export default function Step42() {
   const { data } = useSession();
   const formCarga = contextUser((state) => state.formCarga);
-  const setCurrentStep=contextUser((state)=>state.setCurrentStep) 
-  
-const DownloadLink = () => {
-  console.log("descargand")
- return  <PDFDownloadLink document={<PDFEntregable data={formCarga}/>} fileName="PEC.pdf"></PDFDownloadLink>
-};
+  const setCurrentStep = contextUser((state) => state.setCurrentStep);
+
   const handleGuardar = async () => {
     try {
-     const mandamosMail = await axios.post("/api/sendemail", {
+      const mandamosMail = await axios.post("/api/sendemail", {
         body: formCarga,
         mail: data?.user.email,
-      })
-      console.log(mandamosMail)
- if (mandamosMail.status) {
-  toast.success('Exitos, Revisa tu Bandeja de Entrada')
- }
-      DownloadLink()
-      
+      });
+      console.log(mandamosMail);
+      if (mandamosMail.status) {
+        toast.success("Exitos, Revisa tu Bandeja de Entrada");
+      }
+      DownloadLink();
     } catch (error) {
       console.log(error);
     }
-    
   };
   return (
     <>
@@ -49,14 +42,16 @@ const DownloadLink = () => {
         </div>
         <div className="flex items-center justify-normal gap-5">
           <ButtonLeerMas stepN={24}>Anterior</ButtonLeerMas>
-          <PDFDownloadLink document={<PDFEntregable data={formCarga} session={data} />} fileName="PEC.pdf">  
-          <button
-            onClick={handleGuardar}
-            className="bg-primary-100 text-white rounded font-medium text-xs px-4 py-2"
+          <PDFDownloadLink
+            document={<PDFEntregable data={formCarga} session={data} />}
+            fileName="PEC.pdf"
           >
-            Guardar
-          </button>
-        
+            <button
+              onClick={handleGuardar}
+              className="bg-primary-100 text-white rounded font-medium text-xs px-4 py-2"
+            >
+              Guardar
+            </button>
           </PDFDownloadLink>
         </div>
       </div>
@@ -68,7 +63,7 @@ const DownloadLink = () => {
           className=" object-center object-contain absolute -right-3 top-4 w-full ml-14 h-auto mx-auto "
         />
       </div>
-      <Toaster/>
+      <Toaster />
     </>
   );
 }
