@@ -9,7 +9,10 @@ export async function POST(request) {
          to:mail,
           subject: `Nuevo mensaje de Ramita`,
           text:"hola men",
-          html: `<p>Tienes un nuevo mensaje de Ramita :</p><br/><p>Estamos Ready Meeeeeeen</p>`,
+          html: `
+          <h1 style="color: #00A1A5; font-family: Arial, sans-serif;">Feliciataciones!!! Driver 1 Completado</h1>
+          <p>Descarga el Archivo con tu PEC del primer Driver</>`
+
         });
         return NextResponse.json({
             message:"enviado con Exirto",

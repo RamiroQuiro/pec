@@ -1,23 +1,24 @@
-"use client"
+"use client";
 import ButtonLeerMas from "./ButtonLeerMas";
 import step1 from "../../../../../public/step1.png";
 import Image from "next/image";
-import { toast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
 import { contextUser } from "@/context/contextUser";
 import { useSession } from "next-auth/react";
 export default function Step42() {
-  const {data}=useSession()
-  console.log(data?.user?.email)
-  const formCarga=contextUser(state=>state.formCarga)
-  const handleGuardar = async() => {
-   try {
-     const mandamosMail = await axios.post("/api/sendemail",{body:formCarga,mail:data?.user.email})
-     console.log(mandamosMail)
-   } catch (error) {
-    console.log(error)
-   }
-    toast.success("EXITO");
+  const { data } = useSession();
+  const formCarga = contextUser((state) => state.formCarga);
+  const handleGuardar = async () => {
+    try {
+      const mandamosMail = await axios.post("/api/sendemail", {
+        body: formCarga,
+        mail: data?.user.email,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+    toast.success("Exitos, Revisa tu Bandeja de Entrada");
   };
   return (
     <>
@@ -42,7 +43,6 @@ export default function Step42() {
         </div>
       </div>
       <div className="w-4/12  mx-auto h-full relative">
-   
         <Image
           alt="step4"
           src={step1}
@@ -50,6 +50,7 @@ export default function Step42() {
           className=" object-center object-contain absolute -right-3 top-4 w-full ml-14 h-auto mx-auto "
         />
       </div>
+      <Toaster/>
     </>
   );
 }
