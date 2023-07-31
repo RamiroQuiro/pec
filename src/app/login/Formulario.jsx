@@ -4,6 +4,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
+import LoadingCss from "../componentes/LoadingCss";
 
 export default function Formulario() {
   const router = useRouter();
@@ -15,8 +16,8 @@ export default function Formulario() {
     e.preventDefault();
     let res = "";
     try {
+      setIsLoading(true)
       if (isRegister) {
-        setIsLoading(true)
         const signupResponse = await axios.post("/api/auth/signup", form);
         res = await signIn("credentials", {
           email: signupResponse.data.email,
@@ -32,6 +33,7 @@ export default function Formulario() {
       if (res?.error) {
         console.log(res)
         toast.error(res?.error)
+        setIsLoading(false)
         return setError(res.error);
       }
       if (res?.ok) {
@@ -53,6 +55,7 @@ export default function Formulario() {
       }
       
     } catch (e) {
+      setIsLoading(false)
       setError(e.response.data.message);
       toast.error(e.response.data.message);
     }
@@ -67,7 +70,7 @@ export default function Formulario() {
 
   return (
     <>
-    {isLoading&& <div>Cargando...</div>}
+    {isLoading&& <LoadingCss/>}
       {" "}
       <form
         action=""
@@ -129,6 +132,7 @@ export default function Formulario() {
           {isRegister ? "¿Ya te has registrado?" : "¿Aún no te has registrado?"}
         </p>
         <button
+        disabled={!form.email || !form.password || form?.fullName}
           onClick={() => setIsRegister(!isRegister)}
           className="text-primary-100 hover:text-primary-200  duration-200"
         >

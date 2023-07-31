@@ -20,7 +20,6 @@ const handler = NextAuth({
         },
       },
       async authorize(credentials, req) {
-        console.log(credentials)
         await connectDB();
         const userFound = await User.findOne({ email: credentials?.email }).select("+password");
         if (!userFound) throw new Error("Credenciales Invalidas");

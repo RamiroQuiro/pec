@@ -1,11 +1,21 @@
+"use client";
 import React, { useState } from "react";
 import ButtonLeerMas from "./ButtonLeerMas";
 import Image from "next/image";
 import step3 from "../../../../../public/step3.png";
+import { contextUser } from "@/context/contextUser";
 export default function Step32() {
-  const [textArea, setTextArea] = useState({});
+  const formCarga = contextUser((state) => state.formCarga);
+  const cargarForm = contextUser((state) => state.cargarForm);
+  const cargarSubPantallas = contextUser((state) => state.cargarSubPantallas);
+  const [textArea, setTextArea] = useState(formCarga);
   const handleText = (e) => {
-    setTextArea((state) => ({ ...state, [e.target.name]: e.target.value }));
+    setTextArea((state) => ({ ...state, driver1:{...state.driver1,[e.target.name]: e.target.value }}));
+  };
+  
+  const clickCargaFormulario = () => {
+    cargarForm(textArea);
+    cargarSubPantallas(4);
   };
   return (
     <>
@@ -18,6 +28,7 @@ export default function Step32() {
             Escribe tu Misión Comercial
           </p>
           <textarea
+            onChange={handleText}
             name="misionComercial"
             id="misionComercial"
             className="border-2 rounded-lg p-3 w-full"
@@ -28,20 +39,22 @@ export default function Step32() {
           <ButtonLeerMas label={"changeSubPantalla"} stepN={2}>
             Anterior
           </ButtonLeerMas>
-          <ButtonLeerMas label={"changeSubPantalla"} stepN={4}>
+          <button
+            onClick={clickCargaFormulario}
+            className="bg-primary-800 text-white rounded font-medium text-xs px-4 py-2"
+          >
             Siguiente
-          </ButtonLeerMas>
+          </button>
         </div>
-      
       </div>
       <div className="w-4/12  mx-auto h-full relative">
-            <Image
-              alt="step3"
-              src={step3}
-              fill
-              className=" object-center object-contain absolute -right-3 top-4 w-4/12 ml-14 h-auto mx-auto "
-            />
-          </div>
+        <Image
+          alt="step3"
+          src={step3}
+          fill
+          className=" object-center object-contain absolute -right-3 top-4 w-4/12 ml-14 h-auto mx-auto "
+        />
+      </div>
     </>
   );
 }
