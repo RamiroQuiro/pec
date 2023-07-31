@@ -6,16 +6,27 @@ import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
 import { contextUser } from "@/context/contextUser";
 import { useSession } from "next-auth/react";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import PDFEntregable from "./PDFEntregable";
+import PreviewPDF from "@/app/componentes/PreviewPDF";
 export default function Step42() {
   const { data } = useSession();
   const formCarga = contextUser((state) => state.formCarga);
+  const setCurrentStep=contextUser((state)=>state.setCurrentStep) 
+  
+const DownloadLink = () => {
+  console.log("descargand")
+ return  <PDFDownloadLink document={<PDFEntregable data={formCarga}/>} fileName="PEC.pdf"></PDFDownloadLink>
+};
   const handleGuardar = async () => {
     try {
-      const mandamosMail = await axios.post("/api/sendemail", {
+      /*const mandamosMail = await axios.post("/api/sendemail", {
         body: formCarga,
         mail: data?.user.email,
-      });
-      toast.success("Exitos, Revisa tu Bandeja de Entrada");
+      })*/
+      // setCurrentStep(5)
+      DownloadLink()
+      toast.success('Exitos, Revisa tu Bandeja de Entrada')
     } catch (error) {
       console.log(error);
     }

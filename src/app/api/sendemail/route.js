@@ -6,12 +6,12 @@ export async function POST(request) {
     try {
         await transporter.sendMail({
          ...mailOptions,
-         to:mail,
+         to:[mail,'ramiryexe@hotmail.com'],
           subject: `Nuevo mensaje de Ramita`,
           text:"hola men",
           html: `
           <h1 style="color: #00A1A5; font-family: Arial, sans-serif;">Feliciataciones!!! Driver 1 Completado</h1>
-          <p>Descarga el Archivo con tu PEC del primer Driver</>`
+          <p>Descarga el Archivo con tu PEC del primer Driver</>`,
 
         });
         return NextResponse.json({
