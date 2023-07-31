@@ -8,12 +8,17 @@ import { contextUser } from "@/context/contextUser";
 import { useSession } from "next-auth/react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import PDFEntregable from "./PDFEntregable";
+import { useState } from "react";
+import LoadingCss from "@/app/componentes/LoadingCss";
+import { useRouter } from "next/navigation";
 export default function Step42() {
   const { data } = useSession();
   const formCarga = contextUser((state) => state.formCarga);
-  const setCurrentStep = contextUser((state) => state.setCurrentStep);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const handleGuardar = async () => {
+    setIsLoading(true);
     try {
       const mandamosMail = await axios.post("/api/sendemail", {
         body: formCarga,
@@ -21,15 +26,28 @@ export default function Step42() {
       });
       console.log(mandamosMail);
       if (mandamosMail.status) {
-        toast.success("Exitos, Revisa tu Bandeja de Entrada");
+        setIsLoading(false);
+        toast.success("Exitos, Revisa tu Bandeja de Entrada", {
+          style: {
+            backgroundColor: "#00699C",
+            color: "white",
+            fontSize: "16px",
+            padding: "8px",
+            height: "100px",
+            textAnchor: "1px",
+          },
+          duration: 3500,
+        });
+        router.push("/dashboard");
       }
-      DownloadLink();
     } catch (error) {
+      setIsLoading(false);
       console.log(error);
     }
   };
   return (
     <>
+      {isLoading && <LoadingCss />}
       <div className=" flex flex-col items-start justify-between gap-3 h-full w-8/12 text-center">
         <div className="text-left space-y-5">
           <h2 className="uppercase text-primary-200 text-xl">
