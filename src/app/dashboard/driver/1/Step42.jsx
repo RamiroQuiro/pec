@@ -46,12 +46,15 @@ const DownloadLink = () => {
         </div>
         <div className="flex items-center justify-normal gap-5">
           <ButtonLeerMas stepN={24}>Anterior</ButtonLeerMas>
+          <PDFDownloadLink document={<PDFEntregable data={formCarga} session={data} />} fileName="PEC.pdf">  
           <button
             onClick={handleGuardar}
             className="bg-primary-100 text-white rounded font-medium text-xs px-4 py-2"
           >
             Guardar
           </button>
+        
+          </PDFDownloadLink>
         </div>
       </div>
       <div className="w-4/12  mx-auto h-full relative">
