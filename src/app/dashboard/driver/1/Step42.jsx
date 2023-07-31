@@ -15,10 +15,11 @@ export default function Step42() {
         body: formCarga,
         mail: data?.user.email,
       });
+      toast.success("Exitos, Revisa tu Bandeja de Entrada");
     } catch (error) {
       console.log(error);
     }
-    toast.success("Exitos, Revisa tu Bandeja de Entrada");
+    
   };
   return (
     <>
