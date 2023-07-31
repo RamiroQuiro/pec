@@ -20,13 +20,16 @@ const DownloadLink = () => {
 };
   const handleGuardar = async () => {
     try {
-      /*const mandamosMail = await axios.post("/api/sendemail", {
+     const mandamosMail = await axios.post("/api/sendemail", {
         body: formCarga,
         mail: data?.user.email,
-      })*/
-      // setCurrentStep(5)
+      })
+      console.log(mandamosMail)
+ if (mandamosMail.status) {
+  toast.success('Exitos, Revisa tu Bandeja de Entrada')
+ }
       DownloadLink()
-      toast.success('Exitos, Revisa tu Bandeja de Entrada')
+      
     } catch (error) {
       console.log(error);
     }
