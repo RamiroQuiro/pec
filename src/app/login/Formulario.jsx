@@ -25,11 +25,11 @@ export default function Formulario() {
           redirect: false,
         });
       }
-      res = await signIn("credentials", {
-        email: form?.email,
-        password: form?.password,
-        redirect: false,
-      });
+      // res = await signIn("credentials", {
+      //   email: form?.email,
+      //   password: form?.password,
+      //   redirect: false,
+      // });
       if (res?.error) {
         console.log(res)
         toast.error(res?.error)
@@ -37,7 +37,7 @@ export default function Formulario() {
         return setError(res.error);
       }
       if (res?.ok) {
-        router.push("/dashboard");
+        // router.push("/dashboard");
         toast.success(
           isRegister ? "Usuario Registrado con Éxito" : "Bienvenido",
           {

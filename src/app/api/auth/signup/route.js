@@ -1,7 +1,10 @@
 import { NextResponse } from "next/server";
 import User from "@/models/user";
 import { connectDB } from "@/libs/mongoodb";
+import { v4 as uuidv4 } from 'uuid';
 import bcrypt from "bcryptjs";
+import { getToken } from "@/libs/jwt";
+import { getTemplate, sendMailer } from "@/libs/nodemailer";
 
 export async function POST(request) {
   const { fullName, email, password } = await request.json();
@@ -35,6 +38,16 @@ export async function POST(request) {
     });
 
     const savedUser = await user.save();
+
+
+
+
+    //generacion del token de confirmacion
+const code= uuidv4()
+const tokenConfirmacion=getToken({email,code})
+const template=getTemplate(fullName,tokenConfirmacion)
+
+await sendMailer(email,'mail de prueba',template)
 
     return NextResponse.json({
         email:savedUser.email,
