@@ -38,7 +38,6 @@ const select=[
         cargarForm(form)
     }, [selected]);
   
-console.log(formCarga)
   return (
     <>
       <div className=" flex flex-col items-start justify-around gap-10 h-full w-full mx-auto text-center">

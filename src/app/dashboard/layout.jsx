@@ -13,13 +13,15 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body>
+        <main className="min-h-screen relative w-screen overflow-hidden pb-10 bg-primary-500">
         <Provider>
         <NavBarDash/>
         {children}
         
         <Sidebar/>
-        <Footer/>
+       
         </Provider>
+         <Footer/></main>
         </body>
     </html>
   )

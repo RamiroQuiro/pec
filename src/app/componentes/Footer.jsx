@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="w-full z-10 absolute right-0 left-0 bg-gray-200">
+    <footer className="w-full z-10 absolute bottom-0 left-0 bg-gray-200">
         <div className="container mx-auto py-4 h-full w-10/12 px-5 flex md:flex-row flex-col items-center justify-evenly sm:flex-row">
           <p className="text-gray-500 text-sm text-center sm:text-left">
             © 2023 Kaypi Target —
