@@ -128,14 +128,16 @@ export default function Formulario() {
           {!isRegister ? "Iniciar" : "Registrarse"}
         </button>
       </form>
-      <div className="w-full flex items-center justify-between text px-2 py-5">
+      <div 
+     
+      className="w-full flex items-center justify-between text px-2 py-5">
         <p className="font-extralight animate-aparecer">
           {isRegister ? "¿Ya te has registrado?" : "¿Aún no te has registrado?"}
         </p>
         <button
-        disabled={!form.email || !form.password || form?.fullName}
+       
           onClick={() => setIsRegister(!isRegister)}
-          className="text-primary-100 hover:text-primary-200  duration-200"
+          className="text-primary-100 hover:text-primary-200  duration-200 cursor-pointer"
         >
           {isRegister ? "Iniciar Sesion" : "Registrate"}
         </button>

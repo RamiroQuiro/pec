@@ -12,8 +12,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="es">
-      <body>
-        <main className="min-h-screen relative w-screen overflow-hidden pb-10 bg-primary-500">
+      <body className="overflow-x-hidden">
+        <main className="min-h-screen relative w-screen overflow-x-hidden pb-10 bg-primary-500">
         <Provider>
         <NavBarDash/>
         {children}

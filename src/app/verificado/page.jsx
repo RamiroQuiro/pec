@@ -4,15 +4,16 @@ import React from "react";
 import SectionDash from "../dashboard/component/SectionDash";
 import { SVGCheck } from "../componentes/SVGComponent";
 
-export default function verificado() {
+export default function Verificado() {
   const router = useRouter();
 
   const redireccionando = () => {
-    setTimeout(() => {
+ setTimeout(() => {
       router.push("/login");
-    }, 2000);
+    }, 1000);
+    
   };
-
+  redireccionando()
   return (
     <SectionDash>
       <div className="rounded-xl bg-green-500/70 backdrop-blur-sm gap-5 shadow-lg flex items-center justify-between py-3 px-5 ">
