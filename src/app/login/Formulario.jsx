@@ -39,7 +39,7 @@ export default function Formulario() {
       if (res?.ok) {
         // router.push("/dashboard");
         toast.success(
-          isRegister ? "Usuario Registrado con Éxito" : "Bienvenido",
+          isRegister ? "Revisa tu bandeja de entrada" : "Bienvenido",
           {
             style: {
               backgroundColor: "#00699C",

@@ -17,6 +17,10 @@ const UserSchema=new Schema({
         type:String,
         require:[true,'El nombre completo es requerido'],
         maxLength:[25,'Maximo 25 Caracteres']
+    },
+    status:{
+        type:String,
+        default:'UNVERIFIED'
     }
 
 })
