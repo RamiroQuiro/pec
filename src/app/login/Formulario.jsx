@@ -25,11 +25,12 @@ export default function Formulario() {
           redirect: false,
         });
       }
-      // res = await signIn("credentials", {
-      //   email: form?.email,
-      //   password: form?.password,
-      //   redirect: false,
-      // });
+      if(!isRegister){ res = await signIn("credentials", {
+         email: form?.email,
+         password: form?.password,
+         redirect: false,
+       });}
+
       if (res?.error) {
         console.log(res)
         toast.error(res?.error)
@@ -37,7 +38,7 @@ export default function Formulario() {
         return setError(res.error);
       }
       if (res?.ok) {
-        // router.push("/dashboard");
+          !isRegister && router.push("/dashboard");
         toast.success(
           isRegister ? "Revisa tu bandeja de entrada" : "Bienvenido",
           {

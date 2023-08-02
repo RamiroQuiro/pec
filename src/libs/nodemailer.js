@@ -5,8 +5,8 @@ const{EMAIL,EMAIL_PASS}=process.env
 export const transporter=nodemailer.createTransport({
   service:'hotmail',
   auth:{
-    user:'ramiryexe@hotmail.com',
-    pass:'R@m121231320'
+    user:EMAIL,
+    pass:EMAIL_PASS
   }
         // host: "sandbox.smtp.mailtrap.io",
         // port: 2525,

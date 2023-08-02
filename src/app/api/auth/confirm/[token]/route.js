@@ -1,23 +1,30 @@
 import { getTokenData } from "@/libs/jwt";
+import User from "@/models/user";
 import { NextResponse } from "next/server";
 
-export async function GET(request,{params}) {
-
-    const data=await getTokenData(params.token)
-
-    console.log(data)
+export async function GET(request, { params }) {
+  try {
+    const { data } = await getTokenData(params.token);
+    const { email, code } = data;
     if (!data) {
-        return NextResponse.json({
-            status:400,
-            message:'error al obtener la data'
-        })
+      return NextResponse.json({
+        status: 400,
+        message: "error al obtener la data",
+      });
     }
 
-
-    try {
-        
-    } catch (error) {
-        
+    const userFind = await User.findOne({ email });
+    if (!userFind) {
+      return NextResponse.json({
+        sucess: false,
+        message: "no se encontro usuario",
+      });
     }
-  return NextResponse.json({message: "ramiro"});
+    userFind.status = "VERIFIED";
+    await userFind.save();
+    const verifiedUrl = new URL('/verificado', request.url);
+    return NextResponse.redirect(verifiedUrl);
+
+  } catch (error) {}
+  return NextResponse.json({ message: "ramiro" });
 }

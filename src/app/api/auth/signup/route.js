@@ -47,7 +47,7 @@ const code= uuidv4()
 const tokenConfirmacion=getToken({email,code})
 const template=getTemplate(fullName,tokenConfirmacion)
 
-await sendMailer(email,'mail de prueba',template)
+await sendMailer(email,'confirmacion de cuenta PEC',template)
 
     return NextResponse.json({
         email:savedUser.email,
