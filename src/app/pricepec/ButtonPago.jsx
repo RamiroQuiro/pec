@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation'
 import React from 'react'
 
 export default function ButtonPago({priceId}) {
-    console.log(priceId)
 const router=useRouter()
     const clickPago=async(priceId)=>{
 try{

@@ -14,7 +14,7 @@ export async function POST(request){
         ],
         mode:'payment',
         success_url:`https://localhost:3000/pagoCorrecto`,
-        cancel_url:`https://localhost:3000/pagoIncorrecto`
+        cancel_url:`https://localhost:3000/pricepec`
     },
     
     
