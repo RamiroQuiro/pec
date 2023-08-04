@@ -11,7 +11,18 @@ import Footer from "../landing/Footer";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
 
-export default function PricePEC() {
+import Stripe from "stripe"; 
+
+ async function getDataStripe(){
+  const stripe=new Stripe(process.env.STRIPE_SECRET_KEY)
+const product=await stripe.prices.list()
+
+return product.data
+ }
+
+export default async function PricePEC() {
+const prices=await getDataStripe()
+  console.log(prices)
   return (
     <main className=" w-screen min-h-screen h-full flex flex-col items-center justify-between text-primary-textGris relative">
       <nav className="w-full absolute z-40 flex items-center justify-between bg-primary-tonoBlanco h-20 px-16 top-0 left-0">
