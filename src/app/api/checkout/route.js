@@ -20,14 +20,16 @@ export async function POST(request) {
       cancel_url: `http://localhost:3000/pricepec`,
     });
 
-    const userFind = await User.findOne( email);
+    const userFind = await User.findOne({email});
     if (!userFind) {
       return NextResponse.json({
         sucess: false,
         message: "no se encontro usuario",
       });
     }
+    console.log(session.id)
     userFind.sessionPaid = session.id;
+    console.log(userFind)
     await userFind.save();
     return NextResponse.json(session);
   } catch (error) {

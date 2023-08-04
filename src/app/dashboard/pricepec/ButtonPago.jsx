@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 export default function ButtonPago({ priceId }) {
   const {data,status}=useSession()
-  console.log(data?.user?.email)
+
   const cargarComprobante=contextUser(state=>state.cargarComprobante)
   const router = useRouter();
   const clickPago = async (obj) => {
@@ -15,8 +15,6 @@ export default function ButtonPago({ priceId }) {
       const res = await axios.post("/api/checkout", obj);
       if (res.status == 200) {
         cargarComprobante(res.data.id)
-        console.log(res.data)
-        debugger
         router.push(res.data.url);
       }
     } catch (error) {

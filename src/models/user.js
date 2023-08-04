@@ -21,6 +21,9 @@ const UserSchema=new Schema({
     status:{
         type:String,
         default:'UNVERIFIED'
+    },
+    sessionPaid:{
+            type:String,
     }
 
 })
