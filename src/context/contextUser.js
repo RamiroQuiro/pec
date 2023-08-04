@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 export const contextUser = create((set, get) => ({
   formCarga: {},
-
+  comprobantePago: null,
   user: {
     driver1: {
       step1: false,
@@ -14,9 +14,14 @@ export const contextUser = create((set, get) => ({
   currentStep: 1,
   subPantallas: 0,
   flyerActivo: 0,
-  cargarForm:(obj)=>{
-    set((state)=>({...state,formCarga:obj}))
-
+  cargarComprobante: (id) => {
+    set((state) => ({
+      ...state,
+      comprobantePago: id,
+    }));
+  },
+  cargarForm: (obj) => {
+    set((state) => ({ ...state, formCarga: obj }));
   },
   activarFlyer: (id) => {
     set((state) => ({ ...state, flyerActivo: id }));

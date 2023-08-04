@@ -1,9 +1,12 @@
-import React from "react";
 import SectionDash from "./component/SectionDash";
 import ContenedorVideo from "./component/ContenedorVideo";
 import { Toaster } from "react-hot-toast";
+import ComprobarPago from "./comprobarPago";
 
 export default function page() {
+
+
+
   return (
     <SectionDash>
       <div className="bg-white md:w-[78vw] md:h-[85vh] absolute right-10 top-24 flex flex-col items-start justify-center">
