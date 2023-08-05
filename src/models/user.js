@@ -24,6 +24,7 @@ const UserSchema=new Schema({
     },
     sessionPaid:{
             type:String,
+            default:'0'
     }
 
 })

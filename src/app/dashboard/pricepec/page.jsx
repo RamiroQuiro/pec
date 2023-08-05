@@ -1,20 +1,26 @@
-import React from "react";
-import {
-  SVGCheck,
-  SVGDownload,
-  SVGGit,
-  SVGInfinity,
-  SVGPantalla,
-  SVGPremio,
-} from "../../componentes/SVGComponent";
 
+
+import Footer from "@/app/landing/Footer";
+import Image from "next/image";
+import logo from "../../../../public/logo.png";
 import CardPrice from "./CardPrice";
+import { SVGCheck } from "@/app/componentes/SVGComponent";
 
 
 export default  function PricePEC() {
 
   return (
- <>
+    <main className=" w-screen min-h-screen h-full flex flex-col items-center justify-between text-primary-textGris relative">
+      <nav className="w-full absolute z-40 flex items-center justify-between bg-primary-tonoBlanco h-20 px-16 top-0 left-0">
+        {/* logo */}
+        <div>  <Image alt="logo"
+        src={logo}
+        width={50}
+        height={50}
+        quality={50}
+        /></div>
+        <button className="text-primary-100 font-bold">cancelar</button>
+      </nav>
       <header className="w-full  h-[60vh] bg-[#000028] relative flex items-center justify-between">
         <div className="text-white w-[35%] flex flex-col items-start justify-center pt-10 ml-32 ">
           <h1 className="text-3xl font-bold tracking-wide">
@@ -56,6 +62,7 @@ export default  function PricePEC() {
           </div>
         </div>
       </section>
-    </>
+      <Footer/>
+    </main>
   );
 }

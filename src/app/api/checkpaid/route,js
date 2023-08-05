@@ -1,0 +1,36 @@
+import Stripe from "stripe";
+import { NextResponse } from "next/server";
+import User from "@/models/user";
+
+export async function POST(request) {
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+  try {
+    const { email } = await request.json();
+    const userFind = await User.findOne({ email });
+    if (!userFind) {
+      return NextResponse.json({
+        success: false,
+        message: "No se encontró usuario",
+      });
+    }
+    const sessionId = userFind.sessionPaid;
+    console.log(sessionId)
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
+    if (session.payment_status === "paid") {
+      // El pago fue exitoso
+      // Aquí puede actualizar el estado del pedido o realizar otras acciones necesarias
+      return NextResponse.json({
+        success: true,
+        message: "El pago fue exitoso",
+      });
+    } else {
+      // El pago no fue exitoso
+      return NextResponse.json({
+        success: false,
+        message: "El pago no fue exitoso",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}

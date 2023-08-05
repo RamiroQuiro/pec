@@ -7,7 +7,10 @@ if (!MONGODB_URI) {
 }
 export const connectDB =async()=>{
     try {
-        const {connection}= await mongoose.connect(MONGODB_URI)
+        const {connection}= await mongoose.connect(MONGODB_URI, {
+            bufferCommands: false,
+            maxIdleTimeMS: 30000,
+          })
         if (connection.readyState==1) {
             // console.log('base de datos conectada')
             return Promise.resolve(true)

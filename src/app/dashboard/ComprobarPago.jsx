@@ -1,40 +1,47 @@
 "use client";
-import { contextUser } from "@/context/contextUser";
-import { useEffect, useState } from "react";
+
+import { useSession } from "next-auth/react";
 import PricePEC from "./pricepec/page";
-
-async function verifyPayment(sessionId) {
-  // Recupera el objeto de sesión
-  const session = await stripe.checkout.sessions.retrieve(sessionId);
-
-  // Verifica el estado del pago
-  if (session.payment_status === "paid") {
-    // El pago fue exitoso
-    // Aquí puedes habilitar al usuario en la siguiente pantalla de tu app
-  } else {
-    // El pago no fue exitoso
-    // Aquí puedes manejar el error o pedir al usuario que intente de nuevo
-  }
-}
+import { useEffect, useState } from "react";
+import axios from "axios";
+import LoadingCss from "../componentes/LoadingCss";
 
 export default function ComprobarPago({ children }) {
-  const comprobantePago = contextUser((state) => state.comprobantePago);
-const [isPaid, setIsPaid] = useState(false)
+
+  const { data } = useSession();
+  const [comprobantePago, setComprobantePago] = useState(true);
+  const [isLoading, setIsLoading] = useState(true)
+
+
   useEffect(() => {
-    const comprobar = async () => {
-      const res = await verifyPayment(comprobantePago);
-      return res
+    console.log(isLoading)
+    const res = async () => {
+      const respuesta = await axios.post("/api/esta", {
+        email: data?.user?.email,
+      });
+      // Manejo de la respuesta de la consulta
+      if (respuesta.data.success) {
+        setComprobantePago(true);
+      } else {
+        setComprobantePago(false);
+      }
+      setIsLoading(false)
+      console.log(isLoading)
     };
-    let respuesta=comprobar()
-if(respuesta){
-setIsPaid(true)
-}
-  }, []);
+    res();
+  }, [data]);
 
+  {
+    isLoading&&
+    <LoadingCss/>
 
-  if(isPaid){
+  }
+  if (comprobantePago) {
     return <>{children}</>;
-
-  }else
-  return <PricePEC/>
+  } if (!comprobantePago) {
+   return <PricePEC />;}
+    else 
+    
+    return <LoadingCss/>
 }
+
