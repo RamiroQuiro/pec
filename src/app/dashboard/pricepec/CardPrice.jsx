@@ -30,7 +30,7 @@ const [prices, sePrices] = useState(null)
       }
     };
     res();
-  }, [prices])
+  }, [])
 
   console.log(prices)
   return (

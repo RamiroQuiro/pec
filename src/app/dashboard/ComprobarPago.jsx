@@ -25,10 +25,10 @@ export default function ComprobarPago({ children }) {
         setComprobantePago(false);
       }
       setIsLoading(false)
+      console.log(respuesta.data)
     };
     res();
   }, [data]);
-
   {
     isLoading&&
     <LoadingCss/>

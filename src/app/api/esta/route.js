@@ -40,5 +40,8 @@ export async function POST(request) {
     console.log(error);
   }
 
-  return NextResponse.json({ message: "ramiro" });
+  return NextResponse.json({
+    success: false,
+    message: "El pago no fue exitoso",
+  });
 }
