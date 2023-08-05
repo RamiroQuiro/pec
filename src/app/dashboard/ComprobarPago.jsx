@@ -14,7 +14,6 @@ export default function ComprobarPago({ children }) {
 
 
   useEffect(() => {
-    console.log(isLoading)
     const res = async () => {
       const respuesta = await axios.post("/api/esta", {
         email: data?.user?.email,
@@ -26,7 +25,6 @@ export default function ComprobarPago({ children }) {
         setComprobantePago(false);
       }
       setIsLoading(false)
-      console.log(isLoading)
     };
     res();
   }, [data]);

@@ -5,6 +5,7 @@ import Image from "next/image";
 import logo from "../../../../public/logo.png";
 import CardPrice from "./CardPrice";
 import { SVGCheck } from "@/app/componentes/SVGComponent";
+import BotonCancelar from "./BotonCancelar";
 
 
 export default  function PricePEC() {
@@ -19,7 +20,7 @@ export default  function PricePEC() {
         height={50}
         quality={50}
         /></div>
-        <button className="text-primary-100 font-bold">cancelar</button>
+       <BotonCancelar/>
       </nav>
       <header className="w-full  h-[60vh] bg-[#000028] relative flex items-center justify-between">
         <div className="text-white w-[35%] flex flex-col items-start justify-center pt-10 ml-32 ">

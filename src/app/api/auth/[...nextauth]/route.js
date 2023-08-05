@@ -25,8 +25,8 @@ const handler = NextAuth({
         if (!userFound) throw new Error("Credenciales Invalidas");
         const passwordMatch=await bcrypt.compare(credentials.password,userFound.password)
         if (!passwordMatch) throw new Error("Error contraseña");
-        const verificarStado=await userFound.status=='VERIFIED'
-        if (!verificarStado) throw new Error("Usuario no verificado")
+        // const verificarStado=await userFound.status=='VERIFIED'
+        // if (!verificarStado) throw new Error("Usuario no verificado")
             return userFound
       },
     }),
