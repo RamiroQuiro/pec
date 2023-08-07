@@ -13,57 +13,56 @@ export default function Formulario() {
   const [error, setError] = useState(null);
   const [form, setForm] = useState({});
   const registerButton = async (e) => {
-    e.preventDefault();
-    let res = "";
-    try {
-      setIsLoading(true)
-      if (isRegister) {
-        const signupResponse = await axios.post("/api/auth/signup", form);
-        res = await signIn("credentials", {
-          email: signupResponse.data.email,
-          password: form?.password,
-          redirect: false,
-        });
-      }
-      if(!isRegister){ res = await signIn("credentials", {
-         email: form?.email,
-         password: form?.password,
-         redirect: false,
-       });}
-
-      if (res?.error) {
-        console.log(res)
-        toast.error(res?.error)
-        setIsLoading(false)
-        return setError(res.error);
-      }
-      if (res?.ok) {
-          !isRegister && router.push("/dashboard");
-        toast.success(
-          isRegister ? "Revisa tu bandeja de entrada" : "Bienvenido",
-          {
-            style: {
-              backgroundColor: "#00699C",
-              color: "white",
-              fontSize: "20px",
-              padding: "8px",
-              height: "100px",
-              textAnchor: "1px",
-            },
-            duration: 3500,
-          }
-        );
-      }
-      
-    } catch (e) {
-      setIsLoading(false)
-      setError(e.response.data.message);
-      toast.error(e.response.data.message);
+  e.preventDefault();
+  let res = "";
+  try {
+    setIsLoading(true);
+    if (isRegister) {
+      const signupResponse = await axios.post("/api/auth/signup", form);
+      res = await signIn("credentials", {
+        email: signupResponse.data.email,
+        password: form?.password,
+        redirect: false,
+      });
+    } else {
+      res = await signIn("credentials", {
+        email: form?.email,
+        password: form?.password,
+        redirect: false,
+      });
     }
-    setIsLoading(false)
-  };
 
-  const loginButton = () => {};
+    if (res?.error) {
+      console.log(res);
+      toast.error(res?.error);
+      setIsLoading(false);
+      return setError(res.error);
+    }
+    if (res?.ok) {
+      !isRegister && router.push("/dashboard");
+      toast.success(
+        isRegister ? "Revisa tu bandeja de entrada" : "Bienvenido",
+        {
+          style: {
+            backgroundColor: "#00699C",
+            color: "white",
+            fontSize: "20px",
+            padding: "8px",
+            height: "100px",
+            textAnchor: "1px",
+          },
+          duration: 3500,
+        }
+      );
+    }
+  } catch (e) {
+    setIsLoading(false);
+    setError(e.response.data.message);
+    toast.error(e.response.data.message);
+  }
+  setIsLoading(false);
+};
+
 
   const handleChange = (e) => {
     setForm((form) => ({ ...form, [e.target.name]: e.target.value }));

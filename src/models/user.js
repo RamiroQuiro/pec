@@ -23,7 +23,8 @@ const UserSchema=new Schema({
         default:'UNVERIFIED'
     },
     sessionPaid:{
-            type:Number,
+            type:String,
+            default:'0'
     }
 
 })

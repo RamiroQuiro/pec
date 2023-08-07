@@ -1,7 +1,6 @@
 import SectionDash from "./component/SectionDash";
 import ContenedorVideo from "./component/ContenedorVideo";
 import { Toaster } from "react-hot-toast";
-import ComprobarPago from "./comprobarPago";
 
 export default function page() {
 
