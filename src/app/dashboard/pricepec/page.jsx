@@ -8,7 +8,7 @@ import BotonCancelar from "./BotonCancelar";
 const Items = ({ children }) => {
   return (
     <li className="flex text-xs items-center justify-start gap-2 duration-300 px-3">
-      <SVGCheck className="w-3 h-3 min-w-3 min-h-3" /> <p > {children}</p>
+      <SVGCheck className="w-3 h-3 min-w-3 min-h-3" /> <p> {children}</p>
     </li>
   );
 };
@@ -93,21 +93,26 @@ export default function PricePEC() {
         </div>
         <CardPrice />
       </header>
-      <section className="min-h-screen w-full mx-auto flex- items-center ml-32 mt-10 ">
+      <section className="min-h-screen w-full mx-auto flex flex-col items-start gap-y-5 ml-32 mt-10 ">
         <div className="border  w-[50%]  p-5 bg-white shadow-md">
           <h3 className="text-lg font-bold my-5 text-[#000028] tracking-wide">
             PEC PLAN ESTRATEGICO COMERCIAL
           </h3>
-         <div className="flex flex-row  h-full">
-         <ul className="w-1/2 flex flex-col gap-y-3">
-    {arrayItems.slice(0,6).map((item) => (
-        <Items key={item.id}>{item.children}</Items>
-    ))}</ul>
-    <ul className="w-1/2 flex flex-col gap-y-3">
-    {arrayItems.slice(6,10).map((item) => (
-        <Items key={item.id}>{item.children}</Items>
-    ))}</ul>
-  </div>
+          <div className="flex flex-row text-primary-textGris h-full">
+            <ul className="w-1/2 flex flex-col gap-y-3">
+              {arrayItems.slice(0, 6).map((item) => (
+                <Items key={item.id}>{item.children}</Items>
+              ))}
+            </ul>
+            <ul className="w-1/2 flex flex-col gap-y-3">
+              {arrayItems.slice(6, 10).map((item) => (
+                <Items key={item.id}>{item.children}</Items>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="border  w-[50%]  p-5 bg-white shadow-md text-primary-textGris pb-10">
+          <p className="p-5 pb-10">El PEC tiene como característica principal que es DINAMICO, es decir que sifrira modificaciones en el camino, pero es una Base Sólida con lineamientos y estrategias clave a seguir.</p>
         </div>
       </section>
       <Footer />

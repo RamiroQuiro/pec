@@ -1,3 +1,4 @@
+"use client"
 import Image from 'next/image'
 import logo from "../../../public/logo.png";
 import redirigiendo from "../../../public/redirigiendo.jpg";
@@ -5,13 +6,11 @@ import relojArena from "../../../public/relojArena.png";
 import BotonCancelar from '../dashboard/pricepec/BotonCancelar';
 export default function Redirigiendo() {
 
-    const redirigir = () => {
-        window.location.href = '/dashboard';
-    }
-    
     setTimeout(()=>{
-        redirigir()
+window.location.replace('/dashboard')
     },2000)
+  
+    
   return (
     <main className=" w-screen min-h-screen h-full flex flex-col items-center justify-between text-primary-textGris relative">
       <nav className="w-full absolute z-40 flex items-center justify-between bg-primary-tonoBlanco h-20 px-16 top-0 left-0">
