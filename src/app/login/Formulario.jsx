@@ -3,15 +3,17 @@ import axios from "axios";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { Toaster, toast } from "react-hot-toast";
+import { Toaster, toast, } from "react-hot-toast";
 import LoadingCss from "../componentes/LoadingCss";
 
 export default function Formulario() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false)
   const [isRegister, setIsRegister] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(null)
+  const [show, setShow] = useState(false);;
   const [form, setForm] = useState({});
+  const [restablecer, setRestablecer] = useState(false)
   const registerButton = async (e) => {
   e.preventDefault();
   let res = "";
@@ -63,16 +65,37 @@ export default function Formulario() {
   setIsLoading(false);
 };
 
-
+const notify = (e) => {
+  e.preventDefault()
+  toast.success(
+    'Correo electrónico de restablecimiento de contraseña enviado. Pronto recibirás un correo electrónico para restablecer tu contraseña. Si no lo encuentras, compruébala carpeta de correo no deseado y la papelera.',
+    {
+      style: {
+        backgroundColor: '#00699C',
+        color: 'white',
+        fontSize: '12px',
+        padding: '8px',
+        textAnchor: '1px',
+      },
+      position: 'top-center',
+      duration: 10000,
+    });
+};
   const handleChange = (e) => {
     setForm((form) => ({ ...form, [e.target.name]: e.target.value }));
   };
 
   return (
     <>
+    {show && (
+        <Toaster
+key={2}
+        >Correo electrónico de restablecimiento de contraseña enviado. Pronto recibirás un correo electrónico para restablecer tu contraseña. Si no lo encuentras, compruébala carpeta de correo no deseado y la papelera.</Toaster>
+      )}
     {isLoading&& <LoadingCss/>}
       {" "}
-      <form
+    
+        <form
         action=""
         className="flex flex-col gap-5 w-full mx-auto  items-start justify-between font-light"
       >
@@ -107,7 +130,8 @@ export default function Formulario() {
             className="w-full bg-transparent text-primary-100 placeholder:text-primary-100/80 border-b text-sm pt-3 pb-0.5 focus:outline-none"
           />
         </label>
-        <label htmlFor="password" className="w-full  leading-tight">
+     {    
+        !restablecer&& <label htmlFor="password" className="w-full  leading-tight">
           <p>Contraseña</p>
           <input
             onChange={handleChange}
@@ -119,14 +143,20 @@ export default function Formulario() {
             required
             className="w-full bg-transparent text-primary-100 placeholder:text-primary-100/80 border-b text-sm pt-3 pb-0.5 focus:outline-none"
           />
-        </label>
+        </label>}
         <button
-          onClick={registerButton}
+          onClick={restablecer?notify:registerButton}
           className="w-full py-4 bg-gradient-totr bg-primary-100 via-primary-100 to-primary-200  text-white font-thin hover:bg-primary-200 duration-300"
         >
-          {!isRegister ? "Iniciar" : "Registrarse"}
+          { restablecer? "Restablecer":!isRegister ? "Iniciar" : "Registrarse"}
         </button>
+      {!isRegister    &&<p 
+          onClick={()=>setRestablecer(!restablecer)}
+          className="mx-auto text-sm text-primary-100 font-medium cursor-pointer">
+            ○ {!restablecer?"Eh olvidado la contraseña":"Iniciar Sesión"}
+          </p>}
       </form>
+  
       <div 
      
       className="w-full flex items-center justify-between text px-2 py-5">
@@ -140,6 +170,7 @@ export default function Formulario() {
         >
           {isRegister ? "Iniciar Sesion" : "Registrate"}
         </button>
+     
         <Toaster/>
       </div>
     </>
