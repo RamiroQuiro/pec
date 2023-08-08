@@ -30,7 +30,7 @@ export default function ButtonPago({ priceId }) {
     <button
       onClick={() => clickPago({priceId,email:data?.user?.email})}
 
-      className={`${isLoading&&"bg-primary-200 animate-pulse"} bg-primary-100 hover:bg-primary-200 duration-500 text-white font-bold capitalize w-full flex items-center justify-center py-4`}
+      className={`${isLoading&&"bg-primary-200 animate-pulse duration-300"}  bg-primary-100 hover:bg-primary-200 duration-500 text-white font-bold capitalize w-full flex items-center justify-center py-4`}
     >
       {
         isLoading&&
