@@ -19,25 +19,31 @@ export default function Resetpass() {
       [target.name]: target.value,
     }));
   };
+  const [isLoading, setIsLoading] = useState(false)
   const email = path.split("/")[path.split.length];
   const [form, setForm] = useState({ email });
   const restablecer = async () => {
+    setIsLoading(true)
     try {
       const res = await axios.post("/api/auth/resetpass", form);
-console.log(res)
+      console.log(res)
       if (res.data.success) {
         toast.success(res.data.message, {
           duration: 5000,
         })
-      router.push('/login')
+        router.push('/login')
+        setIsLoading(false)
       }
       if (!res.data.success) {
         toast.error(res.data.message, {
           duration: 5000,
         });
+        setIsLoading(false)
       }
+      setIsLoading(false)
     } catch (error) {
       console.log(error);
+      setIsLoading(false)
     }
   };
   return (
@@ -92,11 +98,22 @@ console.log(res)
           </label>
         </form>
         <button
-          onClick={restablecer}
-          className="w-full py-4 bg-gradient-totr bg-primary-100 via-primary-100 to-primary-200  text-white font-thin hover:bg-primary-200 duration-300"
-        >
-          Restablecer
-        </button>
+     onClick={restablecer}
+
+      className={`${isLoading&&"bg-primary-200 animate-pulse duration-300"}  bg-primary-100 hover:bg-primary-200 duration-500 text-white font-bold capitalize w-full flex items-center justify-center py-4`}
+    >
+      {
+        isLoading&&
+        <><svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      
+      </svg></>
+      }
+
+     {isLoading? "Procesando...":"Restablecer"}
+    </button>
+    
       </div>
     </SectionDash></>
   );
