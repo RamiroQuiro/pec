@@ -11,25 +11,10 @@ import {
 import axios from "axios";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
-import ButtonPago from "./ButtonPago";
 import { useRouter } from "next/navigation";
 
 export default function CardPrice() {
-  const [prices, sePrices] = useState(null);
 const router=useRouter()
-  useEffect(() => {
-    const res = async () => {
-      const respuesta = await axios.get("/api/list");
-      // Manejo de la respuesta de la consulta
-      if (respuesta) {
-        sePrices(respuesta.data);
-      } else {
-        sePrices(respuesta.data);
-      }
-    };
-    res();
-  }, []);
-
   return (
     <div className="md:w-[400px] h-[850px] bg-white shadow-lg  absolute right-32 top-20 mt-20 border">
       <div className="flex flex-col items-start justify-center">
@@ -43,13 +28,10 @@ const router=useRouter()
             className=" mx-auto object-cover object-center"
             />
         </div>
-        {prices && (
+        
           <div className="flex flex-col items-start mt-7 justify-center px-7 gap-4 w-full">
             <p className="text-2xl font-black text-[#000028] tracking-wide uppercase mx-auto ">
-              {new Intl.NumberFormat("de-DE").format(
-                prices[0]?.unit_amount / 100
-              )}{" "}
-              {prices[0]?.currency}+IVA
+             15,000 MXN+IVA
             </p>
             <button
       onClick={() =>router.push('/pricepec/checkpaid') }
@@ -90,7 +72,7 @@ const router=useRouter()
               </ul>
             </div>
           </div>
-        )}
+        
       </div>
     </div>
   );
