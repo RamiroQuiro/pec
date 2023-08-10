@@ -65,21 +65,31 @@ export default function Formulario() {
   setIsLoading(false);
 };
 
-const notify = (e) => {
+const restablecerPass =async (e) => {
   e.preventDefault()
-  toast.success(
-    'Correo electrónico de restablecimiento de contraseña enviado. Pronto recibirás un correo electrónico para restablecer tu contraseña. Si no lo encuentras, compruébala carpeta de correo no deseado y la papelera.',
-    {
-      style: {
-        backgroundColor: '#00699C',
-        color: 'white',
-        fontSize: '12px',
-        padding: '8px',
-        textAnchor: '1px',
-      },
-      position: 'top-center',
-      duration: 10000,
-    });
+  if (form.email.length<1) {
+    return
+  }
+  try {
+    const res=await axios.post('/api/restablecerPass',{email:form?.email})
+    console.log(res)
+    toast.success(
+      'Correo electrónico de restablecimiento de contraseña enviado. Pronto recibirás un correo electrónico para restablecer tu contraseña. Si no lo encuentras, compruébala carpeta de correo no deseado y la papelera.',
+      {
+        style: {
+          backgroundColor: '#00699C',
+          color: 'white',
+          fontSize: '12px',
+          padding: '8px',
+          textAnchor: '1px',
+        },
+        position: 'top-center',
+        duration: 10000,
+      });
+  } catch (error) {
+    console.log(error)
+  }
+ 
 };
   const handleChange = (e) => {
     setForm((form) => ({ ...form, [e.target.name]: e.target.value }));
@@ -145,7 +155,7 @@ key={2}
           />
         </label>}
         <button
-          onClick={restablecer?notify:registerButton}
+          onClick={restablecer?restablecerPass:registerButton}
           className="w-full py-4 bg-gradient-totr bg-primary-100 via-primary-100 to-primary-200  text-white font-thin hover:bg-primary-200 duration-300"
         >
           { restablecer? "Restablecer":!isRegister ? "Iniciar" : "Registrarse"}

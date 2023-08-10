@@ -15,7 +15,7 @@ export async function GET(request, { params }) {
     }
     if(restablecer){
 
-      const resetpass = new URL('/resetpass', request.url);
+      const resetpass = new URL(`/resetpass/${email}`, request.url);
       return NextResponse.redirect(resetpass);  
     }
     const userFind = await User.findOne({ email });
