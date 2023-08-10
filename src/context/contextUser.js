@@ -1,6 +1,7 @@
 import { create } from "zustand";
 
 export const contextUser = create((set, get) => ({
+  userData:{},
   formCarga: {},
   comprobantePago: null,
   user: {
@@ -18,6 +19,12 @@ export const contextUser = create((set, get) => ({
     set((state) => ({
       ...state,
       comprobantePago: id,
+    }));
+  },
+  cargarUserData: (obj) => {
+    set((state) => ({
+      ...state,
+      userData: obj,
     }));
   },
   cargarForm: (obj) => {

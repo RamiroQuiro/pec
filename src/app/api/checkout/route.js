@@ -2,22 +2,26 @@ import Stripe from "stripe";
 import { NextResponse } from "next/server";
 import User from "@/models/user";
 
+
+
 export async function POST(request) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   try {
-    const { priceId, email } = await request.json();
+    const { priceIds, email,promoId } = await request.json();
+
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
-      line_items: [
-        {
-          price: priceId,
-          quantity: 1,
-        },
-      ],
+      line_items: priceIds.map((priceId) => ({
+        price: priceId,
+        quantity: 1,
+      })),
       mode: "payment",
       success_url: `http://localhost:3000/redirigiendo`,
-      cancel_url: `http://localhost:3000/pricepec`,
+      cancel_url: `http://localhost:3000/dashboard`,
     });
+    if (promoId.length>0) {
+      session.discount=[{ coupon: promoId}]
+    }
     const userFind = await User.findOne({ email });
     if (!userFind) {
       return NextResponse.json({

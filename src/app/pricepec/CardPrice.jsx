@@ -6,15 +6,17 @@ import {
   SVGInfinity,
   SVGPantalla,
   SVGPremio,
-} from "../../componentes/SVGComponent";
-import ButtonPago from "./ButtonPago";
+} from "../componentes/SVGComponent";
+
 import axios from "axios";
 import Image from "next/image";
-import logo from "../../../../public/logo.png";
+import logo from "../../../public/logo.png";
+import ButtonPago from "./ButtonPago";
+import { useRouter } from "next/navigation";
 
 export default function CardPrice() {
   const [prices, sePrices] = useState(null);
-
+const router=useRouter()
   useEffect(() => {
     const res = async () => {
       const respuesta = await axios.get("/api/list");
@@ -49,7 +51,16 @@ export default function CardPrice() {
               )}{" "}
               {prices[0]?.currency}+IVA
             </p>
-            <ButtonPago priceId={prices[0].id} />
+            <button
+      onClick={() =>router.push('/pricepec/checkpaid') }
+
+      className={`"bg-primary-200 animate-pulse duration-300"}  bg-primary-100 hover:bg-primary-200 duration-500 text-white font-bold capitalize w-full flex items-center justify-center py-4`}
+    >
+     
+     
+
+     Comprar Ahora
+    </button>
             <span className="text-xs text-center w-full">
               Garantía de reembolso de 10 dias
             </span>

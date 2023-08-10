@@ -1,8 +1,5 @@
-import Footer from "@/app/landing/Footer";
 import Image from "next/image";
-import logo from "../../../../public/logo.png";
-import CardPrice from "./CardPrice";
-import { SVGCheck } from "@/app/componentes/SVGComponent";
+import logo from "../../../public/logo.png";
 import BotonCancelar from "./BotonCancelar";
 import Pantalla1 from "./Pantalla1";
 

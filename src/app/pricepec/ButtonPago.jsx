@@ -2,16 +2,13 @@
 
 import { contextUser } from "@/context/contextUser";
 import axios from "axios";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export default function ButtonPago({ priceId }) {
-  const {data,status}=useSession()
+export default function ButtonPago({ priceId,promoId }) {
+const {email,fullName}=contextUser((state)=>state.userData)
+
   const [isLoading, setIsLoading] = useState(false)
-
-
-  
   const cargarComprobante=contextUser(state=>state.cargarComprobante)
   const router = useRouter();
   const clickPago = async (obj) => {
@@ -28,15 +25,11 @@ export default function ButtonPago({ priceId }) {
     }
     setIsLoading(false)
   };
-
-  if(!data.email){
-    router.push('/login')
-  }
   return (
     <button
-      onClick={() => clickPago({priceId,email:data?.user?.email})}
+      onClick={() => clickPago({priceIds:priceId,email,promoId})}
 
-      className={`${isLoading&&"bg-primary-200 animate-pulse duration-300"}  bg-primary-100 hover:bg-primary-200 duration-500 text-white font-bold capitalize w-full flex items-center justify-center py-4`}
+      className={`${isLoading&&"bg-primary-200 animate-pulse duration-300"}  bg-primary-100 hover:bg-primary-200 duration-500 text-white font-bold capitalize w-full flex items-center justify-center py-3`}
     >
       {
         isLoading&&
@@ -47,7 +40,7 @@ export default function ButtonPago({ priceId }) {
       </svg></>
       }
 
-     {isLoading? "Procesando...":"Comprar Ahora"}
+     {isLoading? "Procesando...":"Completar Pago"}
     </button>
   );
 }
