@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useEffect, useState, useCallback } from "react";
 import ButtonPago from "../ButtonPago";
 import { useRouter } from "next/navigation";
@@ -7,6 +7,7 @@ import axios from "axios";
 export default function CompletarPago() {
   const [form, setForm] = useState({ cuponID: "" });
   const [prices, setPrices] = useState(null);
+  const [discount, setDiscount] = useState(0)
   const [precios, setPrecios] = useState(null);
   const [error, setError] = useState(null);
   const router = useRouter();
@@ -37,6 +38,16 @@ export default function CompletarPago() {
     }));
   }, []);
 
+  const formatoNum = new Intl.NumberFormat("es-MX", {
+    style: "currency",
+    currency: "MXN",
+  });
+  const total = prices?.reduce(
+    (a, b) => a + Number(b.prices[0].unit_amount),
+    0
+  )+discount;
+  const formattedTotal = formatoNum.format(total / 100);
+console.log(prices)
   return (
     <div className="flex flex-col p-10 items-center justify-stretch bg-[#F5F5F5] w-1/2 h-full ">
       {!prices ? (
@@ -50,18 +61,19 @@ export default function CompletarPago() {
               className="w-full  flex items-center justify-between text-xs pb-1 px-2 my-2"
             >
               <p>{product.name}</p>
-              <p>
-                {"$"}
-                {new Intl.NumberFormat("de-DE").format(
-                  product.prices[0]?.unit_amount / 100
-                )}
+              <p className="uppercase">
+                {new Intl.NumberFormat("es-MX", {
+                  style: "currency",
+                  currency: "MXN",
+                }).format(product.prices[0]?.unit_amount / 100)}
+                {"  "}
                 {product.prices[0]?.currency}
               </p>
             </div>
           ))}
           <div className="w-full flex items-center justify-between text-sm pb-1 my-2 font-bold">
             <p>Total:</p>
-            <p>$15,000.00 MX + IVA</p>
+            {prices && <p> {formattedTotal } MXN + IVA</p>}
           </div>
         </div>
       )}

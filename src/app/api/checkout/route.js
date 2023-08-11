@@ -10,7 +10,6 @@ export async function POST(request) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
   try {
     const { priceIds, email,promoId } = await request.json();
-console.log("precio: ",priceIds,"email :",email,"codigo de promo :",promoId)
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: priceIds.map((priceId) => ({
@@ -22,7 +21,8 @@ console.log("precio: ",priceIds,"email :",email,"codigo de promo :",promoId)
       cancel_url: `http://localhost:3000/dashboard`,
     });
     if (promoId.length>0) {
-      session.discount=[{ coupon: promoId}]
+      console.log("precio: ",priceIds,"email :",email,"codigo de promo :",promoId)
+      session.discounts=[{ coupon: promoId}]
     }
     await connectDB()
     const userFind = await User.findOne({ email });
