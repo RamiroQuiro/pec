@@ -3,6 +3,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import ButtonPago from "../ButtonPago";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 export default function CompletarPago() {
   const [form, setForm] = useState({ cuponID: "" });
@@ -45,9 +46,19 @@ export default function CompletarPago() {
   const total = prices?.reduce(
     (a, b) => a + Number(b.prices[0].unit_amount),
     0
-  )+discount;
+  )-discount;
   const formattedTotal = formatoNum.format(total / 100);
 console.log(prices)
+
+const aplicarDescuento=()=>{
+  const codigo=form?.cuponID
+  if(codigo=='mqHuW7hj'){
+    setDiscount(250000)
+  }else{
+    toast.error('codigo incorrecto')
+  }
+
+}
   return (
     <div className="flex flex-col p-10 items-center justify-stretch bg-[#F5F5F5] w-1/2 h-full ">
       {!prices ? (
@@ -97,7 +108,7 @@ console.log(prices)
             className="w-full px-3 py-2 bg-transparent focus:outline"
             placeholder="Introducir el cupón"
           />
-          <button className="absolute top-0 right-0 bg-primary-100 text-white font-bold hover:bg-primary-200 duration-500 py-2 px-3">
+          <button onClick={aplicarDescuento}className="absolute top-0 right-0 bg-primary-100 text-white font-bold hover:bg-primary-200 duration-500 py-2 px-3">
             Aplicar
           </button>
         </div>
