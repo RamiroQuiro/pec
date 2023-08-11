@@ -1,10 +1,12 @@
 import User from "@/models/user";
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
+import { connectDB } from "@/libs/mongoodb";
 
 export async function POST(request) {
   const { email, password, passwordValidate } = await request.json();
   try {
+    await connectDB()
     const userFind = await User.findOne({ email }).select("+password");
     if (!userFind) {
       return NextResponse.json({

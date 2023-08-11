@@ -4,6 +4,7 @@ import { contextUser } from "@/context/contextUser";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 export default function ButtonPago({ priceId,promoId }) {
 const {email,fullName}=contextUser((state)=>state.userData)
@@ -12,6 +13,10 @@ const {email,fullName}=contextUser((state)=>state.userData)
   const cargarComprobante=contextUser(state=>state.cargarComprobante)
   const router = useRouter();
   const clickPago = async (obj) => {
+    if (!email) {
+      router.push('/dashboard')
+      toast.error('Ingrese su usuario')
+    }
     setIsLoading(true)
     try {
       const res = await axios.post("/api/checkout", obj);

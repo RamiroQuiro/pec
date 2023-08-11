@@ -1,3 +1,4 @@
+import { connectDB } from "@/libs/mongoodb";
 import User from "@/models/user";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
@@ -8,6 +9,7 @@ export async function POST(request) {
   const { email } = await request.json();
 
   try {
+    await connectDB()
     const userFind =await  User.findOne({ email });
     if (!userFind) {
       console.log("no se encontro usuario");
