@@ -11,10 +11,35 @@ export const contextUser = create((set, get) => ({
       step3: false,
       step4: false,
     },
+    driver2: {
+      step1: false,
+      step2: false,
+      step3: false,
+      step4: false,
+    },
+    driver3: {
+      step1: false,
+      step2: false,
+      step3: false,
+      step4: false,
+    },
+    driver4: {
+      step1: false,
+      step2: false,
+      step3: false,
+      step4: false,
+    },
   },
   currentStep: 1,
   subPantallas: 0,
   flyerActivo: 0,
+
+  // funciones para actualizar estados
+  updateState:(obj)=>{
+set((state)=>({
+...state,...obj
+}))
+  },
   cargarComprobante: (id) => {
     set((state) => ({
       ...state,

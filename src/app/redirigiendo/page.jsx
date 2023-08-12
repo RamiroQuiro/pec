@@ -3,7 +3,7 @@ import Image from 'next/image'
 import logo from "../../../public/logo.png";
 import redirigiendo from "../../../public/redirigiendo.jpg";
 import relojArena from "../../../public/relojArena.png";
-import BotonCancelar from '../dashboard/pricepec/BotonCancelar';
+import BotonCancelar from '../pricepec/BotonCancelar';
 export default function Redirigiendo() {
 
     setTimeout(()=>{

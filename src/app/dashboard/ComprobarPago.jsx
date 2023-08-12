@@ -1,7 +1,6 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import PricePEC from "./pricepec/page";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import LoadingCss from "../componentes/LoadingCss";
