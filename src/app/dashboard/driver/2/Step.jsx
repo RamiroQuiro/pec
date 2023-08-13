@@ -45,11 +45,11 @@ const step=[
     },
     {
         id:2,
-        span:"Lo que tienes que saber sobre cultura organizacional",
+        span:"Lo que tienes que saber acerca del producto o servicio",
     },
     {
         id:3,
-        span:"Arma tu propia cultura organizacional",
+        span:"Armemos tu plan de capacitacion con enfoque al producto / servicio",
     },
     {
         id:4,

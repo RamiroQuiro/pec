@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
 export const contextUser = create((set, get) => ({
-  userData:{},
+  userData: {},
   formCarga: {},
   comprobantePago: null,
   user: {
     driver1: {
-      step1: false,
-      step2: false,
+      step1: true,
+      step2: true,
       step3: false,
       step4: false,
     },
@@ -30,15 +30,22 @@ export const contextUser = create((set, get) => ({
       step4: false,
     },
   },
+  currentDriver: 1,
   currentStep: 1,
   subPantallas: 0,
   flyerActivo: 0,
 
   // funciones para actualizar estados
-  updateState:(obj)=>{
-set((state)=>({
-...state,...obj
-}))
+  updateState: (obj) => {
+    set((state) => ({
+      ...state,
+      ...obj,
+    }));
+  },
+  // Agregar esta función en tu contexto zustand
+  isDriverComplete: (driverNumber) => {
+    const driver = get().user[`driver${driverNumber}`];
+    return Object.values(driver).every((step) => step);
   },
   cargarComprobante: (id) => {
     set((state) => ({
