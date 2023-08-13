@@ -1,13 +1,12 @@
 "use client";
 import SectionDash from "@/app/dashboard/component/SectionDash";
-import BotonCancelar from "@/app/dashboard/pricepec/BotonCancelar";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import logo from "../../../../public/logo.png";
 import { useState } from "react";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
-import { getTokenData } from "@/libs/jwt";
+import BotonCancelar from "@/app/pricepec/BotonCancelar";
 
 export default function Resetpass() {
   const path = usePathname();

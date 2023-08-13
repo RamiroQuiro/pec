@@ -24,7 +24,6 @@ export default function Step42() {
         body: formCarga,
         mail: data?.user.email,
       });
-      console.log(mandamosMail);
       if (mandamosMail.status) {
         setIsLoading(false);
         toast.success("Exitos, Revisa tu Bandeja de Entrada", {

@@ -4,7 +4,7 @@ export const contextUser = create((set, get) => ({
   userData: {},
   formCarga: {},
   comprobantePago: null,
-  user: {
+  drivers: {
     driver1: {
       step1: true,
       step2: true,
@@ -44,7 +44,7 @@ export const contextUser = create((set, get) => ({
   },
   // Agregar esta función en tu contexto zustand
   isDriverComplete: (driverNumber) => {
-    const driver = get().user[`driver${driverNumber}`];
+    const driver = get().drivers[`driver${driverNumber}`];
     return Object.values(driver).every((step) => step);
   },
   cargarComprobante: (id) => {

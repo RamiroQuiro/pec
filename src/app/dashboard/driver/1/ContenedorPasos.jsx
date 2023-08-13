@@ -5,9 +5,9 @@ import RenderPantalla from "./RenderPantalla";
 import { contextUser } from "@/context/contextUser";
 import { usePathname } from "next/navigation";
 export default function ContenedorPasos() {
-const {currentStep,user}=contextUser((state)=>({
+const {currentStep,drivers}=contextUser((state)=>({
   currentStep:state.currentStep,
-  user:state.user
+  drivers:state.drivers
 }))  
 const path=usePathname()
 const numberPath=path.split("/")[3]
@@ -22,7 +22,7 @@ const setCurrentStep=contextUser((state)=>state.setCurrentStep)
   
     return (
       <div className="w-11/12 h-full flex-grow items-center justify-between py-10 flex flex-col">
-        <Stepper currentStep={currentStep}  isComplete={user[`driver${numberPath}`]} />
+        <Stepper currentStep={currentStep}  isComplete={drivers[`driver${numberPath}`]} />
         <div className="rounded-lg border-2 h-full flex-grow w-full">
           {/* Aquí puedes mostrar el contenido del paso actual */}
          <RenderPantalla currentStep={currentStep}  />
