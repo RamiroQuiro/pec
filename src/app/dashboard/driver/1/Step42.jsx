@@ -13,17 +13,20 @@ import LoadingCss from "@/app/componentes/LoadingCss";
 import { useRouter } from "next/navigation";
 export default function Step42() {
   const { data } = useSession();
-  const formCarga = contextUser((state) => state.formCarga);
+  const {formCarga,drivers} = contextUser((state) => ({ formCarga: state.formCarga,
+  drivers:state.drivers }));
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleGuardar = async () => {
     setIsLoading(true);
+
     try {
       const mandamosMail = await axios.post("/api/sendemail", {
         body: formCarga,
         mail: data?.user.email,
       });
+
       if (mandamosMail.status) {
         setIsLoading(false);
         toast.success("Exitos, Revisa tu Bandeja de Entrada", {
@@ -38,6 +41,15 @@ export default function Step42() {
           duration: 3500,
         });
         router.push("/dashboard");
+      }
+      try {
+        const res = await axios.post("/api/guardarDatos", {
+          drivers,
+          email: data.user?.email,
+        });
+        console.log(res.data);
+      } catch (error) {
+        console.log(error);
       }
     } catch (error) {
       setIsLoading(false);

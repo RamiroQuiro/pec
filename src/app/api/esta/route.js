@@ -26,6 +26,7 @@ export async function POST(request) {
       // El pago fue exitoso
       // Aquí puede actualizar el estado del pedido o realizar otras acciones necesarias
       return NextResponse.json({
+        drivers:userFind.drivers,
         success: true,
         message: "El pago fue exitoso",
       });

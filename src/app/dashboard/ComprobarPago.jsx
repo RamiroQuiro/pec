@@ -26,6 +26,7 @@ const cargarUserData=contextUser((state)=>state.cargarUserData)
       });
       // Manejo de la respuesta de la consulta
       if (respuesta.data.success) {
+        console.log(respuesta.data)
         setComprobantePago(true);
       } else {
         setComprobantePago(false);

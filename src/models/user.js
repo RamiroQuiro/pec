@@ -24,30 +24,78 @@ const UserSchema = new Schema({
     type: String,
     default: "0",
   },
-  drivers:{
+  drivers: {
     driver1: {
-      step1: Boolean,
-      step2: Boolean,
-      step3: Boolean,
-      step4: Boolean,
+      step1: {
+        type: Boolean,
+        default: false,
+      },
+      step2: {
+        type: Boolean,
+        default: false,
+      },
+      step3: {
+        type: Boolean,
+        default: false,
+      },
+      step4: {
+        type: Boolean,
+        default: false,
+      },
     },
     driver2: {
-      step1: Boolean,
-      step2: Boolean,
-      step3: Boolean,
-      step4: Boolean,
+      step1: {
+        type: Boolean,
+        default: false,
+      },
+      step2: {
+        type: Boolean,
+        default: false,
+      },
+      step3: {
+        type: Boolean,
+        default: false,
+      },
+      step4: {
+        type: Boolean,
+        default: false,
+      },
     },
     driver3: {
-      step1: Boolean,
-      step2: Boolean,
-      step3: Boolean,
-      step4: Boolean,
+      step1: {
+        type: Boolean,
+        default: false,
+      },
+      step2: {
+        type: Boolean,
+        default: false,
+      },
+      step3: {
+        type: Boolean,
+        default: false,
+      },
+      step4: {
+        type: Boolean,
+        default: false,
+      },
     },
     driver4: {
-      step1: Boolean,
-      step2: Boolean,
-      step3: Boolean,
-      step4: Boolean,
+      step1: {
+        type: Boolean,
+        default: false,
+      },
+      step2: {
+        type: Boolean,
+        default: false,
+      },
+      step3: {
+        type: Boolean,
+        default: false,
+      },
+      step4: {
+        type: Boolean,
+        default: false,
+      },
     },
   },
 });

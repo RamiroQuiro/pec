@@ -7,7 +7,7 @@ export const contextUser = create((set, get) => ({
   drivers: {
     driver1: {
       step1: true,
-      step2: true,
+      step2: false,
       step3: false,
       step4: false,
     },
@@ -76,7 +76,7 @@ export const contextUser = create((set, get) => ({
     let values = Object.values(obj);
     set((state) => ({
       ...state,
-      user: { ...state.user, [name]: { ...values[0] } },
+      drivers: { ...state.drivers, [name]: { ...values[0] } },
     }));
   },
 }));
