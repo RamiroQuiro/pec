@@ -1,3 +1,5 @@
+import axios from "axios";
+import { ErrorIcon } from "react-hot-toast";
 import { create } from "zustand";
 
 export const contextUser = create((set, get) => ({
@@ -71,12 +73,23 @@ export const contextUser = create((set, get) => ({
   setCurrentStep: (number) => {
     set((state) => ({ ...state, currentStep: number }));
   },
-  activeStep: (obj) => {
-    let name = Object.keys(obj);
-    let values = Object.values(obj);
-    set((state) => ({
-      ...state,
-      drivers: { ...state.drivers, [name]: { ...values[0] } },
-    }));
+  activeStep: async (obj) => {
+    try {
+      let name = Object.keys(obj);
+      let values = Object.values(obj);
+      set((state) => ({
+        ...state,
+        drivers: { ...state.drivers, [name]: { ...values[0] } },
+      }));
+      const { userData, drivers } = get();
+console.log(drivers)
+      const res = await axios.post("/api/guardarDatos", {
+        email: userData?.email,
+        drivers,
+      });
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   },
 }));

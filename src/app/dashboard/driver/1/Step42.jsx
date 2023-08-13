@@ -11,16 +11,25 @@ import PDFEntregable from "./PDFEntregable";
 import { useState } from "react";
 import LoadingCss from "@/app/componentes/LoadingCss";
 import { useRouter } from "next/navigation";
+import { shallow } from "zustand/shallow";
 export default function Step42() {
   const { data } = useSession();
-  const {formCarga,drivers} = contextUser((state) => ({ formCarga: state.formCarga,
-  drivers:state.drivers }));
+  const { formCarga, drivers, activeStep } = contextUser(
+    (state) => ({
+      formCarga: state.formCarga,
+      drivers: state.drivers,
+      activeStep: state.activeStep,
+    }),
+    shallow
+  );
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   const handleGuardar = async () => {
     setIsLoading(true);
-
+    activeStep({
+      driver1: { step1: true, step2: true, step3: true, step4: true },
+    });
     try {
       const mandamosMail = await axios.post("/api/sendemail", {
         body: formCarga,
@@ -42,15 +51,9 @@ export default function Step42() {
         });
         router.push("/dashboard");
       }
-      try {
-        const res = await axios.post("/api/guardarDatos", {
-          drivers,
-          email: data.user?.email,
-        });
-        console.log(res.data);
-      } catch (error) {
-        console.log(error);
-      }
+
+  
+      console.log(res.data);
     } catch (error) {
       setIsLoading(false);
       console.log(error);

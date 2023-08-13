@@ -29,7 +29,7 @@ export default function ComponentePDFRenderSelecciones({ title, array }) {
           "flex flex-col items-start gap-2 justify-center flex-grow w-11/12 mx-auto rounded-lg "
         )}
       >
-        {array.map((label, i) => (
+        {array?.map((label, i) => (
           <Text key={i} style={tw("font-bold text-left text-[#323639] ")}>
             {label.label}
           </Text>

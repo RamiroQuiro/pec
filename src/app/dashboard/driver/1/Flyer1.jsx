@@ -1,14 +1,24 @@
 import { SVGDiskette, SvgNextVideo } from "@/app/componentes/SVGComponent";
 import { contextUser } from "@/context/contextUser";
 import RenderFlyer from "./RenderFlyer";
+import { shallow } from "zustand/shallow";
 
 export default function Flyer1() {
-  const flyerActivo = contextUser((state) => state.flyerActivo);
-  const activarFlyer = contextUser((state) => state.activarFlyer);
-  const activeStep = contextUser((state) => state.activeStep);
-  const cargarSubPantallas = contextUser((state) => state.cargarSubPantallas);
-
-  const setCurrentStep = contextUser((state) => state.setCurrentStep);
+  const {
+    setCurrentStep,
+    activarFlyer,
+    activeStep,
+    cargarSubPantallas,
+    flyerActivo,
+    drivers
+  } = contextUser((state) => ({
+    drivers:state.drivers,
+    setCurrentStep: state.setCurrentStep,
+    flyerActivo: state.flyerActivo,
+    activarFlyer: state.activarFlyer,
+    activeStep: state.activeStep,
+    cargarSubPantallas: state.cargarSubPantallas,
+  }),shallow);
 
   const handleNextFlyer = () => {
     if (flyerActivo == 19) {
@@ -16,14 +26,12 @@ export default function Flyer1() {
       setCurrentStep(3);
       cargarSubPantallas(2);
       activeStep({ driver1: { step1: true, step2: true } });
-    }else
-    if (flyerActivo==24) {
+    } else if (flyerActivo == 24) {
       activarFlyer(0);
       setCurrentStep(4);
       cargarSubPantallas(42);
-      activeStep({ driver1: { step1: true, step2: true ,step3: true} });
-    } 
-    else {
+      activeStep({ driver1: { step1: true, step2: true, step3: true } });
+    } else {
       activarFlyer(flyerActivo + 1);
     }
   };
@@ -43,7 +51,8 @@ export default function Flyer1() {
       activarFlyer(flyerActivo - 1);
     }
   };
-  const handleNextStep = () => {
+  const handleNextStep = async () => {
+
     activarFlyer(0);
     if (flyerActivo == 2) {
       setCurrentStep(2);
@@ -52,11 +61,13 @@ export default function Flyer1() {
     if (flyerActivo == 15) {
       setCurrentStep(3);
       activeStep({ driver1: { step1: true, step2: true } });
-    }if (flyerActivo == 21) {
+    }
+    if (flyerActivo == 21) {
       setCurrentStep(4);
       cargarSubPantallas(41);
-      activeStep({ driver1: { step1: true, step2: true ,step3: true} });
+      activeStep({ driver1: { step1: true, step2: true, step3: true } });
     }
+  
   };
   return (
     <div className="w-full h-full flex relative">
