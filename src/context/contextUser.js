@@ -9,9 +9,9 @@ export const contextUser = create((set, get) => ({
   drivers: {
     driver1: {
       step1: true,
-      step2: false,
-      step3: false,
-      step4: false,
+      step2: true,
+      step3: true,
+      step4: true,
     },
     driver2: {
       step1: false,
@@ -82,12 +82,10 @@ export const contextUser = create((set, get) => ({
         drivers: { ...state.drivers, [name]: { ...values[0] } },
       }));
       const { userData, drivers } = get();
-console.log(drivers)
       const res = await axios.post("/api/guardarDatos", {
         email: userData?.email,
         drivers,
       });
-      console.log(res);
     } catch (error) {
       console.log(error);
     }

@@ -19,7 +19,6 @@ const setCurrentStep=contextUser((state)=>state.setCurrentStep)
     const handleBack = () => {
       setCurrentStep((step) => step - 1);
     };
-  
     return (
       <div className="w-11/12 h-full flex-grow items-center justify-between py-10 flex flex-col">
         <Stepper currentStep={currentStep}  isComplete={drivers[`driver${numberPath}`]} />

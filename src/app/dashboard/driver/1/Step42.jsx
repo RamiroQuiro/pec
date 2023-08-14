@@ -14,11 +14,11 @@ import { useRouter } from "next/navigation";
 import { shallow } from "zustand/shallow";
 export default function Step42() {
   const { data } = useSession();
-  const { formCarga, drivers, activeStep } = contextUser(
+  const { formCarga, updateState, activeStep } = contextUser(
     (state) => ({
       formCarga: state.formCarga,
-      drivers: state.drivers,
       activeStep: state.activeStep,
+      updateState:state.updateState
     }),
     shallow
   );
@@ -51,9 +51,8 @@ export default function Step42() {
         });
         router.push("/dashboard");
       }
-
+      updateState({currentStep:1})
   
-      console.log(res.data);
     } catch (error) {
       setIsLoading(false);
       console.log(error);
