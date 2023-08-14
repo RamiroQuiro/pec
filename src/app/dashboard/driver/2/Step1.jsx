@@ -6,22 +6,12 @@ export default function Step1() {
   return (
     <div className="flex items-center justify-between p-6  relative w-full  h-full">
       <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-8/12">
-        <h2 className="uppercase text-primary-200 text-xl">Empatía con el Producto</h2>
-        <p className="text-primary-textGris text-sm tracking-wide leading-relaxed">
-          En este Driver estableceremos la relación e importancia que existe con
-          entre la{" "}
-          <span className="text-primary-100 font-medium">
-            {" "}
-            Cultura Organizacional
-          </span>{" "}
-          en la empresa y el{" "}
-          <span className="text-primary-100 font-medium">Área Comercial.</span>
-          Tradicionalmente los libros, los estudiosos del tema, tratan de dar su
-          propia personalidad a éste tema, sin embargo existen comunes
-          denominadores en los que coinciden todos, mismos que mencionaremos,
-          pero lo mas importante y que poco valor se les, es como esta
-          cultura...afecta o beneficia directamente al área comercial, de ahí su
-          importancia...
+        <h2 className="uppercase text-primary-200 text-xl">Objetivo</h2>
+        <p className="text-primary-200  text-xl tracking-wide leading-relaxed">
+          Comencemos a explorar tu segundo Driver, ahora haremos énfasis en la Empatía con el Producto.
+        </p>
+        <p className="text-primary-200 mb-10 font-bold text-xl tracking-wide leading-relaxed">
+          Estas listo?, <span className="text-primary-100">Vamos!!!</span>
         </p>
         <ButtonLeerMas stepN={1}>leer mas...</ButtonLeerMas>
       </div>
