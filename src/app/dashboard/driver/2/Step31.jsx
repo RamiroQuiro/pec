@@ -11,7 +11,6 @@ export default function Step31() {
     formCarga: state.formCarga,
     cargarForm: state.cargarForm,
   }));
-  const cargarSubPantallas = contextUser((state) => state.cargarSubPantallas);
   const [form, setForm] = useState(formCarga);
   const [isNext, setIsNext] = useState(true);
   const handleChango = (e) => {
@@ -24,7 +23,9 @@ export default function Step31() {
     } else {
       updateState({
         formCarga: {
-          driver2: form,
+          driver2:{
+            fomulario1:form
+          },
         },
       });
       setIsNext(!isNext);
@@ -40,8 +41,8 @@ export default function Step31() {
         <p className="text-primary-100 mb-5 font-semibold text-xl tracking-wide leading-relaxed">
           Describe las características de cada producto/servicio
         </p>
-        <div className="flex items-center justify-between gap-2 w-11/12 mx-auto  ">
-          <div className="w-full flex items-center justify-between gap-5">
+        <div className="flex items-center justify-between gap-2 w-full mx-auto  ">
+         
             <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
               <label htmlFor="producto1" className="text-primary-100">
                 Producto/Servicio 1:
@@ -68,12 +69,12 @@ export default function Step31() {
                 className="border-2 rounded-lg w-full bg-transparent focus:outline-none p-4 text-sm"
               />
             </div>
-          </div>
+        
         </div>
         <div className="flex items-center justify-between gap-5 w-full">
           <div className="space-x-4">
             <ButtonLeerMas stepN={14}>Anterior</ButtonLeerMas>
-            <ButtonLeerMas disable={isNext} label={"changeSubPantalla"} stepN={2}>
+            <ButtonLeerMas disable={isNext} label={"changeSubPantalla"} stepN={3}>
               Siguiente
             </ButtonLeerMas>
           </div>

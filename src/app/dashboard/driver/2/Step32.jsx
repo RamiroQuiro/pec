@@ -1,30 +1,48 @@
 "use client";
-import React, { useState } from "react";
+
+import React, { useEffect, useState } from "react";
 import ButtonLeerMas from "./ButtonLeerMas";
-import Image from "next/image";
-import step3 from "../../../../../public/step3.png";
 import { contextUser } from "@/context/contextUser";
-export default function Step32() {
-  const formCarga = contextUser((state) => state.formCarga);
-  const cargarForm = contextUser((state) => state.cargarForm);
-  const cargarSubPantallas = contextUser((state) => state.cargarSubPantallas);
-  const [textArea, setTextArea] = useState(formCarga);
-  const handleText = (e) => {
-    setTextArea((state) => ({ ...state, driver1:{...state.driver1,[e.target.name]: e.target.value }}));
+import { toast } from "react-hot-toast";
+
+export default function Step31() {
+  const { updateState, formCarga, cargarForm } = contextUser((state) => ({
+    updateState: state.updateState,
+    formCarga: state.formCarga,
+    cargarForm: state.cargarForm,
+  }));
+  const [form, setForm] = useState(formCarga);
+  const [isNext, setIsNext] = useState(true);
+  const handleChango = (e) => {
+    const { name, value } = e.target;
+    setForm((form) => ({ ...form, [name]: value }));
   };
-  
   const clickCargaFormulario = () => {
-    cargarForm(textArea);
-    cargarSubPantallas(4);
+    if (!form.producto1 && !form.producto2) {
+      toast.error("Complete los campos");
+    } else {
+      updateState({
+        formCarga: {
+          driver2:{
+            fomulario2:form
+          },
+        },
+      });
+      setIsNext(!isNext);
+      toast.success("Datos Guardados");
+    }
   };
   return (
     <>
-      <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-full mx-auto text-center">
+      <div className=" flex flex-col items-baseline justify-between gap-1 h-full w-full mx-auto text-center">
         <h2 className="uppercase text-primary-200 text-xl">
-          ARMEMOS TU PROPIA CULTURA ORGANIZACIONAL
+          DEFINE TU OFERTA COMERCIAL
         </h2>
-        <div className="flex items-center justify-between gap-2 w-11/12 mx-auto  ">
-          <div className="w-full flex items-center justify-between gap-5">
+        <p className="text-primary-100 mb-5 text-left font-semibold text-xl ">
+       Describe el contratipo de la competencia haciendo ver las diferencias entre ambos y los argumnetos que justifican el precio de tu oferta comercial
+        </p>
+        <div className="flex items-center justify-between gap-2 w-full mx-auto flex-grow ">
+        
             <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
               <label htmlFor="producto1" className="text-primary-100">
                 Producto/Servicio 1:
@@ -40,7 +58,7 @@ export default function Step32() {
             </div>
             <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
               <label htmlFor="producto2" className="text-primary-100">
-                Producto/Servicio 1:
+                Competencia:
               </label>
               <textarea
                 onChange={handleChango}
@@ -51,12 +69,12 @@ export default function Step32() {
                 className="border-2 rounded-lg w-full bg-transparent focus:outline-none p-4 text-sm"
               />
             </div>
-          </div>
+        
         </div>
         <div className="flex items-center justify-between gap-5 w-full">
           <div className="space-x-4">
-            <ButtonLeerMas stepN={14}>Anterior</ButtonLeerMas>
-            <ButtonLeerMas disable={isNext} stepN={16}>
+            <ButtonLeerMas label={"changeSubPantalla"} stepN={2}>Anterior</ButtonLeerMas>
+            <ButtonLeerMas disable={isNext} label={"changeSubPantalla"} stepN={4}>
               Siguiente
             </ButtonLeerMas>
           </div>
