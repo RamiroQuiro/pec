@@ -6,27 +6,17 @@ export default function Step2() {
     <div className="flex items-center justify-between p-6  relative w-full  h-full">
       <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-8/12">
         <h2 className="uppercase text-primary-200 text-xl">
-          LO QUE TIENES QUE SABER SOBRE CULTURA ORGANIZACIONAL
+          LO QUE TIENES QUE SABER ACERCA DEL PRODUCTO O SERVICIO
         </h2>
-        <p className="text-primary-textGris text-sm tracking-wide leading-relaxed">
-          <span className="text-primary-100 font-bold">
-            a) ¿Que es la Cultura Organizacional de una Empresa?:{" "}
-          </span>
-          <br />
-          Es el el estilo de vida de la organización, en la cual, a través de
-          creencias, costumbres y normas, un grupo de colaboradores actual y se
-          rigen por las mismas. <br />
-          <span className="text-primary-100 font-bold">
-            {" "}
-            b) ¿Que incluye la Cultura Organizacional de una Empresa?:
-          </span>
-          <br />
-          La Misión, Vision, Valores y Código de Ética entre otras
-          complementarias.
+        <p className="text-primary-200  text-xl tracking-wide leading-relaxed">
+      Excelente vamos por buen camino, ahora haremos énfasis en lo que debes saber acerca del Producto o servicio
+        </p>
+        <p className="text-primary-200 mb-10 font-bold text-xl tracking-wide leading-relaxed">
+          Estas listo?, <span className="text-primary-100">Vamos!!!</span>
         </p>
         <div className="flex items-center justify-normal gap-5">
 
-        <ButtonLeerMas label={"changeStep"} stepN={1}>Anterior</ButtonLeerMas>
+      
         <ButtonLeerMas stepN={3}>Leer mas...</ButtonLeerMas>
         </div>
       </div>

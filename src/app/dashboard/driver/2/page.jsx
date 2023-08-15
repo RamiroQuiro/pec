@@ -24,18 +24,18 @@ export default function Driver2() {
   } else
     return (
       <SectionDash>
-        <div className="bg-white md:w-[78vw] md:min-h-[85vh] absolute right-10 top-24  flex flex-col items-center justify-center border shadow-md">
-      
-          {
-              flyerActivo>0 ?
-              <Flyer1/>
-              :
-              <>
-            <h2 className='text-2xl text-neutral-800 mt-8 font-medium'>Empatía con el Producto</h2>
-            
-            <ContenedorPasos/>
+        <div className="bg-white md:w-[78vw] md:min-h-[85vh] md:h-full absolute right-10 top-24  flex flex-col items-center justify-center border shadow-md">
+          {flyerActivo > 0 ? (
+            <Flyer1 />
+          ) : (
+            <>
+              <h2 className="text-2xl text-neutral-800 mt-8 font-medium">
+                Empatía con el Producto
+              </h2>
+
+              <ContenedorPasos />
             </>
-            }
+          )}
         </div>
       </SectionDash>
     );

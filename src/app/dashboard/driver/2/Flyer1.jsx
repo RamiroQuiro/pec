@@ -21,16 +21,16 @@ export default function Flyer1() {
   }),shallow);
 
   const handleNextFlyer = () => {
-    if (flyerActivo == 19) {
+    if (flyerActivo == 14) {
       activarFlyer(0);
       setCurrentStep(3);
       cargarSubPantallas(2);
-      activeStep({ driver1: { step1: true, step2: true } });
+      activeStep({ driver2: { step1: true, step2: true } });
     } else if (flyerActivo == 24) {
       activarFlyer(0);
       setCurrentStep(4);
       cargarSubPantallas(42);
-      activeStep({ driver1: { step1: true, step2: true, step3: true } });
+      activeStep({ driver2: { step1: true, step2: true, step3: true } });
     } else {
       activarFlyer(flyerActivo + 1);
     }
@@ -56,16 +56,16 @@ export default function Flyer1() {
     activarFlyer(0);
     if (flyerActivo == 2) {
       setCurrentStep(2);
-      activeStep({ driver1: { step1: true } });
+      activeStep({ driver2: { step1: true } });
     }
-    if (flyerActivo == 15) {
+    if (flyerActivo == 10) {
       setCurrentStep(3);
-      activeStep({ driver1: { step1: true, step2: true } });
+      activeStep({ driver2: { step1: true, step2: true } });
     }
     if (flyerActivo == 21) {
       setCurrentStep(4);
       cargarSubPantallas(41);
-      activeStep({ driver1: { step1: true, step2: true, step3: true } });
+      activeStep({ driver2: { step1: true, step2: true, step3: true } });
     }
   
   };
@@ -78,7 +78,7 @@ export default function Flyer1() {
           onClick={handlePreviusFlyer}
           className="w-14 h-14 fill-primary-tonoBlanco rotate-180 cursor-pointer  "
         />
-        {flyerActivo == 2 || flyerActivo == 15 || flyerActivo == 21 ? (
+        {flyerActivo == 2 || flyerActivo == 10 || flyerActivo == 19 ? (
           <SVGDiskette
             onClick={handleNextStep}
             className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "

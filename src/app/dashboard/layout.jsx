@@ -13,7 +13,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body className="overflow-x-hidden">
-        <main className="min-h-screen relative w-screen overflow-x-hidden pb-10 bg-primary-500">
+        <main className="min-h-screen h-full flex flex-col items-center justify-between w-screen overflow-x-hidden bg-primary-500">
+        <div className="flex-grow  mb-20">
           <Provider>
             <ComprobarPago>
               <NavBarDash />
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
               <Sidebar />
             </ComprobarPago>
           </Provider>
+          </div>
           <Footer />
         </main>
       </body>

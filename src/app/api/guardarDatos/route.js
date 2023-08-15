@@ -17,7 +17,6 @@ if (!userFind) {
 }
 
 userFind.drivers=drivers
-console.log(userFind)
 await userFind.save()
 return NextResponse.json({
     status:true,

@@ -43,6 +43,8 @@ export const contextUser = create((set, get) => ({
       ...state,
       ...obj,
     }));
+    const state=get()
+    console.log(state)
   },
   // Agregar esta función en tu contexto zustand
   isDriverComplete: (driverNumber) => {
