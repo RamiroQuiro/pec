@@ -6,8 +6,9 @@ import { contextUser } from "@/context/contextUser";
 import { toast } from "react-hot-toast";
 
 export default function Step31() {
-  const { updateFormCarga, formCarga, cargarForm } = contextUser((state) => ({
-    updateFormCarga: state.updateFormCarga,
+  const { updateState, formCarga, updateDataDriver } = contextUser((state) => ({
+    updateDataDriver: state.updateDataDriver,
+    updateState: state.updateState,
     formCarga: state.formCarga,
     cargarForm: state.cargarForm,
   }));
@@ -21,7 +22,8 @@ export default function Step31() {
     if (!form.producto1 && !form.producto2) {
       toast.error("Complete los campos");
     } else {
-      updateFormCarga("driver2","formulario2",form);
+      updateDataDriver("driver2","formulario2",form);
+      
       setIsNext(!isNext);
       toast.success("Datos Guardados");
     }

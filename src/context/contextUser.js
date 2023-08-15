@@ -46,10 +46,12 @@ export const contextUser = create((set, get) => ({
     const state=get()
     console.log(state)
   },
-  updateFormCarga: (driver,name,obj) => {
+  updateDataDriver: (driver,name,obj) => {
     set((state) => ({
+      ...state,
       formCarga:{
         [driver]:{
+          ...state.formCarga[driver],
           [name]:obj
         }}
     }));
@@ -75,6 +77,8 @@ export const contextUser = create((set, get) => ({
   },
   cargarForm: (obj) => {
     set((state) => ({ ...state, formCarga: obj }));
+    const state=get()
+    console.log(state)
   },
   activarFlyer: (id) => {
     set((state) => ({ ...state, flyerActivo: id }));
