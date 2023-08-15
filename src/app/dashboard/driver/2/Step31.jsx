@@ -21,7 +21,7 @@ export default function Step31() {
     if (!form.producto1 && !form.producto2) {
       toast.error("Complete los campos");
     } else {
-      updateFormCarga("driver2","formulario1",form);
+ console.log(form)
       setIsNext(!isNext);
       toast.success("Datos Guardados");
     }
