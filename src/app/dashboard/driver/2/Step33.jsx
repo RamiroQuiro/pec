@@ -21,7 +21,7 @@ export default function Step31() {
     if (!form.producto1 && !form.producto2) {
       toast.error("Complete los campos");
     } else {
-      updateFormCarga("driver2","formulario3",form);
+      updateFormCarga("driver2", "formulario3", form);
       setIsNext(!isNext);
       toast.success("Datos Guardados");
     }
@@ -33,42 +33,44 @@ export default function Step31() {
           DEFINE TU OFERTA COMERCIAL
         </h2>
         <p className="text-primary-100 mb-5 text-left font-semibold text-xl ">
-       Describe el contratipo de la competencia haciendo ver las diferencias entre ambos y los argumnetos que justifican el precio de tu oferta comercial
+          Describe el contratipo de la competencia haciendo ver las diferencias
+          entre ambos y los argumnetos que justifican el precio de tu oferta
+          comercial
         </p>
         <div className="flex items-center justify-between gap-2 w-full mx-auto flex-grow ">
-        
-            <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
-              <label htmlFor="producto1" className="text-primary-100">
-                Producto/Servicio 2:
-              </label>
-              <textarea
-                onChange={handleChango}
-                name="producto1"
-                id="producto"
-                cols="20"
-                rows="5"
-                className="border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm"
-              />
-            </div>
-            <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
-              <label htmlFor="producto2" className="text-primary-100">
-                Competencia:
-              </label>
-              <textarea
-                onChange={handleChango}
-                name="producto2"
-                id="producto"
-                cols="20"
-                rows="5"
-                className="border-2 rounded-lg w-full bg-transparent focus:outline-none p-4 text-sm"
-              />
-            </div>
-        
+          <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
+            <label htmlFor="producto1" className="text-primary-100">
+              Producto/Servicio 2:
+            </label>
+            <textarea
+              onChange={handleChango}
+              name="producto1"
+              id="producto"
+              cols="20"
+              rows="5"
+              className="border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm"
+            />
+          </div>
+          <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
+            <label htmlFor="producto2" className="text-primary-100">
+              Competencia:
+            </label>
+            <textarea
+              onChange={handleChango}
+              name="producto2"
+              id="producto"
+              cols="20"
+              rows="5"
+              className="border-2 rounded-lg w-full bg-transparent focus:outline-none p-4 text-sm"
+            />
+          </div>
         </div>
         <div className="flex items-center justify-between gap-5 w-full">
           <div className="space-x-4">
-            <ButtonLeerMas label={"changeSubPantalla"} stepN={3} >Anterior</ButtonLeerMas>
-            <ButtonLeerMas disable={isNext}  stepN={16}>
+            <ButtonLeerMas label={"changeSubPantalla"} stepN={3}>
+              Anterior
+            </ButtonLeerMas>
+            <ButtonLeerMas disable={isNext} stepN={16}>
               Siguiente
             </ButtonLeerMas>
           </div>

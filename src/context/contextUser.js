@@ -48,8 +48,8 @@ export const contextUser = create((set, get) => ({
   },
   updateFormCarga: (driver,name,obj) => {
     set((state) => ({
-      ...state,
       formCarga:{
+        ...state.formCarga,
         [driver]:{
           [name]:obj
         }}
