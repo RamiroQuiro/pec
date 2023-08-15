@@ -1,5 +1,5 @@
 import Image from "next/image";
-import step2 from "../../../../../public/confundido.png";
+import step2 from "../../../../../public/step1.png";
 import ButtonLeerMas from "./ButtonLeerMas";
 export default function Step2() {
   return (

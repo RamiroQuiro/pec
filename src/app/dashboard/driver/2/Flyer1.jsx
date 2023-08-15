@@ -21,7 +21,7 @@ export default function Flyer1() {
   }),shallow);
 
   const handleNextFlyer = () => {
-    if (flyerActivo == 14) {
+    if (flyerActivo == 13) {
       activarFlyer(0);
       setCurrentStep(3);
       cargarSubPantallas(2);
