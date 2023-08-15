@@ -6,8 +6,8 @@ import { contextUser } from "@/context/contextUser";
 import { toast } from "react-hot-toast";
 
 export default function Step31() {
-  const { updateState, formCarga, cargarForm } = contextUser((state) => ({
-    updateState: state.updateState,
+  const { updateFormCarga, formCarga, cargarForm } = contextUser((state) => ({
+    updateFormCarga: state.updateFormCarga,
     formCarga: state.formCarga,
     cargarForm: state.cargarForm,
   }));
@@ -21,13 +21,7 @@ export default function Step31() {
     if (!form.producto1 && !form.producto2) {
       toast.error("Complete los campos");
     } else {
-      updateState({
-        formCarga: {
-          driver2:{
-            fomulario1:form
-          },
-        },
-      });
+      updateFormCarga("driver2","formulario1",form);
       setIsNext(!isNext);
       toast.success("Datos Guardados");
     }
@@ -42,39 +36,43 @@ export default function Step31() {
           Describe las características de cada producto/servicio
         </p>
         <div className="flex items-center justify-between gap-2 w-full mx-auto  ">
-         
-            <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
-              <label htmlFor="producto1" className="text-primary-100">
-                Producto/Servicio 1:
-              </label>
-              <textarea
-                onChange={handleChango}
-                name="producto1"
-                id="producto"
-                cols="20"
-                rows="5"
-                className="border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm"
-              />
-            </div>
-            <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
-              <label htmlFor="producto2" className="text-primary-100">
-                Producto/Servicio 1:
-              </label>
-              <textarea
-                onChange={handleChango}
-                name="producto2"
-                id="producto"
-                cols="20"
-                rows="5"
-                className="border-2 rounded-lg w-full bg-transparent focus:outline-none p-4 text-sm"
-              />
-            </div>
-        
+          <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
+            <label htmlFor="producto1" className="text-primary-100">
+              Producto/Servicio 1:
+            </label>
+            <textarea
+              onChange={handleChango}
+              value={formCarga?.driver2?.producto1}
+              name="producto1"
+              id="producto"
+              cols="20"
+              rows="5"
+              className="border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm"
+            />
+          </div>
+          <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
+            <label htmlFor="producto2" className="text-primary-100">
+              Producto/Servicio 1:
+            </label>
+            <textarea
+              onChange={handleChango}
+              value={formCarga?.driver2?.producto2}
+              name="producto2"
+              id="producto"
+              cols="20"
+              rows="5"
+              className="border-2 rounded-lg w-full bg-transparent focus:outline-none p-4 text-sm"
+            />
+          </div>
         </div>
         <div className="flex items-center justify-between gap-5 w-full">
           <div className="space-x-4">
             <ButtonLeerMas stepN={14}>Anterior</ButtonLeerMas>
-            <ButtonLeerMas disable={isNext} label={"changeSubPantalla"} stepN={3}>
+            <ButtonLeerMas
+              disable={isNext}
+              label={"changeSubPantalla"}
+              stepN={3}
+            >
               Siguiente
             </ButtonLeerMas>
           </div>

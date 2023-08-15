@@ -46,6 +46,17 @@ export const contextUser = create((set, get) => ({
     const state=get()
     console.log(state)
   },
+  updateFormCarga: (driver,name,obj) => {
+    set((state) => ({
+      ...state,
+      formCarga:{
+        [driver]:{
+          [name]:obj
+        }}
+    }));
+    const state=get()
+    console.log(state)
+  },
   // Agregar esta función en tu contexto zustand
   isDriverComplete: (driverNumber) => {
     const driver = get().drivers[`driver${driverNumber}`];

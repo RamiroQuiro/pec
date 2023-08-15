@@ -6,8 +6,8 @@ import { contextUser } from "@/context/contextUser";
 import { toast } from "react-hot-toast";
 
 export default function Step31() {
-  const { updateState, formCarga, cargarForm } = contextUser((state) => ({
-    updateState: state.updateState,
+  const { updateFormCarga, formCarga, cargarForm } = contextUser((state) => ({
+    updateFormCarga: state.updateFormCarga,
     formCarga: state.formCarga,
     cargarForm: state.cargarForm,
   }));
@@ -21,13 +21,7 @@ export default function Step31() {
     if (!form.producto1 && !form.producto2) {
       toast.error("Complete los campos");
     } else {
-      updateState({
-        formCarga: {
-          driver2:{
-            fomulario2:form
-          },
-        },
-      });
+      updateFormCarga("driver2","formulario2",form);
       setIsNext(!isNext);
       toast.success("Datos Guardados");
     }
@@ -57,12 +51,12 @@ export default function Step31() {
               />
             </div>
             <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
-              <label htmlFor="producto2" className="text-primary-100">
+              <label htmlFor="competencia" className="text-primary-100">
                 Competencia:
               </label>
               <textarea
                 onChange={handleChango}
-                name="producto2"
+                name="competencia"
                 id="producto"
                 cols="20"
                 rows="5"
