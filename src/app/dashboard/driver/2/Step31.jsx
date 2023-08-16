@@ -13,20 +13,34 @@ export default function Step31() {
     cargarForm: state.cargarForm,
   }));
   const [form, setForm] = useState(formCarga);
-  const [isNext, setIsNext] = useState(true);
+  const [isEdit, setIsEdit] = useState(
+    formCarga?.driver2?.formulario1.length >= 1 ? true : false
+  );
+
   const handleChango = (e) => {
     const { name, value } = e.target;
     setForm((form) => ({ ...form, [name]: value }));
   };
+
   const clickCargaFormulario = () => {
-    if (!form.producto1 && !form.producto2) {
-      toast.error("Complete los campos");
+    if (!isEdit) {
+      setIsEdit(true);
+      toast.success("puedes editar");
     } else {
-      updateDataDriver("driver2","formulario1",form);
-      setIsNext(!isNext);
-      toast.success("Datos Guardados");
+      if (!form.producto1 && !form.producto2) {
+        toast.error("Complete los campos");
+      } else {
+        updateState({
+          formCarga: {
+            driver2: { formulario1: form },
+          },
+        });
+        setIsEdit(false);
+        toast.success("Datos Guardados");
+      }
     }
   };
+  console.log(formCarga);
   return (
     <>
       <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-full mx-auto text-center">
@@ -43,34 +57,50 @@ export default function Step31() {
             </label>
             <textarea
               onChange={handleChango}
-              value={formCarga?.driver2?.producto1}
+              value={
+                !isEdit
+                  ? formCarga?.driver2?.formulario1.producto1
+                  : form?.producto1
+              }
               name="producto1"
               id="producto"
               cols="20"
               rows="5"
-              className="border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm"
+              className={`${
+                !isEdit
+                  ? "bg-gray-400/50 duration-300"
+                  : "bg-transparent duration-300"
+              } border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm `}
             />
           </div>
           <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
             <label htmlFor="producto2" className="text-primary-100">
-              Producto/Servicio 1:
+              Producto/Servicio 2:
             </label>
             <textarea
               onChange={handleChango}
-              value={formCarga?.driver2?.producto2}
+              value={
+                !isEdit
+                  ? formCarga?.driver2?.formulario1.producto2
+                  : form?.producto2
+              }
               name="producto2"
               id="producto"
               cols="20"
               rows="5"
-              className="border-2 rounded-lg w-full bg-transparent focus:outline-none p-4 text-sm"
+              className={`${
+                !isEdit
+                  ? "bg-gray-400/50 duration-300"
+                  : "bg-transparent duration-300"
+              } border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm `}
             />
           </div>
         </div>
         <div className="flex items-center justify-between gap-5 w-full">
           <div className="space-x-4">
-            <ButtonLeerMas stepN={14}>Anterior</ButtonLeerMas>
+            <ButtonLeerMas stepN={13}>Anterior</ButtonLeerMas>
             <ButtonLeerMas
-              disable={isNext}
+              disable={isEdit}
               label={"changeSubPantalla"}
               stepN={3}
             >
@@ -81,7 +111,7 @@ export default function Step31() {
             onClick={clickCargaFormulario}
             className="bg-primary-600 text-white rounded font-medium text-xs px-4 py-2"
           >
-            Guardar
+            {isEdit ? "Guardar" : "Editar"}
           </button>
         </div>
       </div>

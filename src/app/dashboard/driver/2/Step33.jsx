@@ -5,29 +5,39 @@ import ButtonLeerMas from "./ButtonLeerMas";
 import { contextUser } from "@/context/contextUser";
 import { toast } from "react-hot-toast";
 
-export default function Step31() {
-  const { updateState, formCarga, cargarForm } = contextUser((state) => ({
+export default function Step33() {
+  const { updateState, formCarga,  } = contextUser((state) => ({
+ 
     updateState: state.updateState,
     formCarga: state.formCarga,
     cargarForm: state.cargarForm,
   }));
-  const [form, setForm] = useState(formCarga);
-  const [isNext, setIsNext] = useState(true);
+  const [form, setForm] = useState({});
+  const [isEdit, setIsEdit] = useState(
+    formCarga?.driver2?.formulario3.length >= 1 ? true : false
+  );
   const handleChango = (e) => {
     const { name, value } = e.target;
     setForm((form) => ({ ...form, [name]: value }));
   };
   const clickCargaFormulario = () => {
-    if (!form.producto1 && !form.producto2) {
-      toast.error("Complete los campos");
+    if (!isEdit) {
+      setIsEdit(true);
+      toast.success("puedes editar");
     } else {
+      if (!form.producto2 && !form.competencia) {
+        toast.error("Complete los campos");
+      } else {
       updateState({
-        formCarga: {
-          ...formCarga,driver2: {...formCarga.driver2,formulario3:form},
-        },
+        formCarga:{
+        driver2:{
+          ...formCarga.driver2,
+          formulario3:form
+        }}
       });
-      setIsNext(!isNext);
-      toast.success("Datos Guardados");
+      setIsEdit(false);
+        toast.success("Datos Guardados");
+      }
     }
   };
   return (
@@ -43,16 +53,25 @@ export default function Step31() {
         </p>
         <div className="flex items-center justify-between gap-2 w-full mx-auto flex-grow ">
           <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
-            <label htmlFor="producto1" className="text-primary-100">
+            <label htmlFor="producto2" className="text-primary-100">
               Producto/Servicio 2:
             </label>
             <textarea
               onChange={handleChango}
-              name="producto1"
-              id="producto"
+              name="producto2"
+              id="producto2"
               cols="20"
               rows="5"
-              className="border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm"
+              value={
+                !isEdit
+                  ? formCarga?.driver2?.formulario3.producto2
+                  : form?.competencia
+              }
+              className={`${
+                !isEdit
+                  ? "bg-gray-400/50 duration-300"
+                  : "bg-transparent duration-300"
+              } border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm `}
             />
           </div>
           <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
@@ -61,11 +80,20 @@ export default function Step31() {
             </label>
             <textarea
               onChange={handleChango}
-              name="producto2"
-              id="producto"
+              name="competencia"
+              id="competencia"
               cols="20"
               rows="5"
-              className="border-2 rounded-lg w-full bg-transparent focus:outline-none p-4 text-sm"
+              value={
+                !isEdit
+                  ? formCarga?.driver2?.formulario3.competencia
+                  : form?.competencia
+              }
+              className={`${
+                !isEdit
+                  ? "bg-gray-400/50 duration-300"
+                  : "bg-transparent duration-300"
+              } border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm `}
             />
           </div>
         </div>
@@ -74,7 +102,7 @@ export default function Step31() {
             <ButtonLeerMas label={"changeSubPantalla"} stepN={3}>
               Anterior
             </ButtonLeerMas>
-            <ButtonLeerMas disable={isNext} stepN={16}>
+            <ButtonLeerMas disable={isEdit} stepN={16}>
               Siguiente
             </ButtonLeerMas>
           </div>
@@ -82,7 +110,7 @@ export default function Step31() {
             onClick={clickCargaFormulario}
             className="bg-primary-600 text-white rounded font-medium text-xs px-4 py-2"
           >
-            Guardar
+            {isEdit ? "Guardar" : "Editar"}
           </button>
         </div>
       </div>

@@ -5,27 +5,39 @@ import ButtonLeerMas from "./ButtonLeerMas";
 import { contextUser } from "@/context/contextUser";
 import { toast } from "react-hot-toast";
 
-export default function Step31() {
-  const { updateState, formCarga, updateDataDriver } = contextUser((state) => ({
-    updateDataDriver: state.updateDataDriver,
+export default function Step32() {
+  const { updateState, formCarga,  } = contextUser((state) => ({
+ 
     updateState: state.updateState,
     formCarga: state.formCarga,
     cargarForm: state.cargarForm,
   }));
-  const [form, setForm] = useState(formCarga);
-  const [isNext, setIsNext] = useState(true);
+  const [form, setForm] = useState({});
+  const [isEdit, setIsEdit] = useState(
+    formCarga?.driver2?.formulario1.length >= 1 ? true : false
+  );
   const handleChango = (e) => {
     const { name, value } = e.target;
     setForm((form) => ({ ...form, [name]: value }));
   };
   const clickCargaFormulario = () => {
-    if (!form.producto1 && !form.producto2) {
-      toast.error("Complete los campos");
+    if (!isEdit) {
+      setIsEdit(true);
+      toast.success("puedes editar");
     } else {
-      updateDataDriver("driver2","formulario2",form);
-      
-      setIsNext(!isNext);
-      toast.success("Datos Guardados");
+      if (!form.producto1 && !form.producto2) {
+        toast.error("Complete los campos");
+      } else {
+      updateState({
+        formCarga:{
+        driver2:{
+          ...formCarga.driver2,
+          formulario2:form
+        }}
+      });
+      setIsEdit(false);
+        toast.success("Datos Guardados");
+      }
     }
   };
   return (
@@ -44,12 +56,21 @@ export default function Step31() {
                 Producto/Servicio 1:
               </label>
               <textarea
+                 value={
+                  !isEdit
+                    ? formCarga?.driver2?.formulario2.producto1
+                    : form?.producto1
+                }
                 onChange={handleChango}
                 name="producto1"
                 id="producto"
                 cols="20"
                 rows="5"
-                className="border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm"
+                className={`${
+                  !isEdit
+                    ? "bg-gray-400/50 duration-300"
+                    : "bg-transparent duration-300"
+                } border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm `}
               />
             </div>
             <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
@@ -57,12 +78,22 @@ export default function Step31() {
                 Competencia:
               </label>
               <textarea
+                
                 onChange={handleChango}
                 name="competencia"
                 id="producto"
                 cols="20"
                 rows="5"
-                className="border-2 rounded-lg w-full bg-transparent focus:outline-none p-4 text-sm"
+                value={
+                  !isEdit
+                    ? formCarga?.driver2?.formulario2.competencia
+                    : form?.competencia
+                }
+                className={`${
+                  !isEdit
+                    ? "bg-gray-400/50 duration-300"
+                    : "bg-transparent duration-300"
+                } border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm `}
               />
             </div>
         
@@ -70,15 +101,14 @@ export default function Step31() {
         <div className="flex items-center justify-between gap-5 w-full">
           <div className="space-x-4">
             <ButtonLeerMas label={"changeSubPantalla"} stepN={2}>Anterior</ButtonLeerMas>
-            <ButtonLeerMas disable={isNext} label={"changeSubPantalla"} stepN={4}>
+            <ButtonLeerMas disable={isEdit} label={"changeSubPantalla"} stepN={4}>
               Siguiente
             </ButtonLeerMas>
           </div>
           <button
             onClick={clickCargaFormulario}
             className="bg-primary-600 text-white rounded font-medium text-xs px-4 py-2"
-          >
-            Guardar
+          >     {isEdit ? "Guardar" : "Editar"}
           </button>
         </div>
       </div>
