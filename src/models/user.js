@@ -97,7 +97,147 @@ const UserSchema = new Schema({
         default: false,
       },
     },
+    driver5: {
+      step1: {
+        type: Boolean,
+        default: false,
+      },
+      step2: {
+        type: Boolean,
+        default: false,
+      },
+      step3: {
+        type: Boolean,
+        default: false,
+      },
+      step4: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    driver6: {
+      step1: {
+        type: Boolean,
+        default: false,
+      },
+      step2: {
+        type: Boolean,
+        default: false,
+      },
+      step3: {
+        type: Boolean,
+        default: false,
+      },
+      step4: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    driver7: {
+      step1: {
+        type: Boolean,
+        default: false,
+      },
+      step2: {
+        type: Boolean,
+        default: false,
+      },
+      step3: {
+        type: Boolean,
+        default: false,
+      },
+      step4: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    driver8: {
+      step1: {
+        type: Boolean,
+        default: false,
+      },
+      step2: {
+        type: Boolean,
+        default: false,
+      },
+      step3: {
+        type: Boolean,
+        default: false,
+      },
+      step4: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    driver9: {
+      step1: {
+        type: Boolean,
+        default: false,
+      },
+      step2: {
+        type: Boolean,
+        default: false,
+      },
+      step3: {
+        type: Boolean,
+        default: false,
+      },
+      step4: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    driver10: {
+      step1: {
+        type: Boolean,
+        default: false,
+      },
+      step2: {
+        type: Boolean,
+        default: false,
+      },
+      step3: {
+        type: Boolean,
+        default: false,
+      },
+      step4: {
+        type: Boolean,
+        default: false,
+      },
+    },
   },
+  formCarga:{
+    driver1:{
+      type:Object,
+    },
+    driver2:{
+      type:Object,
+    },
+    driver3:{
+      type:Object,
+    },
+    driver4:{
+      type:Object,
+    },
+    driver5:{
+      type:Object,
+    },
+    driver6:{
+      type:Object,
+    },
+    driver7:{
+      type:Object,
+    },
+    driver8:{
+      type:Object,
+    },
+    driver9:{
+      type:Object,
+    },
+    driver10:{
+      type:Object,
+    },
+  }
 });
 
 const User = models.User || model("User", UserSchema);

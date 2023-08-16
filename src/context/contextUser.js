@@ -4,7 +4,18 @@ import { create } from "zustand";
 
 export const contextUser = create((set, get) => ({
   userData: {},
-  formCarga: {},
+  formCarga: {
+    driver1:{},
+    driver2:{},
+    driver3:{},
+    driver4:{},
+    driver5:{},
+    driver6:{},
+    driver7:{},
+    driver8:{},
+    driver9:{},
+    driver10:{},
+  },
   comprobantePago: null,
   drivers: {
     driver1: {
@@ -26,6 +37,42 @@ export const contextUser = create((set, get) => ({
       step4: false,
     },
     driver4: {
+      step1: false,
+      step2: false,
+      step3: false,
+      step4: false,
+    },
+    driver5: {
+      step1: false,
+      step2: false,
+      step3: false,
+      step4: false,
+    },
+    driver6: {
+      step1: false,
+      step2: false,
+      step3: false,
+      step4: false,
+    },
+    driver7: {
+      step1: false,
+      step2: false,
+      step3: false,
+      step4: false,
+    },
+    driver8: {
+      step1: false,
+      step2: false,
+      step3: false,
+      step4: false,
+    },
+    driver9: {
+      step1: false,
+      step2: false,
+      step3: false,
+      step4: false,
+    },
+    driver10: {
       step1: false,
       step2: false,
       step3: false,
@@ -97,10 +144,11 @@ export const contextUser = create((set, get) => ({
         ...state,
         drivers: { ...state.drivers, [name]: { ...values[0] } },
       }));
-      const { userData, drivers } = get();
+      const {formCarga, userData, drivers } = get();
       const res = await axios.post("/api/guardarDatos", {
         email: userData?.email,
         drivers,
+        formCarga
       });
     } catch (error) {
       console.log(error);

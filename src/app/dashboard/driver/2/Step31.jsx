@@ -6,25 +6,24 @@ import { contextUser } from "@/context/contextUser";
 import { toast } from "react-hot-toast";
 
 export default function Step31() {
-  const { updateState, formCarga, updateDataDriver } = contextUser((state) => ({
-    updateDataDriver: state.updateDataDriver,
+  const { updateState, formCarga,  } = contextUser((state) => ({
     updateState: state.updateState,
     formCarga: state.formCarga,
     cargarForm: state.cargarForm,
   }));
   const [form, setForm] = useState({});
   const [isEdit, setIsEdit] = useState(
-    formCarga?.driver2?.formulario1.length >= 1 ? false : true
+    !formCarga?.driver2?.formulario1  ? true : false
   );
 
   const handleChango = (e) => {
     const { name, value } = e.target;
-    setForm((form) => ({ ...form, [name]: value }));
+    setForm((form) => (formCarga?.driver2?.formulario1  ?{ ...formCarga?.driver2?.formulario1, [name]: value }:{...form,[name]:value}));
   };
 
   const clickCargaFormulario = () => {
-    if (isEdit) {
-      setIsEdit(false);
+    if (!isEdit) {
+      setIsEdit(true);
       toast.success("puedes editar");
     } else {
       if (!form.producto1 && !form.producto2) {
@@ -32,15 +31,15 @@ export default function Step31() {
       } else {
         updateState({
           formCarga: {
+            ...formCarga,
             driver2: { formulario1: form },
           },
         });
-        setIsEdit(true);
+        setIsEdit(false);
         toast.success("Datos Guardados");
       }
     }
   };
-  console.log(formCarga);
   return (
     <>
       <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-full mx-auto text-center">
@@ -58,7 +57,7 @@ export default function Step31() {
             <textarea
               onChange={handleChango}
               value={
-                isEdit
+                !isEdit
                   ? formCarga?.driver2?.formulario1?.producto1
                   : form?.producto1
               }
@@ -67,8 +66,8 @@ export default function Step31() {
               cols="20"
               rows="5"
               className={`${
-                isEdit
-                  ? "bg-gray-400/50 duration-300"
+               ! isEdit
+                  ? "bg-gray-400/30 duration-300"
                   : "bg-transparent duration-300"
               } border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm `}
             />
@@ -80,8 +79,8 @@ export default function Step31() {
             <textarea
               onChange={handleChango}
               value={
-                isEdit
-                  ? formCarga?.driver2?.formulario1.producto2
+                !isEdit
+                  ? formCarga?.driver2?.formulario1?.producto2
                   : form?.producto2
               }
               name="producto2"
@@ -89,8 +88,8 @@ export default function Step31() {
               cols="20"
               rows="5"
               className={`${
-                isEdit
-                  ? "bg-gray-400/50 duration-300"
+                !isEdit
+                  ? "bg-gray-400/30 duration-300"
                   : "bg-transparent duration-300"
               } border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm `}
             />
@@ -100,7 +99,7 @@ export default function Step31() {
           <div className="space-x-4">
             <ButtonLeerMas stepN={13}>Anterior</ButtonLeerMas>
             <ButtonLeerMas
-              disable={!isEdit}
+              disable={isEdit}
               label={"changeSubPantalla"}
               stepN={3}
             >
@@ -111,7 +110,7 @@ export default function Step31() {
             onClick={clickCargaFormulario}
             className="bg-primary-600 text-white rounded font-medium text-xs px-4 py-2"
           >
-            {!isEdit ? "Guardar" : "Editar"}
+            {isEdit ? "Guardar" : "Editar"}
           </button>
         </div>
       </div>

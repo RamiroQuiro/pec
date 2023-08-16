@@ -7,19 +7,19 @@ import { toast } from "react-hot-toast";
 
 export default function Step32() {
   const { updateState, formCarga,  } = contextUser((state) => ({
- 
     updateState: state.updateState,
     formCarga: state.formCarga,
     cargarForm: state.cargarForm,
   }));
   const [form, setForm] = useState({});
   const [isEdit, setIsEdit] = useState(
-    formCarga?.driver2?.formulario2?.length >= 1 ? true : false
+    !formCarga?.driver2?.formulario1  ? true : false
   );
   const handleChango = (e) => {
     const { name, value } = e.target;
-    setForm((form) => ({ ...form, [name]: value }));
+    setForm((form) => (formCarga?.driver2?.formulario1  ?{ ...formCarga?.driver2?.formulario1, [name]: value }:{...form,[name]:value}));
   };
+
   const clickCargaFormulario = () => {
     if (!isEdit) {
       setIsEdit(true);
@@ -30,6 +30,7 @@ export default function Step32() {
       } else {
       updateState({
         formCarga:{
+          ...formCarga,
         driver2:{
           ...formCarga.driver2,
           formulario2:form
@@ -63,14 +64,14 @@ export default function Step32() {
                 }
                 onChange={handleChango}
                 name="producto1"
-                id="producto"
+                id="producto1"
                 cols="20"
                 rows="5"
                 className={`${
-                  !isEdit
-                    ? "bg-gray-400/50 duration-300"
-                    : "bg-transparent duration-300"
-                } border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm `}
+                  ! isEdit
+                  ? "bg-gray-400/30 duration-300"
+                  : "bg-transparent duration-300"
+              } border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm `}
               />
             </div>
             <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
@@ -81,7 +82,7 @@ export default function Step32() {
                 
                 onChange={handleChango}
                 name="competencia"
-                id="producto"
+                id="competencia"
                 cols="20"
                 rows="5"
                 value={
@@ -90,10 +91,10 @@ export default function Step32() {
                     : form?.competencia
                 }
                 className={`${
-                  !isEdit
-                    ? "bg-gray-400/50 duration-300"
-                    : "bg-transparent duration-300"
-                } border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm `}
+                  ! isEdit
+                  ? "bg-gray-400/30 duration-300"
+                  : "bg-transparent duration-300"
+              } border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm `}
               />
             </div>
         

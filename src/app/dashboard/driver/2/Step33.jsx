@@ -14,28 +14,29 @@ export default function Step33() {
   }));
   const [form, setForm] = useState({});
   const [isEdit, setIsEdit] = useState(
-    formCarga?.driver2?.formulario3?.length >= 1 ? false : true
+    !formCarga?.driver2?.formulario1  ? true : false
   );
   const handleChango = (e) => {
     const { name, value } = e.target;
-    setForm((form) => ({ ...form, [name]: value }));
+    setForm((form) => (formCarga?.driver2?.formulario1  ?{ ...formCarga?.driver2?.formulario1, [name]: value }:{...form,[name]:value}));
   };
   const clickCargaFormulario = () => {
-    if (isEdit) {
-      setIsEdit(false);
+    if (!isEdit) {
+      setIsEdit(true);
       toast.success("puedes editar");
     } else {
-      if (!form.producto2 && !form.competencia) {
+      if (!form.producto1 && !form.producto2) {
         toast.error("Complete los campos");
       } else {
       updateState({
         formCarga:{
+          ...formCarga,
         driver2:{
           ...formCarga.driver2,
           formulario3:form
         }}
       });
-      setIsEdit(true);
+      setIsEdit(false);
         toast.success("Datos Guardados");
       }
     }
@@ -63,13 +64,13 @@ export default function Step33() {
               cols="20"
               rows="5"
               value={
-                isEdit
+                !isEdit
                   ? formCarga?.driver2?.formulario3?.producto2
                   : form?.competencia
               }
               className={`${
-                isEdit
-                  ? "bg-gray-400/50 duration-300"
+               ! isEdit
+                  ? "bg-gray-400/30 duration-300"
                   : "bg-transparent duration-300"
               } border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm `}
             />
@@ -85,13 +86,13 @@ export default function Step33() {
               cols="20"
               rows="5"
               value={
-                isEdit
+                !isEdit
                   ? formCarga?.driver2?.formulario3?.competencia
                   : form?.competencia
               }
               className={`${
-                isEdit
-                  ? "bg-gray-400/50 duration-300"
+                !isEdit
+                  ? "bg-gray-400/30 duration-300"
                   : "bg-transparent duration-300"
               } border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm `}
             />
@@ -102,7 +103,7 @@ export default function Step33() {
             <ButtonLeerMas label={"changeSubPantalla"} stepN={3}>
               Anterior
             </ButtonLeerMas>
-            <ButtonLeerMas disable={!isEdit} stepN={16}>
+            <ButtonLeerMas disable={isEdit} stepN={16}>
               Siguiente
             </ButtonLeerMas>
           </div>
@@ -110,7 +111,7 @@ export default function Step33() {
             onClick={clickCargaFormulario}
             className="bg-primary-600 text-white rounded font-medium text-xs px-4 py-2"
           >
-            {!isEdit ? "Guardar" : "Editar"}
+            {isEdit ? "Guardar" : "Editar"}
           </button>
         </div>
       </div>
