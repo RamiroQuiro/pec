@@ -14,8 +14,9 @@ import { useRouter } from "next/navigation";
 import { shallow } from "zustand/shallow";
 export default function Step42() {
   const { data } = useSession();
-  const { formCarga, updateState, activeStep } = contextUser(
+  const { formCarga, updateState, activeStep ,drivers} = contextUser(
     (state) => ({
+      drivers:state.drivers,
       formCarga: state.formCarga,
       activeStep: state.activeStep,
       updateState:state.updateState
@@ -27,9 +28,7 @@ export default function Step42() {
 
   const handleGuardar = async () => {
     setIsLoading(true);
-    activeStep({
-      driver1: { step1: true, step2: true, step3: true, step4: true },
-    });
+    updateState({drivers:{...drivers, driver1: { step1: true, step2: true,step3: true,step4: true } }});
     try {
       const mandamosMail = await axios.post("/api/sendemail", {
         body: formCarga,

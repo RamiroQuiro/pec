@@ -10,27 +10,37 @@ export default function Flyer1() {
     activeStep,
     cargarSubPantallas,
     flyerActivo,
-    drivers
-  } = contextUser((state) => ({
-    drivers:state.drivers,
-    setCurrentStep: state.setCurrentStep,
-    flyerActivo: state.flyerActivo,
-    activarFlyer: state.activarFlyer,
-    activeStep: state.activeStep,
-    cargarSubPantallas: state.cargarSubPantallas,
-  }),shallow);
+    drivers,
+    updateState,
+  } = contextUser(
+    (state) => ({
+      updateState: state.updateState,
+      drivers: state.drivers,
+      setCurrentStep: state.setCurrentStep,
+      flyerActivo: state.flyerActivo,
+      activarFlyer: state.activarFlyer,
+      activeStep: state.activeStep,
+      cargarSubPantallas: state.cargarSubPantallas,
+    }),
+    shallow
+  );
 
   const handleNextFlyer = () => {
     if (flyerActivo == 19) {
       activarFlyer(0);
       setCurrentStep(3);
       cargarSubPantallas(2);
-      activeStep({ driver1: { step1: true, step2: true } });
+      updateState({ drivers:
+        
+        {...drivers, driver1: { step1: true, step2: true } } 
+        });
     } else if (flyerActivo == 24) {
       activarFlyer(0);
       setCurrentStep(4);
       cargarSubPantallas(42);
-      activeStep({ driver1: { step1: true, step2: true, step3: true } });
+      updateState({
+        drivers: {...drivers, driver1: { step1: true, step2: true, step3: true } },
+      });
     } else {
       activarFlyer(flyerActivo + 1);
     }
@@ -52,22 +62,22 @@ export default function Flyer1() {
     }
   };
   const handleNextStep = async () => {
-
     activarFlyer(0);
     if (flyerActivo == 2) {
       setCurrentStep(2);
-      activeStep({ driver1: { step1: true } });
+      updateState({ drivers: { ...drivers,driver1: { step1: true } } });
     }
     if (flyerActivo == 15) {
       setCurrentStep(3);
-      activeStep({ driver1: { step1: true, step2: true } });
+      updateState({ drivers: {...drivers, driver1: { step1: true, step2: true } } });
     }
     if (flyerActivo == 21) {
       setCurrentStep(4);
       cargarSubPantallas(41);
-      activeStep({ driver1: { step1: true, step2: true, step3: true } });
+      updateState({
+        drivers: {...drivers, driver1: { step1: true, step2: true, step3: true } },
+      });
     }
-  
   };
   return (
     <div className="w-full h-full flex relative">
