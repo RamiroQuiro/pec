@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 export async function POST(request) {
 const {formCarga,drivers,email}=await request.json()
 
-console.log("formulario de datos:",formCarga)
 
 try {
     await connectDB()
@@ -18,7 +17,6 @@ if (!userFind) {
 }
 userFind.formCarga=formCarga
 userFind.drivers=drivers
-console.log("usuario entcntrado:",userFind)
 await userFind.save()
 return NextResponse.json({
     status:true,

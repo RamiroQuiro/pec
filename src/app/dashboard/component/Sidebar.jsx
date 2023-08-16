@@ -18,10 +18,10 @@ export default function Sidebar() {
           <div className="w-10 h-10">
             <SVGLogin />
           </div>
-          <UserNameSidebar/>
+          <UserNameSidebar />
         </div>
         <SidebarMenu />
-        <ButtonSignOut/>        
+        <ButtonSignOut />
       </div>
     </aside>
   );

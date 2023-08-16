@@ -13,7 +13,7 @@ const router=useRouter()
   const [comprobantePago, setComprobantePago] = useState(true);
   const [isLoading, setIsLoading] = useState(true)
 
-const cargarUserData=contextUser((state)=>state.cargarUserData)
+const {cargarUserData,updateState}=contextUser((state)=>({cargarUserData:state.cargarUserData,updateState:state.updateState}))
 
   useEffect(() => {
     if(!data)return
@@ -24,9 +24,15 @@ const cargarUserData=contextUser((state)=>state.cargarUserData)
       const respuesta = await axios.post("/api/esta", {
         email: data?.user?.email,
       });
+
       // Manejo de la respuesta de la consulta
       if (respuesta.data.success) {
         console.log(respuesta.data)
+        const formCarga=respuesta.data.formCarga
+        const drivers=respuesta.data.drivers
+        updateState({
+          formCarga,drivers
+        })
         setComprobantePago(true);
       } else {
         setComprobantePago(false);
