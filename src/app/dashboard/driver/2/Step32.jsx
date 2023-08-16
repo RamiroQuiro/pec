@@ -14,7 +14,7 @@ export default function Step32() {
   }));
   const [form, setForm] = useState({});
   const [isEdit, setIsEdit] = useState(
-    formCarga?.driver2?.formulario1.length >= 1 ? true : false
+    formCarga?.driver2?.formulario2?.length >= 1 ? true : false
   );
   const handleChango = (e) => {
     const { name, value } = e.target;
@@ -58,7 +58,7 @@ export default function Step32() {
               <textarea
                  value={
                   !isEdit
-                    ? formCarga?.driver2?.formulario2.producto1
+                    ? formCarga?.driver2?.formulario2?.producto1
                     : form?.producto1
                 }
                 onChange={handleChango}
@@ -86,7 +86,7 @@ export default function Step32() {
                 rows="5"
                 value={
                   !isEdit
-                    ? formCarga?.driver2?.formulario2.competencia
+                    ? formCarga?.driver2?.formulario2?.competencia
                     : form?.competencia
                 }
                 className={`${

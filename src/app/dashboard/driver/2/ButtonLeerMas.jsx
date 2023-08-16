@@ -19,7 +19,7 @@ export default function ButtonLeerMas({stepN,children,label,disable}) {
     <button
     disabled={disable}
     onClick={handleSiguiente}
-    className="bg-primary-800 text-white rounded font-medium text-xs px-4 py-2 disabled:bg-primary-800/50">
+    className="bg-primary-800 text-white rounded font-medium text-xs px-6 py-2 disabled:bg-primary-800/50">
   {children}
     </button>
   )

@@ -12,9 +12,9 @@ export default function Step31() {
     formCarga: state.formCarga,
     cargarForm: state.cargarForm,
   }));
-  const [form, setForm] = useState(formCarga);
+  const [form, setForm] = useState({});
   const [isEdit, setIsEdit] = useState(
-    formCarga?.driver2?.formulario1.length >= 1 ? true : false
+    formCarga?.driver2?.formulario1.length >= 1 ? false : true
   );
 
   const handleChango = (e) => {
@@ -23,8 +23,8 @@ export default function Step31() {
   };
 
   const clickCargaFormulario = () => {
-    if (!isEdit) {
-      setIsEdit(true);
+    if (isEdit) {
+      setIsEdit(false);
       toast.success("puedes editar");
     } else {
       if (!form.producto1 && !form.producto2) {
@@ -35,7 +35,7 @@ export default function Step31() {
             driver2: { formulario1: form },
           },
         });
-        setIsEdit(false);
+        setIsEdit(true);
         toast.success("Datos Guardados");
       }
     }
@@ -58,8 +58,8 @@ export default function Step31() {
             <textarea
               onChange={handleChango}
               value={
-                !isEdit
-                  ? formCarga?.driver2?.formulario1.producto1
+                isEdit
+                  ? formCarga?.driver2?.formulario1?.producto1
                   : form?.producto1
               }
               name="producto1"
@@ -67,7 +67,7 @@ export default function Step31() {
               cols="20"
               rows="5"
               className={`${
-                !isEdit
+                isEdit
                   ? "bg-gray-400/50 duration-300"
                   : "bg-transparent duration-300"
               } border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm `}
@@ -80,7 +80,7 @@ export default function Step31() {
             <textarea
               onChange={handleChango}
               value={
-                !isEdit
+                isEdit
                   ? formCarga?.driver2?.formulario1.producto2
                   : form?.producto2
               }
@@ -89,7 +89,7 @@ export default function Step31() {
               cols="20"
               rows="5"
               className={`${
-                !isEdit
+                isEdit
                   ? "bg-gray-400/50 duration-300"
                   : "bg-transparent duration-300"
               } border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm `}
@@ -100,7 +100,7 @@ export default function Step31() {
           <div className="space-x-4">
             <ButtonLeerMas stepN={13}>Anterior</ButtonLeerMas>
             <ButtonLeerMas
-              disable={isEdit}
+              disable={!isEdit}
               label={"changeSubPantalla"}
               stepN={3}
             >
@@ -111,7 +111,7 @@ export default function Step31() {
             onClick={clickCargaFormulario}
             className="bg-primary-600 text-white rounded font-medium text-xs px-4 py-2"
           >
-            {isEdit ? "Guardar" : "Editar"}
+            {!isEdit ? "Guardar" : "Editar"}
           </button>
         </div>
       </div>
