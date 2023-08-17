@@ -6,10 +6,11 @@ import { contextUser } from "@/context/contextUser";
 import { toast } from "react-hot-toast";
 
 export default function Step32() {
-  const { updateState, formCarga } = contextUser((state) => ({
+  const { updateState, formCarga ,activarFlyer} = contextUser((state) => ({
     updateState: state.updateState,
     formCarga: state.formCarga,
     cargarForm: state.cargarForm,
+    activarFlyer:state.activarFlyer
   }));
   const [form, setForm] = useState({});
   const [isEdit, setIsEdit] = useState(
@@ -41,7 +42,7 @@ export default function Step32() {
             },
           },
         });
-
+        activarFlyer(9)
         setIsEdit(false);
         toast.success("Datos Guardados");
       }
