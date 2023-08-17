@@ -81,8 +81,7 @@ export default function Step32() {
           </div>
           <div className="flex w-1/3 px-5 flex-auto flex-col items-center  gap-2">
             <p className="text-primary-200 font-medium">Guía tu descripción conforme a estas preguntas:</p>
-            <p className="text-primary-textGris text-center font-medium text-sm">
-             "¿Como piensa tu cliente?, ¿Que preferencias tiene tu cliente?,¿Que perfil psicologico tiene tu cliente?"
+            <p className="text-primary-textGris text-center font-medium text-sm">{"¿Como piensa tu cliente?, ¿Que preferencias tiene tu cliente?,¿Que perfil psicologico tiene tu cliente?"}
             </p>
           </div>
         </div>

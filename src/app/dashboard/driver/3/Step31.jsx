@@ -84,7 +84,7 @@ export default function Step31() {
           </div>
           <div className="flex w-1/3 px-5 flex-auto flex-col items-center  gap-1">
             <p className="text-primary-200 font-medium">Ejemplo</p>
-            <p className="text-primary-textGris text-center font-medium text-sm">"Mi mercado meta son Doctores, del área especializada de Neurología, de la Ciudad de México</p>
+            <p className="text-primary-textGris text-center font-medium text-sm">{"Mi mercado meta son Doctores, del área especializada de Neurología, de la Ciudad de México"}</p>
           </div>
         </div>
         <div className="flex items-center justify-between gap-5 w-full">
