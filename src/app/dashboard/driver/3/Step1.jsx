@@ -8,7 +8,7 @@ export default function Step1() {
       <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-8/12">
         <h2 className="uppercase text-primary-200 text-xl">Objetivo</h2>
         <p className="text-primary-200  text-xl tracking-wide leading-relaxed">
-          Comencemos a explorar tu segundo Driver, ahora haremos énfasis en la Empatía con el Producto.
+          Comencemos a explorar tu tercer Driver, ahora haremos énfasis en la Empatía con el Mercado.
         </p>
         <p className="text-primary-200 mb-10 font-bold text-xl tracking-wide leading-relaxed">
           Estas listo?, <span className="text-primary-100">Vamos!!!</span>

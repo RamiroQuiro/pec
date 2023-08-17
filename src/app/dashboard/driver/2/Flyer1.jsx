@@ -83,6 +83,7 @@ export default function Flyer1() {
       updateState({drivers:{...drivers,driver2: { step1: true, step2: true, step3: true }} });
     }
     if (flyerActivo == 22) {
+      
       updateState({drivers:{...drivers, driver2: { step1: true, step2: true, step3: true ,step4:true}} });
     }
   };

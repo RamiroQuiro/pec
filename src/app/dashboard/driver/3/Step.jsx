@@ -45,11 +45,11 @@ const step=[
     },
     {
         id:2,
-        span:"Lo que tienes que saber acerca del producto o servicio",
+        span:"Lo que tienes que saber acerca del mercado",
     },
     {
         id:3,
-        span:"Armemos tu plan de capacitacion con enfoque al producto / servicio",
+        span:"Analicemos tu mercado",
     },
     {
         id:4,
