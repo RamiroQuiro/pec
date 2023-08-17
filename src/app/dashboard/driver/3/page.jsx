@@ -4,24 +4,21 @@ import SectionDash from "../../component/SectionDash";
 import ContenedorPasos from "./ContenedorPasos";
 import { usePathname, useRouter } from "next/navigation";
 import Flyer1 from "./Flyer1";
+import { usePreviousDriver } from "@/hook/usePreviousDriver";
 
 export default function Driver3() {
   const path = usePathname();
   const router = useRouter();
   const driver = path.split("/")[3];
 
-  const { flyerActivo, currentDriver, isDriverComplete } = contextUser(
+  const { flyerActivo, } = contextUser(
     (state) => ({
       flyerActivo: state.flyerActivo,
-      currentDriver: state.currenbtDriver,
-      isDriverComplete: state.isDriverComplete,
     })
   );
-  const completadoDriverAnterior = isDriverComplete(driver - 1);
 
-  if (!completadoDriverAnterior) {
-    router.push(`/dashboard/driver/${driver - 1}`);
-  } else
+const comprobarDriversPrevios=usePreviousDriver(driver)
+comprobarDriversPrevios()
     return (
       <SectionDash>
         <div className="bg-white md:w-[78vw] md:min-h-[85vh] md:h-[90vh] absolute right-10 top-24  flex flex-col items-center justify-center border shadow-md">
@@ -30,7 +27,7 @@ export default function Driver3() {
           ) : (
             <>
               <h2 className="text-2xl text-neutral-800 mt-8 font-medium">
-                Empatía con el Producto
+                Empatía con el Mercado
               </h2>
 
               <ContenedorPasos />
