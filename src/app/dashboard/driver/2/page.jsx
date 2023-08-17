@@ -4,6 +4,7 @@ import SectionDash from "../../component/SectionDash";
 import ContenedorPasos from "./ContenedorPasos";
 import { usePathname, useRouter } from "next/navigation";
 import Flyer1 from "./Flyer1";
+import { SVGCheckFill } from "@/app/componentes/SVGComponent";
 
 export default function Driver2() {
   const path = usePathname();
@@ -24,6 +25,7 @@ export default function Driver2() {
   } else
     return (
       <SectionDash>
+    
         <div className="bg-white md:w-[78vw] md:min-h-[85vh] md:h-full absolute right-10 top-24  flex flex-col items-center justify-center border shadow-md">
           {flyerActivo > 0 ? (
             <Flyer1 />

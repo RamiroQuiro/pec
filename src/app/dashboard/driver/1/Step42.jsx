@@ -12,6 +12,7 @@ import { useState } from "react";
 import LoadingCss from "@/app/componentes/LoadingCss";
 import { useRouter } from "next/navigation";
 import { shallow } from "zustand/shallow";
+import ConfirmacionExitosa from "../../component/ConfirmacionExitosa";
 export default function Step42() {
   const { data } = useSession();
   const { formCarga, updateState, activeStep ,drivers} = contextUser(
@@ -25,12 +26,13 @@ export default function Step42() {
   );
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-
+const [isSucces, setIsSucces] = useState(false)
   const handleGuardar = async () => {
     setIsLoading(true);
     try {
       updateState({drivers:{...drivers, driver1: { step1: true, step2: true,step3: true,step4: true } }})
       setIsLoading(false)
+      setIsSucces(true)
     } catch (error) {
       console.log(error)
       setIsLoading(false)
@@ -38,9 +40,16 @@ export default function Step42() {
     }
    
   };
+  if (isSucces) {
+    return <ConfirmacionExitosa
+    numero={"primer"}
+    proximoDriver={"segundo"}
+    onclick={()=>setIsSucces(false)}
+    />
+  }
   return (
     <>
-      {isLoading && <LoadingCss />}
+   
       <div className=" flex flex-col items-start justify-between gap-3 h-full w-8/12 text-center">
         <div className="text-left space-y-5">
           <h2 className="uppercase text-primary-200 text-xl">

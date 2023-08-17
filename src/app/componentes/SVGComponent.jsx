@@ -332,3 +332,28 @@ export const UploadCloud = (props) => (
     />
   </svg>
 )
+
+export const SVGCheckFill = (props) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="icon flat-color"
+    data-name="Flat Color"
+    viewBox="0 0 24 24"
+    {...props}
+  >
+    <circle
+      cx={12}
+      cy={12}
+      r={10}
+      style={{
+        fill: "#32c671",
+      }}
+    />
+    <path
+      d="M11 16a1 1 0 0 1-.71-.29l-3-3a1 1 0 1 1 1.42-1.42l2.29 2.3 4.29-4.3a1 1 0 0 1 1.42 1.42l-5 5A1 1 0 0 1 11 16Z"
+      style={{
+        fill: "#fff",
+      }}
+    />
+  </svg>
+)
