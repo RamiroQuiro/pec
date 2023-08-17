@@ -24,7 +24,7 @@ export default function Driver3() {
   } else
     return (
       <SectionDash>
-        <div className="bg-white md:w-[78vw] md:min-h-[85vh] md:h-full absolute right-10 top-24  flex flex-col items-center justify-center border shadow-md">
+        <div className="bg-white md:w-[78vw] md:min-h-[85vh] md:h-[90vh] absolute right-10 top-24  flex flex-col items-center justify-center border shadow-md">
           {flyerActivo > 0 ? (
             <Flyer1 />
           ) : (

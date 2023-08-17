@@ -31,23 +31,22 @@ export default function Flyer1() {
   );
 
   const handleNextFlyer = () => {
-    if (flyerActivo == 10) {
+    if (flyerActivo == 8) {
       activarFlyer(0);
       setCurrentStep(3);
       cargarSubPantallas(2);
-      updateState({drivers:{...drivers, driver2: { step1: true, step2: true } }});
     } 
     else
     if (flyerActivo == 13) {
       activarFlyer(0);
       setCurrentStep(3);
       cargarSubPantallas(2);
-      updateState({drivers:{...drivers,driver2: { step1: true, step2: true } }});
+      updateState({drivers:{...drivers,driver3: { step1: true, step2: true } }});
     } else if (flyerActivo == 23) {
       activarFlyer(0);
       setCurrentStep(4);
       cargarSubPantallas(42);
-      updateState({drivers:{...drivers, driver2: { step1: true, step2: true, step3: true }} });
+      updateState({drivers:{...drivers, driver3: { step1: true, step2: true, step3: true }} });
     } else  {
       activarFlyer(flyerActivo + 1);
     }
@@ -72,18 +71,18 @@ export default function Flyer1() {
     activarFlyer(0);
     if (flyerActivo == 2) {
       setCurrentStep(2);
-      updateState({drivers:{...drivers, driver2: { step1: true } }});
+      updateState({drivers:{...drivers, driver3: { step1: true } }});
     }
-    if (flyerActivo == 10) {
+    if (flyerActivo == 7) {
       setCurrentStep(3);
-      updateState({drivers:{...drivers,driver2: { step1: true, step2: true }} });
+      updateState({drivers:{...drivers,driver3: { step1: true, step2: true }} });
     }
     if (flyerActivo == 19) {
       setCurrentStep(4);
-      updateState({drivers:{...drivers,driver2: { step1: true, step2: true, step3: true }} });
+      updateState({drivers:{...drivers,driver3: { step1: true, step2: true, step3: true }} });
     }
     if (flyerActivo == 22) {
-      updateState({drivers:{...drivers, driver2: { step1: true, step2: true, step3: true ,step4:true}} });
+      updateState({drivers:{...drivers, driver3: { step1: true, step2: true, step3: true ,step4:true}} });
     }
   };
   return (
@@ -116,7 +115,7 @@ export default function Flyer1() {
           onClick={handlePreviusFlyer}
           className="w-14 h-14 fill-primary-tonoBlanco rotate-180 cursor-pointer  "
         />
-        {flyerActivo == 2 || flyerActivo == 10 || flyerActivo == 19|| flyerActivo == 22 ? (
+        {flyerActivo == 2 || flyerActivo == 7 || flyerActivo == 19|| flyerActivo == 22 ? (
           <SVGDiskette
             onClick={handleNextStep}
             className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "

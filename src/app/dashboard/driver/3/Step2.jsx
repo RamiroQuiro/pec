@@ -6,10 +6,10 @@ export default function Step2() {
     <div className="flex items-center justify-between p-6  relative w-full  h-full">
       <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-8/12">
         <h2 className="uppercase text-primary-200 text-xl">
-          LO QUE TIENES QUE SABER ACERCA DEL PRODUCTO O SERVICIO
+          LO QUE TIENES QUE SABER ACERCA DEL MERCADO
         </h2>
         <p className="text-primary-200  text-xl tracking-wide leading-relaxed">
-      Excelente vamos por buen camino, ahora haremos énfasis en lo que debes saber acerca del Producto o servicio
+      Excelente vamos por buen camino, ahora haremos énfasis en lo que debes saber acerca del Mercado.
         </p>
         <p className="text-primary-200 mb-10 font-bold text-xl tracking-wide leading-relaxed">
           Estas listo?, <span className="text-primary-100">Vamos!!!</span>

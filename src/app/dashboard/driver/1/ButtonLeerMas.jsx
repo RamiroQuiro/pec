@@ -19,7 +19,7 @@ export default function ButtonLeerMas({ stepN, children, label }) {
   return (
     <button
       onClick={handleSiguiente}
-      className="bg-primary-800 text-white rounded font-medium text-xs px-4 py-2"
+      className="bg-primary-800 text-white rounded font-medium text-xs w-24 py-2.5"
     >
       {children}
     </button>

@@ -16,12 +16,12 @@ const subPantallas=contextUser(state=>state.subPantallas)
         </p> <ButtonLeerMas stepN={20}>ir</ButtonLeerMas>
         </div>
      
-      <div className="w-4/12  mx-auto h-full relative">
+      <div className="w-5/12  mx-auto h-full relative">
         <Image
           alt="step4"
           src={step1}
           fill
-          className=" object-center object-contain absolute -right-3 top-4 w-full ml-14 h-auto mx-auto "
+          className=" object-center object-contain absolute ring-0 pr-10 top-4 w-full ml-14 h-auto mx-auto "
         />
       </div>
     </div>
