@@ -85,15 +85,24 @@ export const contextUser = create((set, get) => ({
   flyerActivo: 0,
 
   // funciones para actualizar estados
-  updateState: (obj) => {
+  updateState:async (obj) => {
     set((state) => ({
       ...state,
       ...obj,
     }));
-    const state=get()
-    console.log(state)
+    try {
+      const {formCarga, userData, drivers } = get();
+      const res = await axios.post("/api/guardarDatos", {
+        email: userData?.email,
+        drivers,
+        formCarga
+      });
+      return res.data
+    } catch (error) {
+      console.log(error);
+    }
   },
-  updateDataDriver: (driver,name,obj) => {
+  updateDataDriver:async (driver,name,obj) => {
     set((state) => ({
       ...state,
       formCarga:{
@@ -102,8 +111,7 @@ export const contextUser = create((set, get) => ({
           [name]:obj
         }}
     }));
-    const state=get()
-    console.log(state)
+    
   },
   // Agregar esta función en tu contexto zustand
   isDriverComplete: (driverNumber) => {

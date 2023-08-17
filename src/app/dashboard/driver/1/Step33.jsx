@@ -22,6 +22,10 @@ const select=[
   ]
   export default function Step33() {
     const formCarga=contextUser(state=>state.formCarga)
+    const {updateState,drivers}=contextUser((state)=>({
+drivers:state.drivers,
+updateState:state.updateState
+    }))
     const [selected, setSelected] = useState([]);
     const cargarForm = contextUser((state) => state.cargarForm);
     const [form, setForm] = useState(formCarga)
@@ -35,7 +39,15 @@ const select=[
             },
           },
         }));
-        cargarForm(form)
+        updateState({
+          formCarga:{
+            ...formCarga,
+            driver1:{
+              ...formCarga.driver1,
+              tresValoresImportantes:selected
+            }
+          }
+        })
     }, [selected]);
   
   return (

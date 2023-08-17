@@ -30,17 +30,14 @@ export default function Flyer1() {
       activarFlyer(0);
       setCurrentStep(3);
       cargarSubPantallas(2);
-      updateState({ drivers:
-        
-        {...drivers, driver1: { step1: true, step2: true } } 
-        });
+      updateState({
+        drivers: { ...drivers, driver1: { step1: true, step2: true } },
+      });
     } else if (flyerActivo == 24) {
       activarFlyer(0);
       setCurrentStep(4);
       cargarSubPantallas(42);
-      updateState({
-        drivers: {...drivers, driver1: { step1: true, step2: true, step3: true } },
-      });
+      
     } else {
       activarFlyer(flyerActivo + 1);
     }
@@ -65,20 +62,26 @@ export default function Flyer1() {
     activarFlyer(0);
     if (flyerActivo == 2) {
       setCurrentStep(2);
-      updateState({ drivers: { ...drivers,driver1: { step1: true } } });
+      updateState({ drivers: { ...drivers, driver1: { step1: true } } });
     }
     if (flyerActivo == 15) {
       setCurrentStep(3);
-      updateState({ drivers: {...drivers, driver1: { step1: true, step2: true } } });
+      updateState({
+        drivers: { ...drivers, driver1: { step1: true, step2: true } },
+      });
     }
     if (flyerActivo == 21) {
       setCurrentStep(4);
       cargarSubPantallas(41);
       updateState({
-        drivers: {...drivers, driver1: { step1: true, step2: true, step3: true } },
+        drivers: {
+          ...drivers,
+          driver1: { step1: true, step2: true, step3: true },
+        },
       });
     }
   };
+  console.log(flyerActivo);
   return (
     <div className="w-full h-full flex relative">
       <RenderFlyer />

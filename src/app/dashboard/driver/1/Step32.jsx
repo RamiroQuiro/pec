@@ -6,7 +6,8 @@ import step3 from "../../../../../public/step3.png";
 import { contextUser } from "@/context/contextUser";
 export default function Step32() {
   const formCarga = contextUser((state) => state.formCarga);
-  const cargarForm = contextUser((state) => state.cargarForm);
+  const updateState = contextUser((state) => state.updateState);
+  const drivers = contextUser((state) => state.drivers);
   const cargarSubPantallas = contextUser((state) => state.cargarSubPantallas);
   const [textArea, setTextArea] = useState(formCarga);
   const handleText = (e) => {
@@ -14,7 +15,15 @@ export default function Step32() {
   };
   
   const clickCargaFormulario = () => {
-    cargarForm(textArea);
+    updateState({
+      formCarga:{
+        ...formCarga,
+        driver1:{
+          ...formCarga.driver1,
+          misionComercial:textArea
+        }
+      }
+    });
     cargarSubPantallas(4);
   };
   return (

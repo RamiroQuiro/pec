@@ -28,34 +28,15 @@ export default function Step42() {
 
   const handleGuardar = async () => {
     setIsLoading(true);
-    updateState({drivers:{...drivers, driver1: { step1: true, step2: true,step3: true,step4: true } }});
     try {
-      const mandamosMail = await axios.post("/api/sendemail", {
-        body: formCarga,
-        mail: data?.user.email,
-      });
-
-      if (mandamosMail.status) {
-        setIsLoading(false);
-        toast.success("Exitos, Revisa tu Bandeja de Entrada", {
-          style: {
-            backgroundColor: "#00699C",
-            color: "white",
-            fontSize: "16px",
-            padding: "8px",
-            height: "100px",
-            textAnchor: "1px",
-          },
-          duration: 3500,
-        });
-        router.push("/dashboard");
-      }
-      updateState({currentStep:1})
-  
+      updateState({drivers:{...drivers, driver1: { step1: true, step2: true,step3: true,step4: true } }})
+      setIsLoading(false)
     } catch (error) {
-      setIsLoading(false);
-      console.log(error);
+      console.log(error)
+      setIsLoading(false)
+      
     }
+   
   };
   return (
     <>
@@ -72,17 +53,17 @@ export default function Step42() {
         </div>
         <div className="flex items-center justify-normal gap-5">
           <ButtonLeerMas stepN={24}>Anterior</ButtonLeerMas>
-          <PDFDownloadLink
+          {/* <PDFDownloadLink
             document={<PDFEntregable data={formCarga} session={data} />}
             fileName="PEC.pdf"
-          >
+          > */}
             <button
               onClick={handleGuardar}
               className="bg-primary-100 text-white rounded font-medium text-xs px-4 py-2"
             >
               Guardar
             </button>
-          </PDFDownloadLink>
+          {/* </PDFDownloadLink> */}
         </div>
       </div>
       <div className="w-4/12  mx-auto h-full relative">

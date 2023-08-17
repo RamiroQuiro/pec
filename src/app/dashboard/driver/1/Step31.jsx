@@ -28,9 +28,13 @@ const select3 = [
   { label: "Satisfaccion", value: "satisfaccion" },
 ];
 export default function Step31() {
-  const formCarga = contextUser((state) => state.formCarga);
-  const cargarForm = contextUser((state) => state.cargarForm);
-  const cargarSubPantallas = contextUser((state) => state.cargarSubPantallas);
+  const {formCarga,cargarForm,updateState,cargarSubPantallas,drivers} = contextUser((state) => ({
+    formCarga:state.formCarga,
+    cargarForm:state.cargarForm,
+    cargarSubPantallas:state.cargarSubPantallas,
+drivers:state.drivers,
+updateState:state.updateState,
+  }));
   const [selected, setSelected] = useState([]);
   const [selected2, setSelected2] = useState([]);
   const [selected3, setSelected3] = useState([]);
@@ -38,14 +42,16 @@ export default function Step31() {
 
   useEffect(() => {
     const cargandoDatos = () => {
-      cargarForm({
+      updateState({
+        formCarga:{
+          ...formCarga,
         driver1: {
-          spet31: {
+          formulario1: {
             slect1: selected,
             slect2: selected2,
             slect3: selected3,
           },
-        },
+        },}
       });
     };
     cargandoDatos();
