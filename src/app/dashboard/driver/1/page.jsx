@@ -3,7 +3,6 @@ import SectionDash from "../../component/SectionDash";
 import ContenedorPasos from "./ContenedorPasos";
 import { contextUser } from "@/context/contextUser";
 import Flyer1 from "./Flyer1";
-import { useEffect } from "react";
 
 export default function Driver1() {
   const { flyerActivo, drivers } = contextUser((state) => ({

@@ -2,7 +2,7 @@
 import { contextUser } from "@/context/contextUser";
 import SectionDash from "../../component/SectionDash";
 import ContenedorPasos from "./ContenedorPasos";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Flyer1 from "./Flyer1";
 import { usePreviousDriver } from "@/hook/usePreviousDriver";
 
