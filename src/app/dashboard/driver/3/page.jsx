@@ -4,7 +4,6 @@ import SectionDash from "../../component/SectionDash";
 import ContenedorPasos from "./ContenedorPasos";
 import { usePathname, useRouter } from "next/navigation";
 import Flyer1 from "./Flyer1";
-import { usePreviousDriver } from "@/hook/usePreviousDriver";
 import { useEffect } from "react";
 
 export default function Driver3() {
