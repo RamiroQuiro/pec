@@ -55,7 +55,6 @@ export default function Step31() {
       puntajeLider: e.target.value,
     }));
   };
-console.log(form)
   return (
     <>
       <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-full mx-auto text-center">
