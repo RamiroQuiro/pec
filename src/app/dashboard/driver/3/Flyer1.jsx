@@ -60,19 +60,19 @@ export default function Flyer1() {
     activarFlyer(0);
     if (flyerActivo == 2) {
       setCurrentStep(2);
-      updateState({drivers:{...drivers, driver3: { step1: true } }});
+      updateState({drivers:{...drivers, driver3: {...drivers.driver3, step1: true } }});
     }
     if (flyerActivo == 7) {
       setCurrentStep(3);
-      updateState({drivers:{...drivers,driver3: { step1: true, step2: true }} });
+      updateState({drivers:{...drivers,driver3: { ...drivers.driver3, step2: true }} });
     }
     if (flyerActivo == 11) {
       setCurrentStep(4);
-      updateState({drivers:{...drivers,driver3: { step1: true, step2: true, step3: true }} });
+      updateState({drivers:{...drivers,driver3: { ...drivers.driver3, step3: true }} });
     }
     else if (flyerActivo == 14) {
     
-      updateState({drivers:{...drivers, driver3: { step1: true, step2: true, step3: true ,step4:true}} });
+      updateState({drivers:{...drivers, driver3: { ...drivers.driver3,step4:true}} });
     }
   };
   return (

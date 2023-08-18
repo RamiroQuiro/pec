@@ -35,19 +35,19 @@ export default function Flyer1() {
       activarFlyer(0);
       setCurrentStep(3);
       cargarSubPantallas(2);
-      updateState({drivers:{...drivers, driver2: { step1: true, step2: true } }});
+      updateState({drivers:{...drivers, driver2: { ...drivers.driver2, step2: true } }});
     } 
     else
     if (flyerActivo == 13) {
       activarFlyer(0);
       setCurrentStep(3);
       cargarSubPantallas(2);
-      updateState({drivers:{...drivers,driver2: { step1: true, step2: true } }});
+      updateState({drivers:{...drivers,driver2: { ...drivers.driver2, step2: true } }});
     } else if (flyerActivo == 23) {
       activarFlyer(0);
       setCurrentStep(4);
       cargarSubPantallas(42);
-      updateState({drivers:{...drivers, driver2: { step1: true, step2: true, step3: true }} });
+      updateState({drivers:{...drivers, driver2: { ...drivers.driver2,step3: true }} });
     } else  {
       activarFlyer(flyerActivo + 1);
     }
@@ -72,19 +72,19 @@ export default function Flyer1() {
     activarFlyer(0);
     if (flyerActivo == 2) {
       setCurrentStep(2);
-      updateState({drivers:{...drivers, driver2: { step1: true } }});
+      updateState({drivers:{...drivers, driver2: {...drivers.driver2, step1: true } }});
     }
     if (flyerActivo == 10) {
       setCurrentStep(3);
-      updateState({drivers:{...drivers,driver2: { step1: true, step2: true }} });
+      updateState({drivers:{...drivers,driver2: { ...drivers.driver2, step2: true }} });
     }
     if (flyerActivo == 19) {
       setCurrentStep(4);
-      updateState({drivers:{...drivers,driver2: { step1: true, step2: true, step3: true }} });
+      updateState({drivers:{...drivers,driver2: { ...drivers.driver2, step3: true }} });
     }
     if (flyerActivo == 22) {
       
-      updateState({drivers:{...drivers, driver2: { step1: true, step2: true, step3: true ,step4:true}} });
+      updateState({drivers:{...drivers, driver2: { ...drivers.driver2,step4:true}} });
     }
   };
   return (

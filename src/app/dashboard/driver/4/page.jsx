@@ -2,13 +2,12 @@
 import { contextUser } from "@/context/contextUser";
 import SectionDash from "../../component/SectionDash";
 import ContenedorPasos from "./ContenedorPasos";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Flyer1 from "./Flyer1";
 import { usePreviousDriver } from "@/hook/usePreviousDriver";
 
 export default function Driver4() {
   const path = usePathname();
-  const router = useRouter();
   const driver = path.split("/")[3];
 
   const { flyerActivo, } = contextUser(
@@ -27,7 +26,7 @@ comprobarDriversPrevios()
           ) : (
             <>
               <h2 className="text-2xl text-neutral-800 mt-8 font-medium">
-                Empatía con el Líder
+               {" Empatía con el Líder"}
               </h2>
 
               <ContenedorPasos />

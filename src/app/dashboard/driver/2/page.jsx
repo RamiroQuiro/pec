@@ -4,25 +4,20 @@ import SectionDash from "../../component/SectionDash";
 import ContenedorPasos from "./ContenedorPasos";
 import { usePathname, useRouter } from "next/navigation";
 import Flyer1 from "./Flyer1";
-import { SVGCheckFill } from "@/app/componentes/SVGComponent";
+import { usePreviousDriver } from "@/hook/usePreviousDriver";
 
 export default function Driver2() {
   const path = usePathname();
-  const router = useRouter();
   const driver = path.split("/")[3];
 
-  const { flyerActivo, currentDriver, isDriverComplete } = contextUser(
+  const { flyerActivo, } = contextUser(
     (state) => ({
       flyerActivo: state.flyerActivo,
-      currentDriver: state.currenbtDriver,
-      isDriverComplete: state.isDriverComplete,
     })
   );
-  const completadoDriverAnterior = isDriverComplete(driver - 1);
 
-  if (!completadoDriverAnterior) {
-    router.push(`/dashboard/driver/${driver - 1}`);
-  } else
+const comprobarDriversPrevios=usePreviousDriver(driver)
+comprobarDriversPrevios()
     return (
       <SectionDash>
     

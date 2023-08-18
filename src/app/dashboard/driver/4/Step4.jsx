@@ -1,24 +1,30 @@
-import { contextUser } from '@/context/contextUser'
-import Image from 'next/image'
+import { contextUser } from "@/context/contextUser";
+import Image from "next/image";
 import step1 from "../../../../../public/step1.png";
-import ButtonLeerMas from './ButtonLeerMas';
+import ButtonLeerMas from "./ButtonLeerMas";
 export default function Step4() {
-  
-const subPantallas=contextUser(state=>state.subPantallas)
+  const subPantallas = contextUser((state) => state.subPantallas);
   return (
     <div className="flex items-center justify-between p-6  relative w-full  h-full">
-       <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-8/12">
-        
-        <div className='flex flex-col items-start justify-normal gap-5'><h2 className="uppercase text-primary-200 text-xl">
-         REFERENCIAS Y LECTURAS ACERCA DEL TEMA
-        </h2>
-        <p className="text-primary-100 mb-5 text-left font-semibold text-xl ">
-          Conoce más acerca de referencias y temas de lectura...
-        </p></div>
-         <ButtonLeerMas stepN={12}>Leer mas</ButtonLeerMas>
+      <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-8/12">
+        <div className="flex flex-col items-start justify-normal gap-5">
+          <h2 className="uppercase text-primary-200 text-xl">
+            REFERENCIAS Y LECTURAS ACERCA DEL TEMA
+          </h2>
+          <p className="text-primary-100 mb-5 text-left font-semibold text-xl ">
+            Conoce más acerca de referencias y temas de lectura...
+          </p>
         </div>
-     
-        <div className="w-5/12  mx-auto h-full relative">
+        <div className=" flex items-center justify-normal gap-5">
+          {" "}
+          <ButtonLeerMas label={"changeStep"} stepN={3}>
+            Anterior
+          </ButtonLeerMas>
+          <ButtonLeerMas stepN={43}>Leer mas</ButtonLeerMas>
+        </div>
+      </div>
+
+      <div className="w-5/12  mx-auto h-full relative">
         <Image
           alt="step4"
           src={step1}
@@ -27,5 +33,5 @@ const subPantallas=contextUser(state=>state.subPantallas)
         />
       </div>
     </div>
-  )
+  );
 }

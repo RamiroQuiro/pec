@@ -8,7 +8,6 @@ import Step32 from "./Step32";
 import Step33 from "./Step33";
 export default function Step3() {
   const subPantallas = contextUser((state) => state.subPantallas);
-  console.log(subPantallas)
   return (
     <div className="flex items-center justify-between p-6  relative w-full  h-full">
       {!subPantallas ? (

@@ -8,7 +8,6 @@ import { usePreviousDriver } from "@/hook/usePreviousDriver";
 
 export default function Driver3() {
   const path = usePathname();
-  const router = useRouter();
   const driver = path.split("/")[3];
 
   const { flyerActivo, } = contextUser(

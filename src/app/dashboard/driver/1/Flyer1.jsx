@@ -31,7 +31,7 @@ export default function Flyer1() {
       setCurrentStep(3);
       cargarSubPantallas(2);
       updateState({
-        drivers: { ...drivers, driver1: { step1: true, step2: true } },
+        drivers: { ...drivers, driver1: { ...drivers.driver1, step2: true } },
       });
     } else if (flyerActivo == 24) {
       activarFlyer(0);
@@ -62,12 +62,12 @@ export default function Flyer1() {
     activarFlyer(0);
     if (flyerActivo == 2) {
       setCurrentStep(2);
-      updateState({ drivers: { ...drivers, driver1: { step1: true } } });
+      updateState({ drivers: { ...drivers, driver1: {...drivers.driver1, step1: true } } });
     }
     if (flyerActivo == 15) {
       setCurrentStep(3);
       updateState({
-        drivers: { ...drivers, driver1: { step1: true, step2: true } },
+        drivers: { ...drivers, driver1: { ...drivers.driver1, step2: true } },
       });
     }
     if (flyerActivo == 21) {
@@ -76,7 +76,7 @@ export default function Flyer1() {
       updateState({
         drivers: {
           ...drivers,
-          driver1: { step1: true, step2: true, step3: true },
+          driver1: { ...drivers.driver1, step3: true },
         },
       });
     }
