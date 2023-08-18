@@ -28,8 +28,6 @@ export default function Driver3() {
   }, [driver]);
 
 
-const comprobarDriversPrevios=usePreviousDriver(driver)
-comprobarDriversPrevios()
     return (
       <SectionDash>
         <div className="bg-white md:w-[78vw] md:min-h-[85vh] md:h-[90vh] absolute right-10 top-24  flex flex-col items-center justify-center border shadow-md">
