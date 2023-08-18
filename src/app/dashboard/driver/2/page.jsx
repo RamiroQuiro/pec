@@ -2,22 +2,31 @@
 import { contextUser } from "@/context/contextUser";
 import SectionDash from "../../component/SectionDash";
 import ContenedorPasos from "./ContenedorPasos";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Flyer1 from "./Flyer1";
-import { usePreviousDriver } from "@/hook/usePreviousDriver";
+import { useEffect } from "react";
 
 export default function Driver2() {
   const path = usePathname();
+  const router = useRouter();
   const driver = path.split("/")[3];
 
-  const { flyerActivo, } = contextUser(
-    (state) => ({
-      flyerActivo: state.flyerActivo,
-    })
-  );
+  const { flyerActivo ,isDriverComplete} = contextUser((state) => ({
+    flyerActivo: state.flyerActivo,
+        isDriverComplete: state.isDriverComplete,
+  }));
 
-const comprobarDriversPrevios=usePreviousDriver(driver)
-comprobarDriversPrevios()
+  useEffect(() => {
+    if (!driver) return;
+
+    const previousDriver = driver - 1;
+    const isPreviousDriverComplete = isDriverComplete(previousDriver);
+    if (!isPreviousDriverComplete) {
+      router.push(`/dashboard/driver/${previousDriver}`);
+    }
+    
+  }, [driver]);
+
     return (
       <SectionDash>
     
