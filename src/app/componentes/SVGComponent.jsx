@@ -6,7 +6,7 @@ export const SvgHome = (props) => (
     id="_x32_"
     width={200}
     height={200}
-    fill="#b9b9b9"
+    
     viewBox="0 0 512 512"
     {...props}
   >
@@ -27,7 +27,7 @@ export const SvgHome = (props) => (
 export const SVGPantalla = (props) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    fill="#707070"
+  
     viewBox="0 0 24 24"
     {...props}
   >
