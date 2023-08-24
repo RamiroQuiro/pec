@@ -36,7 +36,7 @@ export default function Driver6() {
         ) : (
           <>
             <h2 className="text-2xl text-neutral-800 mt-8 font-medium">
-         {"   Visión Comercial"}
+         {"  Equipo de Alto Rendimiento Comercial"}
             </h2>
 
             <ContenedorPasos />

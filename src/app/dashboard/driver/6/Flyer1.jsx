@@ -31,7 +31,7 @@ export default function Flyer1() {
   );
 
   const handleNextFlyer = () => {
-    if (flyerActivo == 14) {
+    if (flyerActivo == 15) {
       activarFlyer(0);
       setCurrentStep(3);
       cargarSubPantallas(2)
@@ -62,19 +62,19 @@ export default function Flyer1() {
   };
   const handleNextStep = async () => {
     activarFlyer(0);
-    if (flyerActivo == 8) {
+    if (flyerActivo == 2) {
       setCurrentStep(2);
-      updateState({drivers:{...drivers, driver5: {...drivers.driver5, step1: true } }});
+      updateState({drivers:{...drivers, driver6: {...drivers.driver6, step1: true } }});
     }
-    if (flyerActivo == 13) {
+    if (flyerActivo == 14) {
       setCurrentStep(3);
       cargarSubPantallas(0)
-      updateState({drivers:{...drivers,driver5: { ...drivers.driver5, step2: true }} });
+      updateState({drivers:{...drivers,driver6: { ...drivers.driver6, step2: true }} });
     }
   
     else if (flyerActivo == 24) {
     
-      updateState({drivers:{...drivers, driver5: { ...drivers.driver5, step4: true }} });
+      updateState({drivers:{...drivers, driver6: { ...drivers.driver6, step4: true }} });
     }
   };
   return (
@@ -87,7 +87,7 @@ export default function Flyer1() {
           onClick={handlePreviusFlyer}
           className="w-14 h-14 fill-primary-tonoBlanco rotate-180 cursor-pointer  "
         />
-        {flyerActivo == 8 || flyerActivo == 13 || flyerActivo == 24 ? (
+        {flyerActivo == 2 || flyerActivo == 14 || flyerActivo == 24 ? (
           <SVGDiskette
             onClick={handleNextStep}
             className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "

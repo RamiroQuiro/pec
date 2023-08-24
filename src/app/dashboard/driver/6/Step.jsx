@@ -45,11 +45,11 @@ const step=[
     },
     {
         id:2,
-        span:"Lo que tienes que saber acerca de la visión comercial",
+        span:"Lo que tienes que saber acerca de estructurar equipos comerciales",
     },
     {
         id:3,
-        span:"Armemos tu modelo de visión comercial",
+        span:"Trabajemos en estructurar tu equipo de alto rendimiento comercial",
     },
     {
         id:4,
