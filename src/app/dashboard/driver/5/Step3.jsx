@@ -6,6 +6,7 @@ import step3 from "../../../../../public/step1.png";
 import Step31 from "./Step31";
 import Step32 from "./Step32";
 import Step33 from "./Step33";
+import Step34 from "./Step34";
 export default function Step3() {
   const subPantallas = contextUser((state) => state.subPantallas);
   return (
@@ -42,6 +43,8 @@ export default function Step3() {
      <Step32/>
   ) : subPantallas == 4 ? (
      <Step33/>
+  ) : subPantallas == 5 ? (
+     <Step34/>
   ) :(
      <></>
    )}

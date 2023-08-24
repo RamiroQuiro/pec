@@ -5,7 +5,7 @@ import ButtonLeerMas from "./ButtonLeerMas";
 import { contextUser } from "@/context/contextUser";
 import { toast } from "react-hot-toast";
 
-export default function Step32() {
+export default function Step34() {
   const {
     updateState,
     formCarga,
@@ -40,14 +40,14 @@ export default function Step32() {
   const clickCargaFormulario = () => {
     try {
       const objNews = { ...newObj, state: true };
-      const array = formCarga?.driver5?.formulario2?.acciones;
+      const array = formCarga?.driver5?.formulario4?.acciones;
       if (!array) {
         updateState({
           formCarga: {
             ...formCarga,
             driver5: {
               ...formCarga?.driver5,
-              formulario2: {
+              formulario4: {
                 acciones: [objNews],
               },
             },
@@ -67,7 +67,7 @@ export default function Step32() {
             ...formCarga,
             driver5: {
               ...formCarga?.driver5,
-              formulario2: {
+              formulario4: {
                 acciones: array,
               },
             },
@@ -112,9 +112,9 @@ export default function Step32() {
 
   useEffect(() => {
     setIsLoading(false);
-    if (formCarga?.driver5?.formulario2) {
-      setForm(formCarga.driver5.formulario2);
-      const data = formCarga?.driver5?.formulario2?.acciones;
+    if (formCarga?.driver5?.formulario4) {
+      setForm(formCarga.driver5.formulario4);
+      const data = formCarga?.driver5?.formulario4?.acciones;
       const array = select.map((element) => {
         let encontrado = data.findIndex(
           (elmnt) => elmnt.accion == element.value
@@ -130,8 +130,8 @@ export default function Step32() {
       });
 
       setSelect(array);
-      setIsLoading(true);
     }
+    setIsLoading(true);
   }, [formCarga, isLoading]);
   return (
     <>
@@ -153,7 +153,7 @@ export default function Step32() {
           <div className="flex items-stretch my-5 flex-grow h-full justify-between gap-2 w-full mx-auto  ">
             <div className="flex w-1/3  flex-auto flex-col items-start text-left ">
               <p className="text-sm text-primary-100 font-semibold">
-                Estrategia Madre 1
+                Estrategia Madre 3
               </p>
               <select
                 onChange={handleSelect}
@@ -244,7 +244,7 @@ export default function Step32() {
           <div className="space-x-4">
             <ButtonLeerMas stepN={21}>Anterior</ButtonLeerMas>
             {select.every((element) => element.state == true) && (
-              <ButtonLeerMas label="changeSubPantalla" stepN={4}>Siguiente</ButtonLeerMas>
+              <ButtonLeerMas stepN={22}>Siguiente</ButtonLeerMas>
             )}
           </div>
           <button
