@@ -5,16 +5,56 @@ import { create } from "zustand";
 export const contextUser = create((set, get) => ({
   userData: {},
   formCarga: {
-    driver1:{},
-    driver2:{},
-    driver3:{},
-    driver4:{},
-    driver5:{},
-    driver6:{},
-    driver7:{},
-    driver8:{},
-    driver9:{},
-    driver10:{},
+    driver1: {},
+    driver2: {},
+    driver3: {},
+    driver4: {},
+    driver5: {
+      formulario2: {
+        acciones: [
+          {
+            accion: 1,
+            name: "",
+            fechaInicio: "",
+            fechaSalida: "",
+            state: false,
+          },
+          {
+            accion: 2,
+            name: "",
+            fechaInicio: "",
+            fechaSalida: "",
+            state: false,
+          },
+          {
+            accion: 3,
+            name: "",
+            fechaInicio: "",
+            fechaSalida: "",
+            state: false,
+          },
+          {
+            accion: 4,
+            name: "",
+            fechaInicio: "",
+            fechaSalida: "",
+            state: false,
+          },
+          {
+            accion: 5,
+            name: "",
+            fechaInicio: "",
+            fechaSalida: "",
+            state: false,
+          },
+        ],
+      },
+    },
+    driver6: {},
+    driver7: {},
+    driver8: {},
+    driver9: {},
+    driver10: {},
   },
   comprobantePago: null,
   drivers: {
@@ -85,33 +125,34 @@ export const contextUser = create((set, get) => ({
   flyerActivo: 0,
 
   // funciones para actualizar estados
-  updateState:async (obj) => {
+  updateState: async (obj) => {
     set((state) => ({
       ...state,
       ...obj,
     }));
     try {
-      const {formCarga, userData, drivers } = get();
+      const { formCarga, userData, drivers } = get();
       const res = await axios.post("/api/guardarDatos", {
         email: userData?.email,
         drivers,
-        formCarga
+        formCarga,
       });
-      return res.data
+
+      return res.data;
     } catch (error) {
       console.log(error);
     }
   },
-  updateDataDriver:async (driver,name,obj) => {
+  updateDataDriver: async (driver, name, obj) => {
     set((state) => ({
       ...state,
-      formCarga:{
-        [driver]:{
+      formCarga: {
+        [driver]: {
           ...state.formCarga[driver],
-          [name]:obj
-        }}
+          [name]: obj,
+        },
+      },
     }));
-    
   },
   // Agregar esta función en tu contexto zustand
   isDriverComplete: (driverNumber) => {
@@ -132,8 +173,8 @@ export const contextUser = create((set, get) => ({
   },
   cargarForm: (obj) => {
     set((state) => ({ ...state, formCarga: obj }));
-    const state=get()
-    console.log(state)
+    const state = get();
+    console.log(state);
   },
   activarFlyer: (id) => {
     set((state) => ({ ...state, flyerActivo: id }));
@@ -152,11 +193,11 @@ export const contextUser = create((set, get) => ({
         ...state,
         drivers: { ...state.drivers, [name]: { ...values[0] } },
       }));
-      const {formCarga, userData, drivers } = get();
+      const { formCarga, userData, drivers } = get();
       const res = await axios.post("/api/guardarDatos", {
         email: userData?.email,
         drivers,
-        formCarga
+        formCarga,
       });
     } catch (error) {
       console.log(error);

@@ -19,7 +19,7 @@ export default function Step31() {
     formCarga?.driver5?.formulario1 ? formCarga?.driver5?.formulario1 : {}
   );
   const [isEdit, setIsEdit] = useState(
-    !formCarga?.driver4?.formulario1 ? false : true
+    !formCarga?.driver4?.formulario1 ? true : false
   );
   const puntajeLider = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const handleChango = (e) => {
@@ -38,7 +38,7 @@ export default function Step31() {
         updateState({
           formCarga: {
             ...formCarga,
-            driver5: { formulario1: form },
+            driver5: {   ...formCarga.driver5,formulario1: form },
           },
         });
         setIsEdit(false);
@@ -62,9 +62,7 @@ export default function Step31() {
       <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-full mx-auto text-center">
         <h2 className="uppercase text-primary-200 text-xl">Ventas vs tiempo</h2>
         <p className="text-primary-200 text-left">
-          Por favor menciona (en tu moneda, pesos dls, etc) las ventas
-          proyectadas a 12 meses a partir de la fecha de término de este
-          documento:
+         {" Por favor menciona (en tu moneda, pesos dls, etc) las ventas proyectadas a 12 meses a partir de la fecha de término de este documento:"}
         </p>
         <div className="flex items-stretch justify-between gap-2 w-full mx-auto flex-grow ">
           <div className="w-2/3 flex items-start justify-start mt-5">
@@ -106,7 +104,7 @@ export default function Step31() {
             </div>
           </div>
           <div className="w-1/3 flex items-start justify-start mt-5">
-            <p className=" px-5 text-sm text-primary-100 italic">"Esta proyeccion puede ser proyectada también por bimestres, trimestres y a plazos largos, el ejercicio es una muestra de como realizarlo."</p>
+            <p className=" px-5 text-sm text-primary-100 italic">{'"Esta proyeccion puede ser proyectada también por bimestres, trimestres y a plazos largos, el ejercicio es una muestra de como realizarlo."'}</p>
             </div>
         </div>
         <div className="flex items-center justify-between gap-5 w-full">
