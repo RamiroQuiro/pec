@@ -10,6 +10,9 @@ export const contextUser = create((set, get) => ({
     driver3: {},
     driver4: {},
     driver5: {
+      formulario1:{
+        periodos:[]
+      },
       formulario2: {
         acciones: [
           {
@@ -49,6 +52,84 @@ export const contextUser = create((set, get) => ({
           },
         ],
       },
+      formulario3: {
+        acciones: [
+          {
+            accion: 1,
+            name: "",
+            fechaInicio: "",
+            fechaSalida: "",
+            state: false,
+          },
+          {
+            accion: 2,
+            name: "",
+            fechaInicio: "",
+            fechaSalida: "",
+            state: false,
+          },
+          {
+            accion: 3,
+            name: "",
+            fechaInicio: "",
+            fechaSalida: "",
+            state: false,
+          },
+          {
+            accion: 4,
+            name: "",
+            fechaInicio: "",
+            fechaSalida: "",
+            state: false,
+          },
+          {
+            accion: 5,
+            name: "",
+            fechaInicio: "",
+            fechaSalida: "",
+            state: false,
+          },
+        ],
+      },
+      formulario4: {
+        acciones: [
+          {
+            accion: 1,
+            name: "",
+            fechaInicio: "",
+            fechaSalida: "",
+            state: false,
+          },
+          {
+            accion: 2,
+            name: "",
+            fechaInicio: "",
+            fechaSalida: "",
+            state: false,
+          },
+          {
+            accion: 3,
+            name: "",
+            fechaInicio: "",
+            fechaSalida: "",
+            state: false,
+          },
+          {
+            accion: 4,
+            name: "",
+            fechaInicio: "",
+            fechaSalida: "",
+            state: false,
+          },
+          {
+            accion: 5,
+            name: "",
+            fechaInicio: "",
+            fechaSalida: "",
+            state: false,
+          },
+        ],
+      }
     },
     driver6: {},
     driver7: {},
