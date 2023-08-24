@@ -10,6 +10,9 @@ export const contextUser = create((set, get) => ({
     driver3: {},
     driver4: {},
     driver5: {
+      formulario1:{
+        periodos:[]
+      },
       formulario2: {
         acciones: [
           {
