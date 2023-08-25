@@ -48,9 +48,9 @@ const array = [
 ];
 
 export default function Step31() {
-  const { updateState, formCarga, drivers, activarFlyer } = contextUser(
+  const { updateState, formCarga, drivers, cargarSubPantallas } = contextUser(
     (state) => ({
-      activarFlyer: state.activarFlyer,
+      cargarSubPantallas: state.cargarSubPantallas,
       updateState: state.updateState,
       formCarga: state.formCarga,
       drivers: state.drivers,
@@ -76,7 +76,11 @@ export default function Step31() {
       setForm(array);
     } else {
       // Si el valor existe, mostrar un mensaje de error o hacer otra acción
-      toast.error("El valor ya está utilizado, no se tomara este valor");
+      toast.error("El valor ya está utilizado, no se tomara este valor", {
+        style: {
+          textAlign: "left",
+        },
+      });
     }
   };
 
@@ -86,7 +90,6 @@ export default function Step31() {
       toast.success("puedes editar");
     } else {
       const isComplet = form.some((element) => element.position == "");
-      console.log(isComplet);
       if (isComplet) {
         toast.error("Complete los campos");
       } else {
@@ -98,7 +101,7 @@ export default function Step31() {
         });
         setIsEdit(false);
 
-        activarFlyer(15);
+        cargarSubPantallas(3);
 
         toast.success("Datos Guardados");
       }
@@ -106,7 +109,7 @@ export default function Step31() {
   };
   useEffect(() => {
     setIsLoading(false);
-    console.log(formCarga.driver6.formulario1);
+    if (!formCarga?.driver6?.formulario1) return;
     if (formCarga?.driver6?.formulario1) {
       setForm(formCarga.driver6.formulario1);
       setIsEdit(true);
@@ -133,7 +136,7 @@ export default function Step31() {
               <InputsNumeros
                 key={element.id}
                 id={element.id}
-                value={isLoading ? form[i].position : ""}
+                value={form[i]?.position}
                 onChange={handleChango}
               >
                 {element.children}

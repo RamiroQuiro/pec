@@ -10,11 +10,10 @@ export default function Step34() {
     updateState,
     formCarga,
     activarFlyer,
-    cargarSubPantallas,
-    setCurrentStep,
+    drivers,
   } = contextUser((state) => ({
     updateState: state.updateState,
-    setCurrentStep: state.setCurrentStep,
+    drivers: state.drivers,
     formCarga: state.formCarga,
     cargarSubPantallas: state.cargarSubPantallas,
     cargarForm: state.cargarForm,
@@ -72,6 +71,7 @@ export default function Step34() {
               },
             },
           },
+      
         });
       }
       setForm({});
@@ -97,7 +97,13 @@ export default function Step34() {
       // Manejo de errores adecuado aquí
     }
   };
-  
+  // boton siguiente
+  const handleSiguiente=()=>{
+    activarFlyer(22)
+    updateState({
+      drivers:{...drivers, driver5: {...drivers.driver5, step3: true } }
+    })
+  }
   const handleSelect = (e) => {
     setSeleccionado(e.target.value);
     setNewObj((form) => ({
@@ -244,7 +250,11 @@ export default function Step34() {
           <div className="space-x-4">
             <ButtonLeerMas stepN={21}>Anterior</ButtonLeerMas>
             {select.every((element) => element.state == true) && (
-              <ButtonLeerMas stepN={22}>Siguiente</ButtonLeerMas>
+              <button
+              onClick={handleSiguiente}
+              className="bg-primary-800 text-white rounded font-medium text-xs w-24 py-2.5 disabled:bg-primary-800/50">
+                Siguiente
+              </button>
             )}
           </div>
           <button

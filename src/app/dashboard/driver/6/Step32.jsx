@@ -4,40 +4,68 @@ import React, { useEffect, useState } from "react";
 import ButtonLeerMas from "./ButtonLeerMas";
 import { contextUser } from "@/context/contextUser";
 import { toast } from "react-hot-toast";
-import SelectExample from "../1/SelectExample";
+import InputsNumeros from "./InputsNumeros";
 
-
-
-const select=[
-  {label:"Accion 1",value:"accion1"},
-  {label:"Accion 2",value:"accion2"},
-  {label:"Accion 3",value:"accion3"},
-  {label:"Accion 4",value:"accion4"},
-  {label:"Accion 5",value:"accion5"},
-
-]
+const array = [
+  {
+    id: 1,
+    children: "Alto Agrado de Satifaccion de Clientes",
+    position: "",
+  },
+  {
+    id: 2,
+    children:
+      "Cumplimiento y Metas Comerciales",
+    position: "",
+  },
+  {
+    id: 3,
+    children:
+      "Excelencia en el seguimiento de procesos comerciales",
+    position: "",
+  },
+  {
+    id: 4,
+    children: "Reconocimiento en tu segmento por empresa innovadora",
+    position: "",
+  },
+  
+];
 
 export default function Step32() {
-  const { updateState, formCarga ,activarFlyer,cargarSubPantallas,setCurrentStep} = contextUser((state) => ({
-    updateState: state.updateState,
-    setCurrentStep:state.setCurrentStep,
-    formCarga: state.formCarga,
-    cargarSubPantallas:state.cargarSubPantallas,
-    cargarForm: state.cargarForm,
-    activarFlyer:state.activarFlyer
-  }));
-  const [form, setForm] = useState({});
-  const [isEdit, setIsEdit] = useState(
-    !formCarga?.driver5?.formulario2 ? true : false
+  const { updateState, formCarga, drivers, activarFlyer} = contextUser(
+    (state) => ({
+      activarFlyer: state.activarFlyer,
+      updateState: state.updateState,
+      formCarga: state.formCarga,
+      drivers: state.drivers,
+      setCurrentStep: state.setCurrentStep,
+    })
   );
-  const [selected, setSelected] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [form, setForm] = useState([]);
+  const [isEdit, setIsEdit] = useState(false);
+
+  //onChange
   const handleChango = (e) => {
-    const { name, value } = e.target;
-    setForm((form) =>
-      formCarga?.driver5?.formulario2
-        ? { ...formCarga?.driver5?.formulario2, [name]: value }
-        : { ...form, [name]: value }
+    const { name, value, id } = e.target;
+    const findIndice = array.findIndex((element) => element.id == id);
+    // Comprobar si el valor ya existe en otro objeto del array
+    const isState = array.some(
+      (element) => element.position == value && element.id != id
     );
+    // Si el valor no existe, asignarlo al objeto correspondiente
+    if (!isState) {
+      array[findIndice].position = value;
+      setForm(array);
+    } else {
+      // Si el valor existe, mostrar un mensaje de error o hacer otra acción
+      toast.error("El valor ya está utilizado, no se tomara este valor", {
+        style: {
+          textAlign: "left",
+        },
+      });
+    }
   };
 
   const clickCargaFormulario = () => {
@@ -45,62 +73,64 @@ export default function Step32() {
       setIsEdit(true);
       toast.success("puedes editar");
     } else {
-      if (!form.accion || !form.fechaInicio || !form.fechaSalida) {
+      const isComplet = form.some((element) => element.position == "");
+      if (isComplet) {
         toast.error("Complete los campos");
       } else {
         updateState({
           formCarga: {
             ...formCarga,
-            driver5: {
-              ...formCarga.driver5,
-              formulario2: form,
-            },
+            driver6: { formulario2: form },
           },
         });
-        activarFlyer(0);
-        setCurrentStep(3);
-        cargarSubPantallas(4)
         setIsEdit(false);
+
+        activarFlyer(16);
+
         toast.success("Datos Guardados");
       }
     }
   };
+  useEffect(() => {
+    setIsLoading(false);
+    if (!formCarga?.driver6?.formulario2) return;
+    if (formCarga?.driver6?.formulario2) {
+      setForm(formCarga.driver6.formulario2);
+      setIsEdit(true);
+
+      setIsLoading(true);
+    }
+  }, [formCarga, isLoading]);
+  console.log(form);
+
   return (
     <>
-      <div className=" flex flex-col items-baseline justify-between gap-1 h-full w-full mx-auto text-center">
-        <div className="flex flex-col items-start justify-normal gap-3 text-left">
-          <h2 className="uppercase text-primary-200 text-xl">
-           ventas vs tiempo
-          </h2>
-          <p className="text-primary-200 text-lg tracking-wide leading-relaxed">
-            A continuación haras un desglose de 5 principales acciones que habras de hacer para lograr cada una de tus ESTATEGIAS MADRE:
-          </p>
-        </div>
-        {/* formularios */}
-        <div className="flex items-stretch my-5 flex-grow h-full justify-between gap-2 w-full mx-auto  ">
-          <div className="flex w-1/3  flex-auto flex-col items-start text-left ">
-            <p className="text-sm text-primary-100 font-semibold">Estrategia Madre 1</p>
-          <SelectExample
-          className={"w-full"}
-        selected={selected}
-        setSelected={setSelected}
-        options={select}
-       
-        />
-          </div>
-          <div className="flex w-2/3 px-5 flex-auto flex-col items-center  gap-2">
-            <input type="text" onChange={handleChango} name="accion" placeholder="Accion" className="border w-full py-2.5 px-2 text-sm rounded text-primary-textGris focus:outline-none"/>
-            <div className="flex items-center justify-between w-full gap-2">
-              <input type="date" name="fechaInicio" onChange={handleChango} id="fechaInicio"  className="border py-2 rounded w-1/2 text-primary-textGris text-sm px-3"/>
-              <input type="date" name="fechaSalida" onChange={handleChango} id="fechaSalida"   className="border py-2 rounded w-1/2 text-primary-textGris text-sm px-3"/>
-            </div>
-          </div>
+      <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-full mx-auto text-center">
+        <h2 className="uppercase text-primary-200 text-xl">
+          Definamos lo que para tu empresa es alto rendimiento comercial
+        </h2>
+        <p className="text-primary-200 text-left">
+          {
+            "Prioricemos, responde en orden de importancia lo que para ti represente en tu empresa el ARC, siendo 1 el mas importante y, así sucesivamente:"
+          }
+        </p>
+        <div className="flex items-stretch justify-between py-2 gap-x-8 gap-y-5 w-full mx-auto flex-grow flex-wrap">
+          {array?.map((element, i) => {
+            return (
+              <InputsNumeros
+                key={element.id}
+                id={element.id}
+                value={form[i]?.position}
+                onChange={handleChango}
+              >
+                {element.children}
+              </InputsNumeros>
+            );
+          })}
         </div>
         <div className="flex items-center justify-between gap-5 w-full">
           <div className="space-x-4">
-            <ButtonLeerMas label={"changeSubPantalla"} stepN={2}>
-              Anterior
-            </ButtonLeerMas>
+            <ButtonLeerMas label={"changeSubPantalla"} stepN={2}>Anterior</ButtonLeerMas>
           </div>
           <button
             onClick={clickCargaFormulario}

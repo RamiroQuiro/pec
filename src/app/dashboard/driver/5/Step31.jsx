@@ -113,7 +113,7 @@ export default function Step31() {
       }
       setForm({});
       toast.success(
-        `Mes ${Number(seleccionado)+1}, Guardado con éxito, selecciona una siguiente accion hasta completar las 5 `,
+        `Mes ${Number(seleccionado)+1}, Guardado con éxito, selecciona una siguiente accion hasta completar los 12 meses `,
         {
           position: "top-center",
           style: {
@@ -142,6 +142,7 @@ export default function Step31() {
       value:` mes${Number(e.target.value)+1}`,
     }));
     const array = formCarga?.driver5?.formulario1?.periodos;
+    if (!array)return
     const busquedaEdit = array.findIndex(
       (element) => element.id == e.target.value
     );

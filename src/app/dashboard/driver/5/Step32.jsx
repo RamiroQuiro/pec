@@ -147,9 +147,7 @@ export default function Step32() {
         </div>
         {/* formularios */}
         {/* formularios */}
-        {!isLoading ? (
-          <div>Cargando</div>
-        ) : (
+        {select&& (
           <div className="flex items-stretch my-5 flex-grow h-full justify-between gap-2 w-full mx-auto  ">
             <div className="flex w-1/3  flex-auto flex-col items-start text-left ">
               <p className="text-sm text-primary-100 font-semibold">

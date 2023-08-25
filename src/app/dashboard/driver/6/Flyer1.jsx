@@ -35,10 +35,6 @@ export default function Flyer1() {
       activarFlyer(0);
       setCurrentStep(3);
       cargarSubPantallas(2)
-    }else if (flyerActivo == 21) {
-      activarFlyer(0);
-      setCurrentStep(3);
-      cargarSubPantallas(3)
     }
     else  {
       activarFlyer(flyerActivo + 1);}
@@ -67,15 +63,24 @@ export default function Flyer1() {
       updateState({drivers:{...drivers, driver6: {...drivers.driver6, step1: true } }});
     }
     if (flyerActivo == 14) {
-      setCurrentStep(3);
+      setCurrentStep(3)
       cargarSubPantallas(0)
       updateState({drivers:{...drivers,driver6: { ...drivers.driver6, step2: true }} });
     }
+else if (flyerActivo==26) {
+  setCurrentStep(4)
+      cargarSubPantallas(0)
+      updateState({drivers:{...drivers,driver6: { ...drivers.driver6, step3: true }} });
+}
+else if (flyerActivo==29) {
+      cargarSubPantallas(0)
+      updateState({drivers:{...drivers,driver6: { ...drivers.driver6, step4: true }} });
+}
   
-    else if (flyerActivo == 24) {
+    // else if (flyerActivo == 24) {
     
-      updateState({drivers:{...drivers, driver6: { ...drivers.driver6, step4: true }} });
-    }
+    //   updateState({drivers:{...drivers, driver6: { ...drivers.driver6, step4: true }} });
+    // }
   };
   return (
     <div className="w-full h-full flex relative">
@@ -87,7 +92,7 @@ export default function Flyer1() {
           onClick={handlePreviusFlyer}
           className="w-14 h-14 fill-primary-tonoBlanco rotate-180 cursor-pointer  "
         />
-        {flyerActivo == 2 || flyerActivo == 14 || flyerActivo == 24 ? (
+        {flyerActivo == 2 || flyerActivo == 14|| flyerActivo == 26 || flyerActivo == 29 ? (
           <SVGDiskette
             onClick={handleNextStep}
             className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "
