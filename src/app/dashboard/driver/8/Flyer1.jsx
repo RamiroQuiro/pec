@@ -7,8 +7,10 @@ import {
 import { contextUser } from "@/context/contextUser";
 import RenderFlyer from "./RenderFlyer";
 import { shallow } from "zustand/shallow";
+import { useRouter } from "next/navigation";
 
 export default function Flyer1() {
+  const ruter=useRouter()
   const {
     setCurrentStep,
     activarFlyer,
@@ -36,30 +38,15 @@ export default function Flyer1() {
        setCurrentStep(3);
        cargarSubPantallas(2)
      }
-    // else if (flyerActivo == 21) {
-    //   activarFlyer(0);
-    //   setCurrentStep(3);
-    //   cargarSubPantallas(3)
-    // }
+ 
     else  
       activarFlyer(flyerActivo + 1);
     
   };
   const handlePreviusFlyer = () => {
-    // if (flyerActivo == 3) {
-    //   activarFlyer(0);
-    //   setCurrentStep(2);
-    // } else if (flyerActivo == 16) {
-    //   activarFlyer(0);
-    //   setCurrentStep(3);
-    //   cargarSubPantallas(0);
-    // } else if (flyerActivo == 20) {
-    //   activarFlyer(0);
-    //   setCurrentStep(3);
-    //   cargarSubPantallas(4);
-    // } else {
+    
       activarFlyer(flyerActivo - 1);
-    // }
+   
   };
   const handleNextStep = async () => {
     activarFlyer(0);
@@ -71,12 +58,13 @@ export default function Flyer1() {
       setCurrentStep(3);
       cargarSubPantallas(0)
       updateState({drivers:{...drivers,driver8: { ...drivers.driver8, step2: true }} });
+    }if (flyerActivo == 39) {
+      cargarSubPantallas(0)
+      updateState({drivers:{...drivers,driver8: { ...drivers.driver8, step4: true }} });
+      ruter.push('/dashboard/driver/9')
     }
   
-    // else if (flyerActivo == 16) {
     
-    //   updateState({drivers:{...drivers, driver8: { ...drivers.driver8, step3: true }} });
-    // }
   };
   return (
     <div className="w-full h-full flex relative">
@@ -88,7 +76,7 @@ export default function Flyer1() {
           onClick={handlePreviusFlyer}
           className="w-14 h-14 fill-primary-tonoBlanco rotate-180 cursor-pointer  "
         />
-        {flyerActivo == 3 || flyerActivo == 34 ? (
+        {flyerActivo == 3 || flyerActivo == 34 || flyerActivo == 39 ? (
           <SVGDiskette
             onClick={handleNextStep}
             className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "

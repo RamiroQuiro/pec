@@ -5,60 +5,58 @@ import ButtonLeerMas from "./ButtonLeerMas";
 import { contextUser } from "@/context/contextUser";
 import { toast } from "react-hot-toast";
 
-const arrayCicloVide=[
+const arrayCicloVide = [
   {
-    id:1,
-    label:"Desarrollo"
+    id: 1,
+    label: "Desarrollo",
   },
   {
-    id:2,
-    label:"Introducción"
+    id: 2,
+    label: "Introducción",
   },
   {
-    id:3,
-    label:"Turbulencia"
+    id: 3,
+    label: "Turbulencia",
   },
   {
-    id:4,
-    label:"Crecimiento"
+    id: 4,
+    label: "Crecimiento",
   },
   {
-    id:5,
-    label:"Madurez"
+    id: 5,
+    label: "Madurez",
   },
   {
-    id:6,
-    label:"Declive"
+    id: 6,
+    label: "Declive",
   },
-
-]
-const arrayElementosApoyo=[
+];
+const arrayElementosApoyo = [
   {
-    id:1,
-    label:"Presentación power point"
-  },
-  {
-    id:2,
-    label:"Video promocional"
+    id: 1,
+    label: "Presentación power point",
   },
   {
-    id:3,
-    label:"Brochure informativo impreso"
+    id: 2,
+    label: "Video promocional",
   },
   {
-    id:4,
-    label:"Brochure informativo digital"
+    id: 3,
+    label: "Brochure informativo impreso",
   },
   {
-    id:5,
-    label:"Otros (Showroom)"
+    id: 4,
+    label: "Brochure informativo digital",
   },
   {
-    id:6,
-    label:"Otros (Muestras sin costos)"
+    id: 5,
+    label: "Otros (Showroom)",
   },
-
-]
+  {
+    id: 6,
+    label: "Otros (Muestras sin costos)",
+  },
+];
 
 export default function Step31() {
   const { updateState, formCarga, drivers, cargarSubPantallas } = contextUser(
@@ -70,15 +68,10 @@ export default function Step31() {
       setCurrentStep: state.setCurrentStep,
     })
   );
-  const [select, setSelect] = useState([])
   const [form, setForm] = useState(
-    formCarga?.driver7?.formulario1 ? formCarga?.driver7?.formulario1 : {}
+    formCarga?.driver8?.formulario1 ? formCarga?.driver8?.formulario1 : {}
   );
-  const [isEdit, setIsEdit] = useState(false);
-  const handleChango = (e) => {
-    const { name, value } = e.target;
-    setForm((form) => ({ ...form, [name]: value }));
-  };
+  console.log(form)
 
   const clickCargaFormulario = () => {
     if (!form.elementoApoyo && !form.cicloDeVida) {
@@ -87,7 +80,7 @@ export default function Step31() {
       updateState({
         formCarga: {
           ...formCarga,
-          driver8: { formulario1: form },
+          driver8: { ...formCarga.driver8, formulario1: form },
         },
       });
 
@@ -97,13 +90,13 @@ export default function Step31() {
     }
   };
 
-const handleSelect=(e)=>{
-const {name,value}=e.target
-setForm((form)=>({
-...form,
-[name]:value
-}))
-}
+  const handleSelect = (e) => {
+    const { name, value } = e.target;
+    setForm((form) => ({
+      ...form,
+      [name]: value,
+    }));
+  };
 
   return (
     <>
@@ -114,58 +107,66 @@ setForm((form)=>({
 
         <div className="flex items-stretch justify-between gap-4 w-full mx-auto flex-grow mt-5 h-full  ">
           <div className="flex w-1/2 flex-auto flex-col gap-5 items-start text-left ">
-            <p className="text-primary-200 font-medium">¿En que momento de ciclo de vida de tu producto o servicio te encuentras?</p>
+            <p className="text-primary-200 font-medium">
+              ¿En que momento de ciclo de vida de tu producto o servicio te
+              encuentras?
+            </p>
             <select
-                onChange={handleSelect}
-                name="cicloDeVida"
-                id="cicloDeVida"
-                className="w-full border-2 py-2.5 px-2 rounded text-sm text-primary-textGris"
-              >
-                <option disabled selected className="py-2.5">
+              onChange={handleSelect}
+              name="cicloDeVida"
+              id="cicloDeVida"
+              value={form?.cicloDeVida}
+              className="w-full border-2 py-2.5 px-2 rounded text-sm text-primary-textGris"
+            >
+              <option disabled selected className="py-2.5">
+                {" "}
+                Selecciona
+              </option>
+              {arrayCicloVide?.map((puntaje, i) => (
+                <option
+                  value={puntaje.label}
+                  key={i}
+                  // disabled={puntaje.state}
+                  className={`py-2.5 font-medium `}
+                >
                   {" "}
-                  Selecciona
+                  {puntaje.label}
                 </option>
-                {arrayCicloVide?.map((puntaje, i) => (
-                  <option
-                    value={puntaje.label}
-                    key={i}
-                    // disabled={puntaje.state}
-                    className={`py-2.5 font-medium `}
-                  >
-                    {" "}
-                    {puntaje.label}
-                  </option>
-                ))}
-              </select>
+              ))}
+            </select>
           </div>
           <div className="flex w-1/2 flex-auto flex-col gap-5 items-start text-left ">
-          <p className="text-primary-200 font-medium">¿Que tipo de elementos de apoyo a la venta a la utilizarás?</p>
-          <select
-                onChange={handleSelect}
-                name="elementoApoyo"
-                id="elementoApoyo"
-                className="w-full border-2 py-2.5 px-2 rounded text-sm text-primary-textGris mt-6"
-              >
-                <option disabled selected className="py-2.5">
+            <p className="text-primary-200 font-medium">
+              ¿Que tipo de elementos de apoyo a la venta a la utilizarás?
+            </p>
+            <select
+              onChange={handleSelect}
+              name="elementoApoyo"
+              id="elementoApoyo"
+              value={form?.elementoApoyo}
+              className="w-full border-2 py-2.5 px-2 rounded text-sm text-primary-textGris mt-6"
+            >
+              <option disabled selected className="py-2.5">
+                {" "}
+                Selecciona
+              </option>
+              {arrayElementosApoyo?.map((puntaje, i) => (
+                <option
+                  value={puntaje.label}
+                  key={i}
+                  // disabled={puntaje.state}
+                  className={`py-2.5 font-medium `}
+                >
                   {" "}
-                  Selecciona
+                  {puntaje.label}
                 </option>
-                {arrayElementosApoyo?.map((puntaje, i) => (
-                  <option
-                    value={puntaje.label}
-                    key={i}
-                    // disabled={puntaje.state}
-                    className={`py-2.5 font-medium `}>
-                    {" "}
-                    {puntaje.label}
-                  </option>
-                ))}
-              </select>
+              ))}
+            </select>
           </div>
         </div>
         <div className="flex items-center justify-between gap-5 w-full">
           <div className="space-x-4">
-            <ButtonLeerMas stepN={14}>Anterior</ButtonLeerMas>
+            <ButtonLeerMas stepN={36}>Anterior</ButtonLeerMas>
           </div>
           <button
             onClick={clickCargaFormulario}

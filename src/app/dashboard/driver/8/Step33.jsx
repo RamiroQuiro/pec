@@ -43,14 +43,10 @@ export default function Step33() {
       setCurrentStep: state.setCurrentStep,
     })
   );
-  const [select, setSelect] = useState([])
   const [form, setForm] = useState(
     formCarga?.driver8?.formulario3 ? formCarga?.driver8?.formulario3 : {}
   );
-  const handleChango = (e) => {
-    const { name, value } = e.target;
-    setForm((form) => ({ ...form, [name]: value }));
-  };
+
 
   const clickCargaFormulario = () => {
     if (!form.web && !form.videos) {
@@ -91,6 +87,7 @@ setForm((form)=>({
             <select
                 onChange={handleSelect}
                 name="videos"
+                value={form?.videos}
                 id="videos"
                 className="w-full border-2 py-2.5 px-2 rounded text-sm text-primary-textGris"
               >
@@ -117,6 +114,7 @@ setForm((form)=>({
                 onChange={handleSelect}
                 name="web"
                 id="web"
+                value={form?.web}
                 className="w-full border-2 py-2.5 px-2 rounded text-sm text-primary-textGris "
               >
                 <option disabled selected className="py-2.5">

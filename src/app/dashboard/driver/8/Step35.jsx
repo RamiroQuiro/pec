@@ -7,7 +7,7 @@ import { toast } from "react-hot-toast";
 import { SVGSize, UploadCloud } from "@/app/componentes/SVGComponent";
 
 export default function Step35() {
-  const { updateState, formCarga, drivers, cargarSubPantallas } = contextUser(
+  const { updateState, formCarga, drivers, setCurrentStep} = contextUser(
     (state) => ({
       cargarSubPantallas: state.cargarSubPantallas,
       updateState: state.updateState,
@@ -17,7 +17,7 @@ export default function Step35() {
     })
   );
   const [form, setForm] = useState(
-    formCarga?.driver8?.formulario3 ? formCarga?.driver8?.formulario3 : {}
+    formCarga?.driver8?.formulario5 ? formCarga?.driver8?.formulario5 : {}
   );
   const handleChango = (e) => {
     const { name, value } = e.target;
@@ -25,20 +25,24 @@ export default function Step35() {
   };
 
   const clickCargaFormulario = () => {
-    if (!form.offline && !form.online) {
-      toast.error("Complete los campos");
-    } else {
+    // if (!form.offline && !form.online) {
+    //   toast.error("Complete los campos");
+    // } else {
       updateState({
         formCarga: {
           ...formCarga,
-          driver8: { ...formCarga.driver8, formulario4: form },
+          driver8: { ...formCarga.driver8, formulario5: form },
         },
+        drivers:{
+          ...drivers,
+        driver8: {...drivers.driver8, step3: true } }
+        
       });
 
-      cargarSubPantallas(6);
+      setCurrentStep(4);
 
       toast.success("Datos Guardados");
-    }
+    // }
   };
 
   return (

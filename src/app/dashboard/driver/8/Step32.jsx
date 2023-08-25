@@ -74,14 +74,10 @@ export default function Step32() {
       setCurrentStep: state.setCurrentStep,
     })
   );
-  const [select, setSelect] = useState([])
   const [form, setForm] = useState(
     formCarga?.driver8?.formulario2 ? formCarga?.driver8?.formulario2 : {}
   );
-  const handleChango = (e) => {
-    const { name, value } = e.target;
-    setForm((form) => ({ ...form, [name]: value }));
-  };
+
 
   const clickCargaFormulario = () => {
     if (!form.offline && !form.online) {
@@ -122,6 +118,7 @@ setForm((form)=>({
             <p className="text-primary-100 font-medium">Offline:</p>
             <select
                 onChange={handleSelect}
+                value={form?.offline}
                 name="offline"
                 id="offline"
                 className="w-full border-2 py-2.5 px-2 rounded text-sm text-primary-textGris"
@@ -148,6 +145,7 @@ setForm((form)=>({
           <select
                 onChange={handleSelect}
                 name="online"
+                value={form?.online}
                 id="online"
                 className="w-full border-2 py-2.5 px-2 rounded text-sm text-primary-textGris "
               >
@@ -170,7 +168,7 @@ setForm((form)=>({
         </div>
         <div className="flex items-center justify-between gap-5 w-full">
           <div className="space-x-4">
-            <ButtonLeerMas stepN={14}>Anterior</ButtonLeerMas>
+            <ButtonLeerMas label={"changeSubPantalla"} stepN={3}>Anterior</ButtonLeerMas>
           </div>
           <button
             onClick={clickCargaFormulario}

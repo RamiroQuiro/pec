@@ -17,7 +17,7 @@ export default function Step34() {
     })
   );
   const [form, setForm] = useState(
-    formCarga?.driver8?.formulario3 ? formCarga?.driver8?.formulario3 : {}
+    formCarga?.driver8?.formulario4? formCarga?.driver8?.formulario4 : {}
   );
   const handleChango = (e) => {
     const { name, value } = e.target;
@@ -57,6 +57,7 @@ export default function Step34() {
             <input
                 onChange={handleChango}
                 name="influencer"
+                value={form?.influencer}
                 type="text"
                 placeholder="Ingresar nombre"
                 className="border-2 rounded py-2.5  w-full px-2 focus:outline-none text-sm text-primary-textGris"
@@ -66,8 +67,9 @@ export default function Step34() {
           <p className="text-primary-100 font-medium">¿Qué presupuesto asignarás a la campaña?</p>
           <input
                 onChange={handleChango}
+                value={form?.valorAsignado}
                 name="valorAsignado"
-                type="text"
+                type="number"
                 placeholder="Ingresar Monto"
                 className="border-2 rounded py-2.5  w-full px-2 focus:outline-none text-sm text-primary-textGris"
               />
@@ -76,8 +78,9 @@ export default function Step34() {
           <p className="text-primary-100 font-medium">¿Cuánto tiempo durara la campaña designada?</p>
           <input
                 onChange={handleChango}
+                value={form?.diasProyectados}
                 name="diasProyectados"
-                type="text"
+                type="number"
                 placeholder="Ingresar los días"
                 className="border-2 rounded py-2.5  w-full px-2 focus:outline-none text-sm text-primary-textGris"
               />
@@ -85,7 +88,7 @@ export default function Step34() {
         </div>
         <div className="flex items-center justify-between gap-5 w-full">
           <div className="space-x-4">
-            <ButtonLeerMas label="changeSubPantalla" stepN={3}>Anterior</ButtonLeerMas>
+            <ButtonLeerMas label="changeSubPantalla" stepN={4}>Anterior</ButtonLeerMas>
           </div>
           <button
             onClick={clickCargaFormulario}

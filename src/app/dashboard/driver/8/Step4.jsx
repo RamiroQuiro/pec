@@ -17,10 +17,10 @@ export default function Step4() {
         </div>
         <div className=" flex items-center justify-normal gap-5">
           {" "}
-          <ButtonLeerMas label={"changeStep"} stepN={3}>
+          <ButtonLeerMas label={"changeSubPantalla"} stepN={6} >
             Anterior
           </ButtonLeerMas>
-          <ButtonLeerMas stepN={43}>Leer mas</ButtonLeerMas>
+          <ButtonLeerMas stepN={37}>Leer mas</ButtonLeerMas>
         </div>
       </div>
 
