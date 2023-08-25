@@ -36,7 +36,7 @@ export default function Driver7() {
         ) : (
           <>
             <h2 className="text-2xl text-neutral-800 mt-8 font-medium">
-         {"   Visión Comercial"}
+         {"  Player Project Life"}
             </h2>
 
             <ContenedorPasos />

@@ -24,7 +24,7 @@ function Step({ number, isCurrent ,span,isComplete}) {
           }  flex flex-initial items-center text-center  -bottom-10 justify-center   text-xs font-light mx-auto`}
         >{span}</span>
       </div>
-      {number < 4 && (
+      {number < 3 && (
         <div
         style={{ width:100}}
         className={`${ isComplete?
@@ -45,16 +45,13 @@ const step=[
     },
     {
         id:2,
-        span:"Lo que tienes que saber acerca de la visión comercial",
+        span:"Lo que tienes que saber acerca de los esquemas de motivación al equipo comercial.",
     },
     {
         id:3,
-        span:"Armemos tu modelo de visión comercial",
+        span:"Armemos tu Player Project Life",
     },
-    {
-        id:4,
-        span:"Referencias y lectura",
-    },
+    
 ]
 
 export function Stepper({ currentStep ,isComplete}) {

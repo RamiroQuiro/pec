@@ -9,7 +9,7 @@ export default function Step1() {
       <div className="flex flex-col items-start justify-normal gap-5">
         <h2 className="uppercase text-primary-200 text-xl">Objetivo</h2>
         <p className="text-primary-200  text-xl tracking-wide leading-relaxed">
-          Comencemos a explorar tu quinto Driver, ahora haremos énfasis en tu Visión Comercial.
+          Comencemos a explorar tu septimo Driver, ahora haremos énfasis en tu Player Project Life.
         </p>
         <p className="text-primary-200 mb-10 font-bold text-xl tracking-wide leading-relaxed">
           Estas listo?, <span className="text-primary-100">Vamos!!!</span>

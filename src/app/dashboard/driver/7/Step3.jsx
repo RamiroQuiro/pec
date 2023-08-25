@@ -13,19 +13,19 @@ export default function Step3() {
       {!subPantallas ? (
         <>
       <div className=" flex flex-col items-baseline justify-start gap-5 h-full w-8/12">
-        <h2 className="uppercase text-primary-200 text-xl">ARMEMOS TU MODELO DE VISION COMERCIAL</h2>
+        <h2 className="uppercase text-primary-200 text-xl">ARMEMOS TU Player project life</h2>
         <p className="text-primary-200 text-left text-xl ">
           Genial, vamos avanzando, ahora que te parece si armamos tu{" "}
-          <span className="text-primary-100 font-bold">
-            Modelo de Visión Comercial.
+          <span className="text-primary-100 font-bold capitalize">
+          Player project life.
           </span>
         </p>
         <p className="text-primary-200 mb-10 font-bold text-xl tracking-wide leading-relaxed">
           Estas listo?, <span className="text-primary-100">Vamos!!!</span>
         </p>
         <div className="flex items-center justify-normal gap-5 mt-20">
-          <ButtonLeerMas stepN={13}>Anterior</ButtonLeerMas>
-          <ButtonLeerMas stepN={14}>Ir...</ButtonLeerMas>
+          <ButtonLeerMas stepN={10}>Anterior</ButtonLeerMas>
+          <ButtonLeerMas stepN={11}>Leer mas...</ButtonLeerMas>
         </div>
       </div>
       <div className="w-4/12 h-full relative">

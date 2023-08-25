@@ -62,19 +62,19 @@ export default function Flyer1() {
   };
   const handleNextStep = async () => {
     activarFlyer(0);
-    if (flyerActivo == 8) {
+    if (flyerActivo == 4) {
       setCurrentStep(2);
-      updateState({drivers:{...drivers, driver5: {...drivers.driver5, step1: true } }});
+      updateState({drivers:{...drivers, driver7: {...drivers.driver7, step1: true } }});
     }
-    if (flyerActivo == 13) {
+    if (flyerActivo == 10) {
       setCurrentStep(3);
       cargarSubPantallas(0)
-      updateState({drivers:{...drivers,driver5: { ...drivers.driver5, step2: true }} });
+      updateState({drivers:{...drivers,driver7: { ...drivers.driver7, step2: true }} });
     }
   
-    else if (flyerActivo == 24) {
+    else if (flyerActivo == 16) {
     
-      updateState({drivers:{...drivers, driver5: { ...drivers.driver5, step4: true }} });
+      updateState({drivers:{...drivers, driver7: { ...drivers.driver7, step3: true }} });
     }
   };
   return (
@@ -87,7 +87,7 @@ export default function Flyer1() {
           onClick={handlePreviusFlyer}
           className="w-14 h-14 fill-primary-tonoBlanco rotate-180 cursor-pointer  "
         />
-        {flyerActivo == 8 || flyerActivo == 13 || flyerActivo == 24 ? (
+        {flyerActivo == 4 || flyerActivo == 10 || flyerActivo == 16 ? (
           <SVGDiskette
             onClick={handleNextStep}
             className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "

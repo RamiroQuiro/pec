@@ -80,7 +80,7 @@ export default function Step32() {
         updateState({
           formCarga: {
             ...formCarga,
-            driver6: { formulario2: form },
+            driver6: { ...formCarga.driver6, formulario2: form },
           },
         });
         setIsEdit(false);
