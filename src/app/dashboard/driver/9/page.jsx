@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import Flyer1 from "./Flyer1";
 import { useEffect } from "react";
 
-export default function Driver8() {
+export default function Driver9() {
   const path = usePathname();
   const router = useRouter();
   const driver = path.split("/")[3];
@@ -35,7 +35,7 @@ export default function Driver8() {
         ) : (
           <>
             <h2 className="text-2xl text-neutral-800 mt-8 font-medium">
-         {" Sistema de Ventas Inteligentes"}
+         {"Metodología de Seguimiento Efectivo"}
             </h2>
 
             <ContenedorPasos />
