@@ -33,7 +33,7 @@ export default function RenderFlyer() {
     const diapos=[]
     const importDiapos=async()=>{
         for (let i = 2; i <= 23; i++) {
-          const diapositiva= await import(`../../../../../public/driver2/Diapositiva${i}.jpg`);
+          const diapositiva= await import(`../../../../../public/driver2/Diapositiva${i}.webp`);
           diapos.push(diapositiva.default)          
         }
         setDiapositivas(diapos);
