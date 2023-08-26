@@ -46,6 +46,7 @@ updateState:state.updateState,
         formCarga:{
           ...formCarga,
         driver1: {
+          ...formCarga.driver1,
           formulario1: {
             slect1: selected,
             slect2: selected2,
@@ -58,7 +59,6 @@ updateState:state.updateState,
   }, [selected, selected2, selected3]);
 
 
-  console.log(formCarga)
   return (
     <>
       <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-full mx-auto text-center">

@@ -19,7 +19,8 @@ const tw = createTw({
 
 export default function PDFEntregable({ data, session, label }) {
   const { driver1 } = data;
-  console.log(data);
+  console.log(driver1);
+  console.log('seesion de usuario ->',session)
 
   return (
     <Document>
@@ -54,17 +55,17 @@ export default function PDFEntregable({ data, session, label }) {
           </View>
           <ComponentePDFRenderSelecciones
             key={1}
-            array={driver1?.spet31?.slect1}
+            array={driver1?.formulario1?.slect1}
             title={"¿Para que esta hecho tu Área Comercial?"}
           />
           <ComponentePDFRenderSelecciones
             key={2}
-            array={driver1?.spet31?.slect2}
+            array={driver1?.formulario1?.slect2}
             title={"¿A quien esta dirigida tu Misión Comercial?"}
           />
           <ComponentePDFRenderSelecciones
             key={3}
-            array={driver1?.spet31?.slect3}
+            array={driver1?.formulario1?.slect3}
             title={"¿Que es importante para tu Área Comercial?"}
           />
           <View
@@ -87,7 +88,7 @@ export default function PDFEntregable({ data, session, label }) {
           </View>{" "}
           <ComponentePDFRenderSelecciones
             key={4}
-            array={driver1?.spet33?.select}
+            array={driver1?.formulario3}
             title={"3 Valores más importantes para tu equipo comercial"}
           />
         </View>{" "}

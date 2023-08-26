@@ -9,7 +9,7 @@ export default function Step32() {
   const updateState = contextUser((state) => state.updateState);
   const drivers = contextUser((state) => state.drivers);
   const cargarSubPantallas = contextUser((state) => state.cargarSubPantallas);
-  const [textArea, setTextArea] = useState(formCarga);
+  const [textArea, setTextArea] = useState(formCarga?.driver1?.misionComercial?formCarga?.driver1?.misionComercial:"");
   const handleText = (e) => {
     setTextArea((state) => ({ ...state, driver1:{...state.driver1,[e.target.name]: e.target.value }}));
   };
@@ -20,7 +20,7 @@ export default function Step32() {
         ...formCarga,
         driver1:{
           ...formCarga.driver1,
-          misionComercial:textArea
+          misionComercial:textArea.misionComercial
         }
       }
     });

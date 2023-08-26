@@ -237,7 +237,19 @@ const UserSchema = new Schema({
     driver10:{
       type:Object,
     },
-  }
+  },
+  entregables: {
+    pdfDriver1: Buffer,
+    pdfDriver2: Buffer,
+    pdfDriver3: Buffer,
+    pdfDriver4: Buffer,
+    pdfDriver5: Buffer,
+    pdfDriver6: Buffer,
+    pdfDriver7: Buffer,
+    pdfDriver8: Buffer,
+    pdfDriver9: Buffer,
+    pdfDriver10: Buffer,
+  },
 });
 
 const User = models.User || model("User", UserSchema);

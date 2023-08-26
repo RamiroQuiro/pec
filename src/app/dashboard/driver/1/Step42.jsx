@@ -6,7 +6,7 @@ import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
 import { contextUser } from "@/context/contextUser";
 import { useSession } from "next-auth/react";
-import { PDFDownloadLink } from "@react-pdf/renderer";
+import { PDFDownloadLink, pdf } from "@react-pdf/renderer";
 import PDFEntregable from "./PDFEntregable";
 import { useState } from "react";
 import LoadingCss from "@/app/componentes/LoadingCss";
@@ -30,7 +30,19 @@ const [isSucces, setIsSucces] = useState(false)
   const handleGuardar = async () => {
     setIsLoading(true);
     try {
-      updateState({drivers:{...drivers, driver1: { step1: true, step2: true,step3: true,step4: true } }})
+      const pdfData = await pdf(<PDFEntregable data={formCarga} session={data} />).toBlob();
+      console.log(pdfData)
+      const arrayBuffer= await pdfData.arrayBuffer()
+      const buffer=Buffer.from(arrayBuffer)
+      const base64 = buffer.toString('base64');
+      console.log(buffer)
+      updateState({drivers:{...drivers, driver1: {...drivers.driver1, step1: true } }})
+      const mandamonMail= await axios.post('/api/sendemail', {
+        body: formCarga,
+        mail: data?.user.email,
+        pdfData:base64
+      })
+      console.log(mandamonMail)
       setIsLoading(false)
       setIsSucces(true)
     } catch (error) {
@@ -62,17 +74,17 @@ const [isSucces, setIsSucces] = useState(false)
         </div>
         <div className="flex items-center justify-normal gap-5">
           <ButtonLeerMas stepN={24}>Anterior</ButtonLeerMas>
-          {/* <PDFDownloadLink
+          <PDFDownloadLink
             document={<PDFEntregable data={formCarga} session={data} />}
             fileName="PEC.pdf"
-          > */}
+          >
             <button
               onClick={handleGuardar}
               className="bg-primary-100 text-white rounded font-medium text-xs px-4 py-2"
             >
               Guardar
             </button>
-          {/* </PDFDownloadLink> */}
+          </PDFDownloadLink>
         </div>
       </div>
       <div className="w-4/12  mx-auto h-full relative">

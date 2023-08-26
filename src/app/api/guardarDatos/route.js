@@ -3,7 +3,7 @@ import User from "@/models/user";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
-const {formCarga,drivers,email}=await request.json()
+const {formCarga,drivers,email,pdf}=await request.json()
 
 
 try {
@@ -17,6 +17,7 @@ if (!userFind) {
 }
 userFind.formCarga=formCarga
 userFind.drivers=drivers
+userFind.entregables.drivers1=pdf
 await userFind.save()
 return NextResponse.json({
     status:true,
