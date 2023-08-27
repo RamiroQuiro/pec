@@ -1,9 +1,9 @@
 "use client";
 
-import { Document, Page, View, Text, Image } from "@react-pdf/renderer";
+import { Document, Page, View, Text, Svg, Path } from "@react-pdf/renderer";
 import { createTw } from "react-pdf-tailwind";
 import CabeceraPDF from "@/app/componentes/CabeceraPDF";
-import ComponentePDFRenderSelecciones from "@/app/componentes/ComponentePDFRenderSelecciones";
+import FooterPDF from "@/app/componentes/FooterPDF";
 const tw = createTw({
   theme: {
     fontFamily: {
@@ -18,15 +18,14 @@ const tw = createTw({
 });
 
 export default function PDFEntregable({ data, session, label }) {
-  const { driver1 } = data;
   console.log(data);
-
   return (
     <Document>
       <Page
         style={{
           height: "90vh",
           fontSize: "10",
+          paddingTop: "20px",
         }}
         orientation=""
         size={"A4"}
@@ -35,62 +34,58 @@ export default function PDFEntregable({ data, session, label }) {
         <CabeceraPDF />
         <View
           style={tw(
-            "flex flex-col items-start justify-center flex-grow w-11/12  mx-auto rounded-lg overflow-hidden"
+            "flex flex-col items-start justify-center flex-grow w-11/12  mx-auto rounded-lg overflow-hidden text-[#00699C]"
           )}
         >
+          {/* Titulo del Entregable */}
           <View
             style={tw(
-              "flex flex-row  border-b mb-5 p-5 items-center gap-2 justify-center flex-grow w-full mx-auto rounded-lg overflow-hidden"
+              "flex flex-row  border-b mb-5 p-5 items-center gap-4 justify-center flex-grow w-full mx-auto rounded-lg overflow-hidden"
             )}
           >
             <Text
-              style={tw("font-medium text font-black capitalize text-gray-700")}
+              style={tw(
+                "font-medium text-xl font-black capitalize  text-[#00699C]"
+              )}
             >
-              {session?.user?.fullName} |
-            </Text>
-            <Text style={tw("font-medium text font-bold text-gray-700")}>
-              {session?.user?.email}
+              ENTREGABLE DRIVER 5: VISIÓN COMERCIAL (VC)
             </Text>
           </View>
-          <ComponentePDFRenderSelecciones
-            key={1}
-            array={driver1?.spet31?.slect1}
-            title={"¿Para que esta hecho tu Área Comercial?"}
-          />
-          <ComponentePDFRenderSelecciones
-            key={2}
-            array={driver1?.spet31?.slect2}
-            title={"¿A quien esta dirigida tu Misión Comercial?"}
-          />
-          <ComponentePDFRenderSelecciones
-            key={3}
-            array={driver1?.spet31?.slect3}
-            title={"¿Que es importante para tu Área Comercial?"}
-          />
           <View
             style={tw(
               "flex flex-col items-start gap-2 justify-center flex-grow w-full my-5 mx-auto rounded-lg"
             )}
           >
-            <Text style={tw("font-bold text-lg text-left text-[#00A1A5]")}>
-              Tu Misión Comercial
+            <Text style={tw("font-medium text-lg text-left text-[#00699C]")}>
+            GRFICO DE LA VISIÓN COMERCIAL
             </Text>
             <View
               style={tw(
-                "flex flex-col items-start gap-2 justify-center flex-grow w-11/12 mx-auto rounded-lg "
+                "flex flex-row items-start gap-2 justify-start mb-5 flex-grow w-11/12 mx-auto rounded-lg "
               )}
             >
-              <Text style={tw("font-bold text-left text-[#323639] ")}>
-                {driver1?.misionComercial}
+              <Text
+                style={tw("font-medium text-xl text-left   text-[#00699C]")}
+              >
+                {data?.formulario1?.filosofiaPersonal}
               </Text>
             </View>
+        
+            <View
+              style={tw(
+                "flex flex-col items-start gap-2 mt-16 justify-start mb-10 flex-grow w-full mx-auto rounded-lg "
+              )}
+            >
+              {/* Valor 1 */}
+              <Text style={tw("font-bold text-lg text-left text-[#00699C]")}>
+              En un solo gráfico está plasmada toda la <Text style={tw("font-bold text-lg text-left text-[#F06144]")}>VISIÓN COMERCIAL</Text> de tu empresa, ésta es diferente a la <Text style={tw("font-bold text-lg text-left text-[#F06144]")}> VISIÓN GENERAL</Text> de la empresa, finalmente el área comercial es evaluada por resultados (números) pero su actuar tiene que tener bases sólidas como la filosofía, los valores, etc para poder construir un equipo a <Text style={tw("font-bold text-lg text-left text-[#F06144]")}>PERPETUIDAD</Text> y no solo de una temporada.
+
+              </Text>
+         
           </View>{" "}
-          <ComponentePDFRenderSelecciones
-            key={4}
-            array={driver1?.spet33?.select}
-            title={"3 Valores más importantes para tu equipo comercial"}
-          />
+          </View>{" "}
         </View>{" "}
+        <FooterPDF />
       </Page>{" "}
     </Document>
   );
