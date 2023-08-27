@@ -11,7 +11,7 @@ export default function PreviewPDF() {
 
 
   return (
-    <PDFViewer className="w-full rounded-lg  h-[90vh] " width={"90%"}>
+    <PDFViewer className="w-full rounded-lg  h-[90vh] " width={"100%"}>
 
       <PDFEntregable data={formCarga} session={data} />
     </PDFViewer>

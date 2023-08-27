@@ -1,8 +1,9 @@
 "use client";
 
-import { Document, Page, View, Text } from "@react-pdf/renderer";
+import { Document, Page, View, Text, Svg, Path } from "@react-pdf/renderer";
 import { createTw } from "react-pdf-tailwind";
 import CabeceraPDF from "@/app/componentes/CabeceraPDF";
+import FooterPDF from "@/app/componentes/FooterPDF";
 const tw = createTw({
   theme: {
     fontFamily: {
@@ -17,8 +18,6 @@ const tw = createTw({
 });
 
 export default function PDFEntregable({ data, session, label }) {
-  console.log(data);
-
   return (
     <Document>
       <Page
@@ -126,17 +125,22 @@ export default function PDFEntregable({ data, session, label }) {
             </Text>
             {/* //CUARTO items */}
             <Text style={tw("font-bold text-lg text-left text-[#00A1A5] ")}>
-              {"4.- Evaluación de conocimiento de producto para mi equipo comercial"}
+              {
+                "4.- Evaluación de conocimiento de producto para mi equipo comercial"
+              }
             </Text>
             <Text style={tw("font-bold text-left text-[#00699C] ")}>
-                Anexar formato del usuario
-              </Text>
+              Anexar formato del usuario
+            </Text>
             {/* //QUINTO items */}
-            <Text style={tw("font-bold text-lg text-left text-[#00A1A5] mt-10 ")}>
+            <Text
+              style={tw("font-bold text-lg text-left text-[#00A1A5] mt-10 ")}
+            >
               {"5.- Grafico Visual de ubicación de mi marca:"}
             </Text>
           </View>{" "}
         </View>{" "}
+       <FooterPDF/>
       </Page>{" "}
     </Document>
   );

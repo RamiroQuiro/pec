@@ -7,13 +7,14 @@ import PDFEntregable from "../PDFEntregable";
 export default function PreviewPDF() {
   const { data } = useSession();
   const formCarga = contextUser((state) => state.formCarga);
+  console.log( formCarga);
 
 
 
     return (
       <PDFViewer className="w-full rounded-lg mt-32  h-[90vh] " width={"90%"}>
 
-        <PDFEntregable data={formCarga?.driver2} session={data} />
+        <PDFEntregable data={formCarga?.driver3} session={data} />
       </PDFViewer>
 
     );

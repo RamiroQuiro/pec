@@ -30,7 +30,7 @@ const [isSucces, setIsSucces] = useState(false)
   const handleGuardar = async () => {
     setIsLoading(true);
     try {
-      const pdfData = await pdf(<PDFEntregable data={formCarga} session={data} />).toBlob();
+      const pdfData = await pdf(<PDFEntregable data={formCarga?.driver1} session={data} />).toBlob();
       const arrayBuffer= await pdfData.arrayBuffer()
       const buffer=Buffer.from(arrayBuffer)
       const base64 = buffer.toString('base64');
