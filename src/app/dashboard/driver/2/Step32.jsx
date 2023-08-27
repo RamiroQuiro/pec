@@ -11,13 +11,15 @@ export default function Step32() {
     formCarga: state.formCarga,
     cargarForm: state.cargarForm,
   }));
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState(
+    formCarga?.driver2?.formulario2? formCarga?.driver2?.formulario2 : {}
+  );
   const [isEdit, setIsEdit] = useState(
     !formCarga?.driver2?.formulario1  ? true : false
   );
   const handleChango = (e) => {
     const { name, value } = e.target;
-    setForm((form) => (formCarga?.driver2?.formulario1  ?{ ...formCarga?.driver2?.formulario1, [name]: value }:{...form,[name]:value}));
+    setForm((form) => ({...form,[name]:value}));
   };
 
   const clickCargaFormulario = () => {
@@ -25,7 +27,7 @@ export default function Step32() {
       setIsEdit(true);
       toast.success("puedes editar");
     } else {
-      if (!form.producto1 && !form.producto2) {
+      if (!form.producto1 && !form.competencia) {
         toast.error("Complete los campos");
       } else {
       updateState({

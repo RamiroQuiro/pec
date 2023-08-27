@@ -12,20 +12,22 @@ export default function Step33() {
     formCarga: state.formCarga,
     cargarForm: state.cargarForm,
   }));
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState(
+    formCarga?.driver2?.formulario3? formCarga?.driver2?.formulario3 : {}
+  );
   const [isEdit, setIsEdit] = useState(
     !formCarga?.driver2?.formulario1  ? true : false
   );
   const handleChango = (e) => {
     const { name, value } = e.target;
-    setForm((form) => (formCarga?.driver2?.formulario1  ?{ ...formCarga?.driver2?.formulario1, [name]: value }:{...form,[name]:value}));
+    setForm((form) => ({...form,[name]:value}));
   };
   const clickCargaFormulario = () => {
     if (!isEdit) {
       setIsEdit(true);
       toast.success("puedes editar");
     } else {
-      if (!form.producto1 && !form.producto2) {
+      if (!form.producto2 && !form.competencia) {
         toast.error("Complete los campos");
       } else {
       updateState({
@@ -76,7 +78,7 @@ export default function Step33() {
             />
           </div>
           <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
-            <label htmlFor="producto2" className="text-primary-100">
+            <label htmlFor="competencia" className="text-primary-100">
               Competencia:
             </label>
             <textarea
