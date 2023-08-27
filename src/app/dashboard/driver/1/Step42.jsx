@@ -36,7 +36,7 @@ const [isSucces, setIsSucces] = useState(false)
       const buffer=Buffer.from(arrayBuffer)
       const base64 = buffer.toString('base64');
       console.log(buffer)
-      updateState({drivers:{...drivers, driver1: {...drivers.driver1, step1: true } }})
+      updateState({drivers:{...drivers, driver1: {...drivers.driver1, step4: true } }})
       const mandamonMail= await axios.post('/api/sendemail', {
         body: formCarga,
         mail: data?.user.email,

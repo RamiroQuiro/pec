@@ -11,7 +11,7 @@ export default function Step32() {
   const cargarSubPantallas = contextUser((state) => state.cargarSubPantallas);
   const [textArea, setTextArea] = useState(formCarga?.driver1?.misionComercial?formCarga?.driver1?.misionComercial:"");
   const handleText = (e) => {
-    setTextArea((state) => ({ ...state, driver1:{...state.driver1,[e.target.name]: e.target.value }}));
+    setTextArea(e.target.value);
   };
   
   const clickCargaFormulario = () => {
@@ -20,7 +20,7 @@ export default function Step32() {
         ...formCarga,
         driver1:{
           ...formCarga.driver1,
-          misionComercial:textArea.misionComercial
+          misionComercial:textArea
         }
       }
     });
