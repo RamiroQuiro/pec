@@ -17,10 +17,10 @@ const tw = createTw({
   },
 });
 
+
 export default function PDFEntregable({ data, session, label }) {
   const { driver1 } = data;
   console.log(driver1);
-  console.log('seesion de usuario ->',session)
 
   return (
     <Document>

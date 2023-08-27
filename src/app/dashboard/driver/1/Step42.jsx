@@ -31,18 +31,16 @@ const [isSucces, setIsSucces] = useState(false)
     setIsLoading(true);
     try {
       const pdfData = await pdf(<PDFEntregable data={formCarga} session={data} />).toBlob();
-      console.log(pdfData)
       const arrayBuffer= await pdfData.arrayBuffer()
       const buffer=Buffer.from(arrayBuffer)
       const base64 = buffer.toString('base64');
-      console.log(buffer)
       updateState({drivers:{...drivers, driver1: {...drivers.driver1, step4: true } }})
-      const mandamonMail= await axios.post('/api/sendemail', {
-        body: formCarga,
-        mail: data?.user.email,
-        pdfData:base64
-      })
-      console.log(mandamonMail)
+      // const mandamonMail= await axios.post('/api/sendemail', {
+      //   body: formCarga,
+      //   mail: data?.user.email,
+      //   pdfData:base64
+      // })
+      // console.log(mandamonMail)
       setIsLoading(false)
       setIsSucces(true)
     } catch (error) {
