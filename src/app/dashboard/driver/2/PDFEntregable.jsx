@@ -36,6 +36,7 @@ export default function PDFEntregable({ data, session, label }) {
             "flex flex-col items-start justify-center flex-grow w-11/12  mx-auto rounded-lg overflow-hidden text-[#00699C]"
           )}
         >
+          {/* Titulo del Entregable */}
           <View
             style={tw(
               "flex flex-row  border-b mb-5 p-5 items-center gap-4 justify-center flex-grow w-full mx-auto rounded-lg overflow-hidden"
