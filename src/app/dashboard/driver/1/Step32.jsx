@@ -39,6 +39,7 @@ export default function Step32() {
           <textarea
             onChange={handleText}
             name="misionComercial"
+            value={textArea}
             id="misionComercial"
             className="border-2 rounded-lg p-3 w-full"
             rows="10"

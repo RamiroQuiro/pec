@@ -22,7 +22,10 @@ import { useSession } from "next-auth/react";
 import { pdf } from "@react-pdf/renderer";
 import axios from "axios";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import LoadingCss from "@/app/componentes/LoadingCss";
 export default function Flyer1() {
+  const router = useRouter();
   const { data } = useSession();
   const [isLoading, setIsLoading] = useState(false);
   const {
@@ -65,14 +68,15 @@ export default function Flyer1() {
     activarFlyer(flyerActivo - 1);
   };
   const handleNextStep = async () => {
-    activarFlyer(0);
     if (flyerActivo == 2) {
+      activarFlyer(0);
       setCurrentStep(2);
       updateState({
         drivers: { ...drivers, driver10: { ...drivers.driver10, step1: true } },
       });
     }
     if (flyerActivo == 8) {
+      activarFlyer(0);
       setCurrentStep(3);
       cargarSubPantallas(0);
       updateState({
@@ -80,6 +84,7 @@ export default function Flyer1() {
       });
     } else if (flyerActivo == 12) {
       try {
+        setIsLoading(true);
         // Crear un array de componentes PDF
         const pdfComponents = [
           <PDFEntregable1 key={1} data={formCarga?.driver1} session={data} />,
@@ -120,6 +125,8 @@ export default function Flyer1() {
           entregables: buffearPdfs,
         });
         console.log(mandamonMail);
+
+        router.push("/dashboard/completeDrivers1532165");
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -127,7 +134,11 @@ export default function Flyer1() {
       }
     }
   };
-  return (
+  return (<>
+  {
+    isLoading&&
+    <LoadingCss/>
+  }
     <div className="w-full h-full flex relative">
       <RenderFlyer />
 
@@ -149,5 +160,6 @@ export default function Flyer1() {
         )}
       </div>
     </div>
+    </>
   );
 }

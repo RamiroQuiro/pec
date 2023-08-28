@@ -1,3 +1,4 @@
+"use client"
 import {
   DownloadCloud,
   SVGDiskette,
@@ -7,8 +8,13 @@ import {
 import { contextUser } from "@/context/contextUser";
 import RenderFlyer from "./RenderFlyer";
 import { shallow } from "zustand/shallow";
+import { useRouter } from "next/navigation";
+import LoadingCss from "@/app/componentes/LoadingCss";
+import { useState } from "react";
 
 export default function Flyer1() {
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter();
   const {
     setCurrentStep,
     activarFlyer,
@@ -71,11 +77,25 @@ export default function Flyer1() {
       updateState({drivers:{...drivers,driver3: { ...drivers.driver3, step3: true }} });
     }
     else if (flyerActivo == 14) {
-    
+      setIsLoading(true)
+      try {
+        
       updateState({drivers:{...drivers, driver3: { ...drivers.driver3,step4:true}} });
+      setCurrentStep(1)
+      activarFlyer(0)
+      router.push("/dashboard/driver/3/drivercomplet");
+      setIsLoading(false)
+    } catch (error) {
+      console.log(error)
+      setIsLoading(false)
+    }
     }
   };
   return (
+      <>{
+    isLoading&&
+    <LoadingCss/>
+  }
     <div className="w-full h-full flex relative">
       <RenderFlyer />
 
@@ -117,6 +137,6 @@ export default function Flyer1() {
           />
         )}
       </div>
-    </div>
+    </div></>
   );
 }

@@ -1,3 +1,4 @@
+"use client";
 import {
   DownloadCloud,
   SVGDiskette,
@@ -7,8 +8,13 @@ import {
 import { contextUser } from "@/context/contextUser";
 import RenderFlyer from "./RenderFlyer";
 import { shallow } from "zustand/shallow";
+import { useRouter } from "next/navigation";
+import LoadingCss from "@/app/componentes/LoadingCss";
+import { useState } from "react";
 
 export default function Flyer1() {
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   const {
     setCurrentStep,
     activarFlyer,
@@ -20,7 +26,7 @@ export default function Flyer1() {
   } = contextUser(
     (state) => ({
       drivers: state.drivers,
-      updateState:state.updateState,
+      updateState: state.updateState,
       setCurrentStep: state.setCurrentStep,
       flyerActivo: state.flyerActivo,
       activarFlyer: state.activarFlyer,
@@ -34,65 +40,68 @@ export default function Flyer1() {
     if (flyerActivo == 15) {
       activarFlyer(0);
       setCurrentStep(3);
-      cargarSubPantallas(2)
+      cargarSubPantallas(2);
+    } else {
+      activarFlyer(flyerActivo + 1);
     }
-    else  {
-      activarFlyer(flyerActivo + 1);}
-    
   };
   const handlePreviusFlyer = () => {
-    // if (flyerActivo == 3) {
-    //   activarFlyer(0);
-    //   setCurrentStep(2);
-    // } else if (flyerActivo == 16) {
-    //   activarFlyer(0);
-    //   setCurrentStep(3);
-    //   cargarSubPantallas(0);
-    // } else if (flyerActivo == 20) {
-    //   activarFlyer(0);
-    //   setCurrentStep(3);
-    //   cargarSubPantallas(4);
-    // } else {
-      activarFlyer(flyerActivo - 1);
-    // }
+    activarFlyer(flyerActivo - 1);
   };
   const handleNextStep = async () => {
     activarFlyer(0);
     if (flyerActivo == 2) {
       setCurrentStep(2);
-      updateState({drivers:{...drivers, driver6: {...drivers.driver6, step1: true } }});
+      updateState({
+        drivers: { ...drivers, driver6: { ...drivers.driver6, step1: true } },
+      });
     }
     if (flyerActivo == 14) {
-      setCurrentStep(3)
-      cargarSubPantallas(0)
-      updateState({drivers:{...drivers,driver6: { ...drivers.driver6, step2: true }} });
+      setCurrentStep(3);
+      cargarSubPantallas(0);
+      updateState({
+        drivers: { ...drivers, driver6: { ...drivers.driver6, step2: true } },
+      });
+    } else if (flyerActivo == 26) {
+      setCurrentStep(4);
+      cargarSubPantallas(0);
+      updateState({
+        drivers: { ...drivers, driver6: { ...drivers.driver6, step3: true } },
+      });
+    } else if (flyerActivo == 29) {
+      cargarSubPantallas(0);
+      setIsLoading(true);
+      try {
+        updateState({
+          drivers: { ...drivers, driver6: { ...drivers.driver6, step4: true } },
+        });
+        setCurrentStep(1);
+        activarFlyer(0);
+        router.push("/dashboard/driver/6/drivercomplet");
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+        setIsLoading(false);
+      }
     }
-else if (flyerActivo==26) {
-  setCurrentStep(4)
-      cargarSubPantallas(0)
-      updateState({drivers:{...drivers,driver6: { ...drivers.driver6, step3: true }} });
-}
-else if (flyerActivo==29) {
-      cargarSubPantallas(0)
-      updateState({drivers:{...drivers,driver6: { ...drivers.driver6, step4: true }} });
-}
-  
-    // else if (flyerActivo == 24) {
-    
-    //   updateState({drivers:{...drivers, driver6: { ...drivers.driver6, step4: true }} });
-    // }
+
+
   };
   return (
+    <>
+    {isLoading && <LoadingCss />}
     <div className="w-full h-full flex relative">
       <RenderFlyer />
 
       <div className="w-full absolute bottom-20 left-3 z-30 flex items-center justify-between px-10 gap-3">
-
         <SvgNextVideo
           onClick={handlePreviusFlyer}
           className="w-14 h-14 fill-primary-tonoBlanco rotate-180 cursor-pointer  "
         />
-        {flyerActivo == 2 || flyerActivo == 14|| flyerActivo == 26 || flyerActivo == 29 ? (
+        {flyerActivo == 2 ||
+        flyerActivo == 14 ||
+        flyerActivo == 26 ||
+        flyerActivo == 29 ? (
           <SVGDiskette
             onClick={handleNextStep}
             className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "
@@ -105,5 +114,6 @@ else if (flyerActivo==29) {
         )}
       </div>
     </div>
+    </>
   );
 }

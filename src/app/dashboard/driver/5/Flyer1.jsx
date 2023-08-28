@@ -1,3 +1,5 @@
+
+"use client"
 import {
   DownloadCloud,
   SVGDiskette,
@@ -8,7 +10,13 @@ import { contextUser } from "@/context/contextUser";
 import RenderFlyer from "./RenderFlyer";
 import { shallow } from "zustand/shallow";
 
+import { useRouter } from "next/navigation";
+import LoadingCss from "@/app/componentes/LoadingCss";
+import { useState } from "react";
+
 export default function Flyer1() {
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter()
   const {
     setCurrentStep,
     activarFlyer,
@@ -45,20 +53,9 @@ export default function Flyer1() {
     
   };
   const handlePreviusFlyer = () => {
-    // if (flyerActivo == 3) {
-    //   activarFlyer(0);
-    //   setCurrentStep(2);
-    // } else if (flyerActivo == 16) {
-    //   activarFlyer(0);
-    //   setCurrentStep(3);
-    //   cargarSubPantallas(0);
-    // } else if (flyerActivo == 20) {
-    //   activarFlyer(0);
-    //   setCurrentStep(3);
-    //   cargarSubPantallas(4);
-    // } else {
+  
       activarFlyer(flyerActivo - 1);
-    // }
+ 
   };
   const handleNextStep = async () => {
     activarFlyer(0);
@@ -73,11 +70,22 @@ export default function Flyer1() {
     }
   
     else if (flyerActivo == 24) {
-    
+      setIsLoading(true);
+      try {
       updateState({drivers:{...drivers, driver5: { ...drivers.driver5, step4: true }} });
+      setCurrentStep(1);
+      activarFlyer(0);
+      router.push("/dashboard/driver/5/drivercomplet");
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
     }
   };
   return (
+     <>
+      {isLoading && <LoadingCss />}
     <div className="w-full h-full flex relative">
       <RenderFlyer />
 
@@ -99,6 +107,6 @@ export default function Flyer1() {
           />
         )}
       </div>
-    </div>
+    </div></>
   );
 }

@@ -30,11 +30,12 @@ const [isSucces, setIsSucces] = useState(false)
   const handleGuardar = async () => {
     setIsLoading(true);
     try {
-      const pdfData = await pdf(<PDFEntregable data={formCarga?.driver1} session={data} />).toBlob();
-      const arrayBuffer= await pdfData.arrayBuffer()
-      const buffer=Buffer.from(arrayBuffer)
-      const base64 = buffer.toString('base64');
+      // const pdfData = await pdf(<PDFEntregable data={formCarga?.driver1} session={data} />).toBlob();
+      // const arrayBuffer= await pdfData.arrayBuffer()
+      // const buffer=Buffer.from(arrayBuffer)
+      // const base64 = buffer.toString('base64');
       updateState({drivers:{...drivers, driver1: {...drivers.driver1, step4: true } }})
+      router.push('/dashboard/driver/1/drivercomplet')
       // const mandamonMail= await axios.post('/api/sendemail', {
       //   body: formCarga,
       //   mail: data?.user.email,
@@ -48,18 +49,15 @@ const [isSucces, setIsSucces] = useState(false)
       setIsLoading(false)
       
     }
-   
   };
-  if (isSucces) {
-    return <ConfirmacionExitosa
-    numero={"primer"}
-    proximoDriver={"segundo"}
-    onclick={()=>setIsSucces(false)}
-    />
-  }
+ 
   return (
     <>
-   
+    {
+      isLoading&&
+      <LoadingCss/>
+    }
+    <>
       <div className=" flex flex-col items-start justify-between gap-3 h-full w-8/12 text-center">
         <div className="text-left space-y-5">
           <h2 className="uppercase text-primary-200 text-xl">
@@ -72,17 +70,17 @@ const [isSucces, setIsSucces] = useState(false)
         </div>
         <div className="flex items-center justify-normal gap-5">
           <ButtonLeerMas stepN={24}>Anterior</ButtonLeerMas>
-          <PDFDownloadLink
+          {/* <PDFDownloadLink
             document={<PDFEntregable data={formCarga} session={data} />}
             fileName="PEC.pdf"
-          >
+          > */}
             <button
               onClick={handleGuardar}
               className="bg-primary-100 text-white rounded font-medium text-xs px-4 py-2"
             >
               Guardar
             </button>
-          </PDFDownloadLink>
+          {/* </PDFDownloadLink> */}
         </div>
       </div>
       <div className="w-4/12  mx-auto h-full relative">
@@ -95,5 +93,7 @@ const [isSucces, setIsSucces] = useState(false)
       </div>
       <Toaster />
     </>
+   
+</>
   );
 }
