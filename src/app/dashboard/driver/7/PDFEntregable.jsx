@@ -4,7 +4,6 @@ import { Document, Page, View, Text, Svg, Path } from "@react-pdf/renderer";
 import { createTw } from "react-pdf-tailwind";
 import CabeceraPDF from "@/app/componentes/CabeceraPDF";
 import FooterPDF from "@/app/componentes/FooterPDF";
-import PosicionamientoEAR from "./pdf/PosicionamientoEAR";
 const tw = createTw({
   theme: {
     fontFamily: {
