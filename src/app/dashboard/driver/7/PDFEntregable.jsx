@@ -1,9 +1,10 @@
 "use client";
 
-import { Document, Page, View, Text, Image } from "@react-pdf/renderer";
+import { Document, Page, View, Text, Svg, Path } from "@react-pdf/renderer";
 import { createTw } from "react-pdf-tailwind";
 import CabeceraPDF from "@/app/componentes/CabeceraPDF";
-import ComponentePDFRenderSelecciones from "@/app/componentes/ComponentePDFRenderSelecciones";
+import FooterPDF from "@/app/componentes/FooterPDF";
+import PosicionamientoEAR from "./pdf/PosicionamientoEAR";
 const tw = createTw({
   theme: {
     fontFamily: {
@@ -18,15 +19,14 @@ const tw = createTw({
 });
 
 export default function PDFEntregable({ data, session, label }) {
-  const { driver1 } = data;
   console.log(data);
-
   return (
     <Document>
       <Page
         style={{
           height: "90vh",
           fontSize: "10",
+          paddingTop: "20px",
         }}
         orientation=""
         size={"A4"}
@@ -35,62 +35,40 @@ export default function PDFEntregable({ data, session, label }) {
         <CabeceraPDF />
         <View
           style={tw(
-            "flex flex-col items-start justify-center flex-grow w-11/12  mx-auto rounded-lg overflow-hidden"
+            "flex flex-col items-start justify-center flex-grow w-11/12  mx-auto rounded-lg overflow-hidden text-[#00699C]"
           )}
         >
+          {/* Titulo del Entregable */}
           <View
             style={tw(
-              "flex flex-row  border-b mb-5 p-5 items-center gap-2 justify-center flex-grow w-full mx-auto rounded-lg overflow-hidden"
+              "flex flex-row  border-b mb-5 p-5 items-center gap-4 justify-center flex-grow w-full mx-auto rounded-lg overflow-hidden"
             )}
           >
+            {/* titulo del entregable */}
             <Text
-              style={tw("font-medium text font-black capitalize text-gray-700")}
+              style={tw(
+                "font-medium text-xl font-black capitalize  text-[#00699C]"
+              )}
             >
-              {session?.user?.fullName} |
-            </Text>
-            <Text style={tw("font-medium text font-bold text-gray-700")}>
-              {session?.user?.email}
+              {
+                "ENTREGABLE DRIVER 7: PPL PLAYER PROJECT LIFE"
+              }
             </Text>
           </View>
-          <ComponentePDFRenderSelecciones
-            key={1}
-            array={driver1?.spet31?.slect1}
-            title={"¿Para que esta hecho tu Área Comercial?"}
-          />
-          <ComponentePDFRenderSelecciones
-            key={2}
-            array={driver1?.spet31?.slect2}
-            title={"¿A quien esta dirigida tu Misión Comercial?"}
-          />
-          <ComponentePDFRenderSelecciones
-            key={3}
-            array={driver1?.spet31?.slect3}
-            title={"¿Que es importante para tu Área Comercial?"}
-          />
           <View
             style={tw(
               "flex flex-col items-start gap-2 justify-center flex-grow w-full my-5 mx-auto rounded-lg"
             )}
           >
-            <Text style={tw("font-bold text-lg text-left text-[#00A1A5]")}>
-              Tu Misión Comercial
+            <Text style={tw("font-bold text-lg text-left text-[#00699C]")}>
+            Generar gráfico en una hoja:{" "}
+             
             </Text>
-            <View
-              style={tw(
-                "flex flex-col items-start gap-2 justify-center flex-grow w-11/12 mx-auto rounded-lg "
-              )}
-            >
-              <Text style={tw("font-bold text-left text-[#323639] ")}>
-                {driver1?.misionComercial}
-              </Text>
-            </View>
+       
+           
           </View>{" "}
-          <ComponentePDFRenderSelecciones
-            key={4}
-            array={driver1?.spet33?.select}
-            title={"3 Valores más importantes para tu equipo comercial"}
-          />
         </View>{" "}
+        <FooterPDF />
       </Page>{" "}
     </Document>
   );
