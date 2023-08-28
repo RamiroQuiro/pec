@@ -73,9 +73,9 @@ export default function Flyer1() {
         updateState({
           drivers: { ...drivers, driver7: { ...drivers.driver7, step3: true } },
         });
+        router.push("/dashboard/driver/7/drivercomplet");
         setCurrentStep(1);
         activarFlyer(0);
-        router.push("/dashboard/driver/7/drivercomplet");
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -85,8 +85,8 @@ export default function Flyer1() {
   };
   return (
     <>
-      {isLoading && <LoadingCss />}
       <div className="w-full h-full flex relative">
+      {isLoading && <LoadingCss />}
         <RenderFlyer />
 
         <div className="w-full absolute bottom-20 left-3 z-30 flex items-center justify-between px-10 gap-3">

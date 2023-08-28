@@ -16,7 +16,7 @@ export default function Step33() {
     })
   );
   const [form, setForm] = useState(
-    formCarga?.driver7?.formulario3 ? formCarga?.driver7?.formulario3 : {}
+    formCarga?.driver10?.formulario3 ? formCarga?.driver10?.formulario3 : {}
   );
   const [isEdit, setIsEdit] = useState(
 false
@@ -34,7 +34,7 @@ false
         updateState({
           formCarga: {
             ...formCarga,
-            driver7: {...formCarga.driver7,
+            driver10: {...formCarga.driver10,
               
               formulario3: form },
           },

@@ -81,7 +81,6 @@ export default function Flyer1() {
       });
     }
   };
-  console.log(flyerActivo);
   return (
     <div className="w-full h-full flex relative">
       <RenderFlyer />

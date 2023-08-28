@@ -89,8 +89,8 @@ export default function Flyer1() {
   };
   return (
     <>
-    {isLoading && <LoadingCss />}
     <div className="w-full h-full flex relative">
+    {isLoading && <LoadingCss />}
       <RenderFlyer />
 
       <div className="w-full absolute bottom-20 left-3 z-30 flex items-center justify-between px-10 gap-3">

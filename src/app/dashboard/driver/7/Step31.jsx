@@ -31,7 +31,7 @@ export default function Step31() {
       updateState({
         formCarga: {
           ...formCarga,
-          driver7: { formulario1: form },
+          driver7: {...formCarga.driver7, formulario1: form },
         },
       });
       setIsEdit(false);

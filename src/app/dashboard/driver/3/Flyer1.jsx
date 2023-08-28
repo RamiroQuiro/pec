@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import {
   DownloadCloud,
   SVGDiskette,
@@ -13,7 +13,7 @@ import LoadingCss from "@/app/componentes/LoadingCss";
 import { useState } from "react";
 
 export default function Flyer1() {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const {
     setCurrentStep,
@@ -26,7 +26,7 @@ export default function Flyer1() {
   } = contextUser(
     (state) => ({
       drivers: state.drivers,
-      updateState:state.updateState,
+      updateState: state.updateState,
       setCurrentStep: state.setCurrentStep,
       flyerActivo: state.flyerActivo,
       activarFlyer: state.activarFlyer,
@@ -41,8 +41,7 @@ export default function Flyer1() {
       activarFlyer(0);
       setCurrentStep(3);
       cargarSubPantallas(2);
-    } 
-    else  {
+    } else {
       activarFlyer(flyerActivo + 1);
     }
   };
@@ -66,77 +65,85 @@ export default function Flyer1() {
     activarFlyer(0);
     if (flyerActivo == 2) {
       setCurrentStep(2);
-      updateState({drivers:{...drivers, driver3: {...drivers.driver3, step1: true } }});
+      updateState({
+        drivers: { ...drivers, driver3: { ...drivers.driver3, step1: true } },
+      });
     }
     if (flyerActivo == 7) {
       setCurrentStep(3);
-      updateState({drivers:{...drivers,driver3: { ...drivers.driver3, step2: true }} });
+      updateState({
+        drivers: { ...drivers, driver3: { ...drivers.driver3, step2: true } },
+      });
     }
     if (flyerActivo == 11) {
       setCurrentStep(4);
-      updateState({drivers:{...drivers,driver3: { ...drivers.driver3, step3: true }} });
-    }
-    else if (flyerActivo == 14) {
-      setIsLoading(true)
+      updateState({
+        drivers: { ...drivers, driver3: { ...drivers.driver3, step3: true } },
+      });
+    } else if (flyerActivo == 14) {
+      setIsLoading(true);
       try {
-        
-      updateState({drivers:{...drivers, driver3: { ...drivers.driver3,step4:true}} });
-      setCurrentStep(1)
-      activarFlyer(0)
-      router.push("/dashboard/driver/3/drivercomplet");
-      setIsLoading(false)
-    } catch (error) {
-      console.log(error)
-      setIsLoading(false)
-    }
+        updateState({
+          drivers: { ...drivers, driver3: { ...drivers.driver3, step4: true } },
+        });
+        setCurrentStep(1);
+        activarFlyer(0);
+        router.push("/dashboard/driver/3/drivercomplet");
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+        setIsLoading(false);
+      }
     }
   };
   return (
-      <>{
-    isLoading&&
-    <LoadingCss/>
-  }
-    <div className="w-full h-full flex relative">
-      <RenderFlyer />
+    <>
+      <div className="w-full h-full flex relative">
+      {isLoading && <LoadingCss />}
+        <RenderFlyer />
 
-      <div className="w-full absolute bottom-20 left-3 z-30 flex items-center justify-between px-10 gap-3">
-        {flyerActivo === 18 && (
-          <>
-            <DownloadCloud className="w-10 h-14 fill-primary-600 absolute bottom-2 left-[56%] cursor-pointer hover:scale-105 duration-200  " />
-            <UploadCloud className=" h-14 w-12 fill-primary-600 absolute -bottom-8 left-[68%] scale-110 cursor-pointer hover:scale-125 rota-90 duration-200  " />
-          </>
-        )}
-        {flyerActivo === 19 && (
-          <>
-            <div className="flex flex-col items-center h-32 cursor-pointer justify-center  absolute bottom-5 left-[45%]">
-              <UploadCloud className=" w-32 fill-[#FFFF08]     hover:scale-105 rota-90 duration-200  " />
-              <p className="text-sm text-white font-medium -mt-8">
-                Subir Grafica
-              </p>
-            </div>
-            <div className="flex flex-col items-center h-32 cursor-pointer justify-center  absolute -bottom-5 right-[15%]">
-            <p className="text text-white font-medium ">Ver un Ejemplo</p>
-            <p className="text-sm text-white font-medium ">Click Aqui</p>
-            </div>
-          </>
-        )}
+        <div className="w-full absolute bottom-20 left-3 z-30 flex items-center justify-between px-10 gap-3">
+          {flyerActivo === 18 && (
+            <>
+              <DownloadCloud className="w-10 h-14 fill-primary-600 absolute bottom-2 left-[56%] cursor-pointer hover:scale-105 duration-200  " />
+              <UploadCloud className=" h-14 w-12 fill-primary-600 absolute -bottom-8 left-[68%] scale-110 cursor-pointer hover:scale-125 rota-90 duration-200  " />
+            </>
+          )}
+          {flyerActivo === 19 && (
+            <>
+              <div className="flex flex-col items-center h-32 cursor-pointer justify-center  absolute bottom-5 left-[45%]">
+                <UploadCloud className=" w-32 fill-[#FFFF08]     hover:scale-105 rota-90 duration-200  " />
+                <p className="text-sm text-white font-medium -mt-8">
+                  Subir Grafica
+                </p>
+              </div>
+              <div className="flex flex-col items-center h-32 cursor-pointer justify-center  absolute -bottom-5 right-[15%]">
+                <p className="text text-white font-medium ">Ver un Ejemplo</p>
+                <p className="text-sm text-white font-medium ">Click Aqui</p>
+              </div>
+            </>
+          )}
 
-        <SvgNextVideo
-          onClick={handlePreviusFlyer}
-          className="w-14 h-14 fill-primary-tonoBlanco rotate-180 cursor-pointer  "
-        />
-        {flyerActivo == 2 || flyerActivo == 7 || flyerActivo == 11|| flyerActivo == 14 ? (
-          <SVGDiskette
-            onClick={handleNextStep}
-            className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "
-          />
-        ) : (
           <SvgNextVideo
-            onClick={handleNextFlyer}
-            className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "
+            onClick={handlePreviusFlyer}
+            className="w-14 h-14 fill-primary-tonoBlanco rotate-180 cursor-pointer  "
           />
-        )}
+          {flyerActivo == 2 ||
+          flyerActivo == 7 ||
+          flyerActivo == 11 ||
+          flyerActivo == 14 ? (
+            <SVGDiskette
+              onClick={handleNextStep}
+              className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "
+            />
+          ) : (
+            <SvgNextVideo
+              onClick={handleNextFlyer}
+              className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "
+            />
+          )}
+        </div>
       </div>
-    </div></>
+    </>
   );
 }
