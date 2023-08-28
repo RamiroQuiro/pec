@@ -49,7 +49,7 @@ export default function PDFEntregable({ data, session, label }) {
                 "font-medium text-xl font-black capitalize  text-[#00699C]"
               )}
             >
-              {"ENTREGABLE DEL DRIVER 7:  SISTEMA DE VENTAS INTELIGENTE (SVI)"}
+              {"ENTREGABLE DEL DRIVER 8:  SISTEMA DE VENTAS INTELIGENTE (SVI)"}
             </Text>
           </View>
         
