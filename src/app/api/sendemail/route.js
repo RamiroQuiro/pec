@@ -2,16 +2,17 @@ import { NextResponse } from "next/server";
 import { mailOptions, transporter } from "@/libs/nodemailer";
 
 export async function POST(request) {
-  const { body, mail,pdfData } = await request.json();
-  const buffer=Buffer.from(pdfData,'base64')
+  const { body, mail,entregables } = await request.json();
   try {
     await transporter.sendMail({
       ...mailOptions,
-      attachments: [{
-        filename:'Entregables.pdf',
-        content:buffer,
-        contentType:'application/pdf'
-      }],
+      attachments: entregables?.map((entregable,i)=>{
+          return {
+            filename:`EntregableDriver${i-1}.pdf`,
+            content:Buffer.from(entregable,'base64'),
+            contentType:'application/pdf'
+          }
+      }),
       to: [mail, "ramiryexe@hotmail.com"],
       subject: `Mensaje PEC `,
       text: "Tu PEC completo",
