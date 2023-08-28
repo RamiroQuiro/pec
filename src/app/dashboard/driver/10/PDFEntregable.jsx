@@ -1,9 +1,10 @@
 "use client";
 
-import { Document, Page, View, Text, Image } from "@react-pdf/renderer";
+import { Document, Page, View, Text, Svg, Path } from "@react-pdf/renderer";
 import { createTw } from "react-pdf-tailwind";
 import CabeceraPDF from "@/app/componentes/CabeceraPDF";
-import ComponentePDFRenderSelecciones from "@/app/componentes/ComponentePDFRenderSelecciones";
+import FooterPDF from "@/app/componentes/FooterPDF";
+import Trimestrs from "./pdf/Trimestrs";
 const tw = createTw({
   theme: {
     fontFamily: {
@@ -18,15 +19,17 @@ const tw = createTw({
 });
 
 export default function PDFEntregable({ data, session, label }) {
-  const { driver1 } = data;
-  console.log(data);
-
+  let arrayValor=[]
+  if (!data.formulario2) {
+    null
+  }else  {arrayValor=Object.values(data.formulario2)}
   return (
     <Document>
       <Page
         style={{
           height: "90vh",
           fontSize: "10",
+          paddingTop: "20px",
         }}
         orientation=""
         size={"A4"}
@@ -35,62 +38,63 @@ export default function PDFEntregable({ data, session, label }) {
         <CabeceraPDF />
         <View
           style={tw(
-            "flex flex-col items-start justify-center flex-grow w-11/12  mx-auto rounded-lg overflow-hidden"
+            "flex flex-col items-start justify-center flex-grow w-11/12  mx-auto rounded-lg overflow-hidden text-[#00699C]"
           )}
         >
+          {/* contenedor Titulo del Entregable */}
           <View
             style={tw(
-              "flex flex-row  border-b mb-5 p-5 items-center gap-2 justify-center flex-grow w-full mx-auto rounded-lg overflow-hidden"
+              "flex flex-row  border-b mb-5 p-5 items-center justify-center flex-grow w-full mx-auto rounded-lg overflow-hidden"
             )}
           >
+            {/* titulo del entregable */}
             <Text
-              style={tw("font-medium text font-black capitalize text-gray-700")}
+              style={tw(
+                "font-medium text-xl font-black capitalize  text-[#00699C]"
+              )}
             >
-              {session?.user?.fullName} |
-            </Text>
-            <Text style={tw("font-medium text font-bold text-gray-700")}>
-              {session?.user?.email}
+              ENTREGABLE DEL DRIVER 10: VALOR AGREGADO
             </Text>
           </View>
-          <ComponentePDFRenderSelecciones
-            key={1}
-            array={driver1?.spet31?.slect1}
-            title={"¿Para que esta hecho tu Área Comercial?"}
-          />
-          <ComponentePDFRenderSelecciones
-            key={2}
-            array={driver1?.spet31?.slect2}
-            title={"¿A quien esta dirigida tu Misión Comercial?"}
-          />
-          <ComponentePDFRenderSelecciones
-            key={3}
-            array={driver1?.spet31?.slect3}
-            title={"¿Que es importante para tu Área Comercial?"}
-          />
           <View
             style={tw(
               "flex flex-col items-start gap-2 justify-center flex-grow w-full my-5 mx-auto rounded-lg"
             )}
           >
-            <Text style={tw("font-bold text-lg text-left text-[#00A1A5]")}>
-              Tu Misión Comercial
+            <Text style={tw("font-bold text-lg text-left text-[#00699C]")}>
+              {
+                "La línea del tiempo (períodos) en los que implementaré mis valores agregados son:"
+              }
+            </Text>
+            <Text style={tw("font-bold text-lg text-left text-[#00699C]")}>
+              {data?.formulario1?.caracteristicas}
+            </Text>
+          </View>
+          <View
+            style={tw(
+              "flex flex-col items-start gap-2 justify-center flex-grow w-full my-5 mx-auto rounded-lg"
+            )}
+          >
+            <Text style={tw("font-bold text-lg text-left text-[#00699C]")}>
+              {
+                "El momento en el que se encuentra mi producto/servicio o proyecto es: "
+              }
             </Text>
             <View
               style={tw(
-                "flex flex-col items-start gap-2 justify-center flex-grow w-11/12 mx-auto rounded-lg "
+                "flex flex-row items-start gap-2 justify-evenly flex-grow w-full my-5 mx-auto rounded-lg"
               )}
             >
-              <Text style={tw("font-bold text-left text-[#323639] ")}>
-                {driver1?.misionComercial}
-              </Text>
+              {
+                arrayValor?.map((trimestre,i)=>(
+                  <Trimestrs trimestre={trimestre}i={i+1} key={i}/>
+                ))
+              }
+          
             </View>
-          </View>{" "}
-          <ComponentePDFRenderSelecciones
-            key={4}
-            array={driver1?.spet33?.select}
-            title={"3 Valores más importantes para tu equipo comercial"}
-          />
+          </View>
         </View>{" "}
+        <FooterPDF />
       </Page>{" "}
     </Document>
   );

@@ -36,7 +36,7 @@ export default function Step31() {
       updateState({
         formCarga: {
           ...formCarga,
-          driver10: { formulario1: form },
+          driver10: {   ...formCarga.driver10, formulario1: form },
         },
       });
 
