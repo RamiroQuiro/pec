@@ -9,9 +9,9 @@ import {
 } from "@/app/componentes/SVGComponent";
 import { contextUser } from "@/context/contextUser";
 export default function ContenedorVideo() {
-  const { formCarga, updateState,videoBienvenida } = contextUser((state) => ({
+  const { formCarga, updateState, videoBienvenida } = contextUser((state) => ({
     formCarga: state.formCarga,
-    videoBienvenida:state.formCarga.videoBienvenida,
+    videoBienvenida: state.formCarga.videoBienvenida,
     updateState: state.updateState,
   }));
   const videoRef = useRef(null);
@@ -51,22 +51,20 @@ export default function ContenedorVideo() {
   };
 
   const handleTimeUpdate = () => {
-    setProgress((videoRef.current.currentTime / videoRef.current.duration) * 100);
+    setProgress(
+      (videoRef.current.currentTime / videoRef.current.duration) * 100
+    );
   };
-
   useEffect(() => {
-    if(videoBienvenida)return
+    if (videoBienvenida) return;
 
-    if (progress>80) {
-        updateState({
-          ...formCarga,
-          videoBienvenida: true,
-        });
+    if (progress > 10) {
+      updateState({
+        formCarga: { ...formCarga, videoBienvenida: true },
+      });
     }
-  
+  }, [progress]);
 
-  }, [progress])
-  
   return (
     <div className="rounded-lg w-[90%] h-[87%] border-2 mx-auto shadow-lg relative">
       {!isPlaying && (

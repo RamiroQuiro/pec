@@ -1,6 +1,7 @@
 import SectionDash from "./component/SectionDash";
 import ContenedorVideo from "./component/ContenedorVideo";
 import { Toaster } from "react-hot-toast";
+import BotonSiguiente from "./BotonSiguiente";
 
 export default function page() {
 
@@ -14,12 +15,7 @@ export default function page() {
           <button className="bg-primary-textGris disabled:bg-primary-200/40 font- rounded text-white capitalize text-xs px-5 py-3">
             omitir
           </button>
-          <button
-            disabled={true}
-            className="bg-primary-200 disabled:bg-primary-200/40 font- rounded text-white capitalize text-xs px-5 py-3"
-          >
-            siguiente
-          </button>
+  <BotonSiguiente/>
         </div>
       </div>
       <Toaster/>

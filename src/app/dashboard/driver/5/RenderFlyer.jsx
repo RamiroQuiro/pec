@@ -73,7 +73,6 @@ import diapositiva25 from '../../../../../public/driver5/Diapositiva25.webp';
 // ... continúa importando el resto de las imágenes
 
 const Flyer = ({ flyers, flyerActivo }) => {
-  console.log(flyers[flyerActivo - 1]?.img)
   if (flyers.length === 0) {
     // Muestra un indicador de carga o una imagen de marcador de posición
     return (
