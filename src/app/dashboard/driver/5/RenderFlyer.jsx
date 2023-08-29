@@ -43,7 +43,6 @@
 import { contextUser } from '@/context/contextUser';
 import Image from "next/image";
 import { shallow } from "zustand/shallow";
-import LoadingCss from '@/app/componentes/LoadingCss';
 
 // Importa todas las imágenes a la vez usando una declaración de importación estática
 import diapositiva2 from '../../../../../public/driver5/Diapositiva2.webp';
