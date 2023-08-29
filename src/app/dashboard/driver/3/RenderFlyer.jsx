@@ -4,6 +4,7 @@ import Image from "next/image";
 
 import { shallow } from "zustand/shallow";
 import { useEffect, useState } from 'react';
+import LoadingCss from '@/app/componentes/LoadingCss';
 
 
 
@@ -28,6 +29,7 @@ const Flyer=({flyers,flyerActivo})=>{
     </div>
   );
   
+}
 }
 
 

@@ -28,7 +28,7 @@ const Flyer=({flyers,flyerActivo})=>{
       />
     </div>
   );
-  
+  }
 }
 
 
