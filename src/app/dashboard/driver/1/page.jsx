@@ -3,12 +3,28 @@ import SectionDash from "../../component/SectionDash";
 import ContenedorPasos from "./ContenedorPasos";
 import { contextUser } from "@/context/contextUser";
 import Flyer1 from "./Flyer1";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Driver1() {
-  const { flyerActivo, drivers } = contextUser((state) => ({
+  const path = usePathname();
+  const router = useRouter();
+  const driver = path.split("/")[3];
+
+  const { flyerActivo ,videoBienvenida} = contextUser((state) => ({
     flyerActivo: state.flyerActivo,
-    drivers: state.drivers,
+    videoBienvenida:state.fromCarga?.videoBienvenida,
   }));
+
+  useEffect(() => {
+    if (!driver) return;
+
+    
+    if (!videoBienvenida) {
+      router.push(`/dashboard`);
+    }
+    
+  }, [driver]);
 
   return (
     <SectionDash>

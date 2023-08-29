@@ -1,3 +1,4 @@
+"use client"
 import { Text, View,Image } from '@react-pdf/renderer'
 import { createTw } from "react-pdf-tailwind";
 const tw = createTw({

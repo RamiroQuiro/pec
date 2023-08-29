@@ -5,6 +5,7 @@ import { create } from "zustand";
 export const contextUser = create((set, get) => ({
   userData: {},
   formCarga: {
+    videoBienvenida:false,
     driver1: {},
     driver2: {},
     driver3: {},

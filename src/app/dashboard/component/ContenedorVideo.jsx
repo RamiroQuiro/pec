@@ -7,7 +7,13 @@ import {
   SVGAudio,
   SVGAgrandarVideo,
 } from "@/app/componentes/SVGComponent";
+import { contextUser } from "@/context/contextUser";
 export default function ContenedorVideo() {
+  const { formCarga, updateState,videoBienvenida } = contextUser((state) => ({
+    formCarga: state.formCarga,
+    videoBienvenida:state.formCarga.videoBienvenida,
+    updateState: state.updateState,
+  }));
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
@@ -45,9 +51,23 @@ export default function ContenedorVideo() {
   };
 
   const handleTimeUpdate = () => {
-    setProgress((videoRef.current.currentTime / videoRef.current.duration) * 100);
+    
+    setProgress(() =>  (videoRef.current.currentTime / videoRef.current.duration) * 100);
   };
 
+  useEffect(() => {
+    if(videoBienvenida)return
+
+    if (progress>80) {
+        updateState({
+          ...formCarga,
+          videoBienvenida: true,
+        });
+    }
+  
+
+  }, [progress])
+  
   return (
     <div className="rounded-lg w-[90%] h-[87%] border-2 mx-auto shadow-lg relative">
       {!isPlaying && (
@@ -68,7 +88,6 @@ export default function ContenedorVideo() {
         onTimeUpdate={handleTimeUpdate}
         muted
         className={`rounded-lg overflow-hidden object-cover object-center`}
-    
       >
         <source src="/videoBienvenida.mp4" type="video/mp4" />
       </video>
@@ -90,17 +109,13 @@ export default function ContenedorVideo() {
         >
           <SVGStop className="fill-primary-tonoBlanco w-12 h-12 animate-[aparecer_.5s]" />
         </div>
-        <div
-          
-          className="duration-300 flex w-8/12 cursor-pointer relative bg-primary-tonoBlanco rounded h-4 overflow-hidden justify-start  items-start"
-        >
+        <div className="duration-300 flex w-8/12 cursor-pointer relative bg-primary-tonoBlanco rounded h-4 overflow-hidden justify-start  items-start">
           <div
-          style={{
-            width:progress+"%"
-          }}
-          className={` bg-primary-100 h-full`}> 
-
-          </div>
+            style={{
+              width: progress + "%",
+            }}
+            className={` bg-primary-100 h-full`}
+          ></div>
         </div>
         <div
           onClick={handleMuteUnmute}

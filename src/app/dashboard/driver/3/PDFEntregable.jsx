@@ -20,7 +20,6 @@ const tw = createTw({
 export default function PDFEntregable({ data, session, label }) {
 
 
-  console.log(data)
   return (
     <Document>
       <Page
