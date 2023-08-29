@@ -207,6 +207,7 @@ const UserSchema = new Schema({
     },
   },
   formCarga:{
+    videoBienvenida:Boolean,
     driver1:{
       type:Object,
     },

@@ -51,8 +51,7 @@ export default function ContenedorVideo() {
   };
 
   const handleTimeUpdate = () => {
-    
-    setProgress(() =>  (videoRef.current.currentTime / videoRef.current.duration) * 100);
+    setProgress((videoRef.current.currentTime / videoRef.current.duration) * 100);
   };
 
   useEffect(() => {

@@ -11,18 +11,19 @@ export default function Driver1() {
   const router = useRouter();
   const driver = path.split("/")[3];
 
-  const { flyerActivo ,videoBienvenida} = contextUser((state) => ({
+  const { flyerActivo, drivers ,videoBienvenida} = contextUser((state) => ({
     flyerActivo: state.flyerActivo,
-    videoBienvenida:state.fromCarga?.videoBienvenida,
-  }));
-
+    drivers: state.drivers,
+    videoBienvenida:state.formCarga.videoBienvenida
+  }));  
+console.log(videoBienvenida)
   useEffect(() => {
     if (!driver) return;
-
+if (!videoBienvenida) {
+  
+  router.push(`/dashboard/`);
+}
     
-    if (!videoBienvenida) {
-      router.push(`/dashboard`);
-    }
     
   }, [driver]);
 

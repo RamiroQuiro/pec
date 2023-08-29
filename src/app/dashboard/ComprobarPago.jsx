@@ -8,17 +8,20 @@ import { contextUser } from "@/context/contextUser";
 import { useRouter } from "next/navigation";
 
 export default function ComprobarPago({ children }) {
-const router=useRouter()
+  const router = useRouter();
   const { data } = useSession();
   const [comprobantePago, setComprobantePago] = useState(true);
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
 
-const {cargarUserData,updateState}=contextUser((state)=>({cargarUserData:state.cargarUserData,updateState:state.updateState}))
+  const { cargarUserData, updateState } = contextUser((state) => ({
+    cargarUserData: state.cargarUserData,
+    updateState: state.updateState,
+  }));
 
   useEffect(() => {
-    if(!data)return
+    if (!data) return;
 
-    cargarUserData({email:data.user?.email,fullName:data.user?.fullName})
+    cargarUserData({ email: data.user?.email, fullName: data.user?.fullName });
 
     const res = async () => {
       const respuesta = await axios.post("/api/esta", {
@@ -27,28 +30,25 @@ const {cargarUserData,updateState}=contextUser((state)=>({cargarUserData:state.c
 
       // Manejo de la respuesta de la consulta
       if (respuesta.data.success) {
-        console.log(respuesta.data)
-        const formCarga=respuesta.data.formCarga
-        const drivers=respuesta.data.drivers
+        const formCarga = respuesta.data.formCarga;
+        const drivers = respuesta.data.drivers;
         updateState({
-          formCarga,drivers
-        })
+          formCarga,
+          drivers,
+        });
         setComprobantePago(true);
       } else {
         setComprobantePago(false);
       }
-      setIsLoading(false)
-      console.log(respuesta.data)
+      setIsLoading(false);
     };
     res();
   }, [data]);
 
   if (comprobantePago) {
     return <>{children}</>;
-  } if (!comprobantePago) {
-   return router.push('/pricepec')}
-    else 
-    
-    return <LoadingCss/>
+  }
+  if (!comprobantePago) {
+    return router.push("/pricepec");
+  } else return <LoadingCss />;
 }
-
