@@ -7,9 +7,14 @@ import { useEffect, useState } from 'react';
 
 
 
-
 const Flyer=({flyers,flyerActivo})=>{
-
+  if (flyers.length === 0) {
+    // Display loading indicator or placeholder image
+    return (
+     <LoadingCss/>
+    );
+  } else {
+    // Display Image component
   return (
     <div className="h-[100%] w-auto animate-[aparecer_.5s]">
       <Image
