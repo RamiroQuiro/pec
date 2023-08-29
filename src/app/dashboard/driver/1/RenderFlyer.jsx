@@ -7,7 +7,7 @@ import { shallow } from "zustand/shallow";
 const Flyer = ({ flyers, flyerActivo }) => {
   if (flyers.length === 0) {
     // Muestra un indicador de carga o una imagen de marcador de posición
-    return  <div className="h-[100%] w-auto bg-gray-300/50 animate-pulse backdrop-blur-sm">
+    return  <div className="h-[100%] w-full bg-gray-300/50 animate-pulse backdrop-blur-sm">
    
   </div>;
   } else {

@@ -38,7 +38,7 @@ export default function RenderFlyer() {
       id: index,
       title: `Flyer ${index}`,
       open: false,
-      img:`/driver10/Diapositiva${index}.webp`,
+      img:`/driver5/Diapositiva${index}.webp`,
     });
   }
 
