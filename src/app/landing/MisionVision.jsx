@@ -2,7 +2,9 @@ import React from 'react'
 
 export default function MisionVision() {
   return (
-   <section className='w-11/12 h-[75vh] flex flex-col items-center justify-between py-14 mb-16 text-gray-800'>
+   <section
+   id='visionMision'
+   className='w-11/12 h-[75vh] flex flex-col items-center justify-between py-14 mb-16 text-gray-800'>
        <h2 className='text-3xl  font-medium my-14'>Misión y Visión</h2>
     
     <div className='flex flex-col gap-5 items-center justify-center text-center'>

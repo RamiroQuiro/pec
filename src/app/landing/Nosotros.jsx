@@ -3,7 +3,7 @@ import nosotros from "../../../public/nosotros.jpg";
 
 export default function Nosotros() {
   return (
-   <section className='h-screen relative w-full'>
+   <section id='nosotros' className='h-screen scroll-m-3 relative w-full'>
 
   <div className=' z-10 bg-white/60 backdrop-blur-sm w-full h-full absolute pt-10 top-0 left-0 '>
     <div className='flex flex-col items-center justify-center text-gray-800 w-10/12 mx-auto'>

@@ -27,7 +27,9 @@ const imagenes=[
   },
 ]  
   return (
-    <header className="w-screen h-[80vh] relative">
+    <header 
+    id="inicio"
+    className="w-screen h-[80vh] relative">
       <NavBar />
       <div className="w-2/4 py-5 gap-5 bg-white flex flex-col items-center justify-between z-10 absolute -bottom-28 left-1/4 border-t border-primary-200/50">
         <h2 className="text-xl  text-primary-200">

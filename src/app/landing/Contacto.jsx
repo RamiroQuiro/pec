@@ -16,7 +16,9 @@ const InputFormulario = ({ label, type, name }) => {
 
 export default function Contacto() {
   return (
-    <section className="bg-primary-200 h-screen w-full mx-auto flex flex-col items-center justify-between py-16 ">
+    <section
+    id="contacto"
+    className="bg-primary-200 h-screen w-full mx-auto flex flex-col items-center gap-y-5 justify-between py-24 ">
       <div className="bg-primary-500 w-1/2 px-5 text-center shadow-lg ">
         <h2 className="text-3xl mx-auto font-medium my-14 w-full uppercase">Contacto</h2>
         <form action="" className="text-primary-100 flex text-left flex-col items-center gap-4">
@@ -29,7 +31,7 @@ export default function Contacto() {
             <InputFormulario name={"asunto"} label={"Asunto:"} type="text" />
           </div>
           <div className="flex w-full gap-3 ">
-            <div className="flex-grow flex flex-col">
+            <div className="flex-grow flex flex-col">s
               <label htmlFor="mensaje">Mensaje*</label>
               <textarea
                 name="mensaje"
