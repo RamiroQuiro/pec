@@ -2,7 +2,30 @@ import React from "react";
 import NavBar from "./component/NavBar";
 import Image from "next/image";
 import background from "../../../public/headerback.jpg";
+import background2 from "../../../public/background2.jpg";
+import background3 from "../../../public/background3.jpg";
+import CarruselHeadre from "./component/CarruselHeadre";
+
+
 export default function Header() {
+
+const imagenes=[
+  {
+    alt:"backgroun1",
+    src:background,
+    id:1,
+  },
+  {
+    alt:"backgroun2",
+    src:background2,
+    id:2,
+  },
+  {
+    alt:"backgroun3",
+    src:background3,
+    id:3,
+  },
+]  
   return (
     <header className="w-screen h-[80vh] relative">
       <NavBar />
@@ -17,16 +40,7 @@ export default function Header() {
           Iniciar Sesión
         </button>
       </div>{" "}
-      <div className="absolute left-0 top-16 w-screen h-full z-0 ">
-        {" "}
-        <Image
-          alt="backgrounHeader"
-          src={background}
-          className="object-cover "
-          fill
-          quality={100}
-        />
-      </div>
+ <CarruselHeadre imagenes={imagenes}/>
     </header>
   );
 }
