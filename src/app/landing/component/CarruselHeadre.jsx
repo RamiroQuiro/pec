@@ -1,22 +1,18 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function CarruselHeadre({ imagenes }) {
   const [curretImg, setCurretImg] = useState(0);
   const cantidad = imagenes?.length;
 
-  const changeImage = () => {
-    setTimeout(() => {
-      if (curretImg == 2) {
-        setCurretImg(curretImg-1);
-      } else {
-        setCurretImg(curretImg + 1);
-      }
-    }, 2000);
-  };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurretImg((curretImg + 1) % cantidad);
+    }, 8000);
+    return () => clearInterval(interval);
+  }, [curretImg]);
 
-  changeImage();
   if (!Array.isArray(imagenes) || cantidad == 0) return;
   else
     return (
@@ -25,16 +21,14 @@ export default function CarruselHeadre({ imagenes }) {
         {imagenes?.map((img, i) => (
           <div
           key={i}
-          className="absolute left-0 top-0 w-full h-full transition-transform duration-1000"
-          style={{
-            transform: `translateX(${(i - curretImg) * 100}%)`,
-          }}
+          className={`${curretImg==i?"opacity-100 backdrop-blur-sm backdrop-grayscale bg-blend-overlay":"opacity-50 contrast-100  backdrop-grayscale-0 bg-blend-lighten"} absolute left-0 top-0 w-full h-full  duration-1000`}
+     
         >
           {curretImg == i && (
               <Image
                 alt="backgrounHeader"
                 src={img.src}
-                className="object-cover w-screen animate-[aparacer_.5s]"
+                className="object-cover object-center w-screen animate-[aparacer_.5s]"
                 fill
                 quality={100}
               />
