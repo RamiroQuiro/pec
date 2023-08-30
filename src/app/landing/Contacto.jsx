@@ -18,7 +18,7 @@ export default function Contacto() {
   return (
     <section
     id="contacto"
-    className="bg-primary-200 h-screen w-full mx-auto flex flex-col items-center gap-y-5 justify-between py-24 ">
+    className="bg-primary-200 min-h-screen w-full mx-auto flex flex-col items-center gap-y-5 justify-between py-24 ">
       <div className="bg-primary-500 w-1/2 px-5 text-center shadow-lg ">
         <h2 className="text-3xl mx-auto font-medium my-14 w-full uppercase">Contacto</h2>
         <form action="" className="text-primary-100 flex text-left flex-col items-center gap-4">
