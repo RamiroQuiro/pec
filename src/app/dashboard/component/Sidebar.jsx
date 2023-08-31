@@ -1,6 +1,6 @@
 import Image from "next/image";
 import logo from "../../../../public/logo.png";
-import SVGLogin from "@/app/landing/component/SVGComponent";
+import {SVGLogin} from "@/app/landing/component/SVGComponent";
 import SidebarMenu from "./SidebarMenu";
 import ButtonSignOut from "./ButtonSignOut";
 import UserNameSidebar from "./UserNameSidebar";
