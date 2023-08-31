@@ -4,7 +4,7 @@ import nosotros from "../../../public/nosotros.jpg";
 export default function Nosotros() {
   return (
     <section id="nosotros" className="min-h-screen flex items-center justify-normal  relative w-full ">
-      <div className=" z-10 bg-white/70 backdrop-blur-sm w-full h-full  items-center justify-normal flex py-10 top-0 left-0 ">
+      <div className=" z-10 bg-white/70 backdrop-blur-sm w-full h-full  items-center justify-normal flex md:absolute relative py-10 top-0 left-0 ">
         <div className="flex flex-col items-center justify-center text-gray-800 w-10/12 mx-auto h-full">
           <h2 className="text-3xl  font-medium my-14">NOSOTROS</h2>
           <p className="md:text-center text-justify font-semibold">
