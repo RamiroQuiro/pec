@@ -1,4 +1,4 @@
-import React from "react";
+
 
 const InputFormulario = ({ label, type, name }) => {
   return (

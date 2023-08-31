@@ -6,43 +6,39 @@ import background2 from "../../../public/background2.jpg";
 import background3 from "../../../public/background3.jpg";
 import CarruselHeadre from "./component/CarruselHeadre";
 
-
 export default function Header() {
-
-const imagenes=[
-  {
-    alt:"backgroun1",
-    src:background,
-    id:1,
-  },
-  {
-    alt:"backgroun2",
-    src:background2,
-    id:2,
-  },
-  {
-    alt:"backgroun3",
-    src:background3,
-    id:3,
-  },
-]  
+  const imagenes = [
+    {
+      alt: "backgroun1",
+      src: background,
+      id: 1,
+    },
+    {
+      alt: "backgroun2",
+      src: background2,
+      id: 2,
+    },
+    {
+      alt: "backgroun3",
+      src: background3,
+      id: 3,
+    },
+  ];
   return (
-    <header 
-    id="inicio"
-    className="w-screen h-[80vh] relative">
+    <header id="inicio" className="w-screen h-screen md:h-[80vh] relative">
       <NavBar />
-      <div className="w-2/4 py-5 gap-5 bg-white flex flex-col items-center justify-between z-10 absolute -bottom-28 left-1/4 border-t border-primary-200/50">
+      <div className="md:w-2/4 w-full   mx-auto py-5 gap-5 bg-white/90 backdrop-blur-sm flex flex-col items-center justify-between z-10 absolute -bottom-0 md:-bottom-28 md:left-1/4  border-t border-primary-200/50">
         <h2 className="text-xl  text-primary-200">
-          PEC (Plan Estrategico Comercial)
+        {"  PEC (Plan Estrategico Comercial)"}
         </h2>
-        <h2 className="text-2xl font-medium text-gray-700">
+        <h2 className="md:text-2xl font-medium text-gray-700">
           POTENCIALIZANDO ÁREAS COMERCIALES
         </h2>
-        <button className="bg-primary-200 rounded text-white mt-10  px-4 py-2">
+        <button className="bg-primary-200 rounded text-white md:mt-10  px-4 py-2">
           Iniciar Sesión
         </button>
       </div>{" "}
- <CarruselHeadre imagenes={imagenes}/>
+      <CarruselHeadre imagenes={imagenes} />
     </header>
   );
 }
