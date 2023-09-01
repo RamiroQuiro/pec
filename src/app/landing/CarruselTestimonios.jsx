@@ -1,40 +1,64 @@
-"use client"
-import React, { useState } from 'react'
-
-
+"use client";
+import Image from "next/image";
+import React, { useState } from "react";
 
 export default function CarruselTestimonios() {
-    const [currentSlideIndex, setCurrentSlideIndex] = useState(2)
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(1);
+  const [diseable, setDiseable] = useState(false);
+  const handleNextSlide = () => {
+    if (currentSlideIndex == -1) return;
+    setCurrentSlideIndex((prevIndex) => (prevIndex - 1) % 3);
+  };
 
-    const handleNextSlide = () => {
-        setCurrentSlideIndex((prevIndex) => (prevIndex + 1) );
-      };
-    
-      const handlePreviousSlide = () => {
-        setCurrentSlideIndex((prevIndex) => (prevIndex - 1 + 3) );
-      };
-    
+  const handlePreviousSlide = () => {
+    if (currentSlideIndex == 1) return;
+
+    setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % 3);
+  };
+  console.log(currentSlideIndex);
   return (
-      <div className='w-auto relative overflow-x-hidden flex  mx-auto h-full items-center '> 
-    <div 
-   style={{ transform: `translateX(-${currentSlideIndex * 100}%)` }}
-    className='flex transition-transform duration-500 h-full'>
-        <div className="w-screen h-full bg-red-500 flex-shrink-0">uno</div>
-        <div className="w-screen h-full bg-blue-500 flex-shrink-0">dos</div>
-        <div className="w-screen h-full bg-green-500 flex-shrink-0">tres</div>
+    <div className="w-screen relative overflow-x-hidden flex flex-grow mx-auto h-full items-center justify-center">
+      <div
+        style={{ transform: `translateX(${currentSlideIndex * 100}vw)` }}
+        className="flex transition-transform duration-500 w-full h-full items-center justify-center"
+      >
+        <div className="w-screen h-full  bg-white  flex-shrink-0  flex flex-col p-10 items-center justify-between">
+          <div className="relative w-24 h-24 rounded-full p-2 overflow-hidden">
+            <Image fill alt="testomiino" src="/logo.png" />
+          </div>
+          <p className="italic text-lg font-thin text-center p-3">
+            {' "Estoy realmente conforme con el men este 1"'}
+          </p>
+        </div>
+        <div className="w-screen h-full  bg-white/90  flex-shrink-0  flex flex-col p-10 items-center justify-between ">
+          <div className="relative w-24 h-24 rounded-full p-2 overflow-hidden">
+            <Image fill alt="testomiino" src="/logo.png" />
+          </div>
+          <p className="italic text-lg font-thin text-center p-3">
+            {"Estoy realmente conforme con el men este 2"}
+          </p>
+        </div>
+        <div className="w-screen h-full  bg-white/90  flex-shrink-0  flex flex-col p-10 items-center justify-between">
+          <div className="relative w-24 h-24 rounded-full p-2 overflow-hidden">
+            <Image fill alt="testomiino" src="/logo.png" />
+          </div>
+          <p className="italic text-lg font-thin text-center p-3">
+            {"Estoy realmente conforme con el men este 3"}
+          </p>
+        </div>
       </div>
       <button
         onClick={handlePreviousSlide}
-        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md"
+        className="absolute left-5 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-xl hover:-translate-y-0.5 duration-300 shadow-md font-black text-primary-textGris/50 text-2xl"
       >
-        Anterior
+        {"←"}
       </button>
       <button
         onClick={handleNextSlide}
-        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md"
+        className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-xl hover:-translate-y-0.5 shadow-md duration-300 font-black text-primary-textGris/50 text-2xl"
       >
-        Siguiente
+        {"→"}
       </button>
     </div>
-  )
+  );
 }
