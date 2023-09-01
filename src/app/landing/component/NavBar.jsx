@@ -30,7 +30,9 @@ export default function NavBar() {
       </div>
 
 
-   { !toggle&&  <ul className="md:w-1/3 w-full gap-y-5 animate-[aparecer_.5s]  flex flex-col md:flex-row mt-10 mb-5 md:m-0   md:items-center justify-between md:font-medium md:text-sm">
+   { !toggle&& 
+   <>
+   <ul className="md:w-1/3 w-full gap-y-5 animate-[aparecer_.5s]  flex flex-col md:flex-row mt-10 mb-5 md:m-0   md:items-center justify-between md:font-medium md:text-sm">
         <li className="w-full md:w-auto bolck  ">
           <a href="#nosotros" className="w-full  p-2 md:w-auto  md:py-0">Nosotros</a>
         </li>
@@ -43,8 +45,10 @@ export default function NavBar() {
         <li className="w-full md:w-auto bolck  ">
           <a href="#contacto" className="w-full  p-2 md:w-auto  md:py-0">Contacto</a>
         </li>
-      </ul>}
+      </ul>
       <LinkLogin />
+      
+      </>}
     </nav>
   );
 }

@@ -19,7 +19,7 @@ export default function Contacto() {
     <section
     id="contacto"
     className="bg-primary-200 min-h-screen w-full mx-auto flex flex-col items-center gap-y-5 justify-between py-24 ">
-      <div className="bg-primary-500 w-1/2 px-5 text-center shadow-lg ">
+      <div className="bg-primary-500 md:w-1/2 rounded px-5 text-center shadow-lg ">
         <h2 className="text-3xl mx-auto font-medium my-14 w-full uppercase">Contacto</h2>
         <form action="" className="text-primary-100 flex text-left flex-col items-center gap-4">
           <div className="flex w-full gap-3  ">
@@ -46,7 +46,7 @@ export default function Contacto() {
           </button>
         </form>
       </div>
-      <div className="w-1/2"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d6265.761144367748!2d-89.59241341050715!3d20.966812314476474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1689957350850!5m2!1ses!2sar" className="w-full"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      <div className="md:w-1/2 w-full px-3 overflow-hidden rounded"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d6265.761144367748!2d-89.59241341050715!3d20.966812314476474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sar!4v1689957350850!5m2!1ses!2sar" className="w-full"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
     </section>
   );
 }

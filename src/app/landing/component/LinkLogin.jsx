@@ -7,9 +7,9 @@ export default function LinkLogin() {
   return (
     <div
     onClick={()=>{router.push("/login")}}
-    className=" flex-col items-center cursor-pointer justify-center text-sm md:flex hidden">
-    <SVGLogin  className="w-10" />
-    <span  className="w-fll md:block hidden">Iniciar Sesion</span>
+    className=" flex-col items-center my-5 text-center cursor-pointer justify-center text-sm md:flex ">
+    <SVGLogin  className="w-10 mx-auto" />
+    <span  className="w-fll md:block ">Iniciar Sesion</span>
   </div>
   )
 }
