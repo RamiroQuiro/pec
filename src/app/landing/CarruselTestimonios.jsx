@@ -21,7 +21,7 @@ export default function CarruselTestimonios() {
         style={{ transform: `translateX(${currentSlideIndex * 100}vw)` }}
         className="flex transition-transform duration-500 w-full h-full items-center justify-center"
       >
-        <div className="w-screen h-full  bg-white  flex-shrink-0  flex flex-col p-5 gap-5 items-center justify-between">
+        <div className="w-screen h-full flex-shrink-0  flex flex-col p-5 gap-5 items-center justify-between">
           <div className="relative w-32 h-32 rounded-full p-2 overflow-hidden">
             <Image fill alt="testomiino" src="/logo.png" className="object-cover object-center " />
           </div>
@@ -29,7 +29,7 @@ export default function CarruselTestimonios() {
             {' "Estoy realmente conforme con el men este 1"'}
           </p>
         </div>
-        <div className="w-screen h-full  bg-white/90  flex-shrink-0  flex flex-col p-10 items-center justify-between ">
+        <div className="w-screen h-full  flex-shrink-0  flex flex-col p-10 items-center justify-between ">
           <div className="relative w-24 h-24 rounded-full p-2 overflow-hidden">
             <Image fill alt="testomiino" src="/logo.png" />
           </div>
@@ -37,7 +37,7 @@ export default function CarruselTestimonios() {
             {"Estoy realmente conforme con el men este 2"}
           </p>
         </div>
-        <div className="w-screen h-full  bg-white/90  flex-shrink-0  flex flex-col p-10 items-center justify-between">
+        <div className="w-screen h-full   flex-shrink-0  flex flex-col p-10 items-center justify-between">
           <div className="relative w-24 h-24 rounded-full p-2 overflow-hidden">
             <Image fill alt="testomiino" src="/logo.png" />
           </div>
