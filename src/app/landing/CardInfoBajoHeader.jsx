@@ -22,7 +22,7 @@ export default function CardInfoBajoHeader() {
         <div className="flex-auto md:border-r  border-primary-textGris/40 md:w-[30%] w-full flex flex-col items-center justify-center mb-20 md:m-0  md:px-4 text-sm">
           <h3 className="text-xl uppercase font-semibold my-4">Bienvenidos</h3>
           <div className=" rounded border">
-            <video src="/landing.mp4"  autoPlay controls className="rounded shadow-md"></video>
+            <video src="/landing.mp4"   controls className="rounded shadow-md"></video>
           </div>
         </div>
         <TarjetaInfomativa

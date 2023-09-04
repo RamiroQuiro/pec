@@ -15,36 +15,50 @@ export default function CarruselTestimonios() {
 
     setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % 3);
   };
+
+
+const arrayTestimonios=[
+  {
+    children:'"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum saepe at commodi, ut quas repellat odit similique reprehenderit culpa in veniam provident odio illum itaque esse dicta consequatur dolores delectusAspernatur natus provident doloribus quidem repellendus perferendis autem, deleniti, deserunt mollitia sequi ratione, rem molestiae laudantium minima cum blanditiis. Doloremque voluptatem, dignissimos error cum magni Obcaecati et dolorem voluptatibus"',
+    id:1,
+    cargo:"Director General",
+    nombre:"Erick Brambila"
+  },
+  {
+    children:'"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum saepe at commodi, ut quas repellat odit similique reprehenderit culpa in veniam provident odio illum itaque esse dicta consequatur dolores delectusAspernatur natus provident doloribus quidem repellendus perferendis autem, deleniti, deserunt mollitia sequi ratione, rem molestiae laudantium minima cum blanditiis. Doloremque voluptatem, dignissimos error cum magni Obcaecati et dolorem voluptatibus"',
+    id:2,
+    cargo:"Director General",
+    nombre:"Erick Brambila"
+  },
+  {
+    children:'"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum saepe at commodi, ut quas repellat odit similique reprehenderit culpa in veniam provident odio illum itaque esse dicta consequatur dolores delectusAspernatur natus provident doloribus quidem repellendus perferendis autem, deleniti, deserunt mollitia sequi ratione, rem molestiae laudantium minima cum blanditiis. Doloremque voluptatem, dignissimos error cum magni Obcaecati et dolorem voluptatibus"',
+    id:3,
+    cargo:"Director General",
+    nombre:"Erick Brambila"
+  },
+]
+
   return (
     <div className="w-screen relative overflow-x-hidden flex flex-grow mx-auto h-full items-center justify-center">
       <div
         style={{ transform: `translateX(${currentSlideIndex * 100}vw)` }}
         className="flex transition-transform duration-500 w-full h-full items-center justify-center"
       >
-        <div className="w-screen h-full flex-shrink-0  flex flex-col p-5 gap-5 items-center justify-between">
-          <div className="relative w-32 h-32 rounded-full p-2 overflow-hidden">
-            <Image fill alt="testomiino" src="/logo.png" className="object-cover object-center " />
-          </div>
-          <p className="italic text-lg font-thin text-center md:p-3 px-10">
-            {' "Estoy realmente conforme con el men este 1"'}
-          </p>
+        {
+          arrayTestimonios.map((test,i)=>(
+
+        <div key={test.id} className="w-screen h-full flex-shrink-0  flex flex-col p-5 gap-5 items-center justify-between">
+          <div className=" flex w-1/2 flex-col p-5 gap-5 items-center text-center justify-between">
+            <p className="italic p-5">{test.children}</p>
+            <span className="text-primary-200 font-medium">{test.cargo}</span>
+            <p className="text-primary-textGris font-thin">{test.nombre}</p>
+            </div>
         </div>
-        <div className="w-screen h-full  flex-shrink-0  flex flex-col p-10 items-center justify-between ">
-          <div className="relative w-24 h-24 rounded-full p-2 overflow-hidden">
-            <Image fill alt="testomiino" src="/logo.png" />
-          </div>
-          <p className="italic text-lg font-thin text-center p-3">
-            {"Estoy realmente conforme con el men este 2"}
-          </p>
-        </div>
-        <div className="w-screen h-full   flex-shrink-0  flex flex-col p-10 items-center justify-between">
-          <div className="relative w-24 h-24 rounded-full p-2 overflow-hidden">
-            <Image fill alt="testomiino" src="/logo.png" />
-          </div>
-          <p className="italic text-lg font-thin text-center p-3">
-            {"Estoy realmente conforme con el men este 3"}
-          </p>
-        </div>
+
+
+          ))
+        }
+     
       </div>
       <button
         onClick={handlePreviousSlide}

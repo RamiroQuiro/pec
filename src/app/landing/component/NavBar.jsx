@@ -10,6 +10,9 @@ export default function NavBar() {
   const handleClick = () => {
     setToggle(!toggle);
   };
+
+  
+
   return (
     <nav className="h w-screen py-2 fixed top-0 left-0  flex flex-col md:flex-row items-center bg-primary-500 justify-between md:px-12 px-6 text-primary-200 z-40">
       <div className="md:w-1/3 flex items-center justify-between font-light  md:gap-0 gap-2">
