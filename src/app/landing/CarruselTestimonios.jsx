@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
+import { SVGNextCarrusel } from "./component/SVGComponent";
 
 export default function CarruselTestimonios() {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(1);
@@ -16,27 +17,29 @@ export default function CarruselTestimonios() {
     setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % 3);
   };
 
-
-const arrayTestimonios=[
-  {
-    children:'"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum saepe at commodi, ut quas repellat odit similique reprehenderit culpa in veniam provident odio illum itaque esse dicta consequatur dolores delectusAspernatur natus provident doloribus quidem repellendus perferendis autem, deleniti, deserunt mollitia sequi ratione, rem molestiae laudantium minima cum blanditiis. Doloremque voluptatem, dignissimos error cum magni Obcaecati et dolorem voluptatibus"',
-    id:1,
-    cargo:"Director General",
-    nombre:"Erick Brambila"
-  },
-  {
-    children:'"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum saepe at commodi, ut quas repellat odit similique reprehenderit culpa in veniam provident odio illum itaque esse dicta consequatur dolores delectusAspernatur natus provident doloribus quidem repellendus perferendis autem, deleniti, deserunt mollitia sequi ratione, rem molestiae laudantium minima cum blanditiis. Doloremque voluptatem, dignissimos error cum magni Obcaecati et dolorem voluptatibus"',
-    id:2,
-    cargo:"Director General",
-    nombre:"Erick Brambila"
-  },
-  {
-    children:'"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum saepe at commodi, ut quas repellat odit similique reprehenderit culpa in veniam provident odio illum itaque esse dicta consequatur dolores delectusAspernatur natus provident doloribus quidem repellendus perferendis autem, deleniti, deserunt mollitia sequi ratione, rem molestiae laudantium minima cum blanditiis. Doloremque voluptatem, dignissimos error cum magni Obcaecati et dolorem voluptatibus"',
-    id:3,
-    cargo:"Director General",
-    nombre:"Erick Brambila"
-  },
-]
+  const arrayTestimonios = [
+    {
+      children:
+        '"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum saepe at commodi, ut quas repellat odit similique reprehenderit culpa in veniam provident odio illum itaque esse dicta consequatur dolores delectusAspernatur natus provident doloribus quidem repellendus perferendis autem, deleniti, deserunt mollitia sequi ratione, rem molestiae laudantium minima cum blanditiis. Doloremque voluptatem, dignissimos error cum magni Obcaecati et dolorem voluptatibus"',
+      id: 1,
+      cargo: "Director General",
+      nombre: "Erick Brambila",
+    },
+    {
+      children:
+        '"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum saepe at commodi, ut quas repellat odit similique reprehenderit culpa in veniam provident odio illum itaque esse dicta consequatur dolores delectusAspernatur natus provident doloribus quidem repellendus perferendis autem, deleniti, deserunt mollitia sequi ratione, rem molestiae laudantium minima cum blanditiis. Doloremque voluptatem, dignissimos error cum magni Obcaecati et dolorem voluptatibus"',
+      id: 2,
+      cargo: "Director General",
+      nombre: "Erick Brambila",
+    },
+    {
+      children:
+        '"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum saepe at commodi, ut quas repellat odit similique reprehenderit culpa in veniam provident odio illum itaque esse dicta consequatur dolores delectusAspernatur natus provident doloribus quidem repellendus perferendis autem, deleniti, deserunt mollitia sequi ratione, rem molestiae laudantium minima cum blanditiis. Doloremque voluptatem, dignissimos error cum magni Obcaecati et dolorem voluptatibus"',
+      id: 3,
+      cargo: "Director General",
+      nombre: "Erick Brambila",
+    },
+  ];
 
   return (
     <div className="w-screen relative overflow-x-hidden flex flex-grow mx-auto h-full items-center justify-center">
@@ -44,33 +47,34 @@ const arrayTestimonios=[
         style={{ transform: `translateX(${currentSlideIndex * 100}vw)` }}
         className="flex transition-transform duration-500 w-full h-full items-center justify-center"
       >
-        {
-          arrayTestimonios.map((test,i)=>(
-
-        <div key={test.id} className="w-screen h-full flex-shrink-0  flex flex-col p-5 gap-5 items-center justify-between">
-          <div className=" flex w-1/2 flex-col p-5 gap-5 items-center text-center justify-between">
-            <p className="italic p-5">{test.children}</p>
-            <span className="text-primary-200 font-medium">{test.cargo}</span>
-            <p className="text-primary-textGris font-thin">{test.nombre}</p>
+        {arrayTestimonios.map((test, i) => (
+          <div
+            key={test.id}
+            className="w-screen h-full flex-shrink-0  flex flex-col p-5 gap-5 items-center justify-normal"
+          >
+            <div className="items-stretch justify-normal flex w-full relative">
+              <div className=" flex w-8/12 flex-col p-5 gap-5 items-center text-center justify-between  mx-auto">
+                <p className="italic p-5 font-bold text-lg">{test.children}</p>
+                <span className="text-primary-200 font-medium">
+                  {test.cargo}
+                </span>
+                <p className="text-primary-textGris font-thin">{test.nombre}</p>
+              </div>
             </div>
-        </div>
-
-
-          ))
-        }
-     
+          </div>
+        ))}
       </div>
       <button
         onClick={handlePreviousSlide}
-        className="absolute left-5 top-1/2 transform  bg-white p-2 rounded-xl hover:-translate-y-1 duration-300 shadow-md font-black text-primary-textGris/50 text-2xl"
+        className="absolute left-20 top-1/3 transform  p-2 rounded-xl hover:-translate-x-1 active:scale-90 duration-300 font-black text-primary-textGris/50 "
       >
-        {"←"}
+        <SVGNextCarrusel className="rotate-180 w-16 fill-gray-300  stroke-gray-300" />
       </button>
       <button
         onClick={handleNextSlide}
-        className="absolute right-6 top-1/2 transform  bg-white p-2 rounded-xl hover:-translate-y-1 shadow-md duration-300 font-black text-primary-textGris/50 text-2xl"
+        className="absolute right-20 top-1/3 transform  p-2 rounded-xl hover:translate-x-1 active:scale-90 duration-300 font-black text-primary-textGris/50 "
       >
-        {"→"}
+        <SVGNextCarrusel className=" w-16 fill-gray-300  stroke-gray-300" />
       </button>
     </div>
   );
