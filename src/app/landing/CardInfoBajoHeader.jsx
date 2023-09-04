@@ -2,7 +2,7 @@ import React from "react";
 
 const TarjetaInfomativa = ({ h3, children }) => {
   return (
-    <div className="flex-auto md:border-r border-primary-textGris/40  text-center md:w-[30%] w-full  flex flex-col items-center justify-center px-4 md:text-sm">
+    <div className="flex-auto md:border-r border-b pb-10 md:pb-0 border-primary-textGris/40  text-center md:w-[30%] w-full  flex flex-col items-center justify-center px-4 md:text-sm">
       <h3 className="text-xl uppercase font-semibold my-4">{h3}</h3>
       <div className="md:px-5 text-center font-medium leading-relaxed flex flex-col items-center justify-evenly flex-grow">
         {children}
@@ -14,7 +14,7 @@ const TarjetaInfomativa = ({ h3, children }) => {
 
 export default function CardInfoBajoHeader() {
   return (
-    <section className="md:h-screen w-11/12 container flex items-center justify-center py-24 text-primary-textGris mt-12">
+    <section className="md:h-screen w-11/12 container  flex items-center justify-center py-24 text-primary-textGris mt-12">
       <div className="h-4/6 m-auto w-full container flex md:flex-row flex-col md:items-stretch justify-center flex-wrap text-primary-textGris">
         <div className="flex-auto md:border-r  border-primary-textGris/40 md:w-[30%] w-full flex flex-col items-center justify-center mb-20 md:m-0  md:px-4 text-sm py-4">
           <h3 className="text-xl uppercase font-semibold my-4">Bienvenidos</h3>
@@ -22,6 +22,7 @@ export default function CardInfoBajoHeader() {
             <video
               src="/landing.mp4"
               controls
+              muted
               className="rounded shadow-md"
             ></video>
           </div>
@@ -37,7 +38,7 @@ export default function CardInfoBajoHeader() {
           </div>
           <button
         
-        className=" border-primary-200 border text-white bg-primary-200  w-1/2  capitalize px-3 py-2 text-lg mt-16 hover:bg-primary-100 hover:border-white hover:text-white duration-300"
+        className=" border-primary-200 border text-white bg-primary-200  md:w-1/2  capitalize px-3 py-2 text-lg mt-16 hover:bg-primary-100 hover:border-white hover:text-white duration-300"
       >
       Adquirir Mi PEXC
       </button>

@@ -53,8 +53,8 @@ export default function CarruselTestimonios() {
             className="w-screen h-full flex-shrink-0  flex flex-col p-5 gap-5 items-center justify-normal"
           >
             <div className="items-stretch justify-normal flex w-full relative">
-              <div className=" flex w-8/12 flex-col p-5 gap-5 items-center text-center justify-between  mx-auto">
-                <p className="italic p-5 font-bold text-lg">{test.children}</p>
+              <div className=" flex md:w-8/12 flex-col p-5 gap-5 items-center text-center justify-between  mx-auto">
+                <p className="italic md:p-5 font-bold text-lg">{test.children}</p>
                 <span className="text-primary-200 font-medium">
                   {test.cargo}
                 </span>
@@ -66,15 +66,15 @@ export default function CarruselTestimonios() {
       </div>
       <button
         onClick={handlePreviousSlide}
-        className="absolute left-20 top-1/3 transform  p-2 rounded-xl hover:-translate-x-1 active:scale-90 duration-300 font-black text-primary-textGris/50 "
+        className="absolute md:left-20 left-0 top-1/3 transform  p-2 rounded-xl hover:-translate-x-1 active:scale-90 duration-300 font-black text-primary-textGris/50 "
       >
-        <SVGNextCarrusel className="rotate-180 w-16 fill-gray-300  stroke-gray-300" />
+        <SVGNextCarrusel className="rotate-180 md:w-16 w-10 fill-gray-300  stroke-gray-300" />
       </button>
       <button
         onClick={handleNextSlide}
-        className="absolute right-20 top-1/3 transform  p-2 rounded-xl hover:translate-x-1 active:scale-90 duration-300 font-black text-primary-textGris/50 "
+        className="absolute md:right-20 right-0 top-1/3 transform  p-2 rounded-xl hover:translate-x-1 active:scale-90 duration-300 font-black text-primary-textGris/50 "
       >
-        <SVGNextCarrusel className=" w-16 fill-gray-300  stroke-gray-300" />
+        <SVGNextCarrusel className=" md:w-16 w-10 fill-gray-300  stroke-gray-300" />
       </button>
     </div>
   );
