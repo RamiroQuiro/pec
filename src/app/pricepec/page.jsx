@@ -3,8 +3,6 @@ import logo from "../../../public/logo.png";
 import BotonCancelar from "./BotonCancelar";
 import Pantalla1 from "./Pantalla1";
 
-;
-
 export default function PricePEC() {
   const arrayItems = [
     {
@@ -62,7 +60,7 @@ export default function PricePEC() {
         </div>
         <BotonCancelar />
       </nav>
-  <Pantalla1 arrayItems={arrayItems}/>
+      <Pantalla1 arrayItems={arrayItems} />
     </main>
   );
 }

@@ -7,7 +7,7 @@ import { Toaster } from "react-hot-toast";
 export default function CheckPaid() {
   return (
     <main className=" w-screen min-h-screen h-full flex flex-col items-center justify-between text-primary-textGris relative">
-      <Toaster/>
+      <Toaster />
       <nav className="w-full absolute z-40 flex items-center justify-between bg-primary-tonoBlanco h-20 px-16 top-0 left-0">
         {/* logo */}
         <div>
@@ -17,8 +17,8 @@ export default function CheckPaid() {
         <BotonCancelar />
       </nav>
       <section className="min-h-screen w-full mx-auto flex flex-col items-start gap-y-5 mt-20 ">
-        <div className=" w-3/4 min-h-[75vh] border shadow-md  flex items-stretch justify-between mx-auto my-20 ">
-          <div className="flex flex-col p-5 items-start justify-normal bg-white w-1/2">
+        <div className=" w-3/4 min-h-[75vh] border bg-white shadow-md  flex items-stretch justify-between mx-auto my-10 ">
+          <div className="flex flex-col p-5 items-stretch justify-stretch h-full  w-1/2">
             <h2 className="text-3xl font-bold my-5 text-[#272020]">
               Detalles del Pedido
             </h2>
@@ -52,7 +52,7 @@ export default function CheckPaid() {
               al siguiente nivel
             </p>
           </div>
-      <CompletarPago/>
+          <CompletarPago />
         </div>
       </section>
     </main>
