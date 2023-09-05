@@ -11,7 +11,9 @@ export default function CompletarPago() {
   const [discount, setDiscount] = useState(0);
   const [precios, setPrecios] = useState(null);
   const [error, setError] = useState(null);
-  const [promociones, setPromociones] = useState([])
+  const [formattedTotal, setFormattedTotal] = useState(0);
+  const [promociones, setPromociones] = useState([]);
+  const [promoEncontrado, setPromoEncontrado] = useState(null)
   const router = useRouter();
 
   // Obtener la lista de precios desde la API
@@ -20,6 +22,7 @@ export default function CompletarPago() {
       try {
         const response = await axios.get("/api/list");
         setPrices(response.data.filter((prod) => prod.active));
+      
       } catch (error) {
         setError("Ocurrió un error al obtener los precios");
       }
@@ -27,25 +30,36 @@ export default function CompletarPago() {
     fetchPrices();
   }, []);
 
-// obtener las promociontes activas
-useEffect(() => {
-  const fecthPromos = async () => {
-    try {
-      const response = await axios.get("/api/promotion");
-      setPromociones(response.data.data);
-      console.log(response)
-    } catch (error) {
-      setError("Ocurrió un error al obtener los precios");
-    }
-  };
-  fecthPromos();
-}, []);
+  // obtener las promociontes activas
+  useEffect(() => {
+    const fecthPromos = async () => {
+      try {
+        const response = await axios.get("/api/promotion");
+        let promociones = response?.data?.data;
 
-console.log(promociones)
+      
+        const newArray = promociones.map((promo) => {
+          return {
+            nameCode: promo.code,
+            code: promo.coupon.id,
+            id: promo.id,
+            porcentaje: promo.percent_off,
+          };
+        });
+        setPromociones(newArray);
+      } catch (error) {
+        setError("Ocurrió un error al obtener los precios");
+      }
+    };
+    fecthPromos();
+  }, []);
 
   // Obtener los ID de los precios
   useEffect(() => {
     setPrecios(prices?.map((producto) => producto.prices[0].id));
+    const total = prices?.reduce((a, b) => a + Number(b.prices[0].unit_amount),0);
+    const formatoPre=total/100
+      setFormattedTotal(formatoNum.format(formatoPre));
   }, [prices]);
 
   // Manejar el cambio en el campo del cupón
@@ -60,55 +74,66 @@ console.log(promociones)
     style: "currency",
     currency: "MXN",
   });
-  const total =
-    prices?.reduce((a, b) => a + Number(b.prices[0].unit_amount), 0) - discount;
-  const formattedTotal = formatoNum.format(total / 100);
+
+
+
+  // calcular con descuentos
+  useEffect(() => {
+  
+      const discountAmount = (formattedTotal * discount) / 100;
+      const finalTotal = formattedTotal - discountAmount;
+      setFormattedTotal(formatoNum.format(finalTotal));
+      console.log(formattedTotal);
+  }, [discount]);
 
   const aplicarDescuento = () => {
     const codigo = form?.cuponID;
-    if (codigo == "mqHuW7hj") {
+    setPromoEncontrado( promociones?.find((promo) => promo.code == codigo))
+    if (!promoEncontrado) {
+      toast.error("codigo incorrecto");
+    }
+    if(promoEncontrado){
+
       toast.success("Descuento aplicado");
       setDiscount(250000);
-    } else {
-      toast.error("codigo incorrecto");
     }
   };
   return (
     <div className="flex flex-col p-10 items-stretch justify-stretch bg-[#F5F5F5] w-1/2 min-h-full ">
-        <div className=" w-full  mb-20 h-5/6 flex-grow ">
-          <p className="text-lg font-bold mt-5">Resumen</p>
-          {!prices ? (
-            <div
-              class="inline-block h-8 w-8 animate-spin mx-auto my-10 rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-              role="status"
-            >
-              <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
-                Loading...
-              </span>
-            </div>
-          ) : (
-            prices?.map((product) => (
-              <div
-                key={product.id}
-                className="w-full  flex items-center justify-between text-xs pb-1 px-2 my-2"
-              >
-                <p>{product.name}</p>
-                <p className="uppercase">
-                  {new Intl.NumberFormat("es-MX", {
-                    style: "currency",
-                    currency: "MXN",
-                  }).format(product.prices[0]?.unit_amount / 100)}
-                  {"  "}
-                  {product.prices[0]?.currency}
-                </p>
-              </div>
-            ))
-          )}
-          <div className="w-full flex items-center justify-between text-sm pb-1 my-2 font-bold">
-            <p>Total:</p>
-            {prices && <p> {formattedTotal} MXN + IVA</p>}
+      <div className=" w-full  mb-20 h-5/6 flex-grow ">
+        <p className="text-lg font-bold mt-5">Resumen</p>
+        {!prices ? (
+          <div
+            class="inline-block h-8 w-8 animate-spin mx-auto my-10 rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+            role="status"
+          >
+            <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+              Loading...
+            </span>
           </div>
+        ) : (
+          prices?.map((product) => (
+            <div
+              key={product.id}
+              className="w-full  flex items-center justify-between text-xs pb-1 px-2 my-2"
+            >
+              <p>{product.name}</p>
+              <p className="uppercase">
+                {new Intl.NumberFormat("es-MX", {
+                  style: "currency",
+                  currency: "MXN",
+                }).format(product.prices[0]?.unit_amount / 100)}
+                {"  "}
+                {product.prices[0]?.currency}
+              </p>
+            </div>
+          ))
+        )}
+        <div className="w-full flex items-center justify-between text-sm pb-1 my-2 font-bold">
+          <p>Total:</p>
+          {prices && <p> {formattedTotal} MXN + IVA</p>}
         </div>
+      </div>
       {!prices ? (
         <ButtonPago />
       ) : (
@@ -118,15 +143,14 @@ console.log(promociones)
         <p className="font-bold tracking-wide text-sm my-2">Promociones</p>
       </div>
       <div className="text-xs w-full flex flex-col gap-2 mt-10">
-        {!prices ||
-          (prices == null && (
+        {promoEncontrado&& (
             <p>
               X Se ha aplicado{" "}
               <span className="font-bold tracking-wide uppercase">
-                KEEPLAYOUT
+                {promoEncontrado.nameCode}
               </span>
             </p>
-          ))}
+          )}
         <div className="border border-primary-textGris relative flex items-center w-full">
           <input
             type="text"
