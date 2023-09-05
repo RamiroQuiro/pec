@@ -27,34 +27,41 @@ export default function Redirigiendo() {
     cargarUserData({ email: data.user?.email, fullName: data.user?.fullName });
     
     const res = async () => {
-      const respuesta = await axios.post("/api/esta", {
-        email: data?.user?.email,
-      });
-      console.log(respuesta);
-      // Manejo de la respuesta de la consulta
-      if (respuesta.data.success) {
-        const formCarga = respuesta.data.formCarga;
-        const drivers = respuesta.data.drivers;
-        updateState({
-          formCarga,
-          drivers,
-        });
-        setComprobantePago(true);
-        console.log(comprobantePago)
-      } else {
-        setComprobantePago(false);
-      }
-      setIsLoading(false);
-    };
-    res();
-  }, [data]);
-  
-  useEffect(() => {
-    console.log(comprobantePago)
-    if (!comprobantePago) return router.push("/pricepec");
-    if (comprobantePago) router.push("/dashboard");
-  }, [comprobantePago]);
+      try {
 
+        const respuesta = await axios.post("/api/esta", {
+          email: data?.user?.email,
+        });
+        // Manejo de la respuesta de la consulta
+        if (respuesta.data.success) {
+          console.log('respues ok ', respuesta)
+          const formCarga = respuesta.data.formCarga;
+          const drivers = respuesta.data.drivers;
+          updateState({
+            formCarga,
+            drivers,
+          });
+          setComprobantePago(true);
+          router.push('/dashboard')
+        }
+        if (!respuesta.data.success) {
+          setComprobantePago(false);
+          router.push('/pricepec')
+        }}
+        
+        catch (error) {
+          console.log('respues error ', error)
+          console.log(error)
+          setComprobantePago(false);
+          router.push('/')
+          
+        }
+        setIsLoading(false);
+    }
+    res()
+  }
+  , [data]);
+  
   return (
     <main className=" w-screen min-h-screen h-full flex flex-col items-center justify-between text-primary-textGris relative">
       <nav className="w-full absolute z-40 flex items-center justify-between bg-primary-tonoBlanco h-20 px-16 top-0 left-0">
