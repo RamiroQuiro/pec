@@ -1,21 +1,55 @@
-import SectionDash from "./component/SectionDash";
-import ContenedorVideo from "./component/ContenedorVideo";
-import { Toaster } from "react-hot-toast";
-import BotonSiguiente from "./BotonSiguiente";
+"use client";
 
-export default function page() {
-  return (
-    <SectionDash>
-      <div className="bg-white md:w-[78vw] md:h-[85vh] md:min-h-[85vh] absolute right-10 top-24 flex flex-col items-start justify-center">
-        <ContenedorVideo />
-        <div className="flex items-center justify-between gap-3 mt-3 pl-14">
-          <button className="bg-primary-textGris disabled:bg-primary-200/40 font- rounded text-white capitalize text-xs px-5 py-3">
-            omitir
-          </button>
-          <BotonSiguiente />
-        </div>
-      </div>
-      <Toaster />
-    </SectionDash>
-  );
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import LoadingCss from "../componentes/LoadingCss";
+import { contextUser } from "@/context/contextUser";
+import { useRouter } from "next/navigation";
+import Dashboard from "./Dashboard";
+
+export default function ComprobarPago({ children }) {
+  const router = useRouter();
+  const { data } = useSession();
+  const [comprobantePago, setComprobantePago] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const { cargarUserData, updateState } = contextUser((state) => ({
+    cargarUserData: state.cargarUserData,
+    updateState: state.updateState,
+  }));
+
+  useEffect(() => {
+    if (!data) return;
+
+    cargarUserData({ email: data.user?.email, fullName: data.user?.fullName });
+
+    const res = async () => {
+      const respuesta = await axios.post("/api/esta", {
+        email: data?.user?.email,
+      });
+
+      // Manejo de la respuesta de la consulta
+      if (respuesta.data.success) {
+        const formCarga = respuesta.data.formCarga;
+        const drivers = respuesta.data.drivers;
+        updateState({
+          formCarga,
+          drivers,
+        });
+        setComprobantePago(true);
+      } else {
+        setComprobantePago(false);
+      }
+      setIsLoading(false);
+    };
+    res();
+  }, [data]);
+
+  if (comprobantePago) {
+    return <Dashboard/>
+  }
+  if (!comprobantePago) {
+    return router.push("/pricepec");
+  } else return <LoadingCss />;
 }
