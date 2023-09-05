@@ -27,7 +27,6 @@ export default function ComprobarPago({ children }) {
       const respuesta = await axios.post("/api/esta", {
         email: data?.user?.email,
       });
-console.log(respuesta)
       // Manejo de la respuesta de la consulta
       if (respuesta.data.success) {
         const formCarga = respuesta.data.formCarga;

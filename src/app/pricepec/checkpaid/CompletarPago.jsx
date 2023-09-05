@@ -106,10 +106,10 @@ const aplicarDescuento=()=>{
         <p className="font-bold tracking-wide text-sm my-2">Promociones</p>
       </div>
       <div className="text-xs w-full flex flex-col gap-2 mt-10">
-        <p>
+       {!prices || prices==null && ( <p>
           X Se ha aplicado{" "}
           <span className="font-bold tracking-wide uppercase">KEEPLAYOUT</span>
-        </p>
+        </p>)}
         <div className="border border-primary-textGris relative flex items-center w-full">
           <input
             type="text"

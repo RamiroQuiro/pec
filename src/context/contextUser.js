@@ -255,8 +255,6 @@ export const contextUser = create((set, get) => ({
   },
   cargarForm: (obj) => {
     set((state) => ({ ...state, formCarga: obj }));
-    const state = get();
-    console.log(state);
   },
   activarFlyer: (id) => {
     set((state) => ({ ...state, flyerActivo: id }));

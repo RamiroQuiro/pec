@@ -23,10 +23,9 @@ export default function Redirigiendo() {
   }));
 
   useEffect(() => {
-    console.log(comprobantePago)
-    if (!data) ;
     
-    cargarUserData({ email: data.user?.email, fullName: data.user?.fullName });
+    if (!data)return 
+    if (data) cargarUserData({ email: data?.user?.email, fullName: data.user?.fullName });
     
     const res = async () => {
       try {

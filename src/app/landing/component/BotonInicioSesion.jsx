@@ -8,7 +8,7 @@ export default function BotonInicioSesion() {
         onClick={()=>{
 router.push('/dashboard')
         }}
-        className="bg-primary-200 animate animate-pulse text-white md:mt-10 w-1/2 text-lg hover:bg-primary-100 duration-300 py-3">
+        className="bg-primary-200 animate animate-pulse text-white md:mt-10 md:w-1/2 w-10/12 text-lg hover:bg-primary-100 duration-300 py-3">
           Iniciar Sesión
         </button>
   )
