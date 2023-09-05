@@ -5,7 +5,7 @@ import { SvgBack } from '../componentes/SVGComponent'
 export default function BotonBack() {
     const router=useRouter()
     const handleBack=()=>{
-        router.back()
+        router.push('/')
     }
   return (
     <div
