@@ -1,3 +1,4 @@
+import Provider from './Provider'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -14,7 +15,8 @@ export default function RootLayout({ children }) {
     <html lang="en"
     className='scroll-smooth'
     >
-      <body className="overflow-x-hidden">{children}</body>
+      <body className="overflow-x-hidden">
+        <Provider>{children}</Provider></body>
     </html>
   )
 }
