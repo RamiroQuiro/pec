@@ -6,14 +6,19 @@ import {
   SVGStop,
   SVGAudio,
   SVGAgrandarVideo,
+  SvgNextVideo,
+  SVGMuted,
 } from "@/app/componentes/SVGComponent";
 import { contextUser } from "@/context/contextUser";
+import { useRouter } from "next/navigation";
+import { shallow } from "zustand/shallow";
 export default function ContenedorVideo() {
+  const router = useRouter();
   const { formCarga, updateState, videoBienvenida } = contextUser((state) => ({
     formCarga: state.formCarga,
     videoBienvenida: state.formCarga.videoBienvenida,
     updateState: state.updateState,
-  }));
+  }),shallow);
   const videoRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
@@ -65,6 +70,11 @@ export default function ContenedorVideo() {
     }
   }, [progress]);
 
+  const handleNextStep = () => {
+    if(videoBienvenida){
+      router.push("/dashboard/driver/1");
+    }
+  };
   return (
     <div className="rounded-lg w-[90%] h-[87%] border-2 mx-auto shadow-lg relative">
       {!isPlaying && (
@@ -89,22 +99,23 @@ export default function ContenedorVideo() {
         <source src="/videoBienvenida.mp4" type="video/mp4" />
       </video>
 
+      {/* controles del video */}
       <div className="w-full flex items-center justify-between absolute bottom-0 gap-2 left-0 px-8">
         <div
           onClick={handlePlayPause}
           className="duration-300 flex w-1/12 cursor-pointer items-center justify-center"
         >
           {!isPlaying ? (
-            <SVGPlay className="fill-primary-100 w-12 h-12 animate-[aparecer_.5s]" />
+            <SVGPlay className="fill-primary-100 w-12 h-12 animate-[aparecer_.5s] hover:scale-110 duration-300" />
           ) : (
-            <SVGPause className="fill-primary-100 w-12 h-12 animate-[aparecer_.5s]" />
+            <SVGPause className="fill-primary-100 w-12 h-12 animate-[aparecer_.5s] hover:scale-110 duration-300" />
           )}
         </div>
         <div
           onClick={handleStop}
           className="duration-300 flex w-1/12 cursor-pointer items-center justify-center"
         >
-          <SVGStop className="fill-primary-tonoBlanco w-12 h-12 animate-[aparecer_.5s]" />
+          <SVGStop className="fill-primary-tonoBlanco w-12 h-12 animate-[aparecer_.5s] hover:scale-110 duration-300" />
         </div>
         <div className="duration-300 flex w-8/12 cursor-pointer relative bg-primary-tonoBlanco rounded h-4 overflow-hidden justify-start  items-start">
           <div
@@ -118,13 +129,28 @@ export default function ContenedorVideo() {
           onClick={handleMuteUnmute}
           className="duration-300 flex w-1/12 flex-grow cursor-pointer items-center justify-center"
         >
-          <SVGAudio className="fill-primary-tonoBlanco w-8 h-8 animate-[aparecer_.5s]" />
+          {isMuted ? (
+            <SVGAudio className="fill-primary-tonoBlanco w-8 h-8 animate-[aparecer_.5s] hover:scale-110 duration-300" />
+          ) : (
+            <SVGMuted className="fill-primary-tonoBlanco w-8 h-8 animate-[aparecer_.5s] hover:scale-110 duration-300" />
+          )}
         </div>
         <div
           onClick={handleFullscreen}
           className="duration-300 flex w-1/12 cursor-pointer items-center justify-center"
         >
-          <SVGAgrandarVideo className="fill-primary-tonoBlanco w-8 h-8 animate-[aparecer_.5s]" />
+          <SVGAgrandarVideo className="fill-primary-tonoBlanco w-8 h-8 animate-[aparecer_.5s] hover:scale-110 duration-300" />
+        </div>
+        <div
+          onClick={handleNextStep}
+          className="duration-300 flex w-1/12 cursor-pointer items-center justify-center  group"
+        >
+          <SvgNextVideo className="fill-primary-tonoBlanco w-8 h-8 animate-[aparecer_.5s] hover:scale-110 duration-300" />
+          {!videoBienvenida && (
+            <div className="bg-primary-200 text-white animate-[aparecer_.5s] rounded p-5 absolute top-14 right-0 group-hover:flex hidden items-center justify-normal text-xs font-thin w-56">
+              <p className="text-center">Vea el video para poder pasar de paso</p>{" "}
+            </div>
+          )}
         </div>
       </div>
     </div>

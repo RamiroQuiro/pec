@@ -4,13 +4,8 @@ import logo from "../../../public/logo.png";
 import redirigiendo from "../../../public/redirigiendo.jpg";
 import relojArena from "../../../public/relojArena.png";
 import BotonCancelar from "../pricepec/BotonCancelar";
-<<<<<<< HEAD
-export default function Redirigiendo() {
-  setTimeout(() => {
-    window.location.replace("/dashboard");
-  }, 2000);
 
-=======
+
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -40,6 +35,8 @@ export default function Redirigiendo() {
           email: data?.user?.email,
         });
         // Manejo de la respuesta de la consulta
+
+        // pago efectuado -> state:true
         if (respuesta.data.success) {
           console.log('respues ok ', respuesta)
           const formCarga = respuesta.data.formCarga;
@@ -51,6 +48,8 @@ export default function Redirigiendo() {
           setComprobantePago(true);
           router.push('/dashboard')
         }
+
+        // pago no efectuado -> state:false
         if (!respuesta.data.success) {
           setComprobantePago(false);
           router.push('/pricepec')
@@ -69,7 +68,7 @@ export default function Redirigiendo() {
   }
   , [data]);
   
->>>>>>> 55d60969c0560c3a08a978ad859bc6401c09f182
+
   return (
     <main className=" w-screen min-h-screen h-full flex flex-col items-center justify-between text-primary-textGris relative">
       <nav className="w-full absolute z-40 flex items-center justify-between bg-primary-tonoBlanco h-20 px-16 top-0 left-0">
