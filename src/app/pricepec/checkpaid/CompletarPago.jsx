@@ -9,22 +9,21 @@ export default function CompletarPago() {
   const [form, setForm] = useState({ cuponID: "" });
   const [prices, setPrices] = useState(null);
   const [discount, setDiscount] = useState(0);
-  const [precios, setPrecios] = useState(null);
+  const [preciosId, setPreciosId] = useState(null);
   const [error, setError] = useState(null);
   const [formattedTotal, setFormattedTotal] = useState(0);
   const [promociones, setPromociones] = useState([]);
-  const [promoEncontrado, setPromoEncontrado] = useState(null)
+  const [promoEncontrado, setPromoEncontrado] = useState(null);
   const router = useRouter();
 
-  // Obtener la lista de precios desde la API
+  // Obtener la lista de preciosId desde la API
   useEffect(() => {
     const fetchPrices = async () => {
       try {
         const response = await axios.get("/api/list");
         setPrices(response.data.filter((prod) => prod.active));
-      
       } catch (error) {
-        setError("Ocurrió un error al obtener los precios");
+        setError("Ocurrió un error al obtener los preciosId");
       }
     };
     fetchPrices();
@@ -36,30 +35,33 @@ export default function CompletarPago() {
       try {
         const response = await axios.get("/api/promotion");
         let promociones = response?.data?.data;
-
-      
         const newArray = promociones.map((promo) => {
+          console.log(promo.coupon.percent_off);
           return {
             nameCode: promo.code,
             code: promo.coupon.id,
             id: promo.id,
-            porcentaje: promo.percent_off,
+            porcentaje: promo.coupon.percent_off || 0,
           };
         });
         setPromociones(newArray);
       } catch (error) {
-        setError("Ocurrió un error al obtener los precios");
+        setError("Ocurrió un error al obtener los preciosId");
       }
     };
     fecthPromos();
   }, []);
 
-  // Obtener los ID de los precios
+  // Obtener los ID de los preciosId
   useEffect(() => {
-    setPrecios(prices?.map((producto) => producto.prices[0].id));
-    const total = prices?.reduce((a, b) => a + Number(b.prices[0].unit_amount),0);
-    const formatoPre=total/100
-      setFormattedTotal(formatoNum.format(formatoPre));
+    setPreciosId(prices?.map((producto) => producto.prices[0].id));
+    const total = prices?.reduce(
+      (a, b) => a + Number(b.prices[0].unit_amount),
+      0
+    );
+    const formatoPre = total / 100;
+    setFormattedTotal(formatoNum.format(formatoPre));
+    console.log(preciosId);
   }, [prices]);
 
   // Manejar el cambio en el campo del cupón
@@ -75,27 +77,30 @@ export default function CompletarPago() {
     currency: "MXN",
   });
 
-
-
   // calcular con descuentos
   useEffect(() => {
-  
-      const discountAmount = (formattedTotal * discount) / 100;
-      const finalTotal = formattedTotal - discountAmount;
-      setFormattedTotal(formatoNum.format(finalTotal));
-      console.log(formattedTotal);
-  }, [discount]);
+    const total = prices?.reduce(
+      (a, b) => a + Number(b.prices[0].unit_amount),
+      0
+    );
+    const discountAmount = ((total / 100) * discount / 100);
+    console.log(discountAmount,'total->',total/100) ;
+    const finalTotal = total/100 - discountAmount;
+    setFormattedTotal(formatoNum.format(finalTotal));
+  }, [discount, promoEncontrado]);
 
   const aplicarDescuento = () => {
     const codigo = form?.cuponID;
-    setPromoEncontrado( promociones?.find((promo) => promo.code == codigo))
+    setPromoEncontrado(promociones?.find((promo) => promo.code == codigo));
     if (!promoEncontrado) {
       toast.error("codigo incorrecto");
     }
-    if(promoEncontrado){
-
-      toast.success("Descuento aplicado");
-      setDiscount(250000);
+    if (promoEncontrado) {
+      console.log(promoEncontrado);
+      setDiscount(promoEncontrado.porcentaje);
+      toast.success(`Descuento aplicado por el %${promoEncontrado.porcentaje}`, {
+        duration: 10000,
+      });
     }
   };
   return (
@@ -137,20 +142,20 @@ export default function CompletarPago() {
       {!prices ? (
         <ButtonPago />
       ) : (
-        <ButtonPago priceId={precios} promoId={form.cuponID} />
+        <ButtonPago priceId={preciosId} promoId={form.cuponID} />
       )}
       <div className="border-t-2 border-primary-100 my-2 w-full">
         <p className="font-bold tracking-wide text-sm my-2">Promociones</p>
       </div>
       <div className="text-xs w-full flex flex-col gap-2 mt-10">
-        {promoEncontrado&& (
-            <p>
-              X Se ha aplicado{" "}
-              <span className="font-bold tracking-wide uppercase">
-                {promoEncontrado.nameCode}
-              </span>
-            </p>
-          )}
+        {promoEncontrado && (
+          <p className=" text-green-600">
+            ☻ Se ha aplicado{" "}
+            <span className="font-bold tracking-wide uppercase">
+              {promoEncontrado.nameCode}
+            </span>
+          </p>
+        )}
         <div className="border border-primary-textGris relative flex items-center w-full">
           <input
             type="text"

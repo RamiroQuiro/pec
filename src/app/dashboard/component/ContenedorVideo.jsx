@@ -94,7 +94,7 @@ export default function ContenedorVideo() {
         height="240"
         onTimeUpdate={handleTimeUpdate}
         muted
-        className={`rounded-lg overflow-hidden object-cover object-center`}
+        className={`rounded-lg overflow-hidden object-cover object-center w-full `}
       >
         <source src="/videoBienvenida.mp4" type="video/mp4" />
       </video>
