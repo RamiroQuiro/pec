@@ -87,18 +87,18 @@ export default function CompletarPago() {
     console.log(discountAmount,'total->',total/100) ;
     const finalTotal = total/100 - discountAmount;
     setFormattedTotal(formatoNum.format(finalTotal));
-  }, [discount, promoEncontrado]);
+  }, [discount, promoEncontrado,formatoNum]);
 
   const aplicarDescuento = () => {
     const codigo = form?.cuponID;
-    setPromoEncontrado(promociones?.find((promo) => promo.code == codigo));
-    if (!promoEncontrado) {
+    const objeFind=promociones?.find((promo) => promo.code == codigo)
+    if (!objeFind) {
       toast.error("codigo incorrecto");
     }
-    if (promoEncontrado) {
-      console.log(promoEncontrado);
-      setDiscount(promoEncontrado.porcentaje);
-      toast.success(`Descuento aplicado por el %${promoEncontrado.porcentaje}`, {
+    if (objeFind) {
+      setPromoEncontrado(objeFind);
+      setDiscount(objeFind.porcentaje);
+      toast.success(`Descuento aplicado por el %${objeFind.porcentaje}`, {
         duration: 10000,
       });
     }

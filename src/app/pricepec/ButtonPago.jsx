@@ -14,7 +14,7 @@ const {email,fullName}=contextUser((state)=>state.userData)
   const router = useRouter();
   const clickPago = async (obj) => {
     if (!email) {
-      router.push('/dashboard')
+      router.push('/login')
       toast.error('Ingrese su usuario')
     }
     setIsLoading(true)
