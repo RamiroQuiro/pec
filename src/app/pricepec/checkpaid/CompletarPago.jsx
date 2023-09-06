@@ -103,6 +103,7 @@ export default function CompletarPago() {
       });
     }
   };
+  console.log(form.cuponID)
   return (
     <div className="flex flex-col p-10 items-stretch justify-stretch bg-[#F5F5F5] w-1/2 min-h-full ">
       <div className=" w-full  mb-20 h-5/6 flex-grow ">

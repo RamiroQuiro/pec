@@ -18,7 +18,7 @@ export async function POST(request) {
       mode: "payment",
       discounts: promoId.length > 0 ? [{ coupon: promoId }] : undefined ,
       success_url: `http://localhost:3000/redirigiendo`,
-      cancel_url: new URL('/'),
+      cancel_url: `http://localhost:3000/`,
     });
    
     const userFind = await User.findOne({ email });
