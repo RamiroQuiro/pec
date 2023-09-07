@@ -1,12 +1,13 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import SVGLogin, { SVGMenu } from "./SVGComponent";
+import { motion } from "framer-motion";
 import logo from "../../../../public/logo.png";
 import LinkLogin from "./LinkLogin";
 import { useSession } from "next-auth/react";
 import UserNameSidebar from "@/app/dashboard/component/UserNameSidebar";
 import UserNameLanding from "./UserNameLanding";
+import { SVGMenu } from "./SVGComponent";
 
 export default function NavBar() {
   const { data } = useSession();
@@ -16,7 +17,18 @@ export default function NavBar() {
   };
 
   return (
-    <nav className="h w-screen py-2 fixed top-0 left-0  flex flex-col md:flex-row items-center bg-primary-500 justify-between md:px-12 px-6 text-primary-200 z-40">
+    <motion.nav
+    initial={{
+      opacity:0
+    }}
+    animate={{
+      opacity:1
+    }}
+    transition={{
+      duration:0.5,delay:1,
+      ease: [0.5, 0.71, 1, 1.5],
+    }}
+     className="h w-screen py-2 fixed top-0 left-0  flex flex-col md:flex-row items-center bg-primary-500 justify-between md:px-12 px-6 text-primary-200 z-40">
       <div className="md:w-1/3 flex items-center justify-between font-light  md:gap-0 gap-2">
         <a href="#inicio">
           <Image alt="logo" src={logo} width={50} height={50} quality={50} />
@@ -67,6 +79,6 @@ export default function NavBar() {
           <UserNameLanding/>
         </>
       )}
-    </nav>
+    </motion.nav>
   );
 }
