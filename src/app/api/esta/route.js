@@ -23,6 +23,8 @@ export async function POST(request) {
 
     const session = await stripe.checkout.sessions.retrieve(sessionPaid);
     if (session.payment_status === "paid") {
+      userFind.pecPagado=true
+      await userFind.save()
       // El pago fue exitoso
       // Aquí puede actualizar el estado del pedido o realizar otras acciones necesarias
       return NextResponse.json({
@@ -38,14 +40,15 @@ export async function POST(request) {
         message: "El pago no fue exitoso",
       });
     }
-
-
+   
+    
   } catch (error) {
     console.log(error);
   }
-
+  
   return NextResponse.json({
     success: false,
     message: "El pago no fue exitoso",
   });
+  await userFind.saved()
 }

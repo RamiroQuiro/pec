@@ -20,6 +20,10 @@ const UserSchema = new Schema({
     type: String,
     default: "UNVERIFIED",
   },
+  pecPagado:{
+    type: Boolean,
+    default: false,
+  },
   sessionPaid: {
     type: String,
     default: "0",

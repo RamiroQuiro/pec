@@ -11,6 +11,8 @@ export default function UserNameLanding() {
     router.push("/redirigiendo");
   };
 
+
+  console.log(data)
   if (!data?.user) {
     return <LinkLogin onClick={()=>{
       router.push('/login')

@@ -22,19 +22,21 @@ export default function Redirigiendo() {
     updateState: state.updateState,
   }));
 
+
   useEffect(() => {
     
     if (!data)return 
     if (data) cargarUserData({ email: data?.user?.email, fullName: data.user?.fullName });
     
     const res = async () => {
+      console.log(data,'->estoy en el redireccionamiento')
       try {
-
+        
         const respuesta = await axios.post("/api/esta", {
           email: data?.user?.email,
         });
         // Manejo de la respuesta de la consulta
-
+        
         // pago efectuado -> state:true
         if (respuesta.data.success) {
           console.log('respues ok ', respuesta)
@@ -47,7 +49,7 @@ export default function Redirigiendo() {
           setComprobantePago(true);
           router.push('/dashboard')
         }
-
+        
         // pago no efectuado -> state:false
         if (!respuesta.data.success) {
           setComprobantePago(false);
