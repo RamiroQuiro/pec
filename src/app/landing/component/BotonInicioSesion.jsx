@@ -6,6 +6,10 @@ export default function BotonInicioSesion() {
   const {data}=useSession()
 
     const router=useRouter()
+
+    const handleClick=()=>{
+      
+    }
   return (
     <button
         onClick={()=>{
