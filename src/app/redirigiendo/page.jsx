@@ -5,7 +5,6 @@ import redirigiendo from "../../../public/redirigiendo.jpg";
 import relojArena from "../../../public/relojArena.png";
 import BotonCancelar from "../pricepec/BotonCancelar";
 
-
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -22,53 +21,52 @@ export default function Redirigiendo() {
     updateState: state.updateState,
   }));
 
-
   useEffect(() => {
-    
-    if (!data)return 
-    if (data) cargarUserData({ email: data?.user?.email, fullName: data.user?.fullName });
-    
-    const res = async () => {
-      console.log(data,'->estoy en el redireccionamiento')
-      try {
-        
-        const respuesta = await axios.post("/api/esta", {
-          email: data?.user?.email,
-        });
-        // Manejo de la respuesta de la consulta
-        
-        // pago efectuado -> state:true
-        if (respuesta.data.success) {
-          console.log('respues ok ', respuesta)
-          const formCarga = respuesta.data.formCarga;
-          const drivers = respuesta.data.drivers;
-          updateState({
-            formCarga,
-            drivers,
+    if (!data) return;
+    if (data)
+      cargarUserData({
+        email: data?.user?.email,
+        fullName: data.user?.fullName,
+      });
+    if (data?.user?.pecPagado) {
+      router.push("/dashboard");
+    } else {
+      const res = async () => {
+        try {
+          const respuesta = await axios.post("/api/esta", {
+            email: data?.user?.email,
           });
-          setComprobantePago(true);
-          router.push('/dashboard')
-        }
-        
-        // pago no efectuado -> state:false
-        if (!respuesta.data.success) {
+          // Manejo de la respuesta de la consulta
+
+          // pago efectuado -> state:true
+          if (respuesta.data.success) {
+            console.log("respues ok ", respuesta);
+            const formCarga = respuesta.data.formCarga;
+            const drivers = respuesta.data.drivers;
+            updateState({
+              formCarga,
+              drivers,
+            });
+            setComprobantePago(true);
+            router.push("/dashboard");
+          }
+
+          // pago no efectuado -> state:false
+          if (!respuesta.data.success) {
+            setComprobantePago(false);
+            router.push("/pricepec");
+          }
+        } catch (error) {
+          console.log("respues error ", error);
+          console.log(error);
           setComprobantePago(false);
-          router.push('/pricepec')
-        }}
-        
-        catch (error) {
-          console.log('respues error ', error)
-          console.log(error)
-          setComprobantePago(false);
-          router.push('/')
-          
+          router.push("/");
         }
         setIsLoading(false);
+      };
+      res();
     }
-    res()
-  }
-  , [data]);
-  
+  }, [data]);
 
   return (
     <main className=" w-screen min-h-screen h-full flex flex-col items-center justify-between text-primary-textGris relative">

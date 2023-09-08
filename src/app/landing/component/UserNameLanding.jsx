@@ -8,11 +8,13 @@ export default function UserNameLanding() {
   const { data } = useSession();
   const router = useRouter();
   const handleClick = () => {
-    router.push("/redirigiendo");
+    if(data.pecPagado){
+      router.push('/dashboard')
+    }else{
+    router.push("/redirigiendo");}
   };
 
 
-  console.log(data)
   if (!data?.user) {
     return <LinkLogin onClick={()=>{
       router.push('/login')
