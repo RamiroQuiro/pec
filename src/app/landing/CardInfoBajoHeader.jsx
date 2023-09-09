@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import BotonAdquirirPEC from "./component/BotonAdquirirPEC";
+import CardPrecioPEC from "./component/CardPrecioPEC";
 
 const TarjetaInfomativa = ({ h3, children }) => {
   return (
@@ -39,18 +40,7 @@ export default function CardInfoBajoHeader() {
             ></video>
           </div>
         </div>
-        <TarjetaInfomativa className="text-center" h3={"Mi PEC"}>
-          <p>
-            Metodología estructurada conformada por todas las actividades y
-            temas involucrados en el área comercial.
-          </p>
-          <div className="text-primary-textGris/90 mt-5">
-            <span>Precio Total</span>
-            <p className=" text-3xl  font-bold">$15,000.00 MX + IVA</p>
-          </div>
-        {/* boton que compruba el regusto y despues el pago del usuario */}
-        <BotonAdquirirPEC/>
-        </TarjetaInfomativa>
+      <CardPrecioPEC/>
         <TarjetaInfomativa h3={"Ver mi PEC"}>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel

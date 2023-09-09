@@ -20,9 +20,9 @@ export default function ComprobarPago({ children }) {
 
   useEffect(() => {
     if (!data) return;
-if(!data.user.pecPagado){
-router.push('/redirigiendo')
-}
+    if (!data.user.pecPagado) {
+      router.push("/redirigiendo");
+    }
     cargarUserData({ email: data.user?.email, fullName: data.user?.fullName });
 
     const res = async () => {
