@@ -25,7 +25,7 @@ const LinksSidebarDachboard = ({ name, path, icon, params, driverPrevius }) => {
   };
 
   const isComplete =
-    driverPrevius >= 2 ? isDriverComplete(driverPrevius - 1) : null;
+    driverPrevius >= 2 ? isDriverComplete(driverPrevius - 1) : true;
 
   return (
     <Link
@@ -33,7 +33,7 @@ const LinksSidebarDachboard = ({ name, path, icon, params, driverPrevius }) => {
       onClick={isComplete ? resetConfig : undefined}
       className={` ${
         !isComplete
-          ? "fill-gray-200 text-gray-200"
+          ? "fill-gray-200 text-gray-200 cursor-default"
           : params == path
           ? "text-primary-100 font-bold ml-1 fill-primary-100"
           : "fill-primary-textGris text-primary-textGris"
@@ -45,12 +45,19 @@ const LinksSidebarDachboard = ({ name, path, icon, params, driverPrevius }) => {
             ? "fill-gray-300 text-gray-300 hover:text-gray-300"
             : params == path
             ? "text-primary-100 font-bold ml-1 fill-primary-100"
-            : "fill-primary-textGris text-primary-textGris"
-        } flex items-center justify-normal gap-3 hover:text-primary-100 font-semibold group cursor-pointer duration-300`}
+            : "fill-primary-textGris text-primary-textGris group-hover:fill-primary-100"
+        } flex items-center justify-normal gap-3  font-semibold group cursor-pointer duration-300`}
       >
         {icon}
       </div>
-      <div className="text-xs">{name}</div>
+      <div className={` ${
+          !isComplete
+            ? "fill-gray-300 text-gray-300 hover:text-gray-300"
+            : params == path
+            ? "text-primary-100 font-bold ml-1 fill-primary-100 hover:text-primary-100"
+            : "fill-primary-textGris text-primary-textGris hover:text-primary-100"
+        } text-xs`}
+      >{name}</div>
     </Link>
   );
 };

@@ -23,7 +23,7 @@ import LinksSidebarDachboard from "./LinksSidebarDachboard";
           icon:(isComplete,params,path)=> {
             return(
             <SVGPantalla 
-            className={` w-5 h-5    `} />
+            className={` w-5 h-5   `} />
           )
             },
           id: i + 1,
@@ -34,7 +34,9 @@ export default function SidebarMenu() {
 
       
   return (
-    <div className="flex flex-col flex-shrink items-start pl-2 justify-center gap-5 w-10/12 mx-auto pb-5">
+    <div className="flex flex-col flex-shrink items-start pl-2 justify-center gap-5 w-10/12 mx-auto my-5">
+
+      
       {links?.map((link) => (
         <LinksSidebarDachboard
         params={params}
