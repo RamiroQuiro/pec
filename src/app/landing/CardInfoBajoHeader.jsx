@@ -18,7 +18,7 @@ export default function CardInfoBajoHeader() {
         translateX: 0,
       }}
       transition={{ duration: 0.5, delay: 1, ease: "easeIn" }}
-      className="md:h-screen w-11/12 z-10 container  flex items-center justify-center py-24 text-primary-textGris mt-12"
+      className="md:min-h-screen w-11/12 z-10 container   flex items-center justify-center py-44 text-primary-textGris mt-12"
     >
       <div className="h-4/6 m-auto w-full container flex md:flex-row flex-col md:items-stretch justify-center flex-wrap text-primary-textGris">
         <div className="flex-auto md:border-r  border-primary-textGris/40 md:w-[30%] w-full flex flex-col items-stretch justify-stretch mb-20 md:m-0   md:px-4 text-sm ">

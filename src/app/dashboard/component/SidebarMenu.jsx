@@ -1,49 +1,10 @@
 
 "use client"
 import { SvgHome, SVGPantalla } from "@/app/componentes/SVGComponent";
-import { contextUser } from "@/context/contextUser";
-import Link from "next/link";
 
 import { usePathname } from "next/navigation";
-import { shallow } from "zustand/shallow";
+import LinksSidebarDachboard from "./LinksSidebarDachboard";
 
-const LinksSidebarDachboard = ({ name, path, icon,params }) => {
-
-
-
-const {
-  setCurrentStep,
-  activarFlyer,
-  cargarSubPantallas,
-} = contextUser(
-  (state) => ({
-    setCurrentStep: state.setCurrentStep,
-    flyerActivo: state.flyerActivo,
-    activarFlyer: state.activarFlyer,
-    activeStep: state.activeStep,
-    cargarSubPantallas: state.cargarSubPantallas,
-  }),
-  shallow
-);
-
-const resetConfig=()=>{
-  activarFlyer(0);
-  setCurrentStep(1);
-  cargarSubPantallas(0);
-}
-  return (
-    <Link
-      href={path}
-      onClick={resetConfig}
-      className={` ${params==path? "text-primary-100 font-bold ml-1 fill-primary-100":"fill-primary-textGris text-primary-textGris"} flex items-center justify-normal gap-3 hover:text-primary-100 font-semibold group cursor-pointer duration-300`}
-    >
-      <div className="text-xs lg:text-sm w-5 h-5">{icon}</div>
-      <div className="text-xs">{name}</div>
-    </Link>
-  );
-};
-export default function SidebarMenu() {
-  const params=usePathname()
     const links = [
         {
           name: "Bienvenidos",
@@ -59,16 +20,18 @@ export default function SidebarMenu() {
         links.push({
           name: `Driver ${i}`,
           path: `/dashboard/driver/${i}`,
-          icon:(params,path)=> {
-            console.log(params==path&&i)
+          icon:(isComplete,params,path)=> {
             return(
             <SVGPantalla 
-            className={`${params==path? "text-primary-100 fill-primary-100":"fill-primary-textGris text-primary-textGris"} w-5 h-5   group-hover:fill-primary-100 `} />
+            className={` w-5 h-5    `} />
           )
             },
           id: i + 1,
         });
       }
+export default function SidebarMenu() {
+  const params=usePathname()
+
       
   return (
     <div className="flex flex-col flex-shrink items-start pl-2 justify-center gap-5 w-10/12 mx-auto pb-5">
@@ -77,6 +40,7 @@ export default function SidebarMenu() {
         params={params}
           name={link.name}
           path={link.path}
+          driverPrevius={link.id-1}
           key={link.id}
           icon={link.icon(params,link.path)}
         />
