@@ -4,7 +4,7 @@ import BotonTestimonio from "./BotonTestimonio";
 
 export default function CardTestimonios() {
   return (
-    <TarjetaInfomativa h3={"Ver mi PEC"}>
+    <TarjetaInfomativa h3={"Testimonios, Articulos e Información"}>
       <p className="italic md:p-5 font-thin text">
         {
           '"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum saepe at commodi, ut quas repellat odit similique reprehenderit culpa in veniam provident odio illum itaque esse dicta consequatur dolores delectusAspernatur natus provident doloribus quidem repellendus perferendis autem, deleniti, deserunt mollitia sequi ratione, rem molestiae laudantium minima cum blanditiis. Doloremque voluptatem, dignissimos error cum magni Obcaecati et dolorem voluptatibus"'
