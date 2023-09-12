@@ -3,6 +3,7 @@ import { ErrorIcon } from "react-hot-toast";
 import { create } from "zustand";
 
 export const contextUser = create((set, get) => ({
+  toogleMenu:true,
   userData: {},
   formCarga: {
     videoBienvenida:false,
