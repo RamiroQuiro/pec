@@ -82,23 +82,23 @@ export default function Flyer1() {
     }
   };
   return (
-    <div className="w-full h-full flex relative">
+    <div className="w-full h-full  flex relative">
       <RenderFlyer />
 
       <div className="w-full absolute bottom-20 left-3 z-30 flex items-center justify-between px-10 gap-3">
         <SvgNextVideo
           onClick={handlePreviusFlyer}
-          className="w-14 h-14 fill-primary-tonoBlanco rotate-180 cursor-pointer  "
+          className="w-14 h-14 fill-primary-tonoBlanco rotate-180 cursor-pointer border  "
         />
         {flyerActivo == 2 || flyerActivo == 15 || flyerActivo == 21 ? (
           <SVGDiskette
             onClick={handleNextStep}
-            className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "
+            className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer border"
           />
         ) : (
           <SvgNextVideo
             onClick={handleNextFlyer}
-            className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "
+            className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer md:border-none border"
           />
         )}
       </div>

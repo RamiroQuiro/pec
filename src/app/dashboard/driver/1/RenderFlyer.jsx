@@ -6,13 +6,13 @@ import { shallow } from "zustand/shallow";
 export default function RenderFlyer() {
   const flyerActivo = contextUser((state) => state.flyerActivo, shallow);
   return (
-    <div className="h-[100%] w-auto animate-[aparecer_.5s]">
+    <div className="md:h-[100%] h-[80vh]  animate-[aparecer_.5s]">
       <Image
         alt={`Diapositiva${flyerActivo+1}`}
         src={`/Diapositiva${flyerActivo+1}.jpg`}
         fill
         quality={100}
-        className="object- object-center h-[100%] animate-[aparecer_.5s]"
+        className="object-contain md:object-fill object-center animate-[aparecer_.5s]"
       />
     </div>
   );
