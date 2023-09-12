@@ -34,7 +34,7 @@ export default function SidebarMenu() {
 
       
   return (
-    <div className="flex flex-col flex-shrink md:items-start items-center overflow-y-scroll md:overflow-visible pl-2 justify-center gap-5 w-10/12 mx-auto my-5">
+    <div className="flex md:flex-col flex-wrap flex-shrink md:items-start items-center overflow-y-scroll md:overflow-visible pl-2 md:justify-center justify-evenly gap-5 md:w-10/12 w-full mx-auto ">
 
       
       {links?.map((link) => (

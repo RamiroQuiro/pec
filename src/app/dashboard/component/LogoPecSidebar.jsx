@@ -6,7 +6,7 @@ import logo from "../../../../public/logo.png";
 export default function LogoPecSidebar() {
     const router=useRouter()
   return (
-    <div className="h-20 flex w-full items-center justify-evenly px-5 mt-5">
+    <div className="h-20 flex md:w-full w-[40%] mx-auto items-center md:gap-0 gap-2 justify-evenly px-5 mt-5">
     <h2 className="text-lg font-medium text-gray-700 uppercase">
       Mi Pec
     </h2>

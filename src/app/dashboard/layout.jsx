@@ -12,8 +12,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="es">
       <body className="overflow-x-hidden">
-        <main className="min-h-screen h-full flex flex-col items-center justify-between w-screen overflow-x-hidden bg-primary-500">
-        <div className="flex-grow  mb-20">
+        <main className="min-h-screen h-full flex flex-col items-center justify-between w-screen overflow-x-hidden bg-primary-500 relative md:pb-20">
+          <div className="flex-grow  mb-20 ">
             <ComprobarPago>
               <NavBarDash />
               {children}

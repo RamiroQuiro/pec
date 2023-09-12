@@ -37,7 +37,7 @@ const LinksSidebarDachboard = ({ name, path, icon, params, driverPrevius }) => {
           : params == path
           ? "text-primary-100 font-bold ml-1 fill-primary-100"
           : "fill-primary-textGris text-primary-textGris"
-      } flex items-center justify-normal gap-3 hover:text-primary-100 font-semibold group cursor-pointer duration-300`}
+      } flex items-center justify-normal gap-3 hover:text-primary-100 w-1/3 md:w-auto font-semibold group cursor-pointer duration-300`}
     >
       <div
         className={` ${
@@ -56,7 +56,7 @@ const LinksSidebarDachboard = ({ name, path, icon, params, driverPrevius }) => {
             : params == path
             ? "text-primary-100 font-bold ml-1 fill-primary-100 hover:text-primary-100"
             : "fill-primary-textGris text-primary-textGris hover:text-primary-100"
-        } text-xs`}
+        } md:text-xs`}
       >{name}</div>
     </Link>
   );
