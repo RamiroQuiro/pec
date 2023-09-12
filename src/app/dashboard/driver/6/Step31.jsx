@@ -69,7 +69,6 @@ export default function Step31() {
     const isState = array.some(
       (element) => element.position == value && element.id != id
     );
-    console.log(isState);
     // Si el valor no existe, asignarlo al objeto correspondiente
     if (!isState) {
       array[findIndice].position = value;

@@ -9,15 +9,15 @@ export default function NavBarDash() {
   // const driver = contextUser((state) => state.driver);
   return (
     <nav className="h-20 absolute bg-primary-tonoBlanco top-0 right-0 md:w-[83%] w-full border shadow-md z-40">
-      <div className="flex items-center justify-between h-full px-10">
-        <div className="px-3 py-1">
+      <div className="flex items-center justify-between h-full md:px-10 px-5 gap-3">
+        <div className="md:px-3 py-1">
           {!path.includes("driver") ? (
-            <SvgHome className="w-8 h-8" />
+            <SvgHome className="md:w-8 md:h-8 w-6 h-6" />
           ) : (
-            <SVGPantalla className="w-8 h-8" />
+            <SVGPantalla className="md:w-8 md:h-8 w-6 h-6" />
           )}
         </div>
-        <div className=" text-primary-200 md:text-xl text-center md:w-1/3 font-semibold tracking-wide  ">
+        <div className=" text-primary-200 md:text-xl text-center md:w-1/3 font-semibold md:tracking-wide  ">
           <h2>
             {!path.includes("driver")
               ? "PEC (Plan Estrategico Comercial)"
@@ -26,7 +26,7 @@ export default function NavBarDash() {
           {!driver && <h3 className="capitalize">Ahora mas cerca de Tí</h3>}
         </div>
         <div>
-          <p className="text-xl font-medium">Bienvenido</p>
+          <p className="md:text-xl font-medium">Bienvenido</p>
         </div>
       </div>
     </nav>

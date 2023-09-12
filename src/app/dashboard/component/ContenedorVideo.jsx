@@ -76,11 +76,11 @@ export default function ContenedorVideo() {
     }
   };
   return (
-    <div className="rounded-lg w-[90%] h-[87%] border-2 mx-auto shadow-lg relative">
+    <div className="rounded-lg w-[90%] h-auto border-2 mx-auto shadow-lg relative">
       {!isPlaying && (
         <div
           onClick={handlePlayPause}
-          className="rounded-3xl bg-neutral-700 w-32 h-24 z-50 absolute left-[42.5%] top-1/3 cursor-pointer animate-[aparecer_.5s]"
+          className="rounded-3xl bg-neutral-700 md:w-32 w-20 h-16 md:h-24 z-30 absolute left-[42.5%] top-1/3 cursor-pointer animate-[aparecer_.5s]"
         >
           <SVGPlay
             onClick={handlePlayPause}
