@@ -8,7 +8,7 @@ export default function NavBarDash() {
   const driver = path.split("/")[3];
   // const driver = contextUser((state) => state.driver);
   return (
-    <nav className="h-20 absolute bg-primary-tonoBlanco top-0 right-0 w-[83%] border shadow-md z-40">
+    <nav className="h-20 absolute bg-primary-tonoBlanco top-0 right-0 md:w-[83%] w-full border shadow-md z-40">
       <div className="flex items-center justify-between h-full px-10">
         <div className="px-3 py-1">
           {!path.includes("driver") ? (
@@ -17,7 +17,7 @@ export default function NavBarDash() {
             <SVGPantalla className="w-8 h-8" />
           )}
         </div>
-        <div className=" text-primary-200 text-xl text-center w-1/3 font-semibold tracking-wide  ">
+        <div className=" text-primary-200 md:text-xl text-center md:w-1/3 font-semibold tracking-wide  ">
           <h2>
             {!path.includes("driver")
               ? "PEC (Plan Estrategico Comercial)"
