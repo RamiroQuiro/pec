@@ -5,7 +5,7 @@ import React from "react";
 import { shallow } from "zustand/shallow";
 
 const LinksSidebarDachboard = ({ name, path, icon, params, driverPrevius }) => {
-  const { setCurrentStep, activarFlyer, cargarSubPantallas, isDriverComplete } =
+  const { setCurrentStep, activarFlyer, cargarSubPantallas, isDriverComplete ,updateState} =
     contextUser(
       (state) => ({
         setCurrentStep: state.setCurrentStep,
@@ -14,6 +14,7 @@ const LinksSidebarDachboard = ({ name, path, icon, params, driverPrevius }) => {
         activeStep: state.activeStep,
         cargarSubPantallas: state.cargarSubPantallas,
         isDriverComplete: state.isDriverComplete,
+        updateState:state.updateState
       }),
       shallow
     );
@@ -22,6 +23,9 @@ const LinksSidebarDachboard = ({ name, path, icon, params, driverPrevius }) => {
     activarFlyer(0);
     setCurrentStep(1);
     cargarSubPantallas(0);
+    updateState({
+      toogleMenu:false
+    })
   };
 
   const isComplete =

@@ -13,7 +13,6 @@ export default function ContenedorSidebar({ children }) {
     shallow
   );
 
-  console.log(toogleMenu);
   return (
     <>
       <button
