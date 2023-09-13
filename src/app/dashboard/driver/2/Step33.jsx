@@ -54,8 +54,8 @@ export default function Step33() {
           entre ambos y los argumnetos que justifican el precio de tu oferta
           comercial
         </p>
-        <div className="flex items-center justify-between gap-2 w-full mx-auto flex-grow ">
-          <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
+        <div className="flex md:flex-row flex-col items-center justify-between gap-2 w-full mx-auto flex-grow ">
+          <div className="flex w-full md:w-1/2 flex-auto flex-col items-start text-left ">
             <label htmlFor="producto2" className="text-primary-100">
               Producto/Servicio 2:
             </label>
@@ -77,7 +77,7 @@ export default function Step33() {
               } border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm `}
             />
           </div>
-          <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
+          <div className="flex w-full md:w-1/2 flex-auto flex-col items-start text-left ">
             <label htmlFor="competencia" className="text-primary-100">
               Competencia:
             </label>
@@ -100,7 +100,7 @@ export default function Step33() {
             />
           </div>
         </div>
-        <div className="flex items-center justify-between gap-5 w-full">
+        <div className="flex items-center justify-between gap-5 w-full md:mt-0 mt-5">
           <div className="space-x-4">
             <ButtonLeerMas label={"changeSubPantalla"} stepN={3}>
               Anterior

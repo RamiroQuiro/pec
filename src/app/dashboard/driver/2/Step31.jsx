@@ -49,8 +49,8 @@ export default function Step31() {
         <p className="text-primary-100 mb-5 font-semibold text-xl tracking-wide leading-relaxed">
           Describe las características de cada producto/servicio
         </p>
-        <div className="flex items-center justify-between gap-2 w-full mx-auto  ">
-          <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-2 w-full mx-auto  ">
+          <div className="flex md:w-1/2 w-full flex-auto flex-col items-start text-left ">
             <label htmlFor="producto1" className="text-primary-100">
               Producto/Servicio 1:
             </label>
@@ -72,7 +72,7 @@ export default function Step31() {
               } border-2 bg-transparent focus:outline-none rounded-lg w-full p-4 text-sm `}
             />
           </div>
-          <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
+          <div className="flex md:w-1/2 w-full flex-auto flex-col items-start text-left ">
             <label htmlFor="producto2" className="text-primary-100">
               Producto/Servicio 2:
             </label>
@@ -96,7 +96,7 @@ export default function Step31() {
           </div>
         </div>
         <div className="flex items-center justify-between gap-5 w-full">
-          <div className="space-x-4">
+          <div className="space-x-4 w-full flex">
             <ButtonLeerMas stepN={13}>Anterior</ButtonLeerMas>
             <ButtonLeerMas
               disable={isEdit}

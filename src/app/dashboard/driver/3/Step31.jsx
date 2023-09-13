@@ -4,14 +4,17 @@ import React, { useEffect, useState } from "react";
 import ButtonLeerMas from "./ButtonLeerMas";
 import { contextUser } from "@/context/contextUser";
 import { toast } from "react-hot-toast";
+import ContenedoresDeSteps3X from "../../component/ContenedoresDeSteps3X";
 
 export default function Step31() {
-  const { updateState, formCarga,cargarSubPantallas } = contextUser((state) => ({
-    updateState: state.updateState,
-    formCarga: state.formCarga,
-    cargarForm: state.cargarForm,
-    cargarSubPantallas:state.cargarSubPantallas
-  }));
+  const { updateState, formCarga, cargarSubPantallas } = contextUser(
+    (state) => ({
+      updateState: state.updateState,
+      formCarga: state.formCarga,
+      cargarForm: state.cargarForm,
+      cargarSubPantallas: state.cargarSubPantallas,
+    })
+  );
   const [form, setForm] = useState({});
   const [isEdit, setIsEdit] = useState(
     !formCarga?.driver3?.formulario1 ? true : false
@@ -41,7 +44,7 @@ export default function Step31() {
           },
         });
         setIsEdit(false);
-        cargarSubPantallas(3)
+        cargarSubPantallas(3);
         toast.success("Datos Guardados");
       }
     }
@@ -61,9 +64,8 @@ export default function Step31() {
             solo o varios.
           </p>
         </div>
-        <div className="flex items-stretch justify-between gap-2 w-full mx-auto flex-grow ">
-          <div className="flex w-2/3 flex-auto flex-col items-start text-left ">
-            
+        <ContenedoresDeSteps3X>
+          <div className="flex md:w-2/3 w-full flex-auto flex-col items-start text-left ">
             <textarea
               onChange={handleChango}
               value={
@@ -82,15 +84,18 @@ export default function Step31() {
               } border-2 bg-transparent focus:outline-none rounded-lg h-5/6 w-full p-4 text-sm `}
             />
           </div>
-          <div className="flex w-1/3 px-5 flex-auto flex-col items-center  gap-1">
+          <div className="flex md:w-1/3 w-full px-5 flex-auto flex-col items-center  gap-1">
             <p className="text-primary-200 font-medium">Ejemplo</p>
-            <p className="text-primary-textGris text-center font-medium text-sm">{"Mi mercado meta son Doctores, del área especializada de Neurología, de la Ciudad de México"}</p>
+            <p className="text-primary-textGris text-center font-medium text-sm">
+              {
+                "Mi mercado meta son Doctores, del área especializada de Neurología, de la Ciudad de México"
+              }
+            </p>
           </div>
-        </div>
+        </ContenedoresDeSteps3X>
         <div className="flex items-center justify-between gap-5 w-full">
           <div className="space-x-4">
             <ButtonLeerMas stepN={7}>Anterior</ButtonLeerMas>
-            
           </div>
           <button
             onClick={clickCargaFormulario}

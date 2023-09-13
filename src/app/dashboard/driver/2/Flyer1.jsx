@@ -127,28 +127,28 @@ export default function Flyer1() {
         <div className="w-full absolute bottom-20 left-3 z-30 flex items-center justify-between px-10 gap-3">
           {flyerActivo === 18 && (
             <>
-              <DownloadCloud className="w-10 h-14 fill-primary-600 absolute bottom-2 left-[56%] cursor-pointer hover:scale-105 duration-200  " />
-              <UploadCloud className=" h-14 w-12 fill-primary-600 absolute -bottom-8 left-[68%] scale-110 cursor-pointer hover:scale-125 rota-90 duration-200  " />
+              <DownloadCloud className="w-10 h-14 fill-primary-600 absolute md:bottom-2 md:left-[56%] left-1/3 cursor-pointer hover:scale-105 duration-200  " />
+              <UploadCloud className=" h-14 w-12 fill-primary-600 absolute md:-bottom-8 md:left-[68%] left-1/2 scale-110 cursor-pointer hover:scale-125 rota-90 duration-200  " />
             </>
           )}
           {flyerActivo === 19 && (
             <>
-              <div className="flex flex-col items-center h-32 cursor-pointer justify-center  absolute bottom-5 left-[45%]">
-                <UploadCloud className=" w-32 fill-[#FFFF08]     hover:scale-105 rota-90 duration-200  " />
-                <p className="text-sm text-white font-medium -mt-8">
+              <div className="flex flex-col items-center h-32 cursor-pointer justify-center  absolute bottom-5 left-1/3 md:left-[45%]">
+                <UploadCloud className=" md:w-32 fill-[#FFFF08]     hover:scale-105 rota-90 duration-200  " />
+                <p className="text-sm md:text-white text-primary-textGris font-medium -mt-8">
                   Subir Grafica
                 </p>
               </div>
-              <div className="flex flex-col items-center h-32 cursor-pointer justify-center  absolute -bottom-5 right-[15%]">
-                <p className="text text-white font-medium ">Ver un Ejemplo</p>
-                <p className="text-sm text-white font-medium ">Click Aqui</p>
+              <div className="flex flex-col items-center h-32 cursor-pointer justify-center  absolute md:-bottom-5 left-1/3 md:right-[15%]">
+                <p className="text md:text-white text-primary-textGris font-medium ">Ver un Ejemplo</p>
+                <p className="text-sm md:text-white text-primary-textGris font-medium ">Click Aqui</p>
               </div>
             </>
           )}
 
           <SvgNextVideo
             onClick={handlePreviusFlyer}
-            className="w-14 h-14 fill-primary-tonoBlanco rotate-180 cursor-pointer  "
+            className="w-14 h-14 md:fill-primary-tonoBlanco fill-gray-500 rotate-180 cursor-pointer   "
           />
           {flyerActivo == 2 ||
           flyerActivo == 10 ||
@@ -156,12 +156,12 @@ export default function Flyer1() {
           flyerActivo == 22 ? (
             <SVGDiskette
               onClick={handleNextStep}
-              className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "
+              className="w-14 h-14 md:fill-primary-tonoBlanco fill-gray-500 cursor-pointer "
             />
           ) : (
             <SvgNextVideo
               onClick={handleNextFlyer}
-              className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "
+              className="w-14 h-14 md:fill-primary-tonoBlanco fill-gray-500 cursor-pointer md:border-none "
             />
           )}
         </div>

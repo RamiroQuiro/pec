@@ -1,10 +1,12 @@
 import Image from "next/image";
 import step2 from "../../../../../public/step1.png";
 import ButtonLeerMas from "./ButtonLeerMas";
+import ContenedorStep from "../../component/ContenedorStep1";
+import ContenedorTitulosDeStep from "../../component/ContenedorTitulosDeStep";
 export default function Step2() {
   return (
-    <div className="flex items-center justify-between p-6  relative w-full  h-full">
-      <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-8/12">
+    <ContenedorStep>
+    <ContenedorTitulosDeStep>
         <h2 className="uppercase text-primary-200 text-xl">
           LO QUE TIENES QUE SABER ACERCA DEL MERCADO
         </h2>
@@ -19,7 +21,7 @@ export default function Step2() {
       
         <ButtonLeerMas stepN={3}>Leer mas...</ButtonLeerMas>
         </div>
-      </div>
+      </ContenedorTitulosDeStep>
       <div className="w-4/12 h-full relative">
         <Image
           alt="step1"
@@ -28,6 +30,6 @@ export default function Step2() {
           className=" object-center object-contain absolute -right-3 top-4 w-4/12 h-auto "
         />
       </div>
-    </div>
+    </ContenedorStep>
   );
 }

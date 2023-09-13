@@ -5,15 +5,16 @@ import ContenedorPasos from "./ContenedorPasos";
 import { usePathname, useRouter } from "next/navigation";
 import Flyer1 from "./Flyer1";
 import { useEffect } from "react";
+import ContenedorDriverPage from "../../component/ContenedorDriverPage";
 
 export default function Driver2() {
   const path = usePathname();
   const router = useRouter();
   const driver = path.split("/")[3];
 
-  const { flyerActivo ,isDriverComplete} = contextUser((state) => ({
+  const { flyerActivo, isDriverComplete } = contextUser((state) => ({
     flyerActivo: state.flyerActivo,
-        isDriverComplete: state.isDriverComplete,
+    isDriverComplete: state.isDriverComplete,
   }));
 
   useEffect(() => {
@@ -24,25 +25,21 @@ export default function Driver2() {
     if (!isPreviousDriverComplete) {
       router.push(`/dashboard/driver/${previousDriver}`);
     }
-    
   }, [driver]);
 
-    return (
-      <SectionDash>
-    
-        <div className="bg-white md:w-[78vw] md:min-h-[85vh] md:h-full absolute right-10 top-24  flex flex-col items-center justify-center border shadow-md">
-          {flyerActivo > 0 ? (
-            <Flyer1 />
-          ) : (
-            <>
-              <h2 className="text-2xl text-neutral-800 mt-8 font-medium">
-                Empatía con el Producto
-              </h2>
+  return (
+    <ContenedorDriverPage>
+      {flyerActivo > 0 ? (
+        <Flyer1 />
+      ) : (
+        <>
+          <h2 className="text-2xl text-neutral-800 mt-8 font-medium">
+            Empatía con el Producto
+          </h2>
 
-              <ContenedorPasos />
-            </>
-          )}
-        </div>
-      </SectionDash>
-    );
+          <ContenedorPasos />
+        </>
+      )}
+    </ContenedorDriverPage>
+  );
 }

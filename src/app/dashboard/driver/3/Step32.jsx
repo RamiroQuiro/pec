@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import ButtonLeerMas from "./ButtonLeerMas";
 import { contextUser } from "@/context/contextUser";
 import { toast } from "react-hot-toast";
+import ContenedoresDeSteps3X from "../../component/ContenedoresDeSteps3X";
 
 export default function Step32() {
   const { updateState, formCarga ,activarFlyer} = contextUser((state) => ({
@@ -59,8 +60,8 @@ export default function Step32() {
             El perfil de mi cliente es:
           </p>
         </div>
-        <div className="flex items-stretch my-5 flex-grow h-full justify-between gap-2 w-full mx-auto  ">
-          <div className="flex w-2/3  flex-auto flex-col items-start text-left ">
+        <ContenedoresDeSteps3X>
+          <div className="flex md:w-2/3 w-full  flex-auto flex-col items-start text-left ">
             <textarea
               onChange={handleChango}
               value={
@@ -79,12 +80,12 @@ export default function Step32() {
               } border-2 bg-transparent focus:outline-none rounded-lg h-5/6 w-full p-4 text-sm `}
             />
           </div>
-          <div className="flex w-1/3 px-5 flex-auto flex-col items-center  gap-2">
+          <div className="flex md:w-1/3 w-full px-5 flex-auto flex-col items-center  gap-2">
             <p className="text-primary-200 font-medium">Guía tu descripción conforme a estas preguntas:</p>
             <p className="text-primary-textGris text-center font-medium text-sm">{"¿Como piensa tu cliente?, ¿Que preferencias tiene tu cliente?,¿Que perfil psicologico tiene tu cliente?"}
             </p>
           </div>
-        </div>
+        </ContenedoresDeSteps3X>
         <div className="flex items-center justify-between gap-5 w-full">
           <div className="space-x-4">
             <ButtonLeerMas label={"changeSubPantalla"} stepN={2}>

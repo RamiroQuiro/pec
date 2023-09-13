@@ -96,10 +96,16 @@ export default function Flyer1() {
       }
     }
   };
+
+  if (isLoading) {
+   return(
+    <LoadingCss/>
+   ) 
+  }
+  else if(!isLoading){
   return (
     <>
       <div className="w-full h-full flex relative">
-      {isLoading && <LoadingCss />}
         <RenderFlyer />
 
         <div className="w-full absolute bottom-20 left-3 z-30 flex items-center justify-between px-10 gap-3">
@@ -126,7 +132,7 @@ export default function Flyer1() {
 
           <SvgNextVideo
             onClick={handlePreviusFlyer}
-            className="w-14 h-14 fill-primary-tonoBlanco rotate-180 cursor-pointer  "
+                      className="w-14 h-14 md:fill-primary-tonoBlanco fill-gray-500 rotate-180 cursor-pointer   "
           />
           {flyerActivo == 2 ||
           flyerActivo == 7 ||
@@ -134,16 +140,16 @@ export default function Flyer1() {
           flyerActivo == 14 ? (
             <SVGDiskette
               onClick={handleNextStep}
-              className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "
+                        className="w-14 h-14 md:fill-primary-tonoBlanco fill-gray-500  cursor-pointer   " 
             />
           ) : (
             <SvgNextVideo
               onClick={handleNextFlyer}
-              className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "
+                         className="w-14 h-14 md:fill-primary-tonoBlanco fill-gray-500  cursor-pointer   "
             />
           )}
         </div>
       </div>
     </>
-  );
+  );}
 }
