@@ -11,10 +11,11 @@ export default function Step3() {
 
 const subPantallas=contextUser(state=>state.subPantallas)
   return (
-    <div className="flex items-center justify-between p-6  relative w-full  h-full">
+    <div className="flex md:flex-row flex-col items-center justify-between p-6  relative w-full  h-full">
+ 
       {!subPantallas ? (
         <>
-          <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-8/12 text-center">
+             <div className=" flex flex-col md:items-baseline justify-between gap-3 h-full md:w-8/12">
             <h2 className="uppercase text-primary-200 text-xl">
               {`LISTO!, BIENVENIDO AL PASO 3 "ARMEMOS TU PROPIA CULTURA
               ORGANIZACIONAL" PERO CON UNA GRAN DIFERENCIA: ENFOCADA AL ÁREA

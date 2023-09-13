@@ -23,9 +23,9 @@ const LinksSidebarDachboard = ({ name, path, icon, params, driverPrevius }) => {
     activarFlyer(0);
     setCurrentStep(1);
     cargarSubPantallas(0);
-    updateState({
-      toogleMenu:false
-    })
+    // updateState({
+    //   toogleMenu:false
+    // })
   };
 
   const isComplete =

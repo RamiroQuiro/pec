@@ -61,13 +61,13 @@ updateState:state.updateState,
 
   return (
     <>
-      <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-full mx-auto text-center">
+      <div className=" flex flex-col flex-grow items-baseline justify-between gap-3 h-full w-full mx-auto text-center">
         <h2 className="uppercase text-primary-200 text-xl">
           ARMEMOS TU PROPIA CULTURA ORGANIZACIONAL
         </h2>
-        <div className="flex items-center justify-between gap-2 w-11/12 mx-auto  ">
-          <div className="w-1/4 flex-auto">
-            <p className="text-primary-100 font-medium mb-10">
+        <div className="flex flex-col-reverse md:flex-row flex-grow items-center justify-between gap-2 md:w-11/12 mx-auto  ">
+          <div className="md:w-1/4 md:flex-auto h-1/3 md:h-auto  mb-10 md:mb-0">
+            <p className="text-primary-100 font-medium md:mb-10">
               ¿Para que esta hecho tu Área Comercial?
             </p>
             <SelectExample
@@ -77,8 +77,8 @@ updateState:state.updateState,
               labelSpan={"Selecciona los 3 mas importantes para ti"}
             />
           </div>
-          <div className="w-1/4 flex-auto">
-            <p className="text-primary-100 font-medium mb-10">
+          <div className="md:w-1/4 md:flex-auto  h-1/3 md:h-auto  mb-10 md:mb-0">
+            <p className="text-primary-100 font-medium md:mb-10">
               ¿A quien esta dirigida tu Misión Comercial?
             </p>
             <SelectExample
@@ -88,8 +88,8 @@ updateState:state.updateState,
               setSelected={setSelected2}
             />
           </div>
-          <div className="w-1/4 flex-auto">
-            <p className="text-primary-100 font-medium mb-10">
+          <div className="md:w-1/4 flex-auto  h-1/3 md:h-auto mb-10 md:mb-0">
+            <p className="text-primary-100 font-medium md:mb-10">
               ¿Que es importante para tu Área Comercial?
             </p>
             <SelectExample

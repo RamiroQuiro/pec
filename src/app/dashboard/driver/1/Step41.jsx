@@ -5,7 +5,7 @@ import Image from 'next/image'
 export default function Step41() {
   return (
     <>
-      <div className=" flex flex-col items-start justify-between gap-3 h-full w-8/12 text-center">
+      <div className=" flex flex-col items-start justify-between gap-3 h-full md:w-8/12 text-center">
         <div className='text-left space-y-5'>
           <h2 className="uppercase text-primary-200 text-xl">
         REFERENCIAS Y LECTURAS ACERCA DEL TEMA

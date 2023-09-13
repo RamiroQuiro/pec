@@ -58,7 +58,7 @@ const [isSucces, setIsSucces] = useState(false)
       <LoadingCss/>
     }
     <>
-      <div className=" flex flex-col items-start justify-between gap-3 h-full w-8/12 text-center">
+      <div className=" flex flex-col items-start justify-between gap-3 h-full md:w-8/12 text-center">
         <div className="text-left space-y-5">
           <h2 className="uppercase text-primary-200 text-xl">
             FELICIDADES!, HAZ COMPLETADO TU PRIMER DRIVER, PERO AUN QUEDA MUCHO

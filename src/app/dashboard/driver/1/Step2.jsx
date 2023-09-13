@@ -3,8 +3,8 @@ import step2 from "../../../../../public/confundido.png";
 import ButtonLeerMas from "./ButtonLeerMas";
 export default function Step2() {
   return (
-    <div className="flex items-center justify-between p-6  relative w-full  h-full">
-      <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-8/12">
+    <div className="flex md:flex-row flex-col items-center justify-between p-6  relative w-full  h-full">
+      <div className=" flex flex-col md:items-baseline justify-between gap-3 h-full md:w-8/12">
         <h2 className="uppercase text-primary-200 text-xl">
           LO QUE TIENES QUE SABER SOBRE CULTURA ORGANIZACIONAL
         </h2>
