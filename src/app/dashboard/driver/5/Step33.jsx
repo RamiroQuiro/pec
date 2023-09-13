@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import ButtonLeerMas from "./ButtonLeerMas";
 import { contextUser } from "@/context/contextUser";
 import { toast } from "react-hot-toast";
+import ContenedoresDeSteps3X from "../../component/ContenedoresDeSteps3X";
 
 export default function Step33() {
   const {
@@ -92,12 +93,12 @@ export default function Step33() {
             "text-4xl text-white font-bold text-center rounded w-4/6 h-2/12",
         }
       );
-      setIsEdit(false)
+      setIsEdit(false);
     } catch (error) {
       // Manejo de errores adecuado aquí
     }
   };
-  
+
   const handleSelect = (e) => {
     setSeleccionado(e.target.value);
     setNewObj((form) => ({
@@ -150,8 +151,8 @@ export default function Step33() {
         {!isLoading ? (
           <div>Cargando</div>
         ) : (
-          <div className="flex items-stretch my-5 flex-grow h-full justify-between gap-2 w-full mx-auto  ">
-            <div className="flex w-1/3  flex-auto flex-col items-start text-left ">
+          <ContenedoresDeSteps3X>
+            <div className="flex w-full mnd:w-1/3  flex-auto flex-col items-start text-left ">
               <p className="text-sm text-primary-100 font-semibold">
                 Estrategia Madre 2
               </p>
@@ -180,20 +181,19 @@ export default function Step33() {
                 ))}
               </select>
             </div>
-            <div className="flex w-2/3 px-5 flex-auto flex-col items-center  gap-2">
+            <div className="flex w-full md:w-2/3 px-5 flex-auto flex-col items-center  gap-2">
               <input
                 type="text"
                 onChange={handleChango}
                 value={
-                  isEdit?
-                  form?.acciones &&
-                  form.acciones[
-                    form?.acciones?.findIndex(
-                      (element) => element.accion == seleccionado
-                    ) 
-                  ]?.nameAccion
-                  :
-                  newObj?.nameAccion
+                  isEdit
+                    ? form?.acciones &&
+                      form.acciones[
+                        form?.acciones?.findIndex(
+                          (element) => element.accion == seleccionado
+                        )
+                      ]?.nameAccion
+                    : newObj?.nameAccion
                 }
                 name="nameAccion"
                 placeholder="Accion"
@@ -203,15 +203,14 @@ export default function Step33() {
                 <input
                   type="date"
                   value={
-                    isEdit?
-                    form?.acciones &&
-                    form.acciones[
-                      form?.acciones?.findIndex(
-                        (element) => element.accion == seleccionado
-                      ) 
-                    ]?.fechaInicio
-                    :
-                    newObj?.fechaInicio
+                    isEdit
+                      ? form?.acciones &&
+                        form.acciones[
+                          form?.acciones?.findIndex(
+                            (element) => element.accion == seleccionado
+                          )
+                        ]?.fechaInicio
+                      : newObj?.fechaInicio
                   }
                   onChange={handleChango}
                   id="fechaInicio"
@@ -222,34 +221,35 @@ export default function Step33() {
                   name="fechaSalida"
                   onChange={handleChango}
                   value={
-                    isEdit?
-                    form?.acciones &&
-                    form.acciones[
-                      form?.acciones?.findIndex(
-                        (element) => element.accion == seleccionado
-                      ) 
-                    ]?.fechaSalida
-                    :
-                    newObj?.fechaSalida
+                    isEdit
+                      ? form?.acciones &&
+                        form.acciones[
+                          form?.acciones?.findIndex(
+                            (element) => element.accion == seleccionado
+                          )
+                        ]?.fechaSalida
+                      : newObj?.fechaSalida
                   }
                   id="fechaSalida"
                   className="border py-2 rounded w-1/2 text-primary-textGris text-sm px-3"
                 />
               </div>
             </div>
-          </div>
+          </ContenedoresDeSteps3X>
         )}
 
         <div className="flex items-center justify-between gap-5 w-full">
-          <div className="space-x-4">
+          <div className="space-x-4 flex md:mt-0 mt-5">
             <ButtonLeerMas stepN={21}>Anterior</ButtonLeerMas>
             {select.every((element) => element.state == true) && (
-              <ButtonLeerMas label={"changeSubPantalla"} stepN={5}>Siguiente</ButtonLeerMas>
+              <ButtonLeerMas label={"changeSubPantalla"} stepN={5}>
+                Siguiente
+              </ButtonLeerMas>
             )}
           </div>
           <button
-            onClick={isEdit?()=>setIsEdit(!isEdit):clickCargaFormulario}
-            className="bg-primary-600 text-white rounded font-medium text-xs w-24 py-2.5"
+            onClick={isEdit ? () => setIsEdit(!isEdit) : clickCargaFormulario}
+            className="bg-primary-600 text-white rounded font-medium text-xs w-24 py-2.5 md:mt-0 mt-5"
           >
             {isEdit ? "Editar" : "Guardar"}
           </button>

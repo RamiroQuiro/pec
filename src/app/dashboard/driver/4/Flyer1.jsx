@@ -62,46 +62,54 @@ export default function Flyer1() {
       updateState({
         drivers: { ...drivers, driver4: { ...drivers.driver4, step2: true } },
       });
-    } else if (flyerActivo == 46) {
+    } else if (flyerActivo == 45) {
       setIsLoading(true);
-      try {
-        updateState({
-          drivers: { ...drivers, driver4: { ...drivers.driver4, step4: true } },
-        });
-        setCurrentStep(1);
-        activarFlyer(0);
-        router.push("/dashboard/driver/4/drivercomplet");
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error);
-        setIsLoading(false);
+      async function updateData() {
+        try {
+          await updateState({
+            drivers: { ...drivers, driver4: { ...drivers.driver4, step4: true } },
+          });
+          setCurrentStep(1);
+          activarFlyer(0);
+          router.push("/dashboard/driver/4/drivercomplet");
+        } catch (error) {
+          console.log(error);
+        } finally {
+          setIsLoading(false);
+        }
       }
+      updateData();
     }
   };
-  return (
+  if (isLoading) {
+    return(
+     <LoadingCss/>
+    ) 
+   }
+   else if(!isLoading){
+   return (
     <>
       <div className="w-full h-full flex relative">
-      {isLoading && <LoadingCss />}
         <RenderFlyer />
 
         <div className="w-full absolute bottom-20 left-3 z-30 flex items-center justify-between px-10 gap-3">
           <SvgNextVideo
             onClick={handlePreviusFlyer}
-            className="w-14 h-14 fill-primary-tonoBlanco rotate-180 cursor-pointer  "
+            className="w-14 h-14 md:fill-primary-tonoBlanco fill-gray-500  cursor-pointer rotate-180  "
           />
-          {flyerActivo == 2 || flyerActivo == 39 || flyerActivo == 46 ? (
+          {flyerActivo == 2 || flyerActivo == 39 || flyerActivo == 45 ? (
             <SVGDiskette
               onClick={handleNextStep}
-              className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "
+              className="w-14 h-14 md:fill-primary-tonoBlanco fill-gray-500  cursor-pointer   "
             />
           ) : (
             <SvgNextVideo
               onClick={handleNextFlyer}
-              className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "
+              className="w-14 h-14 md:fill-primary-tonoBlanco fill-gray-500  cursor-pointer   "
             />
           )}
         </div>
       </div>
     </>
   );
-}
+}}

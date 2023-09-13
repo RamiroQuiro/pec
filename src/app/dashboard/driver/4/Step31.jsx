@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import ButtonLeerMas from "./ButtonLeerMas";
 import { contextUser } from "@/context/contextUser";
 import { toast } from "react-hot-toast";
+import ContenedoresDeSteps3X from "../../component/ContenedoresDeSteps3X";
 
 export default function Step31() {
   const { updateState, formCarga,drivers, setCurrentStep } = contextUser((state) => ({
@@ -58,7 +59,7 @@ export default function Step31() {
   return (
     <>
       <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-full mx-auto text-center">
-        <div className="flex  mb-5 justify-between w-full items-center gap-3 text-left">
+        <div className="flex md:flex-row flex-col  mb-5 justify-between w-full items-center gap-3 text-left">
           <h2 className="uppercase text-primary-200 text-xl">
             ARMEMOS TU MODELO DE LIDERAZGO COMERCIAL
           </h2>
@@ -66,8 +67,8 @@ export default function Step31() {
             * Responde adecuadamente
           </span>
         </div>
-        <div className="flex items-stretch justify-between gap-2 w-full mx-auto flex-grow ">
-          <div className="flex w-2/3 flex-auto flex-col items-start text-left gap-5 text-primary-textGris text-sm ">
+        <ContenedoresDeSteps3X>
+          <div className="flex  w-full md:w-2/3 flex-auto flex-col items-start text-left gap-5 text-primary-textGris text-sm ">
             <div className="flex items-center justify-between w-full">
               <label
                 htmlFor="filosofiaPersonal"
@@ -122,7 +123,7 @@ export default function Step31() {
               />
             </div>
           </div>
-          <div className="flex w-1/3 px-10 flex-auto flex-col items-start  gap-1">
+          <div className="flex md:w-1/3 w-full px-10 flex-auto flex-col items-start  gap-1">
             <p className="text-primary-100 font-medium">Text de Liderazgo</p>
             <p className="text-primary-200 text-center font-medium text-sm">
               Del 1 al 10 ¿como te catalogas?
@@ -145,7 +146,7 @@ export default function Step31() {
               ))}
             </select>
           </div>
-        </div>
+        </ContenedoresDeSteps3X>
         <div className="flex items-center justify-between gap-5 w-full">
           <div className="space-x-4">
             <ButtonLeerMas stepN={41}>Anterior</ButtonLeerMas>

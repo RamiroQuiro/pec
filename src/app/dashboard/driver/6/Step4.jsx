@@ -2,11 +2,13 @@ import { contextUser } from "@/context/contextUser";
 import Image from "next/image";
 import step1 from "../../../../../public/step1.png";
 import ButtonLeerMas from "./ButtonLeerMas";
+import ContenedorStep from "../../component/ContenedorStep1";
+import ContenedorTitulosDeStep from "../../component/ContenedorTitulosDeStep";
 export default function Step4() {
   const subPantallas = contextUser((state) => state.subPantallas);
   return (
-    <div className="flex items-center justify-between p-6  relative w-full  h-full">
-      <div className=" flex flex-col items-baseline justify-between gap-3 h-full w-8/12">
+    <ContenedorStep>
+    <ContenedorTitulosDeStep>
         <div className="flex flex-col items-start justify-normal gap-5">
           <h2 className="uppercase text-primary-200 text-xl">
             REFERENCIAS Y LECTURAS ACERCA DEL TEMA
@@ -22,7 +24,7 @@ export default function Step4() {
           </ButtonLeerMas>
           <ButtonLeerMas stepN={27}>Leer mas</ButtonLeerMas>
         </div>
-      </div>
+      </ContenedorTitulosDeStep>
 
       <div className="w-5/12  mx-auto h-full relative">
         <Image
@@ -32,6 +34,6 @@ export default function Step4() {
           className=" object-center object-contain absolute ring-0 pr-10 top-4 w-full ml-14 h-auto mx-auto "
         />
       </div>
-    </div>
+    </ContenedorStep>
   );
 }

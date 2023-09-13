@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import Flyer1 from "./Flyer1";
 import { usePreviousDriver } from "@/hook/usePreviousDriver";
 import { useEffect } from "react";
+import ContenedorDriverPage from "../../component/ContenedorDriverPage";
 
 export default function Driver7() {
   const path = usePathname();
@@ -29,8 +30,7 @@ export default function Driver7() {
   }, [driver]);
 
   return (
-    <SectionDash>
-      <div className="bg-white md:w-[78vw] md:min-h-[85vh] md:h-[90vh] absolute right-10 top-24  flex flex-col items-center justify-center border shadow-md">
+    <ContenedorDriverPage>
         {flyerActivo > 0 ? (
           <Flyer1 />
         ) : (
@@ -42,7 +42,6 @@ export default function Driver7() {
             <ContenedorPasos />
           </>
         )}
-      </div>
-    </SectionDash>
+    </ContenedorDriverPage>
   );
 }

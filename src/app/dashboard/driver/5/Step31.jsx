@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import ButtonLeerMas from "./ButtonLeerMas";
 import { contextUser } from "@/context/contextUser";
 import { toast } from "react-hot-toast";
+import ContenedoresDeSteps3X from "../../component/ContenedoresDeSteps3X";
 
 export default function Step31() {
   const [select, setSelect] = useState([
@@ -160,9 +161,9 @@ export default function Step31() {
             " Por favor menciona (en tu moneda, pesos dls, etc) las ventas proyectadas a 12 meses a partir de la fecha de término de este documento:"
           }
         </p>
-        <div className="flex items-stretch justify-between gap-2 w-full mx-auto flex-grow ">
-          <div className="w-2/3 flex items-start justify-start mt-5">
-            <div className="flex w-1/3 px-10 flex-auto flex-col items-start  gap-1">
+       <ContenedoresDeSteps3X>
+          <div className="md:w-2/3 w-full flex flex-col md:flex-row items-start justify-start mt-5">
+            <div className="flex md:w-1/3 w-full px-10 flex-auto flex-col items-start  gap-1">
               <label className="text-primary-100 text-sm font-medium">
                 Selecciona y contesta uno a la vez
               </label>
@@ -186,7 +187,7 @@ export default function Step31() {
                 ))}
               </select>
             </div>
-            <div className="flex w-1/3 px-10 flex-auto flex-col items-start  gap-1">
+            <div className="flex md:w-1/3 w-full px-10 flex-auto flex-col items-start  gap-1">
               <label className="text-primary-100 text-sm font-medium">
                 Selecciona y contesta uno a la vez
               </label>
@@ -200,16 +201,16 @@ export default function Step31() {
               />
             </div>
           </div>
-          <div className="w-1/3 flex items-start justify-start mt-5">
+          <div className="flex md:w-2/3 w-fullflex items-start justify-start mt-5">
             <p className=" px-5 text-sm text-primary-100 italic">
               {
                 '"Esta proyeccion puede ser proyectada también por bimestres, trimestres y a plazos largos, el ejercicio es una muestra de como realizarlo."'
               }
             </p>
           </div>
-        </div>
+        </ContenedoresDeSteps3X>
         <div className="flex items-center justify-between gap-5 w-full">
-          <div className="space-x-4">
+          <div className="space-x-4 flex">
             <ButtonLeerMas stepN={14}>Anterior</ButtonLeerMas>
             {select.every((element) => element.state == true) && (
               <ButtonLeerMas stepN={15}>Siguiente</ButtonLeerMas>

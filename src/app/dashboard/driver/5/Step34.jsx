@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import ButtonLeerMas from "./ButtonLeerMas";
 import { contextUser } from "@/context/contextUser";
 import { toast } from "react-hot-toast";
+import ContenedoresDeSteps3X from "../../component/ContenedoresDeSteps3X";
 
 export default function Step34() {
   const {
@@ -156,8 +157,8 @@ export default function Step34() {
         {!isLoading ? (
           <div>Cargando</div>
         ) : (
-          <div className="flex items-stretch my-5 flex-grow h-full justify-between gap-2 w-full mx-auto  ">
-            <div className="flex w-1/3  flex-auto flex-col items-start text-left ">
+          <ContenedoresDeSteps3X>
+            <div className="flex md:w-1/3 w-full  flex-auto flex-col items-start text-left ">
               <p className="text-sm text-primary-100 font-semibold">
                 Estrategia Madre 3
               </p>
@@ -186,7 +187,7 @@ export default function Step34() {
                 ))}
               </select>
             </div>
-            <div className="flex w-2/3 px-5 flex-auto flex-col items-center  gap-2">
+            <div className="flex md:w-2/3 w-full px-5 flex-auto flex-col items-center  gap-2">
               <input
                 type="text"
                 onChange={handleChango}
@@ -243,11 +244,11 @@ export default function Step34() {
                 />
               </div>
             </div>
-          </div>
+          </ContenedoresDeSteps3X>
         )}
 
         <div className="flex items-center justify-between gap-5 w-full">
-          <div className="space-x-4">
+          <div className="space-x-4 flex md:mt-0 mt-5">
             <ButtonLeerMas stepN={21}>Anterior</ButtonLeerMas>
             {select.every((element) => element.state == true) && (
               <button
@@ -259,7 +260,7 @@ export default function Step34() {
           </div>
           <button
             onClick={isEdit?()=>setIsEdit(!isEdit):clickCargaFormulario}
-            className="bg-primary-600 text-white rounded font-medium text-xs w-24 py-2.5"
+            className="bg-primary-600 text-white rounded font-medium text-xs w-24 py-2.5 md:mt-0 mt-5"
           >
             {isEdit ? "Editar" : "Guardar"}
           </button>

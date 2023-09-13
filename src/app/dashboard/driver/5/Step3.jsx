@@ -7,13 +7,15 @@ import Step31 from "./Step31";
 import Step32 from "./Step32";
 import Step33 from "./Step33";
 import Step34 from "./Step34";
+import ContenedorStep from "../../component/ContenedorStep1";
+import ContenedorTitulosDeStep from "../../component/ContenedorTitulosDeStep";
 export default function Step3() {
   const subPantallas = contextUser((state) => state.subPantallas);
   return (
-    <div className="flex items-center justify-between p-6  relative w-full  h-full">
+    <ContenedorStep>
       {!subPantallas ? (
         <>
-      <div className=" flex flex-col items-baseline justify-start gap-5 h-full w-8/12">
+      <ContenedorTitulosDeStep>
         <h2 className="uppercase text-primary-200 text-xl">ARMEMOS TU MODELO DE VISION COMERCIAL</h2>
         <p className="text-primary-200 text-left text-xl ">
           Genial, vamos avanzando, ahora que te parece si armamos tu{" "}
@@ -28,7 +30,7 @@ export default function Step3() {
           <ButtonLeerMas stepN={13}>Anterior</ButtonLeerMas>
           <ButtonLeerMas stepN={14}>Ir...</ButtonLeerMas>
         </div>
-      </div>
+      </ContenedorTitulosDeStep>
       <div className="w-4/12 h-full relative">
         <Image
           alt="step3"
@@ -48,6 +50,6 @@ export default function Step3() {
   ) :(
      <></>
    )}
-    </div>
+    </ContenedorStep>
   );
 }

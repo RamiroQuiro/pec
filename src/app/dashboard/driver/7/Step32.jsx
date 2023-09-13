@@ -56,8 +56,8 @@ export default function Step32() {
             " Hagamos un ejemplo, el formato quedara listo en tu documento ejecutivo:"
           }
         </p>
-        <div className="flex items-stretch justify-between gap-2 w-full mx-auto flex-grow ">
-          <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
+        <div className="flex md:flex-row flex-col items-stretch justify-between gap-2 w-full mx-auto flex-grow ">
+          <div className="flex w-full md:w-1/2 flex-auto flex-col items-start text-left ">
             <label htmlFor="calidadVida" className="text-primary-100">
               Meta 2:
             </label>
@@ -74,7 +74,7 @@ export default function Step32() {
               Calidad de vida a 1 año.
             </p>
           </div>
-          <div className="flex w-1/2 flex-auto flex-col items-start text-left ">
+          <div className="flex w-full md:w-1/2 flex-auto flex-col items-start text-left ">
             <label htmlFor="desarrolloPersonal" className="text-primary-100">
               Meta 2:
             </label>

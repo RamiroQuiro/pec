@@ -92,17 +92,17 @@ export default function Flyer1() {
         <div className="w-full absolute bottom-20 left-3 z-30 flex items-center justify-between px-10 gap-3">
           <SvgNextVideo
             onClick={handlePreviusFlyer}
-            className="w-14 h-14 fill-primary-tonoBlanco rotate-180 cursor-pointer  "
+            className="w-14 h-14 md:fill-primary-tonoBlanco fill-gray-500  cursor-pointer   rotate-180"
           />
           {flyerActivo == 4 || flyerActivo == 10 || flyerActivo == 16 ? (
             <SVGDiskette
               onClick={handleNextStep}
-              className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "
+              className="w-14 h-14 md:fill-primary-tonoBlanco fill-gray-500  cursor-pointer   "
             />
           ) : (
             <SvgNextVideo
               onClick={handleNextFlyer}
-              className="w-14 h-14 fill-primary-tonoBlanco cursor-pointer "
+              className="w-14 h-14 md:fill-primary-tonoBlanco fill-gray-500  cursor-pointer   "
             />
           )}
         </div>

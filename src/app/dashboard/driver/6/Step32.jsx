@@ -114,7 +114,7 @@ export default function Step32() {
             "Prioricemos, responde en orden de importancia lo que para ti represente en tu empresa el ARC, siendo 1 el mas importante y, así sucesivamente:"
           }
         </p>
-        <div className="flex items-stretch justify-between py-2 gap-x-8 gap-y-5 w-full mx-auto flex-grow flex-wrap">
+        <div className="flex md:flex-row flex-col items-stretch justify-between py-2 gap-x-8 gap-y-5 w-full mx-auto flex-grow flex-wrap">
           {array?.map((element, i) => {
             return (
               <InputsNumeros

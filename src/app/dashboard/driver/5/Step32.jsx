@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import ButtonLeerMas from "./ButtonLeerMas";
 import { contextUser } from "@/context/contextUser";
 import { toast } from "react-hot-toast";
+import ContenedoresDeSteps3X from "../../component/ContenedoresDeSteps3X";
 
 export default function Step32() {
   const {
@@ -148,8 +149,8 @@ export default function Step32() {
         {/* formularios */}
         {/* formularios */}
         {select&& (
-          <div className="flex items-stretch my-5 flex-grow h-full justify-between gap-2 w-full mx-auto  ">
-            <div className="flex w-1/3  flex-auto flex-col items-start text-left ">
+     <ContenedoresDeSteps3X>
+            <div className="flex w-full md:w-1/3  flex-auto flex-col items-start text-left ">
               <p className="text-sm text-primary-100 font-semibold">
                 Estrategia Madre 1
               </p>
@@ -178,7 +179,7 @@ export default function Step32() {
                 ))}
               </select>
             </div>
-            <div className="flex w-2/3 px-5 flex-auto flex-col items-center  gap-2">
+            <div className="flex w-full md:w-2/3  px-5 flex-auto flex-col items-center  gap-2">
               <input
                 type="text"
                 onChange={handleChango}
@@ -197,7 +198,7 @@ export default function Step32() {
                 placeholder="Accion"
                 className="border w-full py-2.5 px-2 text-sm rounded text-primary-textGris focus:outline-none"
               />
-              <div className="flex items-center justify-between w-full gap-2">
+              <div className="flex  items-center justify-between w-full gap-2">
                 <input
                   type="date"
                   value={
@@ -235,11 +236,11 @@ export default function Step32() {
                 />
               </div>
             </div>
-          </div>
+          </ContenedoresDeSteps3X>
         )}
 
         <div className="flex items-center justify-between gap-5 w-full">
-          <div className="space-x-4">
+          <div className="space-x-4 flex mt-5 md:mt-0">
             <ButtonLeerMas stepN={21}>Anterior</ButtonLeerMas>
             {select.every((element) => element.state == true) && (
               <ButtonLeerMas label="changeSubPantalla" stepN={4}>Siguiente</ButtonLeerMas>
@@ -247,7 +248,7 @@ export default function Step32() {
           </div>
           <button
             onClick={isEdit?()=>setIsEdit(!isEdit):clickCargaFormulario}
-            className="bg-primary-600 text-white rounded font-medium text-xs w-24 py-2.5"
+            className="bg-primary-600 text-white rounded font-medium text-xs w-24 py-2.5 mt-5 md:mt-0"
           >
             {isEdit ? "Editar" : "Guardar"}
           </button>
