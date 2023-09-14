@@ -11,8 +11,7 @@ export default function Footer() {
             Consultora KREATIVIUM
           </h3>
           <p className=" text-gray-800">
-            Av. 10 de Mayo. Col, Las Limas 10 00789, Insurgentes Sur, CDMX,
-            México. Mail:hector.avila@kreativium.mx Tel:+52477-309-18-41
+          Mar Egeo 28, Col Nextiltla. Del. Miguel Hidalgo. CDMX. Mail:hector.avila@kreativium.mx Tel:+52477-309-18-41
           </p>
           <Image alt="logo" src={logo} width={180} height={180} />
         </div>

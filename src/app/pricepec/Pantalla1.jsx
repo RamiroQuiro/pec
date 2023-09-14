@@ -31,7 +31,7 @@ export default function Pantalla1({arrayItems}) {
         <span className="text-primary-700">Hector Ávila Muñoz</span>{" "}
       </p>
       <p className="text-xs my-3 text-white">
-        Ultima Actualización : 19/07/2023
+        Ultima Actualización : 19/08/2023
       </p>
     </div>
     <CardPrice />

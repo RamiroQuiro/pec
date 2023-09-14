@@ -19,19 +19,7 @@ export default function CarruselHeadre({ imagenes }) {
   if (!Array.isArray(imagenes) || cantidad == 0) return;
   else
     return (
-      <motion.div
-        initial={{
-          scale: 1.5,
-        }}
-        animate={{
-          scale: 1,
-        }}
-        transition={{
-          duration: 0.5,
-        }}
-        className="absolute head left-0 top-16 w-full  flex items-center justify-normal h-full z-0 overflow-x-hidden"
-      >
-        {" "}
+      <div>
         {imagenes?.map((img, i) => (
           <div
             key={i}
@@ -52,6 +40,6 @@ export default function CarruselHeadre({ imagenes }) {
             )}
           </div>
         ))}
-      </motion.div>
+      </div>
     );
 }

@@ -31,7 +31,7 @@ export default function Contacto() {
             <InputFormulario name={"asunto"} label={"Asunto:"} type="text" />
           </div>
           <div className="flex w-full gap-3 ">
-            <div className="flex-grow flex flex-col">s
+            <div className="flex-grow flex flex-col">
               <label htmlFor="mensaje">Mensaje*</label>
               <textarea
                 name="mensaje"

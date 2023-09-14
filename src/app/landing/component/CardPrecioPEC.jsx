@@ -15,7 +15,7 @@ export default function CardPrecioPEC() {
       </div>
      {!data?.user?.pecPagado&& <div className="text-primary-textGris/90 mt-5">
         <span>Precio Total</span>
-        <p className=" text-3xl  font-bold">$15,000.00 MX + IVA</p>
+        {/* <p className=" text-3xl  font-bold">$15,000.00 MX + IVA</p> */}
       </div>}
       {/* boton que compruba el regusto y despues el pago del usuario */}
       <BotonInicioSesion label="card"/>

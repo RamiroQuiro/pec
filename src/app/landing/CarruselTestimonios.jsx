@@ -20,10 +20,10 @@ export default function CarruselTestimonios() {
   const arrayTestimonios = [
     {
       children:
-        '"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum saepe at commodi, ut quas repellat odit similique reprehenderit culpa in veniam provident odio illum itaque esse dicta consequatur dolores delectusAspernatur natus provident doloribus quidem repellendus perferendis autem, deleniti, deserunt mollitia sequi ratione, rem molestiae laudantium minima cum blanditiis. Doloremque voluptatem, dignissimos error cum magni Obcaecati et dolorem voluptatibus"',
+        '“El PLAN ESTRATÉGICO COMERCIAL, es la actividad más importante del área comercial, de ahí depende el éxito o fracaso de la misma, por ende, de ahí depende también la sobrevivencia de las empresas y del sustento de las familias que las componen, por eso, hacerlo de manera adecuada es fundamental no solo para sobrevivir, sino para alcanzar lo que todo líder comercial desea, el liderazgo de su segmento y su éxito profesional”  ',
       id: 1,
-      cargo: "Director General",
-      nombre: "Erick Brambila",
+      cargo: "Director General KREATIVIUM",
+      nombre: "HECTOR AVILA",
     },
     {
       children:
