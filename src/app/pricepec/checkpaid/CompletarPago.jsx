@@ -83,15 +83,14 @@ export default function CompletarPago() {
       (a, b) => a + Number(b.prices[0].unit_amount),
       0
     );
-    const discountAmount = ((total / 100) * discount / 100);
-    console.log(discountAmount,'total->',total/100) ;
-    const finalTotal = total/100 - discountAmount;
+    const discountAmount = ((total / 100) * discount) / 100;
+    const finalTotal = total / 100 - discountAmount;
     setFormattedTotal(formatoNum.format(finalTotal));
-  }, [discount, promoEncontrado,formatoNum]);
+  }, [discount, promoEncontrado, formatoNum]);
 
   const aplicarDescuento = () => {
     const codigo = form?.cuponID;
-    const objeFind=promociones?.find((promo) => promo.code == codigo)
+    const objeFind = promociones?.find((promo) => promo.code == codigo);
     if (!objeFind) {
       toast.error("codigo incorrecto");
     }
@@ -103,7 +102,6 @@ export default function CompletarPago() {
       });
     }
   };
-  console.log(form.cuponID)
   return (
     <div className="flex flex-col p-10 items-stretch justify-stretch bg-[#F5F5F5] w-1/2 min-h-full ">
       <div className=" w-full  mb-20 h-5/6 flex-grow ">
@@ -118,22 +116,36 @@ export default function CompletarPago() {
             </span>
           </div>
         ) : (
-          prices?.map((product) => (
-            <div
-              key={product.id}
-              className="w-full  flex items-center justify-between text-xs pb-1 px-2 my-2"
-            >
-              <p>{product.name}</p>
-              <p className="uppercase">
-                {new Intl.NumberFormat("es-MX", {
-                  style: "currency",
-                  currency: "MXN",
-                }).format(product.prices[0]?.unit_amount / 100)}
-                {"  "}
-                {product.prices[0]?.currency}
-              </p>
+          <>
+            <div className="w-full  flex items-center justify-between text-xs pb-1 px-2 my-2">
+              <p>Precio Regular </p>
+              <p className="uppercase">: $ 17,500 MXN + iva</p>
             </div>
-          ))
+            <div className="w-full  flex items-center justify-between text-xs pb-1 px-2 my-2">
+              <p>{`Subsidio Fundación Kreativium (50%)`} </p>
+              <p classNmnxame="uppercase">$8,750 MXN</p>
+            </div>
+            <div className="w-full  flex items-center justify-between text-xs pb-1 px-2 my-2">
+              <p>Bono adicional de descuento  </p>
+              <p classNmnxame="uppercase">$2,000 MXN</p>
+            </div>
+            {prices?.map((product) => (
+              <div
+                key={product.id}
+                className="w-full  flex items-center justify-between text-xs pb-1 px-2 my-2"
+              >
+                <p>{product.name}</p>
+                <p className="uppercase">
+                  {new Intl.NumberFormat("es-MX", {
+                    style: "currency",
+                    currency: "MXN",
+                  }).format(product.prices[0]?.unit_amount / 100)}
+                  {"  "}
+                  {product.prices[0]?.currency}
+                </p>
+              </div>
+            ))}
+          </>
         )}
         <div className="w-full flex items-center justify-between text-sm pb-1 my-2 font-bold">
           <p>Total:</p>
